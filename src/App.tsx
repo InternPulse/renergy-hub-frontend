@@ -4,6 +4,7 @@ import Signup from "./authentication/signup";
 import Login from "./authentication/login";
 import BuyerSignup from "./authentication/buyerSignup";
 import VendorSignup from "./authentication/vendorSignup";
+import Registration from "./authentication/registration";
  
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup/buyer" element={<BuyerSignup />} />
         <Route path="/signup/vendor" element={<VendorSignup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
     </div>
   )
