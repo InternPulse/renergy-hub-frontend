@@ -1,13 +1,30 @@
-import './App.css'
-import { Button } from "./components/ui/button"
- 
+import Filter from "./products-listing/filter/filter"
+
+
+import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
+
 
 function App() {
 
   return (
-    <div>
-      <Button>click me</Button>
-      <p>hello</p>
+    <div className='flex gap-4'>
+      
+      
+      <Router>
+     
+        
+     <Routes>
+     {/* {isLoggedIn && <div></div> <Sidebar/> } */}
+       {/* <Route path="/" element={<LandingPage/>} /> */}
+       <Route path="/" element={<Filter/>} />
+   
+    
+    </Routes>
+    
+    
+  {/* </div> */}
+</Router>
+     
       {/* <Button>click me</Button> */}
     </div>
   )

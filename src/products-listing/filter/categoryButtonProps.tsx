@@ -1,9 +1,23 @@
-import React from 'react'
 
-const CategoryProps = () => {
+
+
+import { CategoryFilter } from './category-filter' 
+import { ProductFilter } from './product-filter'
+import { VendorFilter } from './vendor-filter'
+
+
+function FilterContainer() {
+
   return (
-    <div>CategoryProps</div>
+    <div className='flex gap-4'>
+      <ProductFilter/>
+     
+      <VendorFilter/>
+      <CategoryFilter/>
+      
+      {/* <Button>click me</Button> */}
+    </div>
   )
 }
 
-export default CategoryProps
+export default FilterContainer
