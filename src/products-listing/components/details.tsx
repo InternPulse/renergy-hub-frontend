@@ -1,6 +1,6 @@
 
 import ProductCard from './ProductCard'
-import { Button } from './ui/button'
+import { Button } from '../../components/ui/button'
 
 //props
 const Detail = () => {

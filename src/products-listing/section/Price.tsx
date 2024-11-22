@@ -1,5 +1,5 @@
 
-import { Button } from '../components/ui/button'
+import { Button } from '../../components/ui/button'
 import { ProductProps } from '../components/ProductCard'
 const PriceSection = ({product}:ProductProps) => {
   return (
