@@ -5,14 +5,14 @@ const Mission = () => {
         <div className="flex flex-col lg:flex-row justify-center gap-[30px] text-center">
           {/* Mission Card */}
           <div className="w-full lg:w-[500px] lg:h-[200px] bg-gray-100 flex flex-col justify-center items-center rounded-tl-[50px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[50px] p-5">
-            <p className="text-lg font-semibold">Mission</p>
+            <p className="text-2xl font-semibold">Mission</p>
             <p className="mt-2 text-sm">
               Empowering Nigerian communities through affordable, sustainable energy to drive economic growth.
             </p>
           </div>
           {/* Vision Card */}
           <div className="w-full lg:w-[500px] lg:h-[200px] bg-gray-100 flex flex-col justify-center items-center rounded-tl-[50px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[50px] p-5">
-            <p className="text-lg font-semibold">Vision</p>
+            <p className="text-2xl font-semibold">Vision</p>
             <p className="mt-2 text-sm">
               Leading Nigeria's transition to renewable energy, bridging urban and rural gaps.
             </p>

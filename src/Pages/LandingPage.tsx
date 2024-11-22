@@ -1,4 +1,5 @@
 import AboutUS from "../Components/AboutUS"
+import ChooseHub from "../Components/ChooseHub"
 import FeaturedProducts from "../Components/FeaturedProducts"
 import Hero from "../Components/Hero"
 import Mission from "../Components/Mission"
@@ -14,6 +15,7 @@ const LandingPage = () => {
         <AboutUS/>
         <Mission/>
         <FeaturedProducts/>
+        <ChooseHub/>
     </div>
   )
 }

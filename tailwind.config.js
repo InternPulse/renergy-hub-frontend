@@ -8,7 +8,8 @@ export default {
     extend: {
       colors:{
         'hardYellow':"#f9d262",
-        'hardGreen':"#2c742f"
+        'hardGreen':"#2c742f",
+        'softGreen':"#84d187"
 
       }
     },

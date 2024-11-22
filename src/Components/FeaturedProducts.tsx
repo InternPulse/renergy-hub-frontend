@@ -36,7 +36,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, maxRating = 5 }) => {
 const FeaturedProducts: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center p-4 mt-[80px] max-w-7xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-2">Featured Products</h2>
+      <h2 className="text-2xl lg:text-[56px] sm:text-3xl mb-4 font-bold mb-2">Featured Products</h2>
       <p className="text-center mb-6 max-w-xl text-sm sm:text-base">
         Discover our top solar products: High-efficiency PV solar panels, smart
         inverters, durable batteries, and efficient wind turbines.
