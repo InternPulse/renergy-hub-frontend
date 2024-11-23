@@ -4,35 +4,30 @@ import hero_image from '../assets/hero_image.png';
 import bg_image from '../assets/bg_image.png';
 import circo from '../assets/cieco.png';
 import sol from '../assets/sol.png';
-import partner from '../assets/partners.png'
+import partner from '../assets/partners.png';
 
 const Hero = () => {
   return (
-    <div className='h-auto min-h-[100vh]' style={{ backgroundImage: `url(${bg_image})` }}>
-      <div
-        className="w-full h-auto min-h-[100vh] flex flex-col md:flex-row items-start justify-between bg-cover bg-center"
-      >
+    <div
+      className="h-auto min-h-[100vh] bg-cover bg-center"
+      style={{ backgroundImage: `url(${bg_image})` }}
+    >
+      <div className="w-full h-auto min-h-[100vh] flex flex-col md:flex-row items-start justify-between">
         {/* Text and Button Section */}
-        <div className="text-white text-center md:text-left md:px-5 lg:p-10 lg:max-w-md max-w-full">
-          {/* Heading */}
+        <div className="text-white text-center md:text-left md:px-5 lg:p-10 max-w-full md:max-w-[50%] lg:max-w-md">
           <p className="text-[32px] md:text-[72px] font-bold leading-tight w-full lg:w-[750px] lg:mt-[30px]">
             Greener Future With <br />
             RENERGY HUB
           </p>
-          {/* Subheading */}
           <p className="text-[16px] md:text-[18px] mt-[10px] md:mt-[20px]">
             Eco-friendly, Cost Effective, and Reliable Energy Solutions for your Home and Business. Discover our premium
             products.
           </p>
-          
-          {/* Button (Centered on small screens) */}
           <div className="flex justify-center lg:justify-start mt-[20px] md:mt-[30px]">
             <button className="flex items-center gap-3 text-white font-semibold bg-hardGreen px-6 py-3 rounded hover:bg-hardYellow hover:text-white">
-              Explore Products 
+              Explore Products
             </button>
           </div>
-
-          {/* Icons */}
           <div className="flex justify-center md:justify-start mt-[10px] md:mt-[100px] gap-2">
             <img src={hero40} alt="40" />
             <img src={hero10k} alt="10k" />

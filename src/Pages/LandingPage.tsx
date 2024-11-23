@@ -4,6 +4,7 @@ import FeaturedProducts from "../Components/FeaturedProducts"
 import Hero from "../Components/Hero"
 import Mission from "../Components/Mission"
 import Navbar from "../Components/Navbar"
+import Review from "../Components/Review"
 
 
 
@@ -16,6 +17,7 @@ const LandingPage = () => {
         <Mission/>
         <FeaturedProducts/>
         <ChooseHub/>
+        <Review/>
     </div>
   )
 }

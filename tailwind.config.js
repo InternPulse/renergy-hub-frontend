@@ -11,7 +11,11 @@ export default {
         'hardGreen':"#2c742f",
         'softGreen':"#84d187"
 
-      }
+      },
+      screens: {
+        ipad: { max: '820px' }, // iPad Air
+        ipadMini: { max: '768px' }, // iPad Mini
+      },
     },
   },
   plugins: [],

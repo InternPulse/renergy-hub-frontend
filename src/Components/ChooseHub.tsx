@@ -54,7 +54,7 @@ const ChooseHub = () => {
   <h3 className="text-[36px] sm:text-[40px] lg:text-[36px] font-semibold text-center">
     ACT NOW SAVE MORE
   </h3>
-  <p className="text-sm sm:text-base w-[300px] sm:w-[400px] lg:w-[500px] text-center mt-4">
+  <p className="text-sm sm:text-base w-[300px] sm:w-[400px] lg:w-[300px] text-center mt-4">
     Sign up today and receive a special discount on your first installation!
   </p>
   <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px] lg:w-[280px]">
