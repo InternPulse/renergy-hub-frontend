@@ -1,4 +1,5 @@
 import AboutUS from "../Components/AboutUS"
+import Blog from "../Components/Blog"
 import ChooseHub from "../Components/ChooseHub"
 import FeaturedProducts from "../Components/FeaturedProducts"
 import Hero from "../Components/Hero"
@@ -18,6 +19,7 @@ const LandingPage = () => {
         <FeaturedProducts/>
         <ChooseHub/>
         <Review/>
+        <Blog/>
     </div>
   )
 }

@@ -65,10 +65,11 @@ const Review = () => {
           <p>John Mark</p>
           <span className="text-gray-600 text-[12px]">CEO of Markingtour</span>
         </div>
-      </div>
-      <div className="bg-white h-12 w-12 rounded-full flex items-center justify-center absolute right-0 sm:right-10 lg:right-0  xl:-right-2 md:right-0 mb-10 sm:mb-6">
+        <div className="bg-white h-12 w-12 rounded-full flex items-center justify-center absolute right-0 sm:right-10  lg:right-0  xl:-right-2 md:right-0  bottom-[-8px]">
   <img src={white_thumb} alt="" className="h-6 w-6 sm:h-8 sm:w-8" />
 </div>
+      </div>
+     
     </div>
    
   </div>
