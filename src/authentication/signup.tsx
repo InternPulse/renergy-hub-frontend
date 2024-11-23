@@ -25,7 +25,7 @@ const Signup: React.FC = () => {
   return (
     <div className="h-screen flex flex-col justify-between">
       {/* Top Section */}
-      <div className="flex justify-between p-4">
+      <div className="flex justify-between px-4 py-1">
         <ArrowLeft
           size={24}
           onClick={() => navigate(-1)}
