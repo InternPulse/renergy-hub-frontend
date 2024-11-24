@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 import { useSearchParams } from 'react-router-dom';
 import { useProductStore } from '../store/store';
+import { useEffect } from 'react';
 export type ProductProps ={
     products: []
 }
@@ -19,7 +20,7 @@ const ProductCard = ({products}: ProductProps) => {
   const productQuery = searchParams.get("product")?.split(", ");
   const vendorQuery = searchParams.get("vendor")?.split(", ");
 
-  
+
       
 
 

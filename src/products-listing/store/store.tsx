@@ -23,13 +23,14 @@ interface Category {
 type ProductStore = {
   vendors: Vendor[];
   products: Product[];
+  
   categories: Category[];
   selectedVendors: Vendor[];
   selectedProducts: Product[];
   selectedCategories: Category[];
-  setFilteredProduct: (productId: string) => void;
-  setFilteredVendor: (vendorId: string) => void;
-  setFilteredCategory: (categoryId: string) => void;
+  setFilteredProduct: (productId: string) => Promise<void>;
+  setFilteredVendor: (vendorId: string) => Promise<void>;
+  setFilteredCategory: (categoryId: string) => Promise<void>;
 };
 
 export const useProductStore = create<ProductStore>()(
@@ -73,7 +74,7 @@ export const useProductStore = create<ProductStore>()(
       selectedProducts: [],
       selectedCategories: [],
 
-      setFilteredProduct: (productId: string) => {
+      setFilteredProduct: async (productId: string) => {
         const { products, selectedProducts } = get();
         const product = products.find((p) => p.id === productId);
         if (!product) return;
@@ -99,7 +100,7 @@ export const useProductStore = create<ProductStore>()(
         });
       },
 
-      setFilteredVendor: (vendorId: string) => {
+      setFilteredVendor: async (vendorId: string) => {
         const { vendors, selectedVendors } = get();
         const vendor = vendors.find((v) => v.id === vendorId);
         if (!vendor) return;
@@ -125,7 +126,7 @@ export const useProductStore = create<ProductStore>()(
         });
       },
 
-      setFilteredCategory: (categoryId: string) => {
+      setFilteredCategory: async (categoryId: string) => {
         const { categories, selectedCategories } = get();
         const category = categories.find((c) => c.id === categoryId);
         if (!category) return;
