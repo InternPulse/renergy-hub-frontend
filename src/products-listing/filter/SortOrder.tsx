@@ -1,11 +1,17 @@
-import {useState} from 'react'
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectLabel, SelectGroup } from "../../components/ui/select";
+
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../components/ui/select";
+import { useProductStore } from '../store/store';
+
+
+//this component is for the SortOrder Functionality
 const SortOrder = () => {
 
-      const [item, setItem]= useState<[]>([]);
-       
-      const sortData = [{ id: "default", name: "Default " },
-        { value: "na-z", name: "Name (A > Z) " },
+      //get setSort function, and sort state from the useProductStore 
+       const {setSort,sort} = useProductStore()
+
+       //Sort order
+      const sortData = [{ value: "default", name: "Default " },
+        { value: "na-z", name: "Name (A > Z)" },
         { value: "nz-a", name: "Name (Z > A)" },
         { value: "ma-z", name: "Model (A > Z)" },
         { value: "mz-a", name: "Model (Z > A)" },
@@ -15,27 +21,32 @@ const SortOrder = () => {
         { value: "rl-h", name: "Ratings (Low > High)" } ]
 
 
+        const handleClick = (value:any) => {
+          setSort(value);
+        };
+
+
   return (
-    <div>
+                      <div className="flex flex-col max-w-md ">
+                  {/* the selected item form the selectitem array is displayed here */}
 
-<Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+                    <Select value={sort} onValueChange={(value) => handleClick(value)} >
+                    <SelectTrigger className="w-[200px] border-none">
+                      
+                      <SelectValue placeholder="Sort by default" className="" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {/* <SelectLabel onClick={}>Fruits</SelectLabel> */}
 
-        
-    </div>
+                        {sortData.map((sort,index) => (
+                           <SelectItem value={sort.value} key={index}>{sort.name}</SelectItem>
+                        ))}
+                       </SelectGroup>
+                    </SelectContent>
+                  </Select>
+             
+ </div>
   )
 }
 

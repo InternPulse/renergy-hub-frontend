@@ -1,7 +1,7 @@
 "use client"
 
 
-import { ChevronsUpDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 import { Button } from "../../components/ui/button"
 import {
@@ -57,7 +57,7 @@ const getSelectedVendorsText = () => {
           className="w-[250px] justify-between"
         >
           <span className="truncate">{getSelectedVendorsText()}</span>
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px]">

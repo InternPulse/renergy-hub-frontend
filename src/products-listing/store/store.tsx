@@ -23,7 +23,10 @@ interface Category {
 type ProductStore = {
   vendors: Vendor[];
   products: Product[];
-  
+  sort:string
+  isClicked: boolean
+  setIsClicked: (isClicked: boolean) => void
+  setSort: (sort: string) => void;
   categories: Category[];
   selectedVendors: Vendor[];
   selectedProducts: Product[];
@@ -36,6 +39,9 @@ type ProductStore = {
 export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
+      sort:'',
+      isClicked: false,
+      setIsClicked: (isClicked: boolean) => set({ isClicked }),
       vendors: [
         { id: "all", name: "All Vendors" },
         { id: "ecowatts", name: "EcoWatts" },
@@ -47,7 +53,7 @@ export const useProductStore = create<ProductStore>()(
         { id: "nazpowerhouse", name: "Naz Power House" },
         { id: "gregcopower", name: "Gregco Power and Energy" },
       ],
-
+        setSort: (sort: string) => set({ sort: sort }),
       products: [
         { id: "all", name: "All Products", vendorId: "all", categoryId: "all", price: 0, stock: 0 },
         { id: "prod-001", name: "EcoWatts Solar Panel 250W", vendorId: "ecowatts", categoryId: "solar-panels", price: 220.99, stock: 40 },

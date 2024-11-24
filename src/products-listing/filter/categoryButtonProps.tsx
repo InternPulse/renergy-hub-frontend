@@ -1,5 +1,5 @@
 
-
+// this is a container for all the filter buttons
 
 import { CategoryFilter } from './category-filter' 
 import { ProductFilter } from './product-filter'

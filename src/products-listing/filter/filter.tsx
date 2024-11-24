@@ -1,17 +1,18 @@
 import { Button } from "../../components/ui/button";
-import { useState ,useCallback} from "react";
+import { useState, useCallback, useEffect } from "react";
 import FilterContainer from "./categoryButtonProps";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../store/store";
-import { useEffect } from "react";
 import { useDebounce } from "use-debounce"; // Import useDebounce
 import { Input } from "../../components/ui/input";
 import { Search } from "lucide-react";
+import SortOrder from "./SortOrder";
 
 const Filter = () => {
-  const [isClicked, setIsClicked] = useState(false);
+
+  
   const [searchParams, setSearchParams] = useSearchParams();
-  const { selectedCategories, selectedProducts, selectedVendors } = useProductStore();
+  const { selectedCategories, selectedProducts, selectedVendors , setIsClicked, isClicked } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
   const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || ""); // To handle the search input
 
@@ -23,111 +24,121 @@ const Filter = () => {
     setSearchQuery(e.target.value);
   };
 
-const handleRemoveButton = ()=>{
-  setIsClicked(false);
-} 
+  // Remove filter panel
+  const handleRemoveButton = () => {
+    setIsClicked(false);
+  };
 
-const handleButton =() =>{
-  setIsClicked(true)
-}
+  // Show filter panel
+  const handleButton = () => {
+    setIsClicked(true);
+  };
 
   const handleClick = useCallback(() => {
-    
     const params = new URLSearchParams(searchParams as any);
-  
+
     // Handle category filter
     if (selectedCategories.length > 0) {
       const categoryNames = selectedCategories.map((cat) => cat.name);
-      params.set("category", categoryNames.join(", "));
+      params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
     }
-  
+
     // Handle product filter
     if (selectedProducts.length > 0) {
       const productNames = selectedProducts.map((prod) => prod.name);
-      params.set("product", productNames.join(", "));
+      params.set("product", productNames.join(","));
     } else {
       params.delete("product");
     }
-  
+
     // Handle vendor filter
     if (selectedVendors.length > 0) {
       const vendorNames = selectedVendors.map((vendor) => vendor.name);
-      params.set("vendor", vendorNames.join(", "));
+      params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
     }
-  
+
     // Handle search query (using the debounced version)
     if (debouncedSearchQuery) {
       params.set("search", debouncedSearchQuery);
     } else {
       params.delete("search");
     }
-  
+
     // Set the updated search params to the URL
     setSearchParams(params);
     navigate({ search: params.toString() }, { replace: true });
-  }, [selectedCategories, selectedProducts, selectedVendors, debouncedSearchQuery, setSearchParams, navigate,searchParams]);
+  }, [selectedCategories, selectedProducts, selectedVendors, debouncedSearchQuery, setSearchParams, navigate, searchParams]);
 
-
-
-  // Use useEffect to trigger the filter update when the debounced search query changes
+  // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
-    if (debouncedSearchQuery !== searchParams.get("search")) {
-      handleClick(); // Automatically update filters when the debounced search query changes
-    }
-  }, [debouncedSearchQuery,handleClick,searchParams ]); // Trigger on change of debouncedSearchQuery
+    handleClick(); // Update filters immediately after selection or debounced search
+  }, [debouncedSearchQuery, selectedCategories, selectedProducts, selectedVendors, handleClick]);
 
   return (
-    <section className="">
+    <section className="flex flex-col gap-4">
 
-     <header className="">
-          <ul className="flex gap-4 justify-between items-center ">
-            <li>
-              <p className="text-3xl text-black">Products</p>
-            </li>
-            <li className="relative w-full">
+      <header className="p-5">
+        <ul className="flex gap-4 justify-between items-center">
+          <li>
+            <p className="text-3xl text-black">Products</p>
+          </li>
+          <li className="relative w-full">
             <Input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search products"
-          className="border p-2 rounded"
-        />
-        <Search className="absolute right-2 top-2"/>
-            </li>
-            <li></li>
-            </ul>     
-
-
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search products"
+              className="border p-2 rounded text-right pl-2 pr-8 "
+            />
+            <Search className="absolute right-2 top-2" />
+          </li>
+          <li className="text-3xl">settings</li>
+        </ul>
       </header>
 
+      <ul className="flex flex-col gap-2 px-8">
+        <li className="flex justify-between">
+          {!isClicked ? (
+            <div>
+              <Button className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200" onClick={handleButton}>
 
-      <ul className="flex flex-col gap-2">
-        <li>
-{!isClicked? <div>
-  <Button className="gap-2 flex p-2 rounded-xl" onClick={handleButton}>
-            <img src="" alt="" />
-            <span>Filter</span>
-          </Button>
-</div>: <Button className="gap-2 flex h-[47px] w-[47px] rounded-full" onClick={handleRemoveButton}>
-            
-            <span>X</span>
-          </Button>} 
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                  <path d="M4 21.5V14.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4 10.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 21.5V12.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 8.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M20 21.5V16.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M20 12.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1 14.5H7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 8.5H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M17 16.5H23" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                <span>Filter</span>
+              </Button>
+            </div>
+          ) : (
+            <button className="hover:bg-slate-200 rounded-full" onClick={handleRemoveButton}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47" fill="none" className="">
+  <path d="M23.4993 43.0807C34.3149 43.0807 43.0827 34.313 43.0827 23.4974C43.0827 12.6818 34.3149 3.91406 23.4993 3.91406C12.6838 3.91406 3.91602 12.6818 3.91602 23.4974C3.91602 34.313 12.6838 43.0807 23.4993 43.0807Z" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M29.375 17.625L17.625 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M17.625 17.625L29.375 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+            </button>
+          )}
+
+          <SortOrder/>
         </li>
         <li>
-          {isClicked ? (
-            <button onClick={handleClick}>
-              <FilterContainer />
-            </button>
-          ) : (
-            ""
+          {isClicked && (
+            <FilterContainer /> // Render the filter container directly
           )}
         </li>
       </ul>
-      
     </section>
   );
 };
