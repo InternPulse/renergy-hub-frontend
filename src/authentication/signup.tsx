@@ -14,9 +14,9 @@ const Signup: React.FC = () => {
 
   const handleNext = () => {
     if (selectedRole === "buyer") {
-      navigate("/signup/buyer");
+      navigate("/authentication/signup/buyer");
     } else if (selectedRole === "vendor") {
-      navigate("/signup/vendor");
+      navigate("/authentication/signup/vendor");
     } else {
       alert("Please select a role to proceed!");
     }

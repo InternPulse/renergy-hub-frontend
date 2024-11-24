@@ -25,7 +25,7 @@ const BuyerSignup: React.FC = () => {
       };
     
       const validatePassword = (password: string) => {
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\W).{8,}$/;
         return passwordRegex.test(password);
       };
     
@@ -55,13 +55,13 @@ const BuyerSignup: React.FC = () => {
     
         if (!hasError) {
           console.log("Form submitted", formData);
-          navigate("/welcome"); 
+          navigate("/authentication/confirmation"); 
         }
       };
     
 
     const handleLoginClick = () => {
-        navigate("/login");  // Navigate to the login page
+        navigate("/authentication/login");  // Navigate to the login page
       };
   return (
     <div className="flex h-screen overflow-hidden">

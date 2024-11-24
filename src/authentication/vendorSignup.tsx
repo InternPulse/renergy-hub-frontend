@@ -64,7 +64,7 @@ const VendorSignup: React.FC = () => {
 
     if (!hasError) {
       console.log("Form submitted:", formData);
-      navigate("/registration")
+      navigate("/authentication/registration")
     }
   };
 

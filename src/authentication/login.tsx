@@ -60,7 +60,7 @@ const Login = () => {
               required
             />
             <div className="text-right mt-1">
-              <a href="/forgot-password" className="text-sm text-yellow-400 hover:underline">
+              <a href="/authentication/forgot-password" className="text-sm text-yellow-400 hover:underline">
                 Forgot Password?
               </a>
             </div>
@@ -78,7 +78,7 @@ const Login = () => {
         {/* Footer */}
         <p className="text-center text-gray-600">
           Don’t have an account?{' '}
-          <a href="/signup" className="text-yellow-400 hover:underline">
+          <a href="/authentication/signup" className="text-yellow-400 hover:underline">
             Sign Up
           </a>
         </p>
