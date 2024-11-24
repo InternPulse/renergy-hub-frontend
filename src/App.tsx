@@ -1,16 +1,16 @@
-import './App.css'
-import { Button } from "./components/ui/button"
- 
+import "./App.css";
+
+import { Routes, Route } from "react-router-dom";
+import CheckoutHomePage from "./pages/CheckoutHome";
 
 function App() {
-
-  return (
-    <div>
-      <Button>click me</Button>
-      <p>hello</p>
-      {/* <Button>click me</Button> */}
-    </div>
-  )
+	return (
+		<div>
+			<Routes>
+				<Route path="/checkout" element={<CheckoutHomePage />} />
+			</Routes>
+		</div>
+	);
 }
 
-export default App
+export default App;
