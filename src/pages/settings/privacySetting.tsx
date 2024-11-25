@@ -11,17 +11,17 @@ interface PrivacyOption {
 }
 
 // Custom switch styles
-const switchStyles = {
-  backgroundColor: "var(--switch-bg)",
-  "--switch-bg": "#e5e7eb", // gray-200 for unchecked
-  '&[data-state="checked"]': {
-    backgroundColor: "#22c55e", // green-500 for checked
-    "--switch-bg": "#22c55e",
-  },
-  '&[data-state="unchecked"]': {
-    backgroundColor: "#e5e7eb", // gray-200 for unchecked
-  },
-} as React.CSSProperties;
+// const switchStyles = {
+//   backgroundColor: "var(--switch-bg)",
+//   "--switch-bg": "#e5e7eb", // gray-200 for unchecked
+//   '&[data-state="checked"]': {
+//     backgroundColor: "#22c55e", // green-500 for checked
+//     "--switch-bg": "#22c55e",
+//   },
+//   '&[data-state="unchecked"]': {
+//     backgroundColor: "#e5e7eb", // gray-200 for unchecked
+//   },
+// } as React.CSSProperties;
 
 const PrivacySettings = () => {
   const [settings, setSettings] = React.useState<PrivacyOption[]>([
@@ -96,7 +96,7 @@ const PrivacySettings = () => {
                   id={setting.id}
                   checked={setting.enabled}
                   onCheckedChange={() => handleToggle(setting.id)}
-                  style={switchStyles}
+                  // style={switchStyles}
                 />
               </div>
             ))}

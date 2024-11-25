@@ -12,6 +12,8 @@ import Settings from "./pages/settings";
 import ProfileInformation from "./pages/settings/profileInformation";
 import AccountManagement from "./pages/settings/accountManagement";
 import AccountInformation from "./pages/settings/accountInformation";
+import PushNotifications from "./pages/settings/pushNotification";
+import EmailNotifications from "./pages/settings/emailNotification";
 import PrivacySettings from "./pages/settings/privacySetting";
 import PrivacyPolicy from "./pages/settings/privacyPolicy";
 
@@ -46,14 +48,14 @@ const router = createBrowserRouter(
           path="/settings/accountInformation"
           element={<AccountInformation />}
         />
-        {/* <Route
+        <Route
           path="/settings/push-notifications"
           element={<PushNotifications />}
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/settings/email-notifications"
           element={<EmailNotifications />}
-        /> */}
+        />
         <Route
           path="/settings/privacySettings"
           element={<PrivacySettings />}

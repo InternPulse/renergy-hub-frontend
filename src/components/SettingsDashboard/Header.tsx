@@ -11,11 +11,7 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import Man from "../../assets/man.png";
 
-interface TopbarProps {
-  className?: string;
-}
-
-const Topbar = ({ className }: TopbarProps) => {
+const Topbar = () => {
   return (
     <div className="hidden md:flex sticky top-0 z-30 h-16 w-[72rem] items-center justify-between bg-white px-6 ml-24">
       {/* Search Bar */}
