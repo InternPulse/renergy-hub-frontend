@@ -1,14 +1,12 @@
 import './App.css'
-import { Button } from "./components/ui/button"
+import {VendorDashboard} from './pages/VendorDashboard/VendorDashboard'
  
 
 function App() {
 
   return (
     <div>
-      <Button>click me</Button>
-      <p>hello</p>
-      {/* <Button>click me</Button> */}
+      <VendorDashboard />
     </div>
   )
 }
