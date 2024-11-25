@@ -11,6 +11,9 @@ import "./App.css";
 import Settings from "./pages/settings";
 import ProfileInformation from "./pages/settings/profileInformation";
 import AccountManagement from "./pages/settings/accountManagement";
+import AccountInformation from "./pages/settings/accountInformation";
+import PrivacySettings from "./pages/settings/privacySetting";
+import PrivacyPolicy from "./pages/settings/privacyPolicy";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,19 +42,23 @@ const router = createBrowserRouter(
           path="/settings/accountManagement"
           element={<AccountManagement />}
         />
+        <Route
+          path="/settings/accountInformation"
+          element={<AccountInformation />}
+        />
         {/* <Route
           path="/settings/push-notifications"
           element={<PushNotifications />}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/settings/email-notifications"
           element={<EmailNotifications />}
-        />
+        /> */}
         <Route
-          path="/settings/privacy-settings"
+          path="/settings/privacySettings"
           element={<PrivacySettings />}
         />
-        <Route path="/settings/privacy-policy" element={<PrivacyPolicy />} /> */}
+        <Route path="/settings/privacyPolicy" element={<PrivacyPolicy />} />
       </Route>
     </Route>
   )

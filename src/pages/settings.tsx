@@ -65,9 +65,9 @@ const Settings = () => {
       {/* Header */}
       <div className="w-full bg-white rounded-lg shadow mb-4">
         <div className="p-4 flex items-center space-x-3">
-          <ChevronLeft 
-            className="w-5 h-5 cursor-pointer" 
-            onClick={() => navigate(-1)} 
+          <ChevronLeft
+            className="w-5 h-5 cursor-pointer"
+            onClick={() => navigate(-1)}
           />
           <span className="text-lg font-medium">Settings Menu</span>
         </div>
@@ -78,8 +78,15 @@ const Settings = () => {
         icon={<User className="w-5 h-5" />}
         label="Account"
         submenu={[
-          { label: "Profile Information", path: "/settings/profileInformation" },
-          { label: "Account Management", path: "/settings/accountManagement" }
+          {
+            label: "Profile Information",
+            path: "/settings/profileInformation",
+          },
+          { label: "Account Management", path: "/settings/accountManagement" },
+          {
+            label: "Account Information",
+            path: "/settings/accountInformation",
+          },
         ]}
       />
 
@@ -88,7 +95,10 @@ const Settings = () => {
         label="Notifications"
         submenu={[
           { label: "Push Notifications", path: "/settings/push-notifications" },
-          { label: "Email Notifications", path: "/settings/email-notifications" }
+          {
+            label: "Email Notifications",
+            path: "/settings/email-notifications",
+          },
         ]}
       />
 
@@ -96,8 +106,8 @@ const Settings = () => {
         icon={<Lock className="w-5 h-5" />}
         label="Privacy"
         submenu={[
-          { label: "Privacy Settings", path: "/settings/privacy-settings" },
-          { label: "Privacy Policy", path: "/settings/privacy-policy" }
+          { label: "Privacy Settings", path: "/settings/privacySettings" },
+          { label: "Privacy Policy", path: "/settings/privacyPolicy" },
         ]}
       />
     </div>
