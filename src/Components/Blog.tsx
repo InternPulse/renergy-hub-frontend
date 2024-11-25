@@ -1,6 +1,10 @@
 import { FaChevronDown } from 'react-icons/fa';
 import blog1 from '../assets/blog1.png';
 import blog2 from '../assets/blog2.png';
+import topic1 from '../assets/topic1.png'
+import topic2 from '../assets/topic2.png'
+import topic3 from '../assets/topic3.png'
+
 
 const Blog = () => {
   return (
@@ -73,17 +77,39 @@ const Blog = () => {
           </button>
         </div>
       </div>
-      <div>
-        <div className='flex justify-between'>
-            <h3>More Topics</h3>
-            <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px] lg:w-[280px]">
-    See All Posts
-  </button>
-        </div>
-        <div className='flex'>
-            
-        </div>
-      </div>
+      <div className="mt-10 px-4 md:px-8 lg:px-2">
+  {/* Header Section */}
+  <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+    <h3 className="text-[30px] sm:text-[35px] font-semibold text-center sm:text-left w-full sm:w-auto">
+      More Topics
+    </h3>
+    <button className="text-white font-semibold px-6 py-2 bg-hardGreen rounded hover:bg-hardYellow w-full sm:w-[280px] lg:w-[280px]">
+      See All Posts
+    </button>
+  </div>
+
+  {/* Topics Section */}
+  <div className="flex flex-col sm:flex-row justify-center items-center gap-5 mt-[40px]">
+    {/* Topic 1 */}
+    <div className="flex flex-col w-full sm:w-[30%] lg:w-[50%]">
+      <img src={topic1} alt="Topic 1" className="w-full h-auto rounded-md" />
+      <p className="mt-2 text-sm text-gray-600 ">October 07, 2024</p>
+    </div>
+
+    {/* Topic 2 */}
+    <div className="flex flex-col w-full sm:w-[30%] lg:w-[50%]">
+      <img src={topic2} alt="Topic 2" className="w-full h-auto rounded-md" />
+      <p className="mt-2 text-sm text-gray-600 ">October 07, 2024</p>
+    </div>
+
+    {/* Topic 3 */}
+    <div className="flex flex-col w-full sm:w-[30%] lg:w-[50%]" >
+      <img src={topic3} alt="Topic 3" className="w-full h-auto rounded-md" />
+      <p className="mt-2 text-sm text-gray-600">October 07, 2024</p>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 };

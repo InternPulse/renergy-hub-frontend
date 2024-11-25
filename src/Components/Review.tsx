@@ -7,6 +7,7 @@ import four_stars from '../assets/four_stars.png'
 import white_thumb from '../assets/white_thumb.png'
 import review_profile2 from '../assets/review_profile2.png'
 
+
 const Review = () => {
   return (
     <div className="flex flex-col items-center mt-10">
@@ -44,7 +45,7 @@ const Review = () => {
       <div className="flex gap-4 sm:gap-6 mt-5 relative">
         <img src={review_profile1} alt="Luke Paul" className="w-14 h-14 rounded-full" />
         <div>
-          <p>Luke Paul</p>
+          <p className='text-[16px]'>Luke Paul</p>
           <span className="text-gray-200 text-[12px]">CEO of Kings Hotel</span>
         </div>
       </div>
@@ -62,7 +63,7 @@ const Review = () => {
       <div className="flex gap-4 sm:gap-6 mt-5">
         <img src={review_profile2} alt="John Mark" className="w-14 h-14 rounded-full" />
         <div >
-          <p>John Mark</p>
+          <p className='text-[16px]'>John Mark</p>
           <span className="text-gray-600 text-[12px]">CEO of Markingtour</span>
         </div>
         <div className="bg-white h-12 w-12 rounded-full flex items-center justify-center absolute right-0 sm:right-10  lg:right-0  xl:-right-2 md:right-0  bottom-[-8px]">
@@ -82,7 +83,6 @@ const Review = () => {
     Buy Now
   </button>
 </div>
-
     </div>
   );
 };
