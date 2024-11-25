@@ -31,7 +31,7 @@ const SortOrder = () => {
                   {/* the selected item form the selectitem array is displayed here */}
 
                     <Select value={sort} onValueChange={(value) => handleClick(value)} >
-                    <SelectTrigger className="w-[200px] border-none">
+                    <SelectTrigger className="w-[200px]">
                       
                       <SelectValue placeholder="Sort by default" className="" />
                     </SelectTrigger>

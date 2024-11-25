@@ -1,7 +1,9 @@
 
 import { Button } from '../../components/ui/button'
 import { ProductProps } from '../components/ProductCard'
-const PriceSection = ({product}:ProductProps) => {
+
+// {product}:ProductProps
+const PriceSection = () => {
   return (
     <section>
         <ul className='flex flex-col gap-4 p-6'>

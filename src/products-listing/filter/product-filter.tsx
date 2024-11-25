@@ -60,9 +60,9 @@ const getSelectedVendorsText = () => {
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[250px]">
+      <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
-        <ScrollArea className="h-[300px]">
+        <ScrollArea className="h-[300px]  ">
           {products.map((product) => (
             <DropdownMenuCheckboxItem
               key={product.id}

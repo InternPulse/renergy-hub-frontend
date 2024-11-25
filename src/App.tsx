@@ -19,8 +19,8 @@ function App() {
      <Routes>
      {/* {isLoggedIn && <div></div> <Sidebar/> } */}
        {/* <Route path="/" element={<LandingPage/>} /> */}
-       <Route path="/" element={<ProductCard/>} />
- 
+       <Route path="/" element={<Product/>} />
+     2
    
     </Routes>
     

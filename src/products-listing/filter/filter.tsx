@@ -79,29 +79,12 @@ const Filter = () => {
   }, [debouncedSearchQuery, selectedCategories, selectedProducts, selectedVendors, handleClick]);
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-2">
 
-      <header className="p-5">
-        <ul className="flex gap-4 justify-between items-center">
-          <li>
-            <p className="text-3xl text-black">Products</p>
-          </li>
-          <li className="relative w-full">
-            <Input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="Search products"
-              className="border p-2 rounded text-right pl-2 pr-8 "
-            />
-            <Search className="absolute right-2 top-2" />
-          </li>
-          <li className="text-3xl">settings</li>
-        </ul>
-      </header>
-
-      <ul className="flex flex-col gap-2 px-8">
-        <li className="flex justify-between">
+      <header className="p-5 flex flex-col gap-4">
+        <ul className="flex gap-8 justify-between items-center">
+          <li className="px-8">
+            
           {!isClicked ? (
             <div>
               <Button className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200" onClick={handleButton}>
@@ -122,7 +105,7 @@ const Filter = () => {
               </Button>
             </div>
           ) : (
-            <button className="hover:bg-slate-200 rounded-full" onClick={handleRemoveButton}>
+            <button className="hover:bg-slate-200 rounded-full max-w-[47px]" onClick={handleRemoveButton}>
               <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47" fill="none" className="">
   <path d="M23.4993 43.0807C34.3149 43.0807 43.0827 34.313 43.0827 23.4974C43.0827 12.6818 34.3149 3.91406 23.4993 3.91406C12.6838 3.91406 3.91602 12.6818 3.91602 23.4974C3.91602 34.313 12.6838 43.0807 23.4993 43.0807Z" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   <path d="M29.375 17.625L17.625 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -131,14 +114,37 @@ const Filter = () => {
             </button>
           )}
 
+          
+         
+          </li>
+          <li className="relative w-full">
+            <Input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search products"
+              className="border p-2 rounded  pl-8 pr-2 "
+            />
+            <Search className="absolute left-2 top-2" />
+          </li>
+          <li className="">
           <SortOrder/>
-        </li>
-        <li>
-          {isClicked && (
+          </li>
+        </ul>
+
+      </header>
+
+      <main className="px-8">
+      
+             {isClicked && (
             <FilterContainer /> // Render the filter container directly
           )}
-        </li>
-      </ul>
+             
+
+
+      </main>
+
+    
     </section>
   );
 };

@@ -15,7 +15,8 @@ const Detail = () => {
             <p> YOU MAY ALSO LIKE </p>
         </div>
         <div>
-         <ProductCard products={[]}/>
+        {/* add props later products={[]} */}
+         <ProductCard />
          </div>
          <div className='flex justify-center items-center'>
          <Button variant={'outline'} className='bg-white text-black rounded-xl text-xl border-[#2C742F]' size={'sm'}> 
