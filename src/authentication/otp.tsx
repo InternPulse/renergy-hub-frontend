@@ -81,7 +81,7 @@ const Otp: React.FC = () => {
           Didn't receive code?{" "}
           <span
             onClick={handleResendCode}
-            className="text-yellow-400 font-semibold cursor-pointer hover:underline"
+            className="text-green-800 font-semibold cursor-pointer hover:underline"
           >
             Resend
           </span>
