@@ -72,7 +72,7 @@ const Blog = () => {
             Workplaces can now more easily commit to sustainability through
             innovative products and energy solutions.
           </p>
-          <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-12 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
+          <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-6 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
             Read More
           </button>
         </div>
