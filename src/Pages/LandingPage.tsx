@@ -3,6 +3,7 @@ import Blog from "../Components/Blog"
 import ChooseHub from "../Components/ChooseHub"
 import Faqs from "../Components/Faqs"
 import FeaturedProducts from "../Components/FeaturedProducts"
+import Footer from "../Components/Footer"
 import Hero from "../Components/Hero"
 import Mission from "../Components/Mission"
 import Navbar from "../Components/Navbar"
@@ -22,6 +23,7 @@ const LandingPage = () => {
         <Review/>
         <Blog/>
         <Faqs/>
+        <Footer/>
     </div>
   )
 }
