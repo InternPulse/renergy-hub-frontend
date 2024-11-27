@@ -51,7 +51,7 @@ const Otp: React.FC = () => {
       {/* Main Section */}
       <div className="flex flex-col items-center flex-grow justify-center px-4">
         <img src={Email} alt="email" />
-        <p className="font-bold text-4xl mb-2">We Have Sent An Email</p>
+        <p className="font-bold text-4xl text-center mb-2">We Have Sent An Email</p>
         <p className="text-sm text-gray-400 text-center leading-relaxed mb-8">
           Input the code sent to your email to verify your account.
         </p>

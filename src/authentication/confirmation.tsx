@@ -11,7 +11,7 @@ const Confirmation: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between ">
       {/* Top Section */}
       <div className="flex justify-between px-4 py-1">
         <ArrowLeft

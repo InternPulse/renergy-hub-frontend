@@ -18,7 +18,7 @@ const Login = () => {
         />
         <div className="flex-1 flex items-center justify-center">
           <div className="max-w-md w-full">
-            {/* Header */}
+            
             <div className="text-center">
               <h1 className="text-2xl font-bold text-gray-800 mb-2">
                 Welcome Back
@@ -29,27 +29,24 @@ const Login = () => {
             </div>
 
             {/* Social Login Buttons */}
-            <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
-              <button className="flex items-center justify-center w-full sm:w-auto px-4 py-2 mb-4 sm:mb-0 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
+            <div className="flex flex-row justify-between w-full mb-6">
+              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
                 <img src={google} alt="Google" className="w-6 h-6 mr-2" />
                 Google
               </button>
-              <button className="flex items-center justify-center w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
+              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
                 <img src={fb} alt="Facebook" className="w-6 h-6 mr-2" />
                 Facebook
               </button>
             </div>
 
-            {/* Divider */}
             <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 h-px bg-gray-300"></div>
               <span className="text-gray-500">OR</span>
               <div className="flex-1 h-px bg-gray-300"></div>
             </div>
-
-            {/* Login Form */}
             <form>
-              <div className="mb-4">
+              <div className="mb-6">
                 <input
                   type="email"
                   id="email"
@@ -59,7 +56,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className="mb-4 relative">
+              <div className="mb-6 relative">
                 <input
                   type="password"
                   id="password"

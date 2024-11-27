@@ -10,7 +10,7 @@ const Signup: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen">
       <div className="w-full lg:w-1/2 flex flex-col px-8 py-6">
         <div className="flex justify-between px-4 py-1">
           <ArrowLeft

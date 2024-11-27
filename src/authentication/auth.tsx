@@ -9,6 +9,7 @@ import Welcome from "./welcome";
 import ForgotPassword from "./forgot-password";
 import Confirmation from "./confirmation";
 import Otp from "./otp";
+import Newpassword from "./newpassword";
 
 function Auth() {
     return (
@@ -22,6 +23,7 @@ function Auth() {
         <Route path="authentication/forgot-password" element={<ForgotPassword />} />
         <Route path="authentication/confirmation" element={<Confirmation />} />
         <Route path="authentication/otp" element={<Otp />} />
+        <Route path="authentication/newpassword" element={<Newpassword />} />
       </Routes>
     )
 }
