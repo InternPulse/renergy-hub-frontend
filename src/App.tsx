@@ -1,14 +1,17 @@
-import './App.css'
-import { Button } from "./components/ui/button"
- 
+import './App.css' 
+import ProductGuide from "./sections/ProductGuide.js"
+import Header from "./layouts/Header.js"
+import Footer from "./layouts/Footer.js"
 
-function App() {
+const App: React.FC = () => {
 
   return (
     <div>
-      <Button>click me</Button>
-      <p>hello</p>
-      {/* <Button>click me</Button> */}
+      <Header/>
+      <main>
+        <ProductGuide/>
+      </main>
+      <Footer/>
     </div>
   )
 }
