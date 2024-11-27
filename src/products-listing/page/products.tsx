@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import Filter from "../filter-components/filter";
+import Filter from "../components/filter-components/filter";
 import { useEffect, useState,useCallback } from "react";
 import { useProductStore } from "../store/store";
 

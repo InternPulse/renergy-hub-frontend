@@ -1,5 +1,5 @@
 
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/ui-sections/ProductCard'
 import { Button } from '../../components/ui/button'
 
 //props

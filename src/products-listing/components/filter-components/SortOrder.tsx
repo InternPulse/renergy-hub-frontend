@@ -1,6 +1,6 @@
 
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../components/ui/select";
-import { useProductStore } from '../store/store';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../../components/ui/select";
+import { useProductStore } from '../../store/store';
 
 
 //this component is for the SortOrder Functionality

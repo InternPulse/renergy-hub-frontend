@@ -1,12 +1,12 @@
-import Filter from "./products-listing/filter-components/filter"
+import Filter from "./products-listing/components/filter-components/filter"
 
 
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
-import SortOrder from "./products-listing/filter-components/SortOrder";
+import SortOrder from "./products-listing/components/filter-components/SortOrder";
 import Product from "./products-listing/page/products";
-import ProductCard from "./products-listing/components/ProductCard";
-import ReviewStat from "./products-listing/components/reviewStat";
-import ReviewCard from "./products-listing/components/reviewCard";
+import ProductCard from "./products-listing/components/ui-sections/ProductCard";
+import ReviewStat from "./products-listing/components/ui-sections/reviewStat";
+import ReviewCard from "./products-listing/components/ui-sections/reviewCard";
 function App() {
 
   return (

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import img1 from '../../../public/assets/solor.svg'
-import { useProductStore } from '../store/store';
+import { useProductStore } from '../../store/store';
 export type ProductProps ={
     products: []
 }
