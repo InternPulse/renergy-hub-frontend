@@ -6,14 +6,16 @@ import { ChevronDown } from 'lucide-react'
 import { Button } from "../../components/ui/button"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
+  
   DropdownMenuContent,
+ 
+  DropdownMenuLabel,
  
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu"
 import { ScrollArea } from "../../components/ui/scroll-area"
 import { useProductStore } from "../store/store"
-
+import { Checkbox } from '../../components/ui/checkbox'
 
 
 
@@ -59,17 +61,20 @@ const getSelectedVendorsText = () => {
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[250px]">
+      <DropdownMenuContent className="w-[250px] bg-[#F2F2F2] ">
        
         <ScrollArea className="h-[300px]">
           {vendors.map((vendor) => (
-            <DropdownMenuCheckboxItem
+            <div className='flex items-center'>
+            <Checkbox
               key={vendor.id}
               checked={selectedVendors.includes(vendor)}
               onCheckedChange={() => handleVendorChange(vendor.id)}
-            >
+            />
+            <DropdownMenuLabel>
               {vendor.name}
-            </DropdownMenuCheckboxItem>
+              </DropdownMenuLabel>
+            </div>
           ))}
         </ScrollArea>
       </DropdownMenuContent>

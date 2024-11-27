@@ -29,6 +29,7 @@ type ProductStore = {
   setSort: (sort: string) => void;
   categories: Category[];
   addedProduct: Product[];
+  removeCart: (categoryId: string) => void; 
   selectedVendors: Vendor[];
   selectedProducts: Product[];
   selectedCategories: Category[];
@@ -61,6 +62,7 @@ export const useProductStore = create<ProductStore>()(
 
 
       addToCart: (product: Product) => set((state) => ({ selectedProducts: [...state.selectedProducts, product] })),
+      removeCart: (categoryId: string) => set((state) => ({ selectedProducts: state.selectedProducts.filter((p) => p.categoryId!== categoryId) })),
 
         setSort: (sort: string) => set({ sort: sort }),
         //dummy data for sorting, filtering and searching purposes
