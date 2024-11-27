@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar'
 function App() {
 
   return (
-    <section className='flex bg-[#E6E6E6]'>
+    <section className='flex bg-[#E6E6E6] h-screen'>
       <Sidebar/>
       <SecurityDocuments/>
     </section>

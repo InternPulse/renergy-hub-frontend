@@ -1,3 +1,4 @@
+import { Scrollbars } from "react-custom-scrollbars-2";
 const sidebarMenu = [
     {
         menu:'Dashboard',
@@ -47,7 +48,7 @@ const sidebarMenu = [
 const Sidebar = () => {
 return (
     // top logo
-    <div className="bg-white w-[300px] flex flex-col gap-3 justify-center px-5">
+    <div className="bg-white  w-[300px] flex flex-col gap-3 justify-center px-5">
         <div className="flex mt-10 flex-col gap-3">
             <div className="w-44 h-44">
                 <img className="object-cover" src="/logo.png" alt="logo" />

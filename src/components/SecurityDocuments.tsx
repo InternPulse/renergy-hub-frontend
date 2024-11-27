@@ -1,11 +1,13 @@
+import Navbar from "./Navbar"
 
 
 const SecurityDocuments = () => {
     return (
-        // container div
-        <div className="bg-[#E6E6E6] flex gap-4 flex-col py-5 mx-4">
+        <section className="flex flex-col">
+        <Navbar/>
+        <div className="bg-[#E6E6E6] flex gap-4 mt-3 flex-col py-5 mx-4">
             {/* top header */}
-            <div className="bg-white -mt-5 px-4 py-8">
+            <div className="shadow-sm rounded-sm bg-white -mt-5 px-4 py-8">
                 <h1 className="font-semibold text-[24px]">Security and Compliance</h1>
                 <p className="text-[18px]">
                     At Renergy Hub, we are committed to maintaining
@@ -91,6 +93,7 @@ const SecurityDocuments = () => {
                 </div>
             </div>
         </div>
+        </section>
     )
 }
 
