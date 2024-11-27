@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import Filter from "../filter/filter";
+import Filter from "../filter-components/filter";
 import { useEffect, useState,useCallback } from "react";
 import { useProductStore } from "../store/store";
 
@@ -116,7 +116,7 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     <div className="flex flex-col gap-4">
       <Filter />
       <div className="px-8">
-        {filteredProducts.length > 0 ? (
+        {paginatedProducts.length > 0 ? (
           paginatedProducts.map((product) => (
             <p key={product.id}>{product.name}</p>
           ))
@@ -126,8 +126,10 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
       </div>
         {/* Pagination Controls */}
         
-        <div className="flex px-8 justify-between items-center mt-4">
-          <button
+       
+
+          {paginatedProducts.length > 0 && <div className="flex px-8 justify-between items-center mt-4">
+            <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
@@ -143,8 +145,8 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
             className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
           >
             Next
-          </button>
-        </div>
+          </button> </div> }
+       
     </div>
     </>
   );

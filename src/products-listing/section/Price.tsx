@@ -1,8 +1,8 @@
 
 import { Button } from '../../components/ui/button'
-import { ProductProps } from '../components/ProductCard'
 
-// {product}:ProductProps
+
+
 const PriceSection = () => {
   return (
     <section>

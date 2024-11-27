@@ -8,6 +8,8 @@ import { Input } from "../../components/ui/input";
 import { Search } from "lucide-react";
 import SortOrder from "./SortOrder";
 
+
+//this is the Filter component, the parent component of all filtering, sorting and searching components
 const Filter = () => {
 
   
@@ -84,36 +86,7 @@ const Filter = () => {
       <header className="p-5 flex flex-col gap-4">
         <ul className="flex gap-8 justify-between items-center">
           <li className="px-8">
-            
-          {!isClicked ? (
-            <div>
-              <Button className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200" onClick={handleButton}>
-
-
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                  <path d="M4 21.5V14.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M4 10.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 21.5V12.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 8.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M20 21.5V16.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M20 12.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M1 14.5H7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 8.5H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M17 16.5H23" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                <span>Filter</span>
-              </Button>
-            </div>
-          ) : (
-            <button className="hover:bg-slate-200 rounded-full max-w-[47px]" onClick={handleRemoveButton}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47" fill="none" className="">
-  <path d="M23.4993 43.0807C34.3149 43.0807 43.0827 34.313 43.0827 23.4974C43.0827 12.6818 34.3149 3.91406 23.4993 3.91406C12.6838 3.91406 3.91602 12.6818 3.91602 23.4974C3.91602 34.313 12.6838 43.0807 23.4993 43.0807Z" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  <path d="M29.375 17.625L17.625 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  <path d="M17.625 17.625L29.375 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-</svg>
-            </button>
-          )}
-
+            <h1 className="text-3xl">Products</h1>
           
          
           </li>
@@ -127,19 +100,59 @@ const Filter = () => {
             />
             <Search className="absolute left-2 top-2" />
           </li>
-          <li className="">
-          <SortOrder/>
+          <li className="text-3xl">
+          Settings
           </li>
         </ul>
 
       </header>
 
-      <main className="px-8">
-      
+      <main className="px-8  flex flex-col">
+
+
+      <ul className="flex justify-between gap-4">
+        <li>
+            
+            {!isClicked ? (
+              <div>
+                <Button className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200" onClick={handleButton}>
+  
+  
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                    <path d="M4 21.5V14.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 10.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 21.5V12.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 8.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M20 21.5V16.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M20 12.5V3.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1 14.5H7" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 8.5H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M17 16.5H23" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  <span>Filter</span>
+                </Button>
+              </div>
+            ) : (
+              <button className="hover:bg-slate-200 rounded-full max-w-[47px]" onClick={handleRemoveButton}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47" fill="none" className="">
+    <path d="M23.4993 43.0807C34.3149 43.0807 43.0827 34.313 43.0827 23.4974C43.0827 12.6818 34.3149 3.91406 23.4993 3.91406C12.6838 3.91406 3.91602 12.6818 3.91602 23.4974C3.91602 34.313 12.6838 43.0807 23.4993 43.0807Z" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M29.375 17.625L17.625 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M17.625 17.625L29.375 29.375" stroke="#1F2223" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+              </button>
+            )}
+            </li>
+  
+            <li>
+            <SortOrder/>
+            </li>
+           
+            </ul>
+      <div>
              {isClicked && (
             <FilterContainer /> // Render the filter container directly
           )}
-             
+            </div> 
 
 
       </main>

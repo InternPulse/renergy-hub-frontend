@@ -10,10 +10,13 @@ function FilterContainer() {
 
   return (
     <div className='flex gap-4'>
+     
+     <CategoryFilter/>
+     
       <ProductFilter/>
      
       <VendorFilter/>
-      <CategoryFilter/>
+     
       
       {/* <Button>click me</Button> */}
     </div>

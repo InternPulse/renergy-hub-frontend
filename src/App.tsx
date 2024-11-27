@@ -1,12 +1,12 @@
-import Filter from "./products-listing/filter/filter"
+import Filter from "./products-listing/filter-components/filter"
 
 
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
-import SortOrder from "./products-listing/filter/SortOrder";
+import SortOrder from "./products-listing/filter-components/SortOrder";
 import Product from "./products-listing/page/products";
 import ProductCard from "./products-listing/components/ProductCard";
-
-
+import ReviewStat from "./products-listing/components/reviewStat";
+import ReviewCard from "./products-listing/components/reviewCard";
 function App() {
 
   return (
@@ -19,9 +19,8 @@ function App() {
      <Routes>
      {/* {isLoggedIn && <div></div> <Sidebar/> } */}
        {/* <Route path="/" element={<LandingPage/>} /> */}
-       <Route path="/" element={<Product/>} />
-     2
-   
+       <Route path="/" element={<ReviewCard/>} />
+  
     </Routes>
     
     
