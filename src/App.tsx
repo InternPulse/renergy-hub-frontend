@@ -1,16 +1,13 @@
-import './App.css'
-import { Button } from "./components/ui/button"
- 
+import Vendor from "./vendor-management/Vendor";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-
   return (
-    <div>
-      <Button>click me</Button>
-      <p>hello</p>
-      {/* <Button>click me</Button> */}
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<div>Home</div>} />
+      <Route path="/*" element={<Vendor />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
