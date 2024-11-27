@@ -14,7 +14,7 @@ const SecurityDocuments = () => {
                 </p>
             </div>
             {/* data protection container */}
-            <div className="bg-white -mt-4 px-10 py-8">
+            <div className="shadow-sm rounded-sm bg-white -mt-4 px-10 py-8">
                 <div className="flex flex-col gap-4">
                     {/* data protection header */}
                     <div className="flex gap-3 font-semibold">
@@ -40,7 +40,7 @@ const SecurityDocuments = () => {
                 </div>
             </div>
             {/* PCI container */}
-            <div className="bg-white px-10 py-8">
+            <div className="shadow-sm rounded-sm bg-white px-10 py-8">
                 <div className="flex flex-col gap-4">
                     {/* PCI header */}
                     <div className="flex gap-3 font-semibold">
@@ -66,7 +66,7 @@ const SecurityDocuments = () => {
                 </div>
             </div>
             {/* Regulatory container */}
-            <div className="bg-white px-10 py-8">
+            <div className="shadow-sm rounded-sm bg-white px-10 py-8">
                 <div className="flex flex-col gap-4">
                     {/* Regulatory header */}
                     <div className="flex gap-3 font-semibold">

@@ -56,7 +56,7 @@ return (
         {/* upper menu */}
         <div className="flex -mt-12 flex-col gap-4">
             {sidebarMenu.map((menu,index)=>(
-                <div className="flex hover:bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
+                <div className="flex cursor-pointer hover:bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
                 items-center justify-start" key={index}>
                     <img src={menu.icon} alt="icons" />
                     <h2>{menu.menu}</h2>
@@ -67,12 +67,12 @@ return (
         </div>
         {/* lower menu */}
         <div className="flex mt-24 flex-col gap-4">
-            <div className="flex bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
+            <div className="cursor-pointer flex hover:bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
                 items-center justify-start">
                 <img src="/settings.png" alt="settings" />
                 <h2>Settings</h2>
             </div>
-            <div className="flex bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
+            <div className="flex cursor-pointer hover:bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
                 items-center justify-start">
                 <img src="/logout.png" alt="settings" />
                 <h2>Log Out</h2>
