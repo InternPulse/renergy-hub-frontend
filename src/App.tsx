@@ -1,15 +1,17 @@
+
 import './App.css'
-import { Button } from "./components/ui/button"
- 
+import SecurityDocuments from './components/SecurityDocuments'
+import Sidebar from './components/Sidebar'
+
+
 
 function App() {
 
   return (
-    <div>
-      <Button>click me</Button>
-      <p>hello</p>
-      {/* <Button>click me</Button> */}
-    </div>
+    <section>
+      <Sidebar/>
+      <SecurityDocuments/>
+    </section>
   )
 }
 
