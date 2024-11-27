@@ -85,7 +85,7 @@ const Sidebar: React.FC = () => {
                 </Scrollbars>
                 {/* Changes end here */}
                 {/* Bottom Section */}
-                <div className="flex flex-col gap-4 px-5 mb-10">
+                <div className="border-t-4 border-slate-300 flex flex-col gap-4 px-5 mb-10">
                     <div className="cursor-pointer flex hover:bg-green-300 px-4 py-[10px] rounded-[10px] gap-3 items-center">
                         <img src="/settings.png" alt="settings" />
                         <h2>Settings</h2>
