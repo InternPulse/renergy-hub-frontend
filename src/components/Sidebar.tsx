@@ -47,7 +47,7 @@ const sidebarMenu = [
 const Sidebar = () => {
 return (
     // top logo
-    <div className="w-64 flex flex-col gap-3 justify-center bg-sky-300 px-5">
+    <div className="bg-white w-[300px] flex flex-col gap-3 justify-center px-5">
         <div className="flex mt-10 flex-col gap-3">
             <div className="w-44 h-44">
                 <img className="object-cover" src="/logo.png" alt="logo" />
@@ -56,7 +56,7 @@ return (
         {/* upper menu */}
         <div className="flex -mt-12 flex-col gap-4">
             {sidebarMenu.map((menu,index)=>(
-                <div className="flex bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
+                <div className="flex hover:bg-green-300 px-4 rounded-[10px] py-[10px] gap-3 
                 items-center justify-start" key={index}>
                     <img src={menu.icon} alt="icons" />
                     <h2>{menu.menu}</h2>
