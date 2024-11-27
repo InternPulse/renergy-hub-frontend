@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar'
 function App() {
 
   return (
-    <section>
+    <section className='flex'>
       <Sidebar/>
       <SecurityDocuments/>
     </section>
