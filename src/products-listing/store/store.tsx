@@ -28,9 +28,11 @@ type ProductStore = {
   setIsClicked: (isClicked: boolean) => void
   setSort: (sort: string) => void;
   categories: Category[];
+  addedProduct: Product[];
   selectedVendors: Vendor[];
   selectedProducts: Product[];
   selectedCategories: Category[];
+  addToCart: (product: Product) => void;
   setFilteredProduct: (productId: string) => Promise<void>;
   setFilteredVendor: (vendorId: string) => Promise<void>;
   setFilteredCategory: (categoryId: string) => Promise<void>;
@@ -40,8 +42,11 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
+      
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
+      
+      
       vendors: [
         { id: "all", name: "All Vendors" },
         { id: "ecowatts", name: "EcoWatts" },
@@ -53,7 +58,12 @@ export const useProductStore = create<ProductStore>()(
         { id: "nazpowerhouse", name: "Naz Power House" },
         { id: "gregcopower", name: "Gregco Power and Energy" },
       ],
+
+
+      addToCart: (product: Product) => set((state) => ({ selectedProducts: [...state.selectedProducts, product] })),
+
         setSort: (sort: string) => set({ sort: sort }),
+        //dummy data for sorting, filtering and searching purposes
       products: [
         { id: "all", name: "All Products", vendorId: "all", categoryId: "all", price: 0, stock: 0 },
         { id: "prod-001", name: "EcoWatts Solar Panel 250W", vendorId: "ecowatts", categoryId: "solar-panels", price: 220.99, stock: 40 },
@@ -76,9 +86,11 @@ export const useProductStore = create<ProductStore>()(
         { id: "monitoring-systems", name: "Monitoring Systems" },
       ],
 
+      //state for data mutations
       selectedVendors: [],
       selectedProducts: [],
       selectedCategories: [],
+      addedProduct: [],
 
       setFilteredProduct: async (productId: string) => {
         const { products, selectedProducts } = get();

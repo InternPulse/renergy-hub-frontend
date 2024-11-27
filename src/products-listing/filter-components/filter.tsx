@@ -96,9 +96,9 @@ const Filter = () => {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search products"
-              className="border p-2 rounded  pl-8 pr-2 "
+              className="border p-2 rounded  text-right pl-2 pr-8 "
             />
-            <Search className="absolute left-2 top-2" />
+            <Search className="absolute right-2 top-2" />
           </li>
           <li className="text-3xl">
           Settings

@@ -19,7 +19,7 @@ function App() {
      <Routes>
      {/* {isLoggedIn && <div></div> <Sidebar/> } */}
        {/* <Route path="/" element={<LandingPage/>} /> */}
-       <Route path="/" element={<ReviewCard/>} />
+       <Route path="/" element={<Product/>} />
   
     </Routes>
     
