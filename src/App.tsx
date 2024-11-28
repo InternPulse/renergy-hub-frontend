@@ -4,7 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import { Routes, Route } from "react-router-dom";
 import CheckoutHomePage from "./pages/CheckoutHome";
 import { VendorDashboard } from "./pages/VendorDashboard/VendorDashboard";
-
+import Auth from "./authentication/auth";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/checkout" element={<CheckoutHomePage />} />
+        <Route path="/*" element={<Auth />} />
       </Routes>
     </div>
   );
