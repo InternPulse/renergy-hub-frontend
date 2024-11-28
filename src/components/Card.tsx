@@ -19,20 +19,24 @@ const Card: React.FC<CardProps> = ({
   onButtonClick 
 }) => {
   return (
-    <div className='border rounded-lg shadow-lg'>
+    <div className='border rounded-lg shadow-md pb-20 relative'>
       <img 
         src={image} 
         alt={title} 
-        className='w-full object-cover rounded-md' 
+        className='w-full object-cover rounded-t-md mb-4' 
       />
-      <h3 className='text-xl font-bold mt-2'>{title}</h3>
-      <p className='text-gray-600 my-2'>{description}</p>
+      <div className="px-4">   
+      <h3 className='text-xl text-left font-bold mb-2'>{title}</h3>
+      <p className='text-gray-600 text-left' >{description}</p>
+      <div className="absolute bottom-4 left-4 right-4">
       <Button 
         label={buttonLabel} 
         onClick={onButtonClick} 
-        styleClass="bg-green-500 text-white" 
+        styleClass="font-bold border border-green-500" 
       />
+      </div>
     </div>
+      </div>
   );
 };
 
