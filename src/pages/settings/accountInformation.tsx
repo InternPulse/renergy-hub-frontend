@@ -40,7 +40,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="pr-10"
+          className="pr-10 bg-transparent border-gray-500"
           required={required}
         />
         <Button
@@ -80,7 +80,7 @@ const PasswordChangeForm: React.FC = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <h2 className="text-xl font-semibold mb-6 bg-white p-2 rounded-md">
+        <h2 className="text-xl mb-6 bg-white p-2 rounded-md">
           Change Password
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -89,6 +89,7 @@ const PasswordChangeForm: React.FC = () => {
             value={oldPassword}
             onChange={setOldPassword}
             required
+            placeholder="Enter your old password"
           />
 
           <div className="space-y-2">
@@ -97,6 +98,7 @@ const PasswordChangeForm: React.FC = () => {
               value={newPassword}
               onChange={setNewPassword}
               required
+              placeholder="Enter your new password"
             />
             <p className="text-sm text-gray-500">
               Min. 8 characters, 1 letter, 1 number and 1 special number
@@ -108,6 +110,7 @@ const PasswordChangeForm: React.FC = () => {
             value={confirmPassword}
             onChange={setConfirmPassword}
             required
+            placeholder="Re-enter your new password"
           />
 
           <Button type="submit" className="w-full bg-green-600">

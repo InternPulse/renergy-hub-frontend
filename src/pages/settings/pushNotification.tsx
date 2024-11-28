@@ -39,7 +39,20 @@ const NotificationSettings = () => {
               Push Notifications are useful for real-time, in-app updates.
             </p>
           </div>
-          <Switch checked={isPushEnabled} onCheckedChange={setIsPushEnabled} className="bg-red-300" />
+          <Switch
+            checked={isPushEnabled}
+            onCheckedChange={setIsPushEnabled}
+            className={`${
+              isPushEnabled ? "bg-green-500" : "bg-gray-500"
+            } relative inline-flex items-center h-6 rounded-full w-11`}
+          >
+            {" "}
+            <span
+              className={`${
+                isPushEnabled ? "translate-x-6" : "translate-x-1"
+              } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+            />{" "}
+          </Switch>
         </CardContent>
       </Card>
 
