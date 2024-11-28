@@ -11,16 +11,16 @@ interface NavLinkType {
 
 // Define the navigation links array
 const navLinks: NavLinkType[] = [
-  { name: "Vendor Profile", path: "/vendor-management/vendor-profile" },
+  { name: "Vendor Profile", path: "/vendorprofile" },
   {
     name: "Product Management",
-    path: "/vendor-management/product-management",
+    path: "/product-management",
   },
   {
     name: "Order Management",
-    path: "/vendor-management/order-management",
+    path: "/order-management",
   },
-  { name: "Sales Analytics", path: "/vendor-management/sale-analytics" },
+  { name: "Sales Analytics", path: "/sale-analytics" },
 ];
 
 const Navbar: React.FC = () => {
