@@ -76,11 +76,55 @@ const Footer = () => {
 
   {/* Social Media Icons */}
   <div className="flex gap-4">
-    <img src={youtube_icon} alt="YouTube" className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75" />
-    <img src={instagram_icon} alt="Instagram" className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75" />
-    <img src={linkedin_icon} alt="LinkedIn" className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75" />
-    <img src={twitter_icon} alt="Twitter" className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75" />
-  </div>
+  <a
+    href="https://www.youtube.com/channel/your-channel-id"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="YouTube"
+  >
+    <img
+      src={youtube_icon}
+      alt="YouTube"
+      className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75"
+    />
+  </a>
+  <a
+    href="https://www.instagram.com/renergyng/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <img
+      src={instagram_icon}
+      alt="Instagram"
+      className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75"
+    />
+  </a>
+  <a
+    href="https://www.linkedin.com/company/renergy-hub/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <img
+      src={linkedin_icon}
+      alt="LinkedIn"
+      className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75"
+    />
+  </a>
+  <a
+    href="https://x.com/Renergyhubng"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Twitter"
+  >
+    <img
+      src={twitter_icon}
+      alt="Twitter"
+      className="w-6 h-6 sm:w-8 sm:h-8 cursor-pointer hover:opacity-75"
+    />
+  </a>
+</div>
 </div>
 
       </footer>
