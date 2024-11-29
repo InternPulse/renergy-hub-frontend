@@ -1,6 +1,6 @@
 import about_img from '../assets/about_img.png';
 import get_started_arrow from '../assets/get_started_arrow.png';
-
+import { Link } from 'react-router-dom';
 const AboutUS = () => {
   return (
     <div className="flex flex-col items-center px-4 lg:px-16">
@@ -24,14 +24,14 @@ const AboutUS = () => {
           <p className="mt-4 text-base md:text-lg lg:text-xl">
             Renergy Hub offers Nigeria's most comprehensive renewable energy marketplace, providing affordable, high-quality solar, wind, and energy storage solutions, backed by flexible financing options, expert support, and a commitment to empowering sustainable energy independence for homes, businesses, and communities.
           </p>
-          <button className="mt-6 w-full lg:w-full flex justify-between bg-white shadow-lg items-center px-4 py-2 font-semibold cursor-pointer hover:bg-hardGreen hover:text-white">
+        <Link to='/authentication/signup' className='lg:w-full'>  <button className="mt-6 w-full lg:w-full flex justify-between bg-white shadow-lg items-center px-4 py-2 font-semibold cursor-pointer hover:bg-hardGreen hover:text-white">
             GET STARTED
             <img
               className="w-[24px] h-[24px] ml-2"
               src={get_started_arrow}
               alt="Get Started"
             />
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

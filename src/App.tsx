@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/checkout" element={<CheckoutHomePage />} />
-        <Route path="/authentication/*" element={<Auth />} />
+        <Route path="/authentication/signup" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
