@@ -11,6 +11,7 @@ import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from './Pages/ShippingAndTracking';
 import ContentSection from "./sections/contentSection";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
         <Route path="/content-section" element={<ContentSection />} /> {/* Ensure this is defined */}
       </Routes>
+      <Footer/>
 
     
       
