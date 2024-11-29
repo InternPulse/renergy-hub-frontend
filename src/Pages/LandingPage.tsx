@@ -1,14 +1,14 @@
 
-import AboutUS from "../Components/AboutUS"
-import Blog from "../Components/Blog"
-import ChooseHub from "../Components/ChooseHub"
-import Faqs from "../Components/Faqs"
-import FeaturedProducts from "../Components/FeaturedProducts"
-import Hero from "../Components/Hero"
-import Mission from "../Components/Mission"
-import Review from "../Components/Review"
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import AboutUS from "../components/AboutUS"
+import Blog from "../components/Blog"
+import ChooseHub from "../components/ChooseHub"
+import Faqs from "../components/Faqs"
+import FeaturedProducts from "../components/FeaturedProducts"
+import Hero from "../components/Hero"
+import Mission from "../components/Mission"
+import Review from "../components/Review"
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 

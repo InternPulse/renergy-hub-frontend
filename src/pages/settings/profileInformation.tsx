@@ -1,5 +1,5 @@
-import { Card } from "../../Components/ui/card";
-import { Input } from "../../Components/ui/input";
+import { Card } from "../../components/ui/card";
+import { Input } from "../../components/ui/input";
 import { Edit } from "lucide-react";
 import Man from "../../assets/man.png";
 

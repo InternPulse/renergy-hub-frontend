@@ -3,17 +3,17 @@
 
 import { ChevronDown } from 'lucide-react'
 
-import { Button } from "../../../Components/ui/button"
+import { Button } from "../../../components/ui/button"
 import {
   DropdownMenu,
  
   DropdownMenuContent,
  DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "../../../Components/ui/dropdown-menu"
-import { ScrollArea } from "../../../Components/ui/scroll-area"
+} from "../../../components/ui/dropdown-menu"
+import { ScrollArea } from "../../../components/ui/scroll-area"
 import { useProductStore } from "../../store/store"
-import { Checkbox } from '../../../Components/ui/checkbox'
+import { Checkbox } from '../../../components/ui/checkbox'
 
 
 

@@ -1,6 +1,6 @@
-import ContactForm from "../Components/ContactInfoForm";
-import ShippingForm from "../Components/ShippingInfoForm";
-import { Button } from "../Components/ui/button";
+import ContactForm from "./ContactInfoForm";
+import ShippingForm from "./ShippingInfoForm";
+import { Button } from "./ui/button";
 
 interface DeliveryProps {
 	next: () => void;

@@ -1,6 +1,6 @@
 
-import { Separator } from '../../../Components/ui/separator';
-import { Progress } from '../../../Components/ui/progress';
+import { Separator } from '../../../components/ui/separator';
+import { Progress } from '../../../components/ui/progress';
 
 
 interface RatingData {

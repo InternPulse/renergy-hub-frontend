@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { ChevronsRight, ArrowLeft } from 'lucide-react'
-import { Button } from "../../../Components/ui/button"
+import { Button } from "../../../components/ui/button"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../../Components/ui/breadcrumb"
+} from "../../../components/ui/breadcrumb"
 
 
 export default function BreadcrumbNav() {

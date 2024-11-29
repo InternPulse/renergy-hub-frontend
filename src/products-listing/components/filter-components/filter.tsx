@@ -1,10 +1,10 @@
-import { Button } from "../../../Components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useState, useCallback, useEffect } from "react";
 import FilterContainer from "./categoryButtonProps";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../../store/store";
 import { useDebounce } from "use-debounce"; // Import useDebounce
-import { Input } from "../../../Components/ui/input";
+import { Input } from "../../../components/ui/input";
 import { Search } from "lucide-react";
 import SortOrder from "./SortOrder";
 

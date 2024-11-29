@@ -1,5 +1,5 @@
 
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../../Components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../../components/ui/select";
 import { useProductStore } from '../../store/store';
 
 

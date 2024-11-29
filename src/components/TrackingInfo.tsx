@@ -1,5 +1,5 @@
-import { Card } from "@/Components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../Components/ui/tabs";
+import { Card } from "./ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 export function TrackingInfo() {
   return (

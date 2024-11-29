@@ -2,7 +2,7 @@ import vendor from "../../assets/vendor-images/vendor.jpeg";
 import BusinessLogo from "../../assets/vendor-images/BusinessLogo.svg";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import Navbar from "../Header/Navigation";
+import Navbar from "../header/Navigation";
 
 interface FormData {
   vendorName: string;

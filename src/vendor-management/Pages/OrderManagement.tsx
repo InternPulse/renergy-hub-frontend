@@ -5,7 +5,7 @@ import { Share } from "lucide-react";
 import { Calendar } from "lucide-react";
 import React, { useState } from "react";
 import { formatCurrency } from "../data";
-import Navbar from "../Header/Navigation";
+import Navbar from "../header/Navigation";
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../Components/ui/table";
+} from "../../components/ui/table";
 
 // Define the NavLink type
 interface OrderManagementType {
