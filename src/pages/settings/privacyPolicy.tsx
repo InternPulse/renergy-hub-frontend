@@ -14,7 +14,7 @@ const PolicySection: React.FC<PolicySectionProps> = ({ title, content }) => (
 
 const PrivacyPolicy = () => {
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 text-left lg:mt-16">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       {/* Header Section */}
       <div className="mb-8 bg-white p-4 rounded-lg">
         <h1 className="text-2xl font-bold mb-2">Privacy Policy</h1>

@@ -66,7 +66,7 @@ const PrivacySettings = () => {
   };
 
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 space-y-4 text-left lg:mt-16 ">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       {/* header */}
       <div className="bg-white rounded-lg p-4 shadow-sm">
         <h2 className="text-xl font-semibold text-gray-900">

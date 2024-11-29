@@ -18,7 +18,7 @@ const NotificationSettings = () => {
   const [isAccountEnabled, setIsAccountEnabled] = useState(false);
 
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 space-y-4 text-left lg:mt-16 ">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem] bg-white">
       {/* Header Card */}
       <Card className="w-full">
         <CardHeader>

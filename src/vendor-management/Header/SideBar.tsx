@@ -86,7 +86,7 @@ const SIDEBAR_BOTTOM = [
     name: "Settings",
     icon: Settings,
     color: "black",
-    href: "/orders",
+    href: "/settings",
   },
   {
     name: "Logout",

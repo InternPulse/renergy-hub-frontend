@@ -18,7 +18,7 @@ const NotificationSettings = () => {
   const [isAccountEnabled, setIsAccountEnabled] = useState(false);
 
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 space-y-4 text-left lg:mt-16 ">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem] bg-white">
       {/* Header Card */}
       <Card className="w-full">
         <CardHeader>
@@ -39,20 +39,7 @@ const NotificationSettings = () => {
               Push Notifications are useful for real-time, in-app updates.
             </p>
           </div>
-          <Switch
-            checked={isPushEnabled}
-            onCheckedChange={setIsPushEnabled}
-            className={`${
-              isPushEnabled ? "bg-green-500" : "bg-gray-500"
-            } relative inline-flex items-center h-6 rounded-full w-11`}
-          >
-            {" "}
-            <span
-              className={`${
-                isPushEnabled ? "translate-x-6" : "translate-x-1"
-              } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
-            />{" "}
-          </Switch>
+          <Switch checked={isPushEnabled} onCheckedChange={setIsPushEnabled} />
         </CardContent>
       </Card>
 
