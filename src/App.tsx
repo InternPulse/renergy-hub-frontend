@@ -8,11 +8,14 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/layout/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';
 import ContentSection from "./sections/contentSection";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
+      <Navbar/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
@@ -24,6 +27,7 @@ function App() {
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
         <Route path="/content-section" element={<ContentSection />} />
       </Routes>
+      <Footer/>
 
     
       

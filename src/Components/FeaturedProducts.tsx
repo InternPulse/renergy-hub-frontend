@@ -11,7 +11,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, maxRating = 5 }) => {
   const stars = Array.from({ length: maxRating }, (_, index) => index + 1);
 
   return (
-    <div className="flex items-center">
+    <div id='featuredProducts' className="flex items-center">
       {stars.map((star) => (
         <svg
           key={star}
