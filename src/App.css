@@ -7,10 +7,26 @@
 }
 
 #root {
+<<<<<<< HEAD
 	max-width: 1280px;
 	margin: 0 auto;
 	/* padding: 2rem; */
 	text-align: center;
+=======
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  --switch-bg: #e5e7eb;
+}
+
+.switch[data-state="checked"] {
+  background-color: #22c55e !important;
+}
+
+.switch[data-state="unchecked"] {
+  background-color: #e5e7eb !important;
+>>>>>>> 0f8c26f508f3690ceb0ee1f00d0d54a8a76408b2
 }
 
 .progress-point,

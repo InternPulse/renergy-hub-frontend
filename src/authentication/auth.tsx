@@ -14,16 +14,16 @@ import Newpassword from "./newpassword";
 function Auth() {
     return (
         <Routes>
-        <Route path="authentication/signup" element={<Signup/>} />
-        <Route path="authentication/signup/buyer" element={<BuyerSignup />} />
-        <Route path="authentication/signup/vendor" element={<VendorSignup />} />
-        <Route path="authentication/login" element={<Login />} />
-        <Route path="authentication/registration" element={<Registration />} />
-        <Route path="authentication/welcome" element={<Welcome />} />
-        <Route path="authentication/forgot-password" element={<ForgotPassword />} />
-        <Route path="authentication/confirmation" element={<Confirmation />} />
-        <Route path="authentication/otp" element={<Otp />} />
-        <Route path="authentication/newpassword" element={<Newpassword />} />
+        <Route path="signup" element={<Signup/>} />
+        <Route path="signup/buyer" element={<BuyerSignup />} />
+        <Route path="signup/vendor" element={<VendorSignup />} />
+        <Route path="login" element={<Login />} />
+        <Route path="registration" element={<Registration />} />
+        <Route path="welcome" element={<Welcome />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="confirmation" element={<Confirmation />} />
+        <Route path="otp" element={<Otp />} />
+        <Route path="newpassword" element={<Newpassword />} />
       </Routes>
     )
 }
