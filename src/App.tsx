@@ -8,7 +8,7 @@ import Auth from "./authentication/auth";
 import Vendor from "./vendor-management/Vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/settingsDashboard/SettingsLayout";
-import ShippingAndTracking from './pages/ShippingAndTracking';
+import ShippingAndTracking from './pages/shippingAndTracking';
 import ContentSection from "./sections/contentSection";
 
 
