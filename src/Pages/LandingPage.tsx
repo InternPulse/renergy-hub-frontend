@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer"
 import AboutUS from "../components/AboutUS"
 import Blog from "../components/Blog"
 import ChooseHub from "../components/ChooseHub"
@@ -12,7 +13,11 @@ import Review from "../components/Review"
 const LandingPage = () => {
   return (
     <div>
+<<<<<<< HEAD
        
+=======
+       <Navbar/>
+>>>>>>> 2157262674761b3dd0a6baa707971d2c1a8cd6e0
         <Hero/>
         <AboutUS/>
         <Mission/>
@@ -21,7 +26,7 @@ const LandingPage = () => {
         <Review/>
         <Blog/>
         <Faqs/>
-        
+        <Footer/>
     </div>
   )
 }
