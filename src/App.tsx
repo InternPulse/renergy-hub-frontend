@@ -1,5 +1,4 @@
 
-
 //import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import { Routes, Route } from "react-router-dom";
@@ -9,6 +8,7 @@ import Auth from "./authentication/auth";
 import Vendor from "./vendor-management/Vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/layout/SettingsLayout";
+import ShippingAndTracking from './pages/ShippingAndTracking';
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
         <Route path="/*" element={<Vendor />} />
         <Route path="/product" element={<Product/>} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
+        <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
       </Routes>
 
     
@@ -32,4 +33,5 @@ function App() {
 }
 
 export default App;
+
 
