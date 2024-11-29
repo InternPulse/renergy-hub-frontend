@@ -73,7 +73,7 @@ const PasswordChangeForm: React.FC = () => {
   };
 
   return (
-    <Card className="w-80 lg:w-full max-w-7xl p-2 lg:mt-16 -mt-20 text-left bg-transparent">
+    <Card className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       <CardHeader>
         <CardTitle className="bg-white p-2 rounded-md">
           Account Information

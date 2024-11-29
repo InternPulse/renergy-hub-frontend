@@ -36,7 +36,7 @@ const SIDEBAR_ITEMS = [
 
 const SIDEBAR_BOTTOM = [
   {
-    name: 'Settings', icon: Settings, color:'black', href:'/orders'
+    name: 'Settings', icon: Settings, color:'black', href:'/settings'
   },
   {
     name: 'Logout', icon: LogOut, color:'black', href:'/orders'

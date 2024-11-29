@@ -61,7 +61,7 @@ const Settings = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-16 -mt-80">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       {/* Header */}
       <div className="w-full bg-white rounded-lg shadow mb-4">
         <div className="p-4 flex items-center space-x-3">

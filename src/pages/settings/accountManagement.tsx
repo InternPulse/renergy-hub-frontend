@@ -35,7 +35,7 @@ const AccountManagement = () => {
   ];
 
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-16 -mt-80">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       <div className="bg-white rounded-lg shadow-sm">
         <h2 className="text-xl font-semibold p-4 border-b text-left">
           Account Management
@@ -43,7 +43,7 @@ const AccountManagement = () => {
 
         <div className="divide-y">
           {/* Language Selection */}
-          <div className="p-4 flex items-center justify-between hover:bg-gray-50">
+          <div className="p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer">
             <span className="text-sm text-gray-600">Language & Region</span>
             <Select>
               <SelectTrigger className="w-[180px]">
@@ -51,7 +51,11 @@ const AccountManagement = () => {
               </SelectTrigger>
               <SelectContent>
                 {languages.map((lang) => (
-                  <SelectItem key={lang.code} value={lang.code}>
+                  <SelectItem
+                    key={lang.code}
+                    value={lang.code}
+                    className="bg-white cursor-pointer"
+                  >
                     {lang.name}
                   </SelectItem>
                 ))}
@@ -68,7 +72,11 @@ const AccountManagement = () => {
               </SelectTrigger>
               <SelectContent>
                 {currencies.map((currency) => (
-                  <SelectItem key={currency.code} value={currency.code}>
+                  <SelectItem
+                    key={currency.code}
+                    value={currency.code}
+                    className="bg-white cursor-pointer"
+                  >
                     {currency.symbol} {currency.name}
                   </SelectItem>
                 ))}
@@ -84,7 +92,7 @@ const AccountManagement = () => {
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </div>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="bg-white">
               <AlertDialogHeader>
                 <AlertDialogTitle>
                   Are you sure you want to delete this account?

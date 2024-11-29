@@ -5,7 +5,7 @@ import Man from "../../assets/man.png";
 
 const ProfileInformation = () => {
   return (
-    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-16 text-left">
+    <div className="w-80 lg:w-full max-w-7xl p-2 lg:mt-4 ml-16 -mt-[40rem]">
       {/* Header Card */}
       <div className="bg-white p-4 rounded-lg mb-4">
         <h2 className="text-lg font-semibold">Profile Information</h2>
@@ -26,7 +26,7 @@ const ProfileInformation = () => {
           </div>
           <button
             title="Edit Personal Information"
-            className="flex items-center border rounded-md p-2 gap-2 text-[10px] lg:ml-[43rem]"
+            className="flex items-center border rounded-md p-2 gap-2 text-[10px] lg:ml-[57rem]"
           >
             <Edit className="h-4 w-4 text-green-600" />
             Edit
