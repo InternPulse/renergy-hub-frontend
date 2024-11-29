@@ -9,6 +9,7 @@ import Vendor from "./vendor-management/Vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/layout/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';
+import ContentSection from "./sections/contentSection";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/product" element={<Product/>} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
+        <Route path="/content-section" element={<ContentSection />} />
       </Routes>
 
     

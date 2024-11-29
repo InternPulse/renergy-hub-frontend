@@ -14,7 +14,7 @@ import Review from "../components/Review"
 const LandingPage = () => {
   return (
     <div>
-        <Navbar/>
+        {/*<Navbar/>*/}
         <Hero/>
         <AboutUS/>
         <Mission/>
