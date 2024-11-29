@@ -21,7 +21,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
-        <Route path="/product" element={<Product/>} />
+        <Route path="/product/*" element={<Product/>} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
         <Route path="/content-section" element={<ContentSection />} />
