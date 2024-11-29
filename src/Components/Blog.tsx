@@ -42,7 +42,7 @@ const Blog = () => {
           <img
             src={blog1}
             alt="Blog 1"
-            className="w-full h-[250px] sm:h-[300px] object-cover rounded-md"
+            className="w-full h-[250px] sm:h-[300px]  object-cover rounded-xl"
           />
           <p className="text-sm text-gray-500 mt-2">October 07, 2024</p>
           <p className="font-semibold text-lg mt-2">
@@ -62,7 +62,7 @@ const Blog = () => {
           <img
             src={blog2}
             alt="Blog 2"
-            className="w-full h-[250px] sm:h-[300px] object-cover rounded-md"
+            className="w-full h-[250px] sm:h-[300px] object-cover rounded-xl"
           />
           <p className="text-sm text-gray-500 mt-2">October 07, 2024</p>
           <p className="font-semibold text-lg mt-2">
