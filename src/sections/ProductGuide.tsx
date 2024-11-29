@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '.././Components/ProductCard';
 
 // Define the Product interface
 interface Product {

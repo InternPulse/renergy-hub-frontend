@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Delivery from "./Delivery";
-import Payment from "./Payment";
+import Delivery from "../Components/Delivery";
+import Payment from "../Components/Payment";
 
 function CheckoutSteps() {
 	const [step, setStep] = useState<number>(2);

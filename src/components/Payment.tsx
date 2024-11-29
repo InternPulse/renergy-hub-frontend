@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
+import { Button } from "../Components/ui/button";
+import { Card } from "../Components/ui/card";
 import MasterCard from "../assets/checkout-icons/Mastercard.svg";
 import Visa from "../assets/checkout-icons/Visa.svg";
 import PayPal from "../assets/checkout-icons/PayPal.svg";
@@ -7,7 +7,12 @@ import GooglePay from "../assets/checkout-icons/GooglePay.svg";
 import BankTransfer from "../assets/checkout-icons/BankTransfer.svg";
 import { ChevronLeft } from "lucide-react";
 
-function Payment(props: any) {
+interface PaymentProps {
+	next: () => void;
+	back: () => void;
+}
+
+function Payment(props: PaymentProps) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));

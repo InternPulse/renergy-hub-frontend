@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent } from "../../components/ui/card";
-import { Switch } from "../../components/ui/switch";
-import { Label } from "../../components/ui/label";
+import { Card, CardContent } from "../../Components/ui/card";
+import { Switch } from "../../Components/ui/switch";
+import { Label } from "../../Components/ui/label";
 
 interface PrivacyOption {
   id: string;

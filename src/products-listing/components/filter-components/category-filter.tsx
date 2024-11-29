@@ -3,7 +3,7 @@
 
 import { ChevronDown } from 'lucide-react'
 
-import { Button } from "../../../components/ui/button"
+import { Button } from "../../../Components/ui/button"
 import {
   DropdownMenu,
  
@@ -12,10 +12,10 @@ import {
   DropdownMenuLabel,
  
   DropdownMenuTrigger,
-} from "../../../components/ui/dropdown-menu"
-import { ScrollArea } from "../../../components/ui/scroll-area"
+} from "../../../Components/ui/dropdown-menu"
+import { ScrollArea } from "../../../Components/ui/scroll-area"
 import { useProductStore } from "../../store/store"
-import { Checkbox } from '../../../components/ui/checkbox'
+import { Checkbox } from '../../../Components/ui/checkbox'
 
 
 

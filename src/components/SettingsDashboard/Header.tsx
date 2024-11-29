@@ -6,9 +6,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../../components/ui/dropdown-menu";
-import { Input } from "../../components/ui/input";
-import { Button } from "../../components/ui/button";
+} from "../../Components/ui/dropdown-menu";
+import { Input } from "../../Components/ui/input";
+import { Button } from "../../Components/ui/button";
 import Man from "../../assets/man.png";
 
 const Topbar = () => {

@@ -1,5 +1,5 @@
 
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../../components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from "../../../Components/ui/select";
 import { useProductStore } from '../../store/store';
 
 
@@ -21,7 +21,7 @@ const SortOrder = () => {
         { value: "rl-h", name: "Ratings (Low > High)" } ]
 
 
-        const handleClick = (value:any) => {
+        const handleClick = (value: string) => {
           setSort(value);
         };
 

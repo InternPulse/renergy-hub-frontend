@@ -5,8 +5,8 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "../../components/ui/card";
-import { Switch } from "../../components/ui/switch";
+} from "../../Components/ui/card";
+import { Switch } from "../../Components/ui/switch";
 
 const NotificationSettings = () => {
   const [isPushEnabled, setIsPushEnabled] = useState(false);

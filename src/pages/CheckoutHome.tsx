@@ -1,5 +1,5 @@
-import CartItems from "../components/CartItems";
-import CheckoutSteps from "../components/CheckoutSteps";
+import CartItems from "../Components/CartItems";
+import CheckoutSteps from "../Components/CheckoutSteps";
 
 function CheckoutHomePage() {
 	return (

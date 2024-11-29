@@ -1,4 +1,4 @@
-import { Card, CardContent, CardFooter } from "../components/ui/card";
+import { Card, CardContent, CardFooter } from "../Components/ui/card";
 import cartItem from "../assets/checkout_sample_image.jpg";
 function CartItems() {
 	return (

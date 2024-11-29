@@ -1,8 +1,12 @@
-import ContactForm from "./ContactInfoForm";
-import ShippingForm from "./ShippingInfoForm";
-import { Button } from "./ui/button";
+import ContactForm from "../Components/ContactInfoForm";
+import ShippingForm from "../Components/ShippingInfoForm";
+import { Button } from "../Components/ui/button";
 
-function Delivery(props: any) {
+interface DeliveryProps {
+	next: () => void;
+}
+
+function Delivery(props: DeliveryProps) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
