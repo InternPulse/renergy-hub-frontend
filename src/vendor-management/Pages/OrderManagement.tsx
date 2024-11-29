@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/Components/ui/table";
+} from "../../Components/ui/table";
 
 // Define the NavLink type
 interface OrderManagementType {
