@@ -7,7 +7,8 @@ import FeaturedProducts from "../components/FeaturedProducts"
 import Hero from "../components/Hero"
 import Mission from "../components/Mission"
 import Review from "../components/Review"
-
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 
@@ -17,7 +18,7 @@ const LandingPage = () => {
   return (
     <div>
        
-      
+        <Navbar/>
         <Hero/>
         <AboutUS/>
         <Mission/>
@@ -26,7 +27,7 @@ const LandingPage = () => {
         <Review/>
         <Blog/>
         <Faqs/>
-        
+        <Footer />
     </div>
   )
 }
