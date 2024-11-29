@@ -11,6 +11,7 @@ import {
   User,
   Settings,
   LogOut,
+  Wrench,
 } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -72,6 +73,12 @@ const SIDEBAR_ITEMS = [
     color: "black",
     href: "/orders",
   },
+  {
+    name: "Managements",
+    icon: Wrench,
+    color: "black",
+    href: "/vendorprofile",
+  },
 ];
 
 const SIDEBAR_BOTTOM = [
@@ -93,7 +100,7 @@ export const Sidebar = () => {
 
   return (
     <motion.div
-      className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 ${
+      className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 bg-white ${
         isSidebarOpen ? "w-40" : "w-20"
       }`}
       animate={{ width: isSidebarOpen ? 170 : 80 }}
@@ -116,7 +123,7 @@ export const Sidebar = () => {
           <Menu size={24} />
         </motion.button>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between ">
           <nav className="flex-grow mb-4">
             {SIDEBAR_ITEMS.map((item, index) => (
               <Link key={index} to={item.href}>

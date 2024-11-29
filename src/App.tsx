@@ -4,7 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import { Routes, Route } from "react-router-dom";
 import CheckoutHomePage from "./pages/CheckoutHome";
 import { VendorDashboard } from "./pages/VendorDashboard/VendorDashboard";
-import Auth from "./authentication/auth";
+//import Auth from "./authentication/auth";
 import Vendor from "./vendor-management/Vendor";
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/checkout" element={<CheckoutHomePage />} />
-        <Route path="/*" element={<Auth />} />
+        {/*<Route path="/*" element={<Auth />} />*/}
         <Route path="/*" element={<Vendor />} />
       </Routes>
     </div>
