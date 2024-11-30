@@ -6,6 +6,7 @@ import five_stars from '../assets/five_stars.png'
 import four_stars from '../assets/four_stars.png'
 import white_thumb from '../assets/white_thumb.png'
 import review_profile2 from '../assets/review_profile2.png'
+import { Link } from 'react-router-dom';
 
 
 const Review = () => {
@@ -79,9 +80,9 @@ const Review = () => {
   <h2 className="text-[30px] sm:text-[35px] lg:text-[40px] font-semibold text-center sm:text-left">
     Are You The Next One?
   </h2>
-  <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 sm:mt-0 rounded hover:bg-hardYellow w-[180px] sm:w-[200px] lg:w-[200px]">
+ <Link to='/product'> <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 sm:mt-0 rounded hover:bg-hardYellow w-[180px] sm:w-[200px] lg:w-[200px]">
     Buy Now
-  </button>
+  </button></Link>
 </div>
     </div>
   );

@@ -4,6 +4,7 @@ import lock_icon from '../assets/lock_icon.png';
 import finance_icon from '../assets/finance_icon.png';
 import support_icon from '../assets/support_icon.png';
 import guidiance_icon from '../assets/guidiance_icon.png';
+import { Link } from 'react-router-dom';
 
 const ChooseHub = () => {
   return (
@@ -57,9 +58,9 @@ const ChooseHub = () => {
   <p className="text-sm sm:text-base w-[300px] sm:w-[400px] lg:w-[300px] text-center mt-4">
     Sign up today and receive a special discount on your first installation!
   </p>
-  <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px] lg:w-[280px]">
+ <Link to='/authentication/signup'> <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px] lg:w-[280px]">
     Get Started
-  </button>
+  </button></Link>
 </div>
 
     </div>

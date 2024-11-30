@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Mission = () => {
     return (
       <div className="mt-[100px] px-4">
@@ -40,9 +42,9 @@ const Mission = () => {
           <p className="font-semibold">
             Ready to join the sustainable energy movement and empower your home, business, or community today!
           </p>
-          <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-4 rounded hover:bg-hardYellow w-[200px]">
+       <Link to='/product'>  <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-4 rounded hover:bg-hardYellow w-[200px]">
             Explore
-          </button>
+          </button></Link> 
         </div>
       </div>
     );

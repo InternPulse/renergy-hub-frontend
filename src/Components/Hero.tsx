@@ -5,6 +5,7 @@ import bg_image from '../assets/bg_image.png';
 import circo from '../assets/cieco.png';
 import sol from '../assets/sol.png';
 import partner from '../assets/partners.png';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -24,9 +25,9 @@ const Hero = () => {
             products.
           </p>
           <div className="flex justify-center lg:justify-start mt-[20px] md:mt-[30px]">
-            <button className="flex items-center gap-3 text-white font-semibold bg-hardGreen px-6 py-3 rounded hover:bg-hardYellow hover:text-white">
+       <Link to='/product'><button className="flex items-center gap-3 text-white font-semibold bg-hardGreen px-6 py-3 rounded hover:bg-hardYellow hover:text-white">
               Explore Products
-            </button>
+            </button></Link>
           </div>
           <div className="flex justify-center md:justify-start mt-[10px] md:mt-[100px] gap-2">
             <img src={hero40} alt="40" />

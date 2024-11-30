@@ -1,6 +1,7 @@
 import React from "react";
 import favourite from "../assets/favourite.png";
 import product from "../assets/product.png";
+import { Link } from "react-router-dom";
 
 type StarRatingProps = {
   rating: number; // Current rating value
@@ -75,9 +76,9 @@ const FeaturedProducts: React.FC = () => {
       </div>
 
       {/* View More Button */}
-      <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px]">
+   <Link to='/product'>   <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-6 rounded hover:bg-hardYellow w-[200px] sm:w-[240px]">
         View More
-      </button>
+      </button></Link>
     </div>
   );
 };

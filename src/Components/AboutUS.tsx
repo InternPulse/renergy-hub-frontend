@@ -24,7 +24,7 @@ const AboutUS = () => {
           <p className="mt-4 text-base md:text-lg lg:text-xl">
             Renergy Hub offers Nigeria's most comprehensive renewable energy marketplace, providing affordable, high-quality solar, wind, and energy storage solutions, backed by flexible financing options, expert support, and a commitment to empowering sustainable energy independence for homes, businesses, and communities.
           </p>
-        <Link to='/authentication/signup' className='lg:w-full'>  <button className="mt-6 w-full lg:w-full flex justify-between bg-white shadow-lg items-center px-4 py-2 font-semibold cursor-pointer hover:bg-hardGreen hover:text-white">
+        <Link to='/authentication/signup' className='lg:w-full w-full'>  <button className="mt-6 w-full lg:w-full flex justify-between bg-white shadow-lg items-center px-4 py-2 font-semibold cursor-pointer hover:bg-hardGreen hover:text-white">
             GET STARTED
             <img
               className="w-[24px] h-[24px] ml-2"
