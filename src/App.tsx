@@ -6,10 +6,11 @@ import CheckoutHomePage from "./pages/checkoutHome";
 import { VendorDashboard } from "./pages/vendorDashboard/vendorDashboard";
 import Auth from "./authentication/auth";
 import Vendor from "./vendor-management/vendor";
-import Product from "./products-listing/page/products";
+// import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';
 import ContentSection from "./sections/contentSection";
+import ProductDetail from "./products-listing/page/productDetails";
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
-        <Route path="/product/*" element={<Product/>} />
+        <Route path="/product/*" element={<ProductDetail/>} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
         <Route path="/content-section" element={<ContentSection />} /> {/* Ensure this is defined */}

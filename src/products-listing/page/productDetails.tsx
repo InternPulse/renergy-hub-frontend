@@ -1,11 +1,22 @@
 import ProductCard from '../components/ui-sections/ProductCard'
 import { Button } from '../../components/ui/button'
+import Header from '../components/ui-sections/header'
+import PriceSection from '../components/ui-sections/Price'
+import Vendor from '../components/ui-sections/Vendor'
+
 
 //props
-const Detail = () => {
+const ProductDetail = () => {
   return (
     <>
-
+     <div className='flex flex-col p-4 lg:p-8'>
+      <nav>
+        <Header />
+      </nav>
+      <main className='grid md:grid-cols-2 grid-cols-1 '>
+        <PriceSection/>
+        <Vendor/>
+      </main>
     <section className='flex flex-col'>
 
         <p className='text-[#808080] text-2xl text-wrap'></p>
@@ -24,8 +35,9 @@ const Detail = () => {
          </div>
 
     </section>
+    </div>
     </>
   )
 }
 
-export default Detail
+export default ProductDetail
