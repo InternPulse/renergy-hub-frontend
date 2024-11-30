@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Delivery from "./Delivery";
 import Payment from "./Payment";
-import Review from "./Review";
+import Review from "./CheckoutReview";
 import { Check, Printer } from "lucide-react";
 import {
 	AlertDialog,

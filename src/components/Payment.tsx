@@ -9,6 +9,9 @@ import { ChevronLeft } from "lucide-react";
 import { useEffect } from "react";
 
 function Payment(props: any) {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
