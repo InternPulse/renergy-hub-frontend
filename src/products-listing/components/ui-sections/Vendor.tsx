@@ -1,4 +1,4 @@
-
+import {Button} from '../../../components/ui/button'
 
 const Vendor = () => {
   return (
@@ -18,6 +18,10 @@ const Vendor = () => {
         </li>
 
     </ul>
+    <div className='flex gap-4 '>
+      <Button className='text-black border bg-white rounded-xl'> Chat Now</Button>
+      <Button className='text-black border bg-white rounded-xl'> Contact Vendor</Button>
+    </div>
     <div>
         vendor product card
     </div>
