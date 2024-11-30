@@ -112,7 +112,7 @@ function Review(props: any) {
 					</div>
 				</section>
 			</div>
-			<div className="artificial-overflow pe-[2rem] lg:me-[4rem] sm:pe-[3rem] ">
+			<div className="artificial-overflow lg:me-[4rem] sm:pe-[3rem] ">
 				<div className="mt-7 border-[#1C6328A8] bg-[#EDF2EE] p-4 border rounded-md w-full flex sm:justify-start justify-center">
 					<div className="flex flex-col gap-5 w-full max-w-[360px]">
 						<p className="text-center sm:text-start md:text-start text-sm font-bold">
@@ -121,21 +121,21 @@ function Review(props: any) {
 						<div className="flex justify-between gap-2">
 							<img src={Item} className="h-[100px]" alt="Order Item" />
 							<div className="flex flex-col gap-2 flex-grow">
-								<p className="flex items-center justify-between text-xs gap-1">
-									<span>Item</span>
-									<span>Fireman 380W Solar Panel</span>
+								<p className="flex items-center justify-between text-xs gap-2">
+									<span className="font-semibold">Item</span>
+									<span className="text-end">Fireman 380W Solar Panel</span>
 								</p>
-								<p className="flex items-center justify-between text-xs gap-1">
-									<span>Price</span>
-									<span>₦350,000.00</span>
+								<p className="flex items-center justify-between text-xs gap-2">
+									<span className="font-semibold">Price</span>
+									<span className="text-end">₦350,000.00</span>
 								</p>
-								<p className="flex items-center justify-between text-xs gap-1">
-									<span>Quantity</span>
-									<span>1</span>
+								<p className="flex items-center justify-between text-xs gap-2">
+									<span className="font-semibold">Quantity</span>
+									<span className="text-end">1</span>
 								</p>
-								<p className="flex items-center justify-between text-xs gap-1 font-bold">
+								<p className="flex items-center justify-between text-xs gap-2 font-bold">
 									<span>Sub total</span>
-									<span>₦350,000.00</span>
+									<span className="text-end">₦350,000.00</span>
 								</p>
 							</div>
 						</div>
@@ -144,7 +144,7 @@ function Review(props: any) {
 								Add a note to the seller{" "}
 								<span className="text-[#1C6328A8]">(Optional)</span>
 							</p>
-							<textarea className="w-full mt-2 p-2 rounded-sm border border-[#1C6328A8]"></textarea>
+							<textarea className="w-full mt-2 p-1 outline-none text-sm rounded-sm border border-[#1C6328A8]"></textarea>
 						</div>
 					</div>
 				</div>
