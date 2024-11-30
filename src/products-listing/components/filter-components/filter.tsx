@@ -6,7 +6,7 @@ import { useProductStore } from "../../store/store";
 import { useDebounce } from "use-debounce"; // Import useDebounce
 import { Input } from "../../../components/ui/input";
 import { Search } from "lucide-react";
-import SortOrder from "./sortOrder";
+import SortOrder from "./SortOrder";
 
 //this is the Filter component, the parent component of all filtering, sorting and searching components
 const Filter = () => {

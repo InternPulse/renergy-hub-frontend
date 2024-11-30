@@ -37,7 +37,7 @@ const VendorProfile: React.FC = () => {
   const [newSpecialization, setNewSpecialization] = useState("");
 
   // textarea
-  const [wordCount, setWordCount] = useState(0);
+  // const [wordCount, setWordCount] = useState(0);
 
   const handleAddSpecialization = () => {
     if (
@@ -88,7 +88,7 @@ const VendorProfile: React.FC = () => {
     const words = text.trim().split(/\s+/); // Split text by whitespace
     if (words.length <= 1000) {
       setFormData({ ...formData, description: text });
-      setWordCount(words.length);
+      // setWordCount(words.length);
     }
   };
 
