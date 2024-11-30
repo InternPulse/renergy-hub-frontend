@@ -21,7 +21,7 @@ const SortOrder = () => {
         { value: "rl-h", name: "Ratings (Low > High)" } ]
 
 
-        const handleClick = (value:any) => {
+        const handleClick = (value: string) => {
           setSort(value);
         };
 

@@ -1,5 +1,5 @@
-import { OrderTracking } from "@/components/OrderTracking"
-import { TrackingInfo } from "@/components/TrackingInfo"
+import { OrderTracking } from "../components/OrderTracking"
+import { TrackingInfo } from "../components/TrackingInfo"
 
 function ShippingAndTracking() {
   return (

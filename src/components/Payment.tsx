@@ -7,7 +7,12 @@ import GooglePay from "../assets/checkout-icons/GooglePay.svg";
 import BankTransfer from "../assets/checkout-icons/BankTransfer.svg";
 import { ChevronLeft } from "lucide-react";
 
-function Payment(props: any) {
+interface PaymentProps {
+	next: () => void;
+	back: () => void;
+}
+
+function Payment(props: PaymentProps) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));

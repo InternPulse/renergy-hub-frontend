@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../Header/Navigation";
+import Navbar from "../header/navigation";
 interface ProductManagementType {
   productName: string;
 
@@ -26,13 +26,7 @@ function ProductManagement() {
     });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    setProductData({
-      ...productData,
-      [name]: files ? files[0] : null,
-    });
-  };
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

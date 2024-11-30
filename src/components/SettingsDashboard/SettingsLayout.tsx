@@ -1,14 +1,14 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import TopBar from "./Header";
 import SideBar from "./SideBar";
-import Settings from "../../Pages/settings";
-import ProfileInformation from "../../Pages/settings/profileInformation";
-import AccountManagement from "../../Pages/settings/accountManagement";
-import AccountInformation from "../../Pages/settings/accountInformation";
-import PushNotifications from "../../Pages/settings/pushNotification";
-import EmailNotifications from "../../Pages/settings/emailNotification";
-import PrivacySettings from "../../Pages/settings/privacySetting";
-import PrivacyPolicy from "../../Pages/settings/privacyPolicy";
+import Settings from "../../pages/settings";
+import ProfileInformation from "../../pages/settings/profileInformation";
+import AccountManagement from "../../pages/settings/accountManagement";
+import AccountInformation from "../../pages/settings/accountInformation";
+import PushNotifications from "../../pages/settings/pushNotification";
+import EmailNotifications from "../../pages/settings/emailNotification";
+import PrivacySettings from "../../pages/settings/privacySetting";
+import PrivacyPolicy from "../../pages/settings/privacyPolicy";
 
 function SettingsLayout() {
   return (

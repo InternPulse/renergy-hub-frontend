@@ -2,7 +2,7 @@ import vendor from "../../assets/vendor-images/vendor.jpeg";
 import BusinessLogo from "../../assets/vendor-images/BusinessLogo.svg";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import Navbar from "../Header/Navigation";
+import Navbar from "../header/navigation";
 
 interface FormData {
   vendorName: string;
@@ -37,7 +37,7 @@ const VendorProfile: React.FC = () => {
   const [newSpecialization, setNewSpecialization] = useState("");
 
   // textarea
-  const [wordCount, setWordCount] = useState(0);
+  // const [wordCount, setWordCount] = useState(0);
 
   const handleAddSpecialization = () => {
     if (
@@ -88,7 +88,7 @@ const VendorProfile: React.FC = () => {
     const words = text.trim().split(/\s+/); // Split text by whitespace
     if (words.length <= 1000) {
       setFormData({ ...formData, description: text });
-      setWordCount(words.length);
+      // setWordCount(words.length);
     }
   };
 

@@ -1,8 +1,8 @@
-import { Card } from "@/components/ui/card";
-import deliveryBus from "@/assets/delivery.png";
-import box from "@/assets/package.png";
-import delivered from "@/assets/delivered.png";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "./ui/card";
+import deliveryBus from "../assets/delivery.png";
+import box from "../assets/package.png";
+import delivered from "../assets/delivered.png";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 export function OrderTracking() {
   return (
