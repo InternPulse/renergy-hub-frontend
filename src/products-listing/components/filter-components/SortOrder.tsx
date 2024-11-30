@@ -21,7 +21,7 @@ const SortOrder = () => {
         { value: "rl-h", name: "Ratings (Low > High)" } ]
 
 
-        const handleClick = (value:any) => {
+        const handleClick = (value: string) => {
           setSort(value);
         };
 
@@ -31,16 +31,16 @@ const SortOrder = () => {
                   {/* the selected item form the selectitem array is displayed here */}
 
                     <Select value={sort} onValueChange={(value) => handleClick(value)} >
-                    <SelectTrigger className="w-[200px]">
+                    <SelectTrigger className="w-[200px] border-none">
                       
                       <SelectValue placeholder="Sort by default" className="" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-[#F2F2F2]">
                       <SelectGroup>
                         {/* <SelectLabel onClick={}>Fruits</SelectLabel> */}
 
                         {sortData.map((sort,index) => (
-                           <SelectItem value={sort.value} key={index}>{sort.name}</SelectItem>
+                           <SelectItem value={sort.value} key={index} className="cursor-pointer">{sort.name}</SelectItem>
                         ))}
                        </SelectGroup>
                     </SelectContent>
