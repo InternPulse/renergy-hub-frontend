@@ -1,11 +1,11 @@
 
 //import "./App.css";
-import LandingPage from "./pages/LandingPage"
+import LandingPage from "./pages/landingPage";
 import { Routes, Route } from "react-router-dom";
-import CheckoutHomePage from "./pages/CheckoutHome";
-import { VendorDashboard } from "./pages/vendorDashboard/VendorDashboard";
+import CheckoutHomePage from "./pages/checkoutHome";
+import { VendorDashboard } from "./pages/vendorDashboard/vendorDashboard";
 import Auth from "./authentication/auth";
-import Vendor from "./vendor-management/Vendor";
+import Vendor from "./vendor-management/vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';

@@ -1,4 +1,4 @@
-import Navbar from "../header/Navigation";
+import Navbar from "../header/navigation";
 
 function SaleAnalytics() {
   return (

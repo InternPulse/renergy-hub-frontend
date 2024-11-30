@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../header/Navigation";
+import Navbar from "../header/navigation";
 interface ProductManagementType {
   productName: string;
 

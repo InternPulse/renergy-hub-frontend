@@ -5,7 +5,7 @@ import { Share } from "lucide-react";
 import { Calendar } from "lucide-react";
 import React, { useState } from "react";
 import { formatCurrency } from "../data";
-import Navbar from "../header/Navigation";
+import Navbar from "../header/navigation";
 import {
   Table,
   TableBody,

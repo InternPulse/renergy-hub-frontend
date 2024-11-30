@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import OrderManagement from "./pages/OrderManagement";
-import ProductManagement from "./pages/ProductManagement";
-import VendorProfile from "./pages/VendorProfile";
-import SaleAnalytics from "./pages/SaleAnalytics";
-import { Sidebar } from "./header/SideBar";
+import OrderManagement from "./pages/orderManagement";
+import ProductManagement from "./pages/productManagement";
+import VendorProfile from "./pages/vendorProfile";
+import SaleAnalytics from "./pages/saleAnalytics";
+import { Sidebar } from "./header/sideBar";
 
 function Vendor() {
   return (
