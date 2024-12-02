@@ -10,6 +10,8 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';
 import ContentSection from "./sections/contentSection";
+// import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes";
 
 
 
@@ -20,15 +22,18 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboardRoutes />} />
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
-        <Route path="/content-section" element={<ContentSection />} /> {/* Ensure this is defined */}
+        <Route path="/content-section" element={<ContentSection />} />
+        <Route path="/admin/*" element={<AdminDashboardRoutes />} />
       </Routes>
-     
+
+      
 
     
       
