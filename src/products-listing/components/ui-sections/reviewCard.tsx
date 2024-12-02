@@ -1,11 +1,14 @@
 //Reviewer Card Information
-
+import { Separator } from '../../../components/ui/separator';
+import Rating from "./rating"
+import img from '../../../../public/Persona.svg'
 const ReviewCard = () => {
   return (
     <>
+    <main className='flex flex-col gap-4 '>
     <div className="flex gap-2">
-      <img src='' alt=''/>
-      <ul className="text-black">
+      <img src={img} alt='' className='rounded-full w-[60px] h-[60px]'/>
+      <ul className="text-black flex flex-col gap-2">
         <li className="flex items-center">
             <div className="flex gap-2 items-center">
               <p className="text-2xl">Reviewer Name</p>
@@ -15,7 +18,10 @@ const ReviewCard = () => {
             </div>
               <p className="text-[#999999]"> date</p>
         </li>
-        <li>ratings</li>
+        <li>
+          <Rating rating={4.5} />
+         
+        </li>
         <li>
             <p>review message</p>
        </li>
@@ -37,12 +43,14 @@ const ReviewCard = () => {
 
        {/* map the replies */}
        <li></li>
+
+       
       </ul>
 
-
+      
     </div>
-
-
+    <Separator className='bg-[#CCCCCC] mt-4'/>
+    </main>
 
     </>
   )
