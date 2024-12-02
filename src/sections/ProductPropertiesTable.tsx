@@ -55,7 +55,7 @@ const productProperties: ProductProperty[] = [
 
 const ProductPropertiesTable: React.FC = () => {
   return (
-    <div>
+    <section className="container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-4">Product Properties</h2>
         <div className="overflow-x-auto">
             <table className="w-full table-auto border border-black">
@@ -89,7 +89,7 @@ const ProductPropertiesTable: React.FC = () => {
             </table>
             <Button label="Explore " styleClass="mt-4 bg-green-500 hover:bg-green-700 text-white py-2 px-20 rounded" />
         </div>
-    </div>
+    </section>
   )
 }
 

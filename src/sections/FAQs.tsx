@@ -43,7 +43,7 @@ const FAQs: React.FC = () => {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-lg overflow-hidden">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 bg-white rounded-lg overflow-hidden">
             <h2 className='text-left text-2xl font-bold mb-6 pt-6 pl-4'>FAQs</h2>
             {accordionItems.map((item) => (
                 <div 
@@ -68,7 +68,7 @@ const FAQs: React.FC = () => {
 
                     {activeIndex === item.id && (
                         <div 
-                            className="px-4 pb-4 text-sm sm:text-base text-gray-600 animate-fade-in"
+                            className="px-4 pb-4 text-sm sm:text-base text-gray-600"
                         >
                             {item.content}
                         </div>
