@@ -15,7 +15,7 @@ function Delivery(props: DeliveryProps) {
 	}
 	return (
 		<form className="w-full flex flex-col gap-5 mt-7" onSubmit={handleSubmit}>
-			<h1 className="text-2xl text-center md:text-start lg:text-start font-semibold">
+			<h1 className="text-2xl text-center md:text-start font-semibold">
 				Enter Delivery Information
 			</h1>
 			<ContactForm />

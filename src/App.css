@@ -1,9 +1,8 @@
-
 * {
-  box-sizing: border-box;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
 }
 
 #root {
@@ -12,78 +11,3 @@
 	/* padding: 2rem; */
 	text-align: center;
 }
-
-.progress-point,
-.progress-connector {
-	background-color: #c9edbd;
-}
-.progress-point {
-	padding: 0.45rem;
-}
-.progress-point.active {
-	padding: 0.8rem;
-	background-color: #1c6328;
-}
-.form-group > input {
-	outline: none;
-	border: none;
-}
-.radio-container {
-	display: flex;
-	gap: 20px;
-	align-items: center;
-}
-
-.radio-input {
-	display: none; /* Hide the default radio button */
-}
-
-.radio-label,
-.radio-label-lg {
-	position: relative;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	padding-left: 20px;
-}
-.radio-label-lg {
-	padding-left: 30px;
-}
-
-.radio-label::before,
-.radio-label-lg::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 14px;
-	height: 14px;
-	border: 1px solid #1c6328;
-	border-radius: 50%;
-	background-color: white;
-	box-sizing: border-box;
-}
-.radio-label-lg::before {
-	width: 25px;
-	height: 25px;
-}
-
-.radio-input:checked + .radio-label::after,
-.radio-input:checked + .radio-label-lg::after {
-	content: "";
-	position: absolute;
-	left: 7px;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 7px;
-	height: 7px;
-	background-color: #1c6328;
-	border-radius: 50%;
-}
-.radio-input:checked + .radio-label-lg::after {
-	width: 15px;
-	height: 15px;
-	left: 12.5px;
-}
-
