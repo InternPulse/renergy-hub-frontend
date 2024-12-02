@@ -74,7 +74,7 @@ const ProductPropertiesTable: React.FC = () => {
                         <tr key={index} className="border-b border-black">
                             <td className="px-4 py-2  border-r border-black">
                             <div className="flex items-center">
-                                <img src={property.Product.imageUrl} className="w-25 h-25 object-cover" />
+                                <img src={property.Product.imageUrl} className="w-80 h-100 object-cover" />
                             </div>
                             </td>
                             <td className="px-4 py-2 border-r border-black">{property['Primary Function']}</td>
