@@ -1,4 +1,3 @@
-
 //import "./App.css";
 import LandingPage from "./pages/landingPage";
 import { Routes, Route } from "react-router-dom";
@@ -10,8 +9,8 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from './pages/ShippingAndTracking';
 import ContentSection from "./sections/contentSection";
-// import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 
 
 
@@ -22,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboardRoutes />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
