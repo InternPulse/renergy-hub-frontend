@@ -113,9 +113,9 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
   return (
     <>
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 p-4 lg:p-8">
       <Filter />
-      <div className="px-8">
+      <div className="">
         {paginatedProducts.length > 0 ? (
           paginatedProducts.map((product) => (
             <p key={product.id}>{product.name}</p>
@@ -128,7 +128,7 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
         
        
 
-          {paginatedProducts.length > 0 && <div className="flex px-8 justify-between items-center mt-4">
+          {paginatedProducts.length > 0 && <div className="flex justify-between items-center mt-4">
             <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}

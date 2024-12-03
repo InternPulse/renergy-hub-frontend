@@ -23,6 +23,8 @@ interface Category {
 type ProductStore = {
   vendors: Vendor[];
   products: Product[];
+  count: number;
+  setCount: (value: number) => void; 
   sort:string
   isClicked: boolean
   setIsClicked: (isClicked: boolean) => void
@@ -43,10 +45,10 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
-      
+      count:0,
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
-      
+       setCount: (value: number) => set({ count: value }),
       
       vendors: [
         { id: "all", name: "All Vendors" },

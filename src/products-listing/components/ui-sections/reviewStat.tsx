@@ -50,7 +50,7 @@ const ReviewStat = () => {
 
                 <p className='text-black'>{rating}</p>
         </header>
-        <Separator/>
+        <Separator className='bg-[#CCCCCC]'/>
         <main> 
             
         <div className="flex flex-col gap-3">

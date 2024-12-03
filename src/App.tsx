@@ -12,6 +12,7 @@ import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
 import SecurityCompliance from './pages/SecurityCompliance'
 
+
 function App() {
 	return (
 		<div className="overflow-x-hidden w-full max-w-full">

@@ -1,9 +1,20 @@
 
 import { Button } from '../../../components/ui/button'
-
-
-
+import { useProductStore } from '../../store/store'
+import img from '../../../../public/shopping-bag.svg'
+import img1 from '../../../../public/Vector.svg'
 const PriceSection = () => {
+    const {count,setCount} = useProductStore()
+
+    const handleIncrement = () =>{
+        setCount(count + 1)
+    }
+    const handleDecrement = () =>{
+        if(count > 0){
+            setCount(count - 1)
+        }
+    }
+
   return (
     <section>
         <ul className='flex flex-col gap-4 p-6'>
@@ -15,22 +26,22 @@ const PriceSection = () => {
             </li>
             <li>product.price </li>
             <li>
-            <p className='text-[#666666] uppercase'>Availability <span className='text-[#002603]'>product.availability</span></p>
-            <p className='text-[#666666] uppercase'>sku <span className='text-[#002603]'>product.sku</span></p>
+            <p className='text-[#666666] uppercase'>Availability: <span className='text-[#002603]'>product.availability</span></p>
+            <p className='text-[#666666] uppercase'>sku: <span className='text-[#002603]'>product.sku</span></p>
             </li>
             <li className='text-[#2C742F]'>
                 notify me when the price drops
             </li>
-            <li className='flex gap-2'> 
-             <Button variant={'outline'} className='bg-white text-[#1F2223] rounded-xl text-xl' size={'icon'}> - </Button>
-             <p>count</p>
-             <Button variant={'outline'} className='bg-white text-[#1F2223] rounded-xl text-xl' size={'icon'}>+</Button>
-             <Button className='flex space-x-2 text-white bg-black'>
-                  <span>icon</span>
-                  <span className=''>add to cart</span>
+            <li className='flex items-center gap-2'> 
+             <Button  className='bg-white border text-[#1F2223] rounded-xl border-[#cccccc] text-xl hover:bg-[#dcffdf]' size={'icon'} onClick={handleDecrement} disabled={count < 1}> - </Button>
+             <p>{count}</p>
+             <Button  className='bg-white text-[#1F2223] rounded-xl text-xl border border-[#cccccc] hover:bg-[#dcffdf]' size={'icon'} onClick={handleIncrement}>+</Button>
+             <Button className='flex  text-white bg-[#002603] rounded-xl hover:bg-[#004d08]' >
+                  <span><img src={img} alt="" /></span>
+                  <span className='uppercase'>add to cart</span>
              </Button>
-             <Button className='flex space-x-2 text-white bg-black'>
-                  <span>icon</span>
+             <Button className='bg-white border border-slate-200 hover:bg-[#dcffdf] rounded-xl' size={'icon'} >
+                  <span><img src={img1} alt="" /></span>
                   
              </Button>
 

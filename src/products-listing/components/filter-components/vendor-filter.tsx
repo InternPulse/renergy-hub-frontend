@@ -55,7 +55,7 @@ const getSelectedVendorsText = () => {
           variant="outline"
           role="combobox"
           aria-label="Select vendors"
-          className="w-[250px] justify-between"
+          className="w-[250px] justify-between rounded-xl bg-white text-black hover:bg-green-500 border-slate-200 hover:text-white"
         >
           <span className="truncate">{getSelectedVendorsText()}</span>
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
