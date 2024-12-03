@@ -30,12 +30,7 @@ function App() {
         <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
         <Route path="/content-section" element={<ContentSection />} />
         <Route path="/admin/*" element={<AdminDashboardRoutes />} />
-      </Routes>
-
-      
-
-    
-      
+      </Routes>    
     </div>
   );
 }
