@@ -1,3 +1,4 @@
+
 //import "./App.css";
 import LandingPage from "./pages/landingPage";
 import { Routes, Route } from "react-router-dom";
@@ -9,6 +10,7 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
+import SecurityCompliance from './pages/SecurityCompliance'
 
 function App() {
 	return (
@@ -21,6 +23,7 @@ function App() {
 				<Route path="/*" element={<Vendor />} />
 				<Route path="/product/*" element={<Product />} />
 				<Route path="/settings/*" element={<SettingsRoutes />} />
+				<Route path="/security-compliance" element={<SecurityCompliance />} />
 				<Route
 					path="/shipping-and-tracking"
 					element={<ShippingAndTracking />}
@@ -30,6 +33,7 @@ function App() {
 			</Routes>
 		</div>
 	);
+
 }
 
 export default App;
