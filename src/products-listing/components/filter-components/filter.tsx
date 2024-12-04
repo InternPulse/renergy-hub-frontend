@@ -97,7 +97,7 @@ const Filter = () => {
     const fetchData = async ()=>{
       try{
         await getProduct()
-        await getCategories()
+        // await getCategories()
         handleClick();
       }catch(err){console.log(err)}
     }
