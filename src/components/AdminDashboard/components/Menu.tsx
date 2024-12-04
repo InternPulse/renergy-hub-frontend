@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Link from 'react-router-dom'
+import  { useState } from 'react';
+import {Link} from 'react-router-dom'
 import homeIcon from '../components/Assets/home.png';
 import userManagementIcon from '../components/Assets/users.png';
 import orderManagementIcon from '../components/Assets/shopping-bag.png';
@@ -12,27 +12,27 @@ const menuItems = [
     {
         icon: homeIcon,
         label: "Dashboard",
-        href: "/admin-dashboard/dashboard",
+        href: "/admin/dashboard",
     },
     {
         icon: userManagementIcon,
         label: "User Management",
-        href: "/user-management",
+        href: "/admin/user-management",
     },
     {
         icon: orderManagementIcon,
         label: "Order Management",
-        href: "/order-management",
+        href: "/admin/order-management",
     },
     {
         icon: messagesIcon,
         label: "Messages",
-        href: "/messages",
+        href: "/admin/messages",
     },
     {
         icon: reportAnalyticsIcon,
         label: "Report & Analytics",
-        href: "/reports",
+        href: "/admin/reports",
     },
 ];
 
@@ -40,19 +40,19 @@ const footerItems = [
     {
         icon: settingsIcon,
         label: "Settings",
-        href: "/settings",
+        href: "/admin/settings",
     },
     {
         icon: logoutIcon,
         label: "Logout",
-        href: "/logout",
+        href: "/admin/logout",
     },
 ];
 
 const Menu = () => {
     const [activeLink, setActiveLink] = useState('');
 
-    const handleLinkClick = (href) => {
+    const handleLinkClick = (href:string) => {
         setActiveLink(href);
     };
 
@@ -60,9 +60,10 @@ const Menu = () => {
         <div className="menu mt-4 text-sm">
             <div className="menu-items flex flex-col gap-3">
                 {menuItems.map((item, index) => (
+                    
                     <Link 
                         key={index} 
-                        href={item.href} 
+                        to={item.href} 
                         className={`menu-item gap-3 flex items-center justify-center lg:justify-start p-2 transition-colors duration-300 
                                     ${activeLink === item.href ? 'bg-green-500 text-white' : 'hover:bg-green-200'}`}
                         onClick={() => handleLinkClick(item.href)}
@@ -77,7 +78,7 @@ const Menu = () => {
                 {footerItems.map((item, index) => (
                     <Link 
                         key={index} 
-                        href={item.href} 
+                        to={item.href} 
                         className={`footer-item gap-3 flex items-center justify-center lg:justify-start p-2 transition-colors duration-300 
                                     ${activeLink === item.href ? 'bg-green-500 text-white' : 'hover:bg-green-200'}`}
                         onClick={() => handleLinkClick(item.href)}
