@@ -12,6 +12,9 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+			'hardYellow':"#f9d262",
+        'hardGreen':"#2c742f",
+        'softGreen':"#84d187",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -53,8 +56,10 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		}
+		 
   	}
   },
   plugins: [require("tailwindcss-animate")],
 }
 
+  

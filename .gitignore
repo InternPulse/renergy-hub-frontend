@@ -1,12 +1,16 @@
+<<<<<<< HEAD
 # Node modules
 node_modules/
 
+=======
+>>>>>>> 7b858b62a5f44deb9d0d7c874a49897957daa064
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 
 # Dependency directories
 jspm_packages/
@@ -20,3 +24,23 @@ coverage/
 *.swo
 
 # Environment variables
+=======
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+>>>>>>> 7b858b62a5f44deb9d0d7c874a49897957daa064

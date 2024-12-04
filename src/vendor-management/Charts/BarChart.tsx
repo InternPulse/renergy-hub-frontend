@@ -9,7 +9,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "../../components/ui/chart";
 
 const chartData = [
   { month: "Jan", sales: 186, revenue: 100, topProduct: 50, avgOrderValue: 20 },
