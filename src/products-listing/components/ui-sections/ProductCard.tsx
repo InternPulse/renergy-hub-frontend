@@ -25,7 +25,7 @@ const removeClick = ()=> {
   return (
     <>
     <div className="">
-      <ul className="flex flex-col gap-4 pt-4 pb-[11px] px-[11px] bg-white text-black rounded-xl max-w-[210px] border border-slate-300 ">
+      <ul className="flex flex-col gap-4 pt-4 lg:pt-8 pb-[11px] lg:pb-[18px] px-[11px] bg-white text-black rounded-xl max-w-[210px] border border-slate-300 ">
 
         <li className="flex justify-end">
            {!isClicked?    
@@ -68,11 +68,3 @@ const removeClick = ()=> {
 
 export default ProductCard
 
-// const filteredProducts = products.filter((product) => {
-//   const matchesVendor = filteredVendors.length === 0 || filteredVendors.includes(product.vendor);
-//   const matchesCategory = filteredCategories.length === 0 || filteredCategories.includes(product.category);
-//   const matchesShop = filteredShops.length === 0 || filteredShops.includes(product.shop);
-
-//   // Include the product if it matches any one of the filters
-//   return matchesVendor || matchesCategory || matchesShop;
-// });

@@ -6,7 +6,7 @@ import { useProductStore } from "../../store/store";
 import { useDebounce } from "use-debounce"; // Import useDebounce
 import { Input } from "../../../components/ui/input";
 import { Search } from "lucide-react";
-import SortOrder from "./SortOrder";
+import SortOrder from "./sortOrder";
 
 //this is the Filter component, the parent component of all filtering, sorting and searching components
 const Filter = () => {
@@ -17,6 +17,10 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
+   
+    getCategories,
+    getProduct,
+  
   } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
   const [searchQuery, setSearchQuery] = useState(
@@ -90,13 +94,26 @@ const Filter = () => {
 
   // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
-    handleClick(); // Update filters immediately after selection or debounced search
+    const fetchData = async ()=>{
+      try{
+        await getProduct()
+        await getCategories()
+        handleClick();
+      }catch(err){console.log(err)}
+    }
+   
+    fetchData();  
+  
+
   }, [
     debouncedSearchQuery,
     selectedCategories,
     selectedProducts,
     selectedVendors,
     handleClick,
+    getProduct,
+    getCategories
+  
   ]);
 
   return (
