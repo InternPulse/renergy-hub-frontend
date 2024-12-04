@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,Outlet } from "react-router-dom";
 import logo from "../AdminDashboard/components/Assets/logo.png";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
@@ -21,7 +21,7 @@ const AdminDashboard = () => {
       <div className="w-[86%] h-[120vh] md:w-[92%] lg:w-[63%] xl:w-[81%] bg-green-50 flex flex-col">
         <Navbar />
         <div className="flex-grow">
-          <h1>Admin Dashboard Loaded</h1>
+          <Outlet />
         </div>
       </div>
     </div>
