@@ -17,6 +17,7 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
+  
   } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
   const [searchQuery, setSearchQuery] = useState(
@@ -90,13 +91,17 @@ const Filter = () => {
 
   // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
-    handleClick(); // Update filters immediately after selection or debounced search
+   
+      handleClick();
+  
+
   }, [
     debouncedSearchQuery,
     selectedCategories,
     selectedProducts,
     selectedVendors,
     handleClick,
+  
   ]);
 
   return (

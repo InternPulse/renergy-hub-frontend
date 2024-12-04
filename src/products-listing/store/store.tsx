@@ -23,6 +23,7 @@ interface Category {
 type ProductStore = {
   vendors: Vendor[];
   products: Product[];
+  
   count: number;
   setCount: (value: number) => void; 
   sort:string
@@ -33,6 +34,8 @@ type ProductStore = {
   addedProduct: Product[];
   removeCart: (categoryId: string) => void; 
   selectedVendors: Vendor[];
+
+  
   selectedProducts: Product[];
   selectedCategories: Category[];
   addToCart: (product: Product) => void;
@@ -45,11 +48,12 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
+      
       count:0,
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
        setCount: (value: number) => set({ count: value }),
-      
+
       vendors: [
         { id: "all", name: "All Vendors" },
         { id: "ecowatts", name: "EcoWatts" },
@@ -178,7 +182,7 @@ export const useProductStore = create<ProductStore>()(
       },
     }),
     {
-      name: 'product-storage', // Name of the storage item
+      name: 'products-storage', // Name of the storage item
       storage: createJSONStorage(() => localStorage), // Use localStorage for persistence
     }
   )
