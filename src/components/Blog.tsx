@@ -4,6 +4,7 @@ import blog2 from '../assets/blog2.png';
 import topic1 from '../assets/topic1.png'
 import topic2 from '../assets/topic2.png'
 import topic3 from '../assets/topic3.png'
+import { Link } from 'react-router-dom';
 
 
 const Blog = () => {
@@ -52,9 +53,11 @@ const Blog = () => {
             Researchers discover chemical secrets of new material that could
             make solar energy far more economical.
           </p>
+          <Link to='/content-section'>
           <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-[50px] rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
             Read More
           </button>
+          </Link>
         </div>
 
         {/* Blog 2 */}
@@ -72,9 +75,11 @@ const Blog = () => {
             Workplaces can now more easily commit to sustainability through
             innovative products and energy solutions.
           </p>
+          <Link to='/content-section'>
           <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-6 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
             Read More
           </button>
+          </Link>
         </div>
       </div>
       <div className="mt-10 px-4 md:px-8 lg:px-2">

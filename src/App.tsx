@@ -29,7 +29,7 @@ function App() {
 					path="/shipping-and-tracking"
 					element={<ShippingAndTracking />}
 				/>
-				<Route path="/content-section" element={<ContentSection />} />{" "}
+				<Route path="/content-section" element={<ContentSection />} />
 				{/* Ensure this is defined */}
 			</Routes>
 		</div>
