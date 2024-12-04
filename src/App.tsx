@@ -10,15 +10,16 @@ import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
 import SecurityCompliance from './pages/SecurityCompliance'; // From HEAD
-import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
-import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes";
+//import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
+//import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
+
 function App() {
 	return (
 		<div className="overflow-x-hidden w-full max-w-full">
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/vendor-dashboard" element={<VendorDashboard />} />
-				<Route path="/admin-dashboard" element={<AdminDashboard />} /> 
+				{/*<Route path="/admin-dashboard" element={<AdminDashboard />} />  From oo-branch */}
 				<Route path="/checkout" element={<CheckoutHomePage />} />
 				<Route path="/authentication/*" element={<Auth />} />
 				<Route path="/*" element={<Vendor />} />
@@ -27,7 +28,7 @@ function App() {
 				<Route path="/security-compliance" element={<SecurityCompliance />} /> 
 				<Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
 				<Route path="/content-section" element={<ContentSection />} />
-				<Route path="/admin/*" element={<AdminDashboardRoutes />} /> 
+				{/*<Route path="/admin/*" element={<AdminDashboardRoutes />} />  From oo-branch */} 
 			</Routes>
 		</div>
 	);
