@@ -12,7 +12,7 @@ const AdminDashboardRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<AdminDashboard />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route index element={<Dashboard />} />
         <Route path="user-management" element={<UserManagement />} />
         <Route path="order-management" element={<OrderManagement />} />
         <Route path="messages" element={<Messages />} />
