@@ -9,6 +9,9 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
+import SecurityCompliance from './pages/SecurityCompliance'; // From HEAD
+import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
 	return (
@@ -16,17 +19,16 @@ function App() {
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/vendor-dashboard" element={<VendorDashboard />} />
+				<Route path="/admin-dashboard" element={<AdminDashboard />} /> {/* From oo-branch */}
 				<Route path="/checkout" element={<CheckoutHomePage />} />
 				<Route path="/authentication/*" element={<Auth />} />
 				<Route path="/*" element={<Vendor />} />
 				<Route path="/product/*" element={<Product />} />
 				<Route path="/settings/*" element={<SettingsRoutes />} />
-				<Route
-					path="/shipping-and-tracking"
-					element={<ShippingAndTracking />}
-				/>
-				<Route path="/content-section" element={<ContentSection />} />{" "}
-				{/* Ensure this is defined */}
+				<Route path="/security-compliance" element={<SecurityCompliance />} /> {/* From HEAD */}
+				<Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
+				<Route path="/content-section" element={<ContentSection />} />
+				<Route path="/admin/*" element={<AdminDashboardRoutes />} /> {/* From oo-branch */}
 			</Routes>
 		</div>
 	);
