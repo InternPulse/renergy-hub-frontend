@@ -25,7 +25,7 @@ function App() {
 				<Route path="/*" element={<Vendor />} />
 				<Route path="/product/*" element={<Product />} />
 				<Route path="/settings/*" element={<SettingsRoutes />} />
-				<Route path="/security-compliance" element={<SecurityCompliance />} /> {/* From HEAD */}
+				<Route path="/security-compliance" element={<SecurityCompliance />} /> 
 				<Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
 				<Route path="/content-section" element={<ContentSection />} />
 				<Route path="/admin/*" element={<AdminDashboardRoutes />} />  From oo-branch 
