@@ -1,16 +1,38 @@
 import ProductCard from '../components/ui-sections/ProductCard'
 import { Button } from '../../components/ui/button'
+import Header from '../components/ui-sections/header'
+import PriceSection from '../components/ui-sections/Price'
+import Vendor from '../components/ui-sections/Vendor'
+import { Link, Outlet } from 'react-router-dom'
+
 
 //props
-const Detail = () => {
+const ProductDetail = () => {
   return (
     <>
-
-    <section className='flex flex-col'>
-
-        <p className='text-[#808080] text-2xl text-wrap'></p>
+     <div className='flex flex-col p-4 lg:p-8 mx-auto'>
+      <nav>
+        <Header />
+      </nav>
+      <main className='grid md:grid-cols-2 grid-cols-1 '>
+        <PriceSection/>
+        <Vendor/>
+      </main>
+    <section className='flex flex-col gap-8'>
+      
+       <main className='flex flex-col gap-8'>
+        <div className='flex gap-2'>
+          <Link to='/product/detail' className='text-black hover:text-[#002603]'> DETAILS </Link>
+          <Link to='/product/detail/review' className='text-black hover:text-[#002603]'> REVIEWS </Link>
+          
+          </div>
+          <section>
+          <Outlet/>
+          </section>
+       </main>
+     
         
-        <div className='flex text-center text-black'>
+        <div className=' text-center text-black'>
             <p> YOU MAY ALSO LIKE </p>
         </div>
         <div>
@@ -24,8 +46,9 @@ const Detail = () => {
          </div>
 
     </section>
+    </div>
     </>
   )
 }
 
-export default Detail
+export default ProductDetail

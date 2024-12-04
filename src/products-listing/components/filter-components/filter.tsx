@@ -17,6 +17,10 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
+   
+    getCategories,
+    getProduct,
+  
   } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
   const [searchQuery, setSearchQuery] = useState(
@@ -90,33 +94,46 @@ const Filter = () => {
 
   // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
-    handleClick(); // Update filters immediately after selection or debounced search
+    const fetchData = async ()=>{
+      try{
+        await getProduct()
+        // await getCategories()
+        handleClick();
+      }catch(err){console.log(err)}
+    }
+   
+    fetchData();  
+  
+
   }, [
     debouncedSearchQuery,
     selectedCategories,
     selectedProducts,
     selectedVendors,
     handleClick,
+    getProduct,
+    getCategories
+  
   ]);
 
   return (
-    <section className="flex flex-col gap-2">
-      <header className="p-5 flex flex-col gap-4">
-        <ul className="flex gap-2 lg:gap-8 justify-between items-center">
-          <li className="px-8">
+    <section className="flex flex-col gap-8">
+      <header className=" flex flex-col gap-4">
+        <ul className="flex flex-col md:flex-row gap-8 justify-between lg:items-center">
+          <li className="pr-8">
             <h1 className="text-3xl">Products</h1>
           </li>
-          <li className="max-w-[500px] md:min-w-[500px]">
-          <div className="relative w-full ">
+          <li className="relative w-full">
+             
             <Input
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search products"
-              className="border p-2 rounded   text-right pl-2 pr-8 "
+              className="border p-2 rounded   text-right pl-2 pr-10 "
             />
             <Search className="absolute right-2 top-2" />
-          </div>
+    
 
           </li>
         
@@ -124,7 +141,7 @@ const Filter = () => {
         </ul>
       </header>
 
-      <main className="px-8  flex flex-col">
+      <main className="flex flex-col">
         <ul className="flex justify-between gap-4">
           <li>
             {!isClicked ? (
@@ -209,7 +226,7 @@ const Filter = () => {
               </div>
             ) : (
               <button
-                className="hover:bg-slate-200 rounded-full max-w-[47px]"
+                className="hover:bg-green-300 rounded-full max-w-[47px]"
                 onClick={handleRemoveButton}
                 title="Remove Filter"
               >

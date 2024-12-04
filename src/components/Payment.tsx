@@ -6,13 +6,12 @@ import PayPal from "../assets/checkout-icons/PayPal.svg";
 import GooglePay from "../assets/checkout-icons/GooglePay.svg";
 import BankTransfer from "../assets/checkout-icons/BankTransfer.svg";
 import { ChevronLeft } from "lucide-react";
+import { useEffect } from "react";
 
-interface PaymentProps {
-	next: () => void;
-	back: () => void;
-}
-
-function Payment(props: PaymentProps) {
+function Payment(props: any) {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
@@ -119,7 +118,7 @@ function Payment(props: PaymentProps) {
 					onClick={props.back}
 				>
 					{" "}
-					<ChevronLeft /> Back to delivery
+					<ChevronLeft /> Return to delivery
 				</p>
 				<div>
 					<Button className="bg-[#00B207] hover:bg-[#00B207] text-sm text-white rounded-sm">

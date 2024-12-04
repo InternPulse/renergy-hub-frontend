@@ -20,9 +20,9 @@ import { Checkbox } from '../../../components/ui/checkbox'
 
 export function ProductFilter() {
   
-    const {products, selectedProducts , setFilteredProduct} = useProductStore(); // Assuming ProductStore contains vendors data
+    const {testProducts, selectedProducts , setFilteredProduct} = useProductStore(); // Assuming ProductStore contains vendors data
    
-  const handleVendorChange = (ProductId: string) => {
+  const handleVendorChange = (ProductId: number) => {
    
   
      setFilteredProduct(ProductId); 
@@ -37,10 +37,10 @@ const getSelectedVendorsText = () => {
       return "Shop by Product";
     }
   
-    // 5. Handle "all" case when it's selected
-    if (selectedProducts.some(v => v.id === "all")) {
-      return "All Products";
-    }
+    // // 5. Handle "all" case when it's selected
+    // if (selectedProducts.some(v => v.id === "all")) {
+    //   return "All Products";
+    // }
   
     // 6. Get the names of selected vendors
     const selectedNames = selectedProducts.map(vendor => vendor.name);
@@ -54,7 +54,7 @@ const getSelectedVendorsText = () => {
           variant="outline"
           role="combobox"
           aria-label="Select vendors"
-          className="w-[250px] justify-between"
+          className="w-[250px] justify-between rounded-xl bg-white text-black hover:bg-green-500 border-slate-200 hover:text-white"
         >
           <span className="truncate">{getSelectedVendorsText()}</span>
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -63,7 +63,7 @@ const getSelectedVendorsText = () => {
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
         <ScrollArea className="h-[300px]  ">
-          {products.map((product) => (
+          {testProducts.map((product) => (
             <div  className='flex items-center'>
             <Checkbox
              key={product.id}

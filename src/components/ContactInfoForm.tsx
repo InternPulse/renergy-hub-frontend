@@ -1,7 +1,7 @@
 function ContactForm() {
 	return (
 		<div className="w-full flex flex-col gap-3">
-			<p className="text-start text-md">Contact Information</p>
+			<p className="text-start text-md ">Contact Information</p>
 
 			<div className="bg-white form-group rounded-md mb-2 ">
 				<p className="text-[10px]  text-start mx-1 mt-1">
@@ -18,7 +18,7 @@ function ContactForm() {
 			</div>
 			<div>
 				<div className="bg-white form-group rounded-md my-1 ">
-					<p className="text-[10px]  text-start mx-1 mt-1">
+					<p className="text-[10px] text-start mx-1 mt-1">
 						<span className="text-[#6A6767]">Email Address </span>
 						<span className="text-[red]">*</span>
 					</p>
@@ -36,7 +36,7 @@ function ContactForm() {
 			</div>
 			<div className="my-2">
 				<div className="bg-white form-group rounded-md my-1 ">
-					<p className="text-[10px]  text-start mx-1 mt-1">
+					<p className="text-[10px] text-start mx-1 mt-1">
 						<span className="text-[#6A6767]">Phone Number </span>
 						<span className="text-[red]">*</span>
 					</p>

@@ -5,7 +5,6 @@ import Button from "../components/Button";
 interface ProductProperty {
     Product: {
             imageUrl: string;
-            // altText: string;
     };
     'Primary Function' : string;
     'Best Applications' : string;

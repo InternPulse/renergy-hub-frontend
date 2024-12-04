@@ -2,7 +2,7 @@ function ShippingForm() {
 	return (
 		<div className="w-full flex flex-col gap-4">
 			<div className="w-full flex flex-col gap-3">
-				<p className="text-start text-md">Shipping Address</p>
+				<p className="text-start text-md ">Shipping Address</p>
 
 				<div className="bg-white form-group rounded-md mb-2 ">
 					<p className="text-[10px]  text-start mx-1 mt-1">
@@ -44,7 +44,7 @@ function ShippingForm() {
 					/>
 				</div>
 				<div className="bg-white form-group rounded-md mb-2 ">
-					<p className="text-[10px]  text-start mx-1 mt-1">
+					<p className="text-[10px] text-start mx-1 mt-1">
 						<span className="text-[#6A6767]">Post Code </span>
 						<span className="text-[red]">*</span>
 					</p>
@@ -79,12 +79,12 @@ function ShippingForm() {
 							/>
 							<label
 								htmlFor="standard"
-								className="radio-label text-[8px] text-start"
+								className="radio-label text-xs text-start"
 							>
-								Shipping - FedEx 2 days
+								Shipping - FedEx Standard (2 days)
 							</label>
 						</div>
-						<p className="text-[8px] text-start font-medium">₦20,000</p>
+						<p className="text-xs text-start font-medium">₦20,000</p>
 					</div>
 					<div className="w-full p-2 flex items-center justify-between border-x border-b border-t-[0.6px] rounded-b-md border-[#E2E2E2]">
 						<div className="radio-container">
@@ -97,12 +97,12 @@ function ShippingForm() {
 							/>
 							<label
 								htmlFor="overnight"
-								className="radio-label text-[8px] text-start"
+								className="radio-label text-xs text-start"
 							>
-								Shipping - FedEx Standard Overnight
+								Shipping - FedEx Overnight
 							</label>
 						</div>
-						<p className="text-[8px] text-start font-medium">₦50,000</p>
+						<p className="text-xs text-start font-medium">₦50,000</p>
 					</div>
 				</div>
 			</div>

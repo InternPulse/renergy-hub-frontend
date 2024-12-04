@@ -36,9 +36,6 @@ const VendorProfile: React.FC = () => {
   // specialization
   const [newSpecialization, setNewSpecialization] = useState("");
 
-  // textarea
-  // const [wordCount, setWordCount] = useState(0);
-
   const handleAddSpecialization = () => {
     if (
       newSpecialization.trim() &&
@@ -79,17 +76,6 @@ const VendorProfile: React.FC = () => {
     e.preventDefault();
     console.log("Form Data:", formData);
     // Submit the data to your backend or API
-  };
-
-  // textarea
-
-  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const text = e.target.value;
-    const words = text.trim().split(/\s+/); // Split text by whitespace
-    if (words.length <= 1000) {
-      setFormData({ ...formData, description: text });
-      // setWordCount(words.length);
-    }
   };
 
   return (
@@ -323,7 +309,7 @@ const VendorProfile: React.FC = () => {
                   id="description"
                   placeholder="Write about your company"
                   value={formData.description}
-                  onChange={handleTextareaChange}
+                  onChange={handleInputChange}
                   maxLength={10000}
                   className="border border-[#565656] rounded-lg px-2 py-2 w-full outline-none mt-1 resize-none h-[100px]"
                 ></textarea>
