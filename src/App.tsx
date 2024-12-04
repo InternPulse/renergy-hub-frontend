@@ -28,7 +28,7 @@ function App() {
 				<Route path="/security-compliance" element={<SecurityCompliance />} /> 
 				<Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
 				<Route path="/content-section" element={<ContentSection />} />
-				<Route path="/admin/*" element={<AdminDashboardRoutes />} />  From oo-branch 
+				<Route path="/admin/*" element={<AdminDashboardRoutes />} />  
 			</Routes>
 		</div>
 	);

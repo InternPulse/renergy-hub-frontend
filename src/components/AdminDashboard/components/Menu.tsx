@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import homeIcon from '../components/Assets/home.png';
 import userManagementIcon from '../components/Assets/users.png';
 import orderManagementIcon from '../components/Assets/shopping-bag.png';
-import messagesIcon from '../components/Assets/mail.png';
 import reportAnalyticsIcon from '../components/Assets/pie-chart.png';
 import settingsIcon from '../components/Assets/settings.png';
 import logoutIcon from '../components/Assets/Log Out copy.png';
@@ -12,7 +11,7 @@ const menuItems = [
     {
         icon: homeIcon,
         label: "Dashboard",
-        href: "/admin/dashboard",
+        href: "/admin",
     },
     {
         icon: userManagementIcon,
@@ -23,11 +22,6 @@ const menuItems = [
         icon: orderManagementIcon,
         label: "Order Management",
         href: "/admin/order-management",
-    },
-    {
-        icon: messagesIcon,
-        label: "Messages",
-        href: "/admin/messages",
     },
     {
         icon: reportAnalyticsIcon,
