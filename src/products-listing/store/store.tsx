@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface apiCategory {
   id: number;
-  name: string;
+  categoryName: string;
   description: string;
 }
 
@@ -44,7 +44,7 @@ interface Product {
 
 interface Category {
   id: number;
-  name: string;
+  categoryName: string;
 }
 
 type ProductStore = {
@@ -146,8 +146,8 @@ export const useProductStore = create<ProductStore>()(
                     const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products') 
                     const products = await res.json()
                     const { data} = products
-                    console.log(data)
-                    set({testProducts: data})
+                    // console.log(data)
+                    set ({testProducts: data}) 
                  }catch(err){console.log(err)}
 
 
@@ -158,7 +158,7 @@ export const useProductStore = create<ProductStore>()(
          const res = await fetch(`https://renergy-hub-express-backend.onrender.com/api/v1/products/${id}`) 
          const products = await res.json()
          const { data} = products
-         console.log(data)
+         
          set({testProducts: data})
       }catch(err){console.log(err)}
 
@@ -169,10 +169,12 @@ export const useProductStore = create<ProductStore>()(
      getCategories: async () => {
       try{
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products/category') 
-        const products = await res.json()
-        const { data} = products
+        const categories = await res.json()
+        const { data} = categories
+       
+        set({testCategories: data})
+        
         console.log(data)
-        set({testProducts: data})
       }catch(err){console.log(err)}
      },
 
@@ -259,7 +261,7 @@ export const useProductStore = create<ProductStore>()(
       },
     }),
     {
-      name: 'products-storage', // Name of the storage item
+      name: 'pro-storage', // Name of the storage item
       storage: createJSONStorage(() => localStorage), // Use localStorage for persistence
     }
   )
