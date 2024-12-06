@@ -22,9 +22,9 @@ import { Checkbox } from '../../../components/ui/checkbox'
 
 export function CategoryFilter() {
   
-    const {categories, selectedCategories , setFilteredCategory} = useProductStore(); // Assuming ProductStore contains vendors data
+    const {testCategories, selectedCategories , setFilteredCategory} = useProductStore(); // Assuming ProductStore contains vendors data
    
-  const handleVendorChange = (categoryId: string) => {
+  const handleVendorChange = (categoryId: number) => {
    
   
      setFilteredCategory(categoryId); 
@@ -39,10 +39,10 @@ const getSelectedVendorsText = () => {
       return "Shop by Category";
     }
   
-    // 5. Handle "all" case when it's selected
-    if (selectedCategories.some(v => v.id === "all")) {
-      return "All Categories";
-    }
+    // // 5. Handle "all" case when it's selected
+    // if (selectedCategories.some(v => v.id === "all")) {
+    //   return "All Categories";
+    // }
   
     // 6. Get the names of selected vendors
     const selectedNames = selectedCategories.map(vendor => vendor.name);
@@ -65,7 +65,7 @@ const getSelectedVendorsText = () => {
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
         <ScrollArea className="">
-          {categories.map((category) => (
+          {testCategories.map((category) => (
             <div className='flex items-center'>
             <Checkbox
               key={category.id}

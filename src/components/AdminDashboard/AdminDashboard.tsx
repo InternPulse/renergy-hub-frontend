@@ -1,5 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
-import logo from "../../components/AdminDashboard/components/Assets/logo.png";
+import { Link,Outlet } from "react-router-dom";
+import logo from "../AdminDashboard/components/Assets/logo.png";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 

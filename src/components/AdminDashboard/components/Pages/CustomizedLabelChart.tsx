@@ -64,3 +64,5 @@ class CustomizedLabelChart extends PureComponent {
 }
 
 export default CustomizedLabelChart;
+
+

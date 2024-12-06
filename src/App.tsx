@@ -11,7 +11,7 @@ import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
 import SecurityCompliance from "./pages/SecurityCompliance"; // From HEAD
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
-import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
+//import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
         {/* From
         oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />

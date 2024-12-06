@@ -161,8 +161,10 @@ const ProductManagement: React.FC = () => {
               />
               <label className="text-[#565656]" htmlFor="file-upload">
                 <span className="underline  font-[500]">Click to Upload</span>{" "}
-                or drag and drop SVG,PNG,JPG or GIF [max 800 x 400px]
               </label>
+              <span className="text-[#565656]">
+                or drag and drop SVG,PNG,JPG or GIF [max 800 x 400px]
+              </span>
               <p>
                 {productData.image
                   ? productData.image.name
