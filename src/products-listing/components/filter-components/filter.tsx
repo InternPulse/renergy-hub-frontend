@@ -50,7 +50,7 @@ const Filter = () => {
 
     // Handle category filter
     if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.name);
+      const categoryNames = selectedCategories.map((cat) => cat.categoryName);
       params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
@@ -97,7 +97,7 @@ const Filter = () => {
     const fetchData = async ()=>{
       try{
         await getProduct()
-        // await getCategories()
+        await getCategories()
         handleClick();
       }catch(err){console.log(err)}
     }
