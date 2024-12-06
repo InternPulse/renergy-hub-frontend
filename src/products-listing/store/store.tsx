@@ -146,7 +146,7 @@ export const useProductStore = create<ProductStore>()(
                     const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products') 
                     const products = await res.json()
                     const { data} = products
-                    // console.log(data)
+                    console.log(data)
                     set ({testProducts: data}) 
                  }catch(err){console.log(err)}
 

@@ -4,7 +4,7 @@ import Header from '../components/ui-sections/header'
 import PriceSection from '../components/ui-sections/Price'
 import Vendor from '../components/ui-sections/Vendor'
 import { Link, Outlet } from 'react-router-dom'
-
+import ImageGallery from '../components/ui-sections/image-gallery'
 
 //props
 const ProductDetail = () => {
@@ -14,7 +14,8 @@ const ProductDetail = () => {
       <nav>
         <Header />
       </nav>
-      <main className='grid md:grid-cols-2 grid-cols-1 '>
+      <main className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start '>
+        <ImageGallery/>
         <PriceSection/>
         <Vendor/>
       </main>

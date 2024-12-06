@@ -63,7 +63,7 @@ const getSelectedVendorsText = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2] ">
        
-        <ScrollArea className="h-[300px]">
+        <ScrollArea className="">
           {vendors.map((vendor) => (
             <div className='flex items-center'>
             <Checkbox

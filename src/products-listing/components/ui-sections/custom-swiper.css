@@ -1,0 +1,41 @@
+/* Hide Swiper navigation buttons by default (on mobile and desktop) */
+.swiper-button-prev, .swiper-button-next {
+    display: none;
+    background-color: transparent; /* Remove background */
+    color: transparent; /* Remove the default blue color */
+    font-size: 0; /* Hide text size (for the arrows) */
+}
+
+/* Show Swiper navigation buttons on large screens (lg: 1024px and above) */
+@media (min-width: 1024px) { /* Tailwind's 'lg' breakpoint */
+    .swiper-button-prev, .swiper-button-next {
+        display: block; /* Show the navigation buttons */
+        background-color: transparent; /* No background */
+        color: #000; /* Change arrow color to black */
+        font-size: 20px; /* Adjust arrow size */
+    }
+    /* Optional: Add custom hover effects */
+    .swiper-button-prev:hover, .swiper-button-next:hover {
+        color: #555; /* Darken arrow color on hover */
+    }
+}
+
+/* Base styles for Swiper images */
+.swiper-zoomable-image {
+    transition: transform 0.4s ease; /* Smooth transition for zoom */
+}
+
+/* Zoom effect for the active Swiper slide */
+.swiper-slide-active .swiper-zoomable-image {
+    transform: scale(1.5); /* Zoom in on the active slide image */
+}
+
+/* Optional: Add cursor style to indicate zoomable areas */
+.zoom-swiper {
+    cursor: pointer; /* Pointer cursor to indicate interactivity */
+}
+
+/* When zoomed, change cursor to indicate the zoom effect */
+.swiper-slide-active .swiper-zoomable-image {
+    cursor: zoom-out; /* Zoom-out cursor when the image is zoomed */
+}
