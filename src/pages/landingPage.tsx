@@ -5,7 +5,7 @@ import Faqs from "../components/Faqs";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Hero from "../components/Hero";
 import Mission from "../components/Mission";
-import Review from "../components/CheckoutReview";
+import Review from "../components/Review";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
