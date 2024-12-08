@@ -52,7 +52,7 @@ const BuyerSignup: React.FC = () => {
       !formData.password
     ) {
       hasError = true;
-      newErrors.general = "All fields are required."; // Add general error if any field is missing
+      newErrors.general = "All fields are required."; 
     }
 
     if (!validateEmail(formData.email)) {
@@ -79,7 +79,7 @@ const BuyerSignup: React.FC = () => {
         ...formData,
         userType: "CUSTOMER",
       });
-      const id = response.data.id; // Ensure this exists in the backend response
+      const id = response.data.id;
       navigate("/authentication/otp", { state: { id, email: formData.email } });
     } catch (err: any) {
       console.error("API Error:", err);
@@ -163,14 +163,12 @@ const BuyerSignup: React.FC = () => {
           </a>
         </p>
 
-        {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-grow border-t border-gray-300"></div>
           <p className="px-4 text-gray-400 text-sm">or register with</p>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
 
-        {/* Social Buttons */}
         <div className="flex flex-col items-center space-y-4 lg:space-y-0 lg:space-x-4">
           <button
             className="flex items-center justify-center w-full px-6 py-2 border-2 border-gray-100 rounded-md hover:bg-green-800 transition"

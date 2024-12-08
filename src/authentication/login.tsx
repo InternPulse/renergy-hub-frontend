@@ -25,15 +25,23 @@ const Login = () => {
       );
       console.log("Response:", response);
       // Handle success response
-      const { token, user } = response.data;
+      const user = response.data?.data;
+      if (!user) {
+        throw new Error("User data is missing from the response.");
+      }
+  
       console.log("Login successful:", user);
 
-      // Save token to local storage or context
-      localStorage.setItem("token", token);
-      console.log("User:", user);
+     
       
 
-      navigate("/vendorprofile");
+      if (user.userType === "CUSTOMER") {
+        navigate("/userprofile", { state: { userId: user.id } });
+      } else if (user.userType === "VENDOR") {
+        navigate("/vendorprofile", { state: { userId: user.id } });
+      } else {
+        throw new Error("Invalid role");
+      }
     } catch (err: any) {
       console.error("Login failed:", err.response?.data || err.message);
       setError(

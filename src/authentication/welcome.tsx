@@ -6,11 +6,10 @@ const Welcome: React.FC = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/vendorprofile");
+    navigate("/authentication/login");
   };
   return (
     <div className="flex flex-col justify-between ">
-      {/* Top Section */}
       <div className="flex justify-between px-4 py-1">
         <img src={Merry1} alt="merry" className="w-[13rem]" />
         <div className="bg-green-800 w-[5rem] h-[6rem] border"></div>

@@ -35,7 +35,7 @@ const Registration: React.FC = () => {
       }
     });
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0; 
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -126,7 +126,6 @@ const Registration: React.FC = () => {
             </div>
           </div>
 
-          {/* More Fields */}
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div>
               <label
