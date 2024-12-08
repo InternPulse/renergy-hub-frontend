@@ -25,12 +25,14 @@ const Login = () => {
       );
       console.log("Response:", response);
       // Handle success response
-      const { token, user } = response.data;
+      const user = response.data?.data;
+      if (!user) {
+        throw new Error("User data is missing from the response.");
+      }
+  
       console.log("Login successful:", user);
 
-      // Save token to local storage or context
-      localStorage.setItem("token", token);
-      console.log("User:", user);
+     
       
 
       if (user.userType === "CUSTOMER") {
