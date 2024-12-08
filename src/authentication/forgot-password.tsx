@@ -23,7 +23,7 @@ const ForgotPassword: React.FC = () => {
     setError(""); 
     
     try {
-      setLoading(true); // Start loading
+      setLoading(true); 
       await axios.post(
         `https://renergy-hub-express-backend.onrender.com/api/v1/auth/forgot-password`,
         { email }
@@ -32,13 +32,13 @@ const ForgotPassword: React.FC = () => {
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to reset password.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
     <div className=" flex flex-col justify-between">
-      {/* Top Section */}
+     
       <div className="flex justify-between px-4 py-1">
         <ArrowLeft
           size={24}

@@ -8,16 +8,14 @@ const VerifyPassword: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Safely retrieve the `id` from location.state
   const email = location.state?.email || null;
 
-  // Initialize OTP state for 4 inputs
   const [otp, setOtp] = useState<string[]>(Array(4).fill(""));
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (value: string, index: number) => {
     if (/^\d?$/.test(value)) {
-      // Ensure only digits are entered
+ 
       const updatedOtp = [...otp];
       updatedOtp[index] = value;
       setOtp(updatedOtp);
@@ -82,7 +80,6 @@ const VerifyPassword: React.FC = () => {
         <div className="bg-green-800 w-[5rem] h-[6rem] border"></div>
       </div>
 
-      {/* Main Section */}
       <div className="flex flex-col items-center flex-grow justify-center px-4">
         <img src={Email} alt="email" />
         <p className="font-bold text-4xl text-center mb-2">We Have Sent An Email</p>
