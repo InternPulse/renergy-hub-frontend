@@ -1,12 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Email from "../assets/email.png";
 import { useState } from "react";
+import axios from "axios";
 
 const Otp: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [otp, setOtp] = useState<string[]>(Array(5).fill(""));
+  // Safely retrieve the `id` from location.state
+  const id = location.state?.id || null;
+
+  // Initialize OTP state for 4 inputs
+  const [otp, setOtp] = useState<string[]>(Array(4).fill(""));
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (value: string, index: number) => {
     if (/^\d?$/.test(value)) {
@@ -16,24 +23,51 @@ const Otp: React.FC = () => {
       setOtp(updatedOtp);
 
       if (value && index < otp.length - 1) {
-        const nextInput = document.getElementById(`otp-${index + 1}`);
+        const nextInput = document.getElementById(`otp-${index + 1}`) as HTMLInputElement;
         nextInput?.focus();
       }
     }
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     const enteredOtp = otp.join("");
+
+    if (!id) {
+      alert("Invalid session. Please try again.");
+      return;
+    }
+
     if (enteredOtp.length === otp.length) {
-      alert(`OTP Verified: ${enteredOtp}`);
-      navigate("/authentication/welcome"); // Navigate to confirmation page
+      try {
+        setLoading(true);
+        console.log({ id, verifyToken: enteredOtp });
+        await axios.post(
+          `https://renergy-hub-express-backend.onrender.com/api/v1/auth/verify`,
+          { id: id.toString(), verifyToken: enteredOtp }
+        );
+        navigate("/authentication/welcome");
+      } catch (err: any) {
+        alert(err.response?.data?.message || "Failed to verify OTP");
+      } finally {
+        setLoading(false);
+      }
     } else {
       alert("Please complete the OTP input.");
     }
   };
 
-  const handleResendCode = () => {
-    alert("OTP code has been resent!");
+  const handleResendCode = async () => {
+    if (!id) {
+      alert("Invalid session. Unable to resend code.");
+      return;
+    }
+
+    try {
+      await axios.post(`https://renergy-hub-express-backend.onrender.com/api/v1/auth/resend/${id}`);
+      alert("OTP code has been resent!");
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Failed to resend OTP");
+    }
   };
 
   return (
@@ -72,9 +106,12 @@ const Otp: React.FC = () => {
 
         <button
           onClick={handleVerifyOtp}
-          className="px-24 py-2 bg-green-800 text-white rounded-md hover:bg-green-900 mb-4"
+          disabled={loading}
+          className={`px-24 py-2 bg-green-800 text-white rounded-md hover:bg-green-900 mb-4 ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
         >
-          Verify
+          {loading ? "Verifying..." : "Verify"}
         </button>
 
         <p className="text-sm text-gray-400">
@@ -92,3 +129,5 @@ const Otp: React.FC = () => {
 };
 
 export default Otp;
+
+

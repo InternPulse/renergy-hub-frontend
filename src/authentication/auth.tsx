@@ -10,6 +10,8 @@ import ForgotPassword from "./forgot-password";
 import Confirmation from "./confirmation";
 import Otp from "./otp";
 import Newpassword from "./newpassword";
+import Callback from "./callback";
+import VerifyPassword from "./verifypassword";
 
 function Auth() {
     return (
@@ -21,6 +23,8 @@ function Auth() {
         <Route path="registration" element={<Registration />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="verify-password" element={<VerifyPassword />} />
+        <Route path="callback" element={<Callback />} />
         <Route path="confirmation" element={<Confirmation />} />
         <Route path="otp" element={<Otp />} />
         <Route path="newpassword" element={<Newpassword />} />
