@@ -3,8 +3,27 @@ import deliveryBus from "../assets/delivery.png";
 import box from "../assets/package.png";
 import delivered from "../assets/delivered.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useEffect } from "react";
+import axios from "axios";
 
 export function OrderTracking() {
+  
+  useEffect(() => {
+    const getCoinData = async () => {
+      const myData = axios.get(`https://renergy-hub-express-backend.onrender.com/api/v1/orders`)
+      .then((response) => {
+          console.log(response.data)
+          return response.data
+      })
+      .catch((err) => {
+          return err
+      })
+  
+       console.log(myData)
+  }
+  getCoinData()
+  }, [])
+  
   return (
     <div className="w-[100%] lg:w-[50%]">
       <h1 className="text-3xl font-bold mb-2">Order Tracking</h1>
@@ -24,7 +43,7 @@ export function OrderTracking() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="transit">
-          <Card className="p-5">
+          <Card className="p-5 my-5">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2 md:gap-5">
                 <img src={box} alt="package" /> <p>#3692283</p>
