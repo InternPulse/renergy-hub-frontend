@@ -2,35 +2,35 @@ import { Award, Menu, Dock, House, Mail, Package, PanelsTopLeft, PieChart, Shopp
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png" 
+import logo from "../../assets/logo.png"
 
 const SIDEBAR_ITEMS = [
   {
-    name: 'Dashboard', icon: House, color:'black', href:'/'
+    name: 'Dashboard', icon: House, color:'black', href:'/vendor-dashboard'
   },
   {
-    name: 'Report', icon: PieChart, color:'black', href:'/report'
+    name: 'Report', icon: PieChart, color:'black', href:'/vendor-dashboard/report'
   },
   {
-    name: 'Products', icon: Package, color:'black', href:'/orders'
+    name: 'Products', icon: Package, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Offers', icon: Award, color:'black', href:'/offer'
+    name: 'Offers', icon: Award, color:'black', href:'/vendor-dashboard/offer'
   },
   {
-    name: 'Inventory', icon: Dock, color:'black', href:'/orders'
+    name: 'Inventory', icon: Dock, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Orders', icon: ShoppingBag, color:'black', href:'/orders'
+    name: 'Orders', icon: ShoppingBag, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Payments', icon: PanelsTopLeft, color:'black', href:'orders/'
+    name: 'Payments', icon: PanelsTopLeft, color:'black', href:'/vendor-dashboardorders/'
   },
   {
-    name: 'Messages', icon: Mail, color:'black', href:'/orders'
+    name: 'Messages', icon: Mail, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Customers', icon: User, color:'black', href:'/orders'
+    name: 'Customers', icon: User, color:'black', href:'/vendor-dashboard/orders'
   }
 ]
 

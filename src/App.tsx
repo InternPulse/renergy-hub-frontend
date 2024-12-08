@@ -18,7 +18,7 @@ function App() {
 		<div className="overflow-x-hidden w-full max-w-full">
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
-				<Route path="/vendor-dashboard" element={<VendorDashboard />} />
+				<Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
 				<Route path="/checkout" element={<CheckoutHomePage />} />
 				<Route path="/authentication/*" element={<Auth />} />
 				<Route path="/*" element={<Vendor />} />
