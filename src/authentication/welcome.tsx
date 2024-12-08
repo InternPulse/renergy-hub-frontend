@@ -1,7 +1,13 @@
 import welcome from "../assets/welcome.png";
 import Merry1 from '../assets/merry1.png';
 import Merry2 from '../assets/merry2.png';
+import { useNavigate } from "react-router-dom";
 const Welcome: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/vendorprofile");
+  };
   return (
     <div className="flex flex-col justify-between ">
       {/* Top Section */}
@@ -16,7 +22,7 @@ const Welcome: React.FC = () => {
           <p className="text-sm text-gray-400 text-center mb-6 leading-relaxed">
             Ready To Shine Your World?
           </p>
-          <button className="w-[20rem] px-4 bg-green-800 hover:bg-green-900 text-white py-2 rounded mt-4">
+          <button onClick={handleButtonClick} className="w-[20rem] px-4 bg-green-800 hover:bg-green-900 text-white py-2 rounded mt-4">
             Let's go!
           </button>
         </div>
