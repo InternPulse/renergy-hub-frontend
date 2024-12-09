@@ -10,6 +10,15 @@ import {
   TableRow,
 } from "../../../src/components/ui/table"
 
+import {
+  Popover,
+  PopoverTrigger,
+} from "../../../src/components/ui/popover"
+
+import PopOver from "../vendorcomponents/popOver"
+
+
+
 export const VendorOrders = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
@@ -84,17 +93,69 @@ export const VendorOrders = () => {
           </TableHeader>
           <TableBody>
             <TableRow className="bg-white rounded-lg">
-              <TableCell className="text-black font-medium border-b-2 pb-1">#1119256</TableCell>
-              <TableCell className="text-black font-medium border-b-2 pb-1">Esther Howard</TableCell>
-              <TableCell className="text-black font-medium border-b-2 pb-1">Shipping</TableCell>
-              <TableCell className="text-green-700 font-medium border-b-2 pb-1">Paid</TableCell>
-              <TableCell className="text-black font-medium border-b-2 pb-1">#175,000</TableCell>
-              <TableCell className="font-medium border-b-2 pb-1 text-black"> #175,000</TableCell>
-              <TableCell className="font-medium border-b-2 pb-1 text-black flex"> Jun 19 <Ellipsis /></TableCell>
+              <TableCell className="text-black font-medium border-b-2 pb-1">
+                 <Popover>
+                  <PopoverTrigger>
+                    #1119256
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="text-black font-medium border-b-2 pb-1">
+                <Popover>
+                  <PopoverTrigger>
+                     Esther Howard
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="text-black font-medium border-b-2 pb-1">
+                <Popover>
+                  <PopoverTrigger>
+                     Shipping
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="text-green-700 font-medium border-b-2 pb-1">
+                <Popover>
+                  <PopoverTrigger>
+                     Paid
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="text-black font-medium border-b-2 pb-1">
+                <Popover>
+                  <PopoverTrigger>
+                     #175,000
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="font-medium border-b-2 pb-1 text-black">
+                <Popover>
+                  <PopoverTrigger>
+                     #175,000
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
+              <TableCell className="font-medium border-b-2 pb-1 text-black">
+                <Popover>
+                  <PopoverTrigger className="flex">
+                     Jun 19 <Ellipsis />
+                  </PopoverTrigger>
+                  <PopOver />
+                </Popover>
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>
     </div>
+
+    
+
 
     </div>
     </div>
