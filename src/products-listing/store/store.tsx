@@ -88,7 +88,7 @@ export const useProductStore = create<ProductStore>()(
       testCategories:[],
       testIdProducts:[],
       testProducts:[],
-      count:0,
+      count:1,
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
        setCount: (value: number) => set({ count: value }),

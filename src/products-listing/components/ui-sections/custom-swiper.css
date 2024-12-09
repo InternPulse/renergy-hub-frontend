@@ -1,9 +1,7 @@
 /* Hide Swiper navigation buttons by default (on mobile and desktop) */
 .swiper-button-prev, .swiper-button-next {
     display: none;
-    background-color: transparent; /* Remove background */
-    color: transparent; /* Remove the default blue color */
-    font-size: 0; /* Hide text size (for the arrows) */
+
 }
 
 /* Show Swiper navigation buttons on large screens (lg: 1024px and above) */

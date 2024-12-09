@@ -33,7 +33,7 @@ const PriceSection = () => {
                 notify me when the price drops
             </li>
             <li className='flex items-center gap-2'> 
-             <Button  className='bg-white border text-[#1F2223] rounded-xl border-[#cccccc] text-xl hover:bg-[#dcffdf]' size={'icon'} onClick={handleDecrement} disabled={count < 1}> - </Button>
+             <Button  className='bg-white border text-[#1F2223] rounded-xl border-[#cccccc] text-xl hover:bg-[#dcffdf]' size={'icon'} onClick={handleDecrement} disabled={count <= 1}> - </Button>
              <p>{count}</p>
              <Button  className='bg-white text-[#1F2223] rounded-xl text-xl border border-[#cccccc] hover:bg-[#dcffdf]' size={'icon'} onClick={handleIncrement}>+</Button>
              <Button className='flex  text-white bg-[#002603] rounded-xl hover:bg-[#004d08]' >
