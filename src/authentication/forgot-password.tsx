@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Password from "../assets/password.png";
+import axios from "axios";
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
     if (!email) {
       setError("Email is required.");
       return;
@@ -19,13 +21,24 @@ const ForgotPassword: React.FC = () => {
     }
 
     setError(""); 
-    alert("Password reset instructions have been sent to your email.");
-    setEmail("");
+    
+    try {
+      setLoading(true); 
+      await axios.post(
+        `https://renergy-hub-express-backend.onrender.com/api/v1/auth/forgot-password`,
+        { email }
+      );
+      navigate("/authentication/verify-password", { state: { email } });
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to reset password.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className=" flex flex-col justify-between">
-      {/* Top Section */}
+     
       <div className="flex justify-between px-4 py-1">
         <ArrowLeft
           size={24}
@@ -53,12 +66,15 @@ const ForgotPassword: React.FC = () => {
         {error && (
           <p className="text-red-500 text-sm mt-1">{error}</p>
         )}
-        <button
+         <button
           onClick={handleResetPassword}
-          className="w-[20rem] px-4 bg-green-800 hover:bg-green-900 text-white py-2 rounded mt-4"
+          disabled={loading}
+          className={`w-[20rem] px-4 ${
+            loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-800 hover:bg-green-900"
+          } text-white py-2 rounded mt-4`}
         >
-          Reset Password
-        </button>
+          {loading ? "Sending..." : "Reset Password"}
+        </button> 
       </div>
     </div>
   );

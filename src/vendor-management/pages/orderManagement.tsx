@@ -1,8 +1,13 @@
 import { CircleHelp } from "lucide-react";
 import { orders as mockOrders } from "../data";
-import { Search } from "lucide-react";
-import { Share } from "lucide-react";
-import { Calendar } from "lucide-react";
+import {
+  Search,
+  ChevronLeft,
+  Share,
+  Calendar,
+  ChevronRight,
+} from "lucide-react";
+
 import React, { useState } from "react";
 import { formatCurrency } from "../data";
 import Navbar from "../header/navigation";
@@ -130,19 +135,28 @@ const OrderManagement: React.FC = () => {
               filteredOrders.map((order) => (
                 <TableRow key={order.customer} className="mb-10">
                   <TableCell>{order.customer}</TableCell>
-                  <TableCell className="mb-10">{order.date}</TableCell>
-                  <TableCell>{formatCurrency(order.total)}</TableCell>
-                  <TableCell>{order.paymentStatus}</TableCell>
-                  <TableCell>{order.items}</TableCell>
-                  <TableCell>{order.deliveryId}</TableCell>
+                  <TableCell className="text-[#666666]">{order.date}</TableCell>
+                  <TableCell className="text-[#666666]">
+                    {formatCurrency(order.total)}
+                  </TableCell>
+                  <TableCell className="text-[#2C742F] ">
+                    {order.paymentStatus}
+                  </TableCell>
+                  <TableCell className="text-[#666666] font-[500]">
+                    {order.items}
+                  </TableCell>
+                  <TableCell className="text-[#666666]">
+                    {order.deliveryId}
+                  </TableCell>
                   <TableCell
-                    className={`${
+                    className={`className="text-[#666666]" ${
                       order.orderStatus === "Completed"
                         ? "text-green-500 border-[1.5px] border-green-500 rounded-sm"
                         : order.orderStatus === "Returned"
                         ? "text-red-500 border-[1.5px]  border-red-500 rounded-sm "
                         : "text-orange-500 border-[1.5px]  border-orange-500 rounded-sm "
                     }`}
+                    style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
                     {order.orderStatus}
                   </TableCell>
@@ -157,6 +171,19 @@ const OrderManagement: React.FC = () => {
             )}
           </TableBody>
         </Table>
+        <div className="bg-white mt-4 py-2 pr-8 pl-2 flex justify-between">
+          <div className="flex border border-[#666666] p-2 rounded-sm gap-2 items-center">
+            <ChevronLeft />
+            <p className="text-[#666666]">Previous</p>
+          </div>
+          <div className="border border-[#666666] py-2 px-4 rounded-sm">
+            <p className="text-[#666666]">page 1 of 20</p>
+          </div>
+          <div className="flex border border-[#666666] py-2 px-4 rounded-sm gap-2 items-center">
+            <p className="text-[#666666]">Next</p>
+            <ChevronRight />
+          </div>
+        </div>
       </section>
     </>
   );

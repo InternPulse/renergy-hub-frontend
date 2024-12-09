@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { registerVendor } from "./api/vendorSignupapi";
 
 const Registration: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const initialData = location.state || {};
 
   const [formData, setFormData] = useState({
+    ...initialData,
     brandName: "",
     brandType: "",
     streetAddress: "",
     city: "",
     zipCode: "",
-    taxId: "",
+    taxID: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [id]: value }));
-    setErrors((prevErrors) => ({ ...prevErrors, [id]: "" })); // Clear errors on input
+    setFormData({ ...formData, [id]: value });
   };
 
   const validateForm = () => {
@@ -30,13 +35,26 @@ const Registration: React.FC = () => {
       }
     });
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0; 
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setApiError(null);
+    setLoading(true);
+
     if (validateForm()) {
-      navigate("/authentication/confirmation"); // Replace with your confirmation page route
+      try {
+        console.log(formData);
+        const response = await registerVendor({ ...formData, userType: "VENDOR" });
+        const id = response.data.id; // Ensure this exists in the backend response
+      navigate("/authentication/otp", { state: { id, email: formData.email } });
+      } catch (err: any) {
+        console.error("API Error:", err);
+        setApiError(err?.message || "An error occurred during registration.");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -108,7 +126,6 @@ const Registration: React.FC = () => {
             </div>
           </div>
 
-          {/* More Fields */}
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div>
               <label
@@ -174,15 +191,15 @@ const Registration: React.FC = () => {
 
             <div>
               <label
-                htmlFor="taxId"
+                htmlFor="taxID"
                 className="block text-sm font-medium text-gray-400 mb-1"
               >
                 Tax ID Number <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                id="taxId"
-                value={formData.taxId}
+                id="taxID"
+                value={formData.taxID}
                 onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md"
                 placeholder="Enter your tax ID number"
@@ -190,15 +207,25 @@ const Registration: React.FC = () => {
               {errors.taxId && (
                 <p className="text-red-500 text-sm">{errors.taxId}</p>
               )}
+
+              
             </div>
+            {apiError && (
+                <p className="text-red-500 text-sm mb-4">Error: {apiError}</p>
+              )}
           </div>
 
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-12 py-2 bg-green-800 text-white rounded-md hover:bg-green-900"
+              className={`w-full px-12 py-2 text-white rounded-md ${
+                loading
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-green-800 hover:bg-green-900"
+              } transition`}
+              disabled={loading}
             >
-              Create Account
+              {loading ? "Creating Account..." : "Create Account"}
             </button>
           </div>
         </form>
@@ -208,6 +235,3 @@ const Registration: React.FC = () => {
 };
 
 export default Registration;
-
-
-

@@ -24,10 +24,10 @@ const Navbar: React.FC = () => {
           isMenuOpen ? 'translate-y-0' : '-translate-y-[200%]'
         } md:translate-y-0`}
       >
-    <Link to='/'><li className="cursor-pointer hover:text-softGreen">Who We Are</li></Link> 
-    <Link to='/product'><li className="cursor-pointer hover:text-softGreen">Products</li></Link>
-        <li className="cursor-pointer hover:text-softGreen">Features</li>
-        <li className="cursor-pointer hover:text-softGreen">Contact Us</li>
+    <Link to='/about'><li className="cursor-pointer hover:bg-softGreen px-2 py-2">Who We Are</li></Link> 
+    <Link to='/product'><li className="cursor-pointer  hover:bg-softGreen px-2 py-2">Products</li></Link>
+    <Link to='blog'> <li className="cursor-pointer  hover:bg-softGreen px-2 py-2">blog</li></Link>
+       <Link to='/contact_us'> <li className="cursor-pointer hover:bg-softGreen px-2 py-2">Contact Us</li></Link>
       </ul>
 
       {/* Profile, Search, Cart Icons */}
