@@ -71,7 +71,7 @@ const getSelectedVendorsText = () => {
             <div className='flex items-center'   key={item.id}>
             <Checkbox
                key={item.id}
-              checked={selectedCategories.includes(item)}
+              checked={selectedCategories.some((c) => c.id === item.id)}
               onCheckedChange={() => handleVendorChange(item.id)}
             />
             <DropdownMenuLabel>

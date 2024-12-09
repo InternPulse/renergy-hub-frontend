@@ -22,12 +22,13 @@ import { Checkbox } from '../../../components/ui/checkbox'
 
 export function VendorFilter() {
   
-    const {vendors, selectedVendors , setFilteredVendor} = useProductStore(); // Assuming ProductStore contains vendors data
+    const {testVendors, selectedVendors , setFilteredVendor} = useProductStore(); // Assuming ProductStore contains vendors data
    
-  const handleVendorChange = (vendorId: string) => {
+  const handleVendorChange = (vendorId: number) => {
    
   
      setFilteredVendor(vendorId); 
+     console.log(selectedVendors)
   };
   
   
@@ -38,13 +39,13 @@ const getSelectedVendorsText = () => {
       return "Shop by Vendors";
     }
   
-    // 5. Handle "all" case when it's selected
-    if (selectedVendors.some(v => v.id === "all")) {
-      return "All Vendors";
-    }
+    // // 5. Handle "all" case when it's selected
+    // if (selectedVendors.some(v => v.id === "all")) {
+    //   return "All Vendors";
+    // }
   
     // 6. Get the names of selected vendors
-    const selectedNames = selectedVendors.map(vendor => vendor.name);
+    const selectedNames = selectedVendors.map(vendor => vendor.firstName);
     return selectedNames.join(", ");
   };
 
@@ -64,15 +65,15 @@ const getSelectedVendorsText = () => {
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2] ">
        
         <ScrollArea className="">
-          {vendors.map((vendor) => (
-            <div className='flex items-center' key={vendor.id}>
+          {testVendors.map((vendor,index) => (
+            <div className='flex items-center' key={index}>
             <Checkbox
-              key={vendor.id}
-              checked={selectedVendors.includes(vendor)}
+                key={vendor.id}
+              checked={selectedVendors.some((v) => v.id === vendor.id)}
               onCheckedChange={() => handleVendorChange(vendor.id)}
             />
             <DropdownMenuLabel>
-              {vendor.name}
+              {vendor.firstName}
               </DropdownMenuLabel>
             </div>
           ))}

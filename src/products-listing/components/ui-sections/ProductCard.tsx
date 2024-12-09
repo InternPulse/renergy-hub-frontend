@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import img1 from '../../../../public/assets/solor.svg'
 import { useProductStore } from '../../store/store';
+import { apiProduct } from '../../store/store';
 export type ProductProps = {
-    products: []
+    products?: apiProduct
 }
 
-// {products}: ProductProps
 
-const ProductCard = () => {
+
+const ProductCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
     const {addToCart} = useProductStore()
 
@@ -45,14 +46,14 @@ const removeClick = ()=> {
             
           
         </li>
-        <Link to={''}>
+        <Link to={`/product/detail/${products?.id}`}>
         <li className="flex justify-center">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             
         </li>
      <li className="flex flex-col text-center gap-2">
-        <p className='text-black'>Fireman 380W Solar Panel</p>
-        <p className="text-[#4C4C4C]">₦350,000.00</p>
+        <p className='text-black'>{products?.name || 'Fireman '}</p>
+        <p className="text-[#4C4C4C]">{products?.price || 'N200'}</p>
 
      </li>
 

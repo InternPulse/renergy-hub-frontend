@@ -5,9 +5,23 @@ import PriceSection from '../components/ui-sections/Price'
 import Vendor from '../components/ui-sections/Vendor'
 import { Link, Outlet } from 'react-router-dom'
 import ImageGallery from '../components/ui-sections/image-gallery'
-
+import { useParams } from 'react-router-dom'
+import { useProductStore } from '../store/store'
+import { useEffect,useState } from 'react'
+import { apiProduct } from '../store/store'
 //props
 const ProductDetail = () => {
+  const {id} = useParams()
+  const {testProducts} = useProductStore()
+  const [product,setProduct] = useState<apiProduct|undefined>(undefined)
+  useEffect (()=>{
+    const index = parseInt(id as string)
+    const product = testProducts.find(p=>p.id === index)
+    console.log(product)
+    setProduct(product)
+
+  },[id,testProducts])
+
   return (
     <>
      <div className='flex flex-col p-4 lg:p-8 mx-auto'>
@@ -23,7 +37,7 @@ const ProductDetail = () => {
       
        <main className='flex flex-col gap-8'>
         <div className='flex gap-2'>
-          <Link to='/product/detail' className='text-black hover:text-[#002603]'> DETAILS </Link>
+          <Link to={'/product/detail/'} className='text-black hover:text-[#002603]'> DETAILS </Link>
           <Link to='/product/detail/review' className='text-black hover:text-[#002603]'> REVIEWS </Link>
           
           </div>
