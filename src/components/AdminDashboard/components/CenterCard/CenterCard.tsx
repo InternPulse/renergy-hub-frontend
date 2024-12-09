@@ -4,7 +4,7 @@ interface CenterCardProps {
   type: string;
 }
 
-const CenterCard: React.FC<CenterCardProps> = ({ type }) => {
+const CenterCard: React.FC<CenterCardProps> = () => {
   const vendorImages = [
     'https://via.placeholder.com/100',
     'https://via.placeholder.com/100',
