@@ -58,7 +58,7 @@ export const Sidebar = () => {
         src={logo}
         alt="logo" />
 
-			<div className='h-full  bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
+			<div className='h-auto  bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
 				<motion.button
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}

@@ -5,7 +5,7 @@ import { Sidebar } from '../vendorcomponents/sidebar';
 
 export const VendorDashboard = () => {
   return (
-    <div>
+    <div className='flex h-screen'>
       <Sidebar />
       <Routes>
       <Route path="/" element={<VendorOverview />} />
