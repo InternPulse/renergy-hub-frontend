@@ -65,7 +65,7 @@ const getSelectedVendorsText = () => {
        
         <ScrollArea className="">
           {vendors.map((vendor) => (
-            <div className='flex items-center'>
+            <div className='flex items-center' key={vendor.id}>
             <Checkbox
               key={vendor.id}
               checked={selectedVendors.includes(vendor)}

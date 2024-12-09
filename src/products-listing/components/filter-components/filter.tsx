@@ -96,8 +96,7 @@ const Filter = () => {
   useEffect(() => {
     const fetchData = async ()=>{
       try{
-        await getProduct()
-        await getCategories()
+        await Promise.all([getProduct(), getCategories()]);
         handleClick();
       }catch(err){console.log(err)}
     }
