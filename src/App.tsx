@@ -26,7 +26,7 @@ function App() {
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
-        <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+        <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
         {/* From
         oo-branch */}
