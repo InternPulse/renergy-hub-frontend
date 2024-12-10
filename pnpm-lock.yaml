@@ -1968,10 +1968,13 @@ packages:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
 
+<<<<<<< HEAD
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+=======
+>>>>>>> 7fa38879235e58c19f8f70fcca5f0893902f58cb
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
@@ -4254,8 +4257,11 @@ snapshots:
       lru-cache: 10.4.3
       minipass: 7.1.2
 
+<<<<<<< HEAD
   path-type@4.0.0: {}
 
+=======
+>>>>>>> 7fa38879235e58c19f8f70fcca5f0893902f58cb
   performance-now@2.1.0: {}
 
   picocolors@1.1.1: {}
