@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import OrderSummary from './OrderSummary';
 import { CiHeart } from 'react-icons/ci';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import CartSummary from './CartSummary';
 
 import ProductListThree from './ProductListThree';
-import ProductlistFour from './ProductListFour';
+
 
 const ProductListTwo = () => {
   const [cartItems, setCartItems] = useState([
@@ -28,21 +28,21 @@ const ProductListTwo = () => {
   const [discount, setDiscount] = useState(0); // Discount in percentage (e.g., 10% discount)
 
   // Increase quantity handler
-  const handleIncreaseQuantity = (id) => {
+  const handleIncreaseQuantity = (id: number) => {
     setCartItems(cartItems.map(item => 
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     ));
   };
 
   // Decrease quantity handler
-  const handleDecreaseQuantity = (id) => {
+  const handleDecreaseQuantity = (id: number) => {
     setCartItems(cartItems.map(item => 
       item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
     ));
   };
 
   // Handle coupon change
-  const handleCouponChange = (e) => {
+  const handleCouponChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCouponCode(e.target.value);
   };
 
@@ -63,7 +63,7 @@ const ProductListTwo = () => {
   };
 
   // Remove item from cart
-  const handleRemoveItem = (id) => {
+  const handleRemoveItem = (id: number) => {
     setCartItems(cartItems.filter(item => item.id !== id));
   };
 
@@ -180,9 +180,9 @@ const ProductListTwo = () => {
         <ProductListThree />
       </div>
 
-      <div className="mt-8">
+     {/* <div className="mt-8">
         <ProductlistFour />
-      </div>
+      </div> */}
     </div>
   );
 };

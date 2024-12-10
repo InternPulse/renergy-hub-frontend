@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiShare } from "react-icons/fi";
+import Navbar from "./Navbar"
 import Wishlist from "./Shopping"; // Assuming Wishlist is a related component
 
 interface Item {
@@ -55,6 +56,7 @@ const ProductList: React.FC = () => {
 
   return (
     <div className="bg-white w-full max-w-[1146px] mx-auto gap-8 rounded-tl-[8px] px-5 py-10">
+      <Navbar />
       <Wishlist />
 
       <div className="flex flex-col space-y-8">

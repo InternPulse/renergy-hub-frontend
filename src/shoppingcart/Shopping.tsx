@@ -6,7 +6,7 @@ const Shopping = () => {
       <div className="border-b-2 border-b-custom-green">
         <div className="flex justify-between items-center p-4">
           <nav>
-            <Link className="font-bold text-lg hover:text-green-600">Wishlist</Link>
+            <Link to="/wishlist" className="font-bold text-lg hover:text-green-600">Wishlist</Link>
           </nav>
           <nav>
             <Link to="/" className="text-xs underline hover:text-green-600">

@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
+import ProductList from "./shoppingcart/ProductList";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           element={<ShippingAndTracking />}
         />
         <Route path="/content-section" element={<ContentSection />} />
+        <Route path="/shopping-cart" element={<ProductList />} />
         <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
         {/* From oo-branch */}
       </Routes>

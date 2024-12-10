@@ -4,11 +4,10 @@ import { CgProfile } from "react-icons/cg";
 import { CiSearch } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 
-interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC = () => {
   const [showSearch, setShowSearch] = useState<boolean>(false); // Toggle search bar
-  const [cartCount, setCartCount] = useState<number>(3); // Example cart count
+  const [cartCount] = useState<number>(3); // Example cart count
   const location = useLocation(); // Get the current route
 
   // Function to toggle the search bar

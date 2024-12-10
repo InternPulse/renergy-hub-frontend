@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { CiHeart } from "react-icons/ci";
 
 // Example images imported directly
 import frame3 from 'src/assets/frame3.png';
 
 const ProductListThree = () => {
-  const [likedItems, setLikedItems] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [likedItems, setLikedItems] = useState<number[]>([]);
+  const [cart, setCart] = useState<{ id: number; name: string; price: string; imgSrc: string }[]>([]);
 
   const items = [
     {
@@ -29,13 +29,13 @@ const ProductListThree = () => {
     },
   ];
 
-  const handleLike = (id) => {
+  const handleLike = (id: number) => {
     setLikedItems((prev) =>
       prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
     );
   };
 
-  const addToCart = (item) => {
+  const addToCart = (item: { id: number; name: string; price: string; imgSrc: string }) => {
     setCart((prev) => [...prev, item]);
   };
 
