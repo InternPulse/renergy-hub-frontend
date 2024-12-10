@@ -12,7 +12,7 @@ const ProductListing = () => {
   const {sort,testCategories,testProducts,testVendors}=useProductStore()
   // const { products, vendors, categories } = storeData;
 
-  const itemsPerPage = 5; // Number of items per page
+  const itemsPerPage = 10; // Number of items per page
   const currentPage = parseInt(searchParams.get("page") || "1", 10); // Get current page from URL, default to 1
 
 
@@ -96,23 +96,14 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     setSearchParams(params); // Update URL with the new page number
   };
 
-
-
-
-
-
-
-
-
-
   return (
     <>
     <div className="flex flex-col gap-4 p-4 lg:p-8">
       <Filter />
-      <div className="">
+      <div className="grid grid-cols-2 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-5">
         {paginatedProducts.length > 0 ? (
-          paginatedProducts.map((product,index) => (
-            <div key={index}>
+          paginatedProducts.map((product) => (
+            <div key={product.id} className="">
               <ProductCard products={product} key={product.id} />
             </div>
           ))

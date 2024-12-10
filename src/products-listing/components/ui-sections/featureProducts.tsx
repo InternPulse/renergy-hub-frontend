@@ -9,7 +9,7 @@ export type ProductProps = {
 
 
 
-const ProductCard = ({products}: ProductProps) => {
+const ViewCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
     const {addToCart} = useProductStore()
 
@@ -31,7 +31,7 @@ function getFirstThreeWords(name:string) {
   return (
     <>
     <div className="">
-      <ul className="flex flex-grow flex-col  gap-4 pt-4 lg:pt-8 pb-[11px] lg:pb-[18px] px-[11px] bg-white text-black rounded-xl   border border-slate-300 ">
+      <ul className="flex flex-col max-w-[210px]  gap-4 pt-4 lg:pt-8 pb-[11px] lg:pb-[18px] px-[11px] bg-white text-black rounded-xl   border border-slate-300 ">
 
         <li className="flex justify-end">
            {!isClicked?    
@@ -72,5 +72,5 @@ function getFirstThreeWords(name:string) {
   )
 }
 
-export default ProductCard
+export default ViewCard
 

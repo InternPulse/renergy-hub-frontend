@@ -8,7 +8,7 @@ import ImageGallery from '../components/ui-sections/image-gallery'
 import { useParams } from 'react-router-dom'
 import { useProductStore } from '../store/store'
 import { useEffect, } from 'react'
- 
+ import ViewCard from '../components/ui-sections/featureProducts'
 
 
 
@@ -73,7 +73,7 @@ const ProductDetail = () => {
         </div>
         <div>
         {/* add props later products={[]} */}
-         <ProductCard />
+         <ViewCard />
          </div>
          <div className='flex justify-center items-center'>
          <Button variant={'outline'} className='bg-white text-black rounded-xl text-xl border-[#2C742F]' size={'sm'}> 

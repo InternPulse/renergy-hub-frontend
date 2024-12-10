@@ -24,7 +24,8 @@ const Socials: socialProps[] = [{icon:img2 },{icon:img3 },{icon:img4 },{icon:img
 
 const PriceSection = ({products}:props) => {
     const {count,setCount} = useProductStore()
-
+// Convert the string to a number and then format it
+const formattedPrice = Number(products.price).toLocaleString();
     const handleIncrement = () =>{
         setCount(count + 1)
     }
@@ -43,7 +44,7 @@ const PriceSection = ({products}:props) => {
                 <p> Be the first to review this product </p></div>
 
             </li>
-            <li className='font-normal text-xl text-black'>{`NGN ${products.price}`} </li>
+            <li className='font-normal text-xl text-black'>{`NGN ${formattedPrice}`} </li>
             <li>
             <p className='text-[#666666] uppercase'>Availability: <span className='text-[#002603]'>{products.stock > 0 ? 'in stock' : 'out of stock'}</span></p>
             <p className='text-[#666666] uppercase'>sku: <span className='text-[#002603]'>{`XYZ-PTZ${products.id}`}</span></p>
