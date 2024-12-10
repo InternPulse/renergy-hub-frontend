@@ -1,7 +1,12 @@
 import Navbar from '../components/Navbar';
 import eclipse from '../assets/Ellipse.png';
 import blog1 from '../assets/blog1.png'
+import blog2 from '../assets/blog2.png'
+import topic2 from '../assets/topic2.png'
+import topic1 from '../assets/topic1.png'
+import topic3 from '../assets/topic3.png'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 const RenergyBlog = () => {
@@ -67,116 +72,116 @@ const RenergyBlog = () => {
     
     {/* Button */}
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'> <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link> 
     </div>
   </div>
 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
   {/* Card 1 */}
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'> <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
 
   {/* Card 2 */}
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={topic1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
 
   {/* Card 3 */}
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={topic2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
 
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={topic3} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'> <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
   <div className="flex flex-col bg-white rounded-lg shadow-lg p-4">
-    <img src={blog1} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
+    <img src={blog2} alt="Blog Image" className="w-full h-[200px] object-cover rounded-lg mb-4" />
     <span className="text-sm text-gray-500 mb-2">October 07, 2024</span>
     <h4 className="text-lg font-semibold text-gray-800 mb-2">Use alternative energy to boost your business's sustainability</h4>
     <p className="text-base text-gray-600 mb-4">Work places can now more easily commit to sustainability through innovative products and energy solutions</p>
     <div className="flex justify-center sm:justify-start">
-      <button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
+    <Link to='/blog-detail'><button className="px-6 py-2 white border border-gray-800 text-gray-800 rounded-lg hover:bg-softGreen transition duration-300">
         Read More
-      </button>
+      </button></Link>
     </div>
   </div>
 </div>

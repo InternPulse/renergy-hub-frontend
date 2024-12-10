@@ -14,6 +14,7 @@ import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRout
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
+import BlogDetail from "./pages/BlogDetail";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
+        <Route path="/blog-detail" element={<BlogDetail />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
         {/* From

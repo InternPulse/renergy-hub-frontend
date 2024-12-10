@@ -23,10 +23,14 @@ const AboutUs = () => {
       <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
         Powering <span className="text-hardGreen">Nigeria Sustainably</span>
       </h2>
-      <div className="flex justify-center mb-6">
-        <img src={about_page} alt="About us" className="w-full max-w-md rounded-lg shadow-md " />
-      </div>
-      <p className="text-gray-700 text-lg leading-relaxed text-center mb-12">
+      <div className="flex justify-center mb-6 w-full">
+  <img 
+    src={about_page} 
+    alt="About us" 
+    className="w-full max-w-3xl rounded-lg shadow-md" 
+  />
+</div>
+      <p className="text-gray-700 text-lg leading-relaxed  mb-12">
         As the global shift toward clean energy for Nigeria, where energy challenges persist, these trends signal
         exciting opportunities for individuals, businesses, and communities to embrace sustainable solutions.{' '}
         <span className="text-hardGreen font-semibold">RENERGYHUB</span> bridges the gap between renewable energy
