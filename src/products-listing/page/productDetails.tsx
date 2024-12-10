@@ -1,4 +1,4 @@
-import ProductCard from '../components/ui-sections/ProductCard'
+
 import { Button } from '../../components/ui/button'
 import Header from '../components/ui-sections/header'
 import PriceSection from '../components/ui-sections/Price'
@@ -7,15 +7,19 @@ import { Link, Outlet } from 'react-router-dom'
 import ImageGallery from '../components/ui-sections/image-gallery'
 import { useParams } from 'react-router-dom'
 import { useProductStore } from '../store/store'
-import { useEffect, } from 'react'
+import { useEffect} from 'react'
  import ViewCard from '../components/ui-sections/featureProducts'
+ import { Separator } from '../../components/ui/separator';
 
 
 
 const ProductDetail = () => {
   const {id} = useParams()
   const index = parseInt(id as string)
-  const {testProducts,setDetailProducts,detailProducts,getProduct} = useProductStore()
+
+  const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick} = useProductStore()
+
+  const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   // const [product,setProduct] = useState<apiProduct|undefined>(undefined)
  useEffect(() => {
   const fetchProduct = async () => {
@@ -43,9 +47,18 @@ const ProductDetail = () => {
 
   fetchProduct();
 }, [index, testProducts, getProduct,setDetailProducts,]); // Removed setDetailProducts if it's a setter
+
+const handleDetailClick = ()=>{
+      setIsDclicked(true)
+         setIsRClick(false)
+}
+const handleReviewClick = ()=>{
+  setIsDclicked(false)
+  setIsRClick(true)
+}
   return (
     <>
-     <div className='flex flex-col p-4 lg:p-8 mx-auto'>
+     <div className='flex flex-col p-4 lg:p-8 gap-8 mx-auto'>
       <nav>
         <Header />
       </nav>
@@ -57,30 +70,55 @@ const ProductDetail = () => {
     <section className='flex flex-col gap-8'>
       
        <main className='flex flex-col gap-8'>
-        <div className='flex gap-2'>
-          <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603]'> DETAILS </Link>
-          <Link to={`/product/detail/${index}/review`}className='text-black hover:text-[#002603]'> REVIEWS </Link>
+        <ul className='flex flex-col'>
+          <li className='flex gap-2'>
+            <button onClick={handleDetailClick}  className='bg-none p-0' >
+          <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603] flex flex-col ' > 
+         
+        <p>  DETAILS </p> 
+      
+          {isDclicked && <Separator className='max-w-[94px] h-1 bg-black'/>}
           
-          </div>
+           </Link>
+           </button>
+           <button onClick={handleReviewClick}   className='bg-none p-0' >
+          <Link to={`/product/detail/${index}/review`} className='text-black hover:text-[#002603] flex flex-col ' > 
+         
+        <p>  REVIEWS </p> 
+      
+          {isRClick && <Separator className='max-w-[94px] h-1 bg-black'/>}
+          
+           </Link>
+           </button>
+         
+          </li>
+          
+          <Separator/>
+          </ul>
+
           <section>
           <Outlet/>
           </section>
        </main>
      
-        
+        <section className='flex flex-col gap-8 md:p-8 '>
         <div className=' text-center text-black'>
             <p> YOU MAY ALSO LIKE </p>
         </div>
         <div>
+          <div className='lg:flex-row flex flex-col gap-4 lg:gap-12 items-center justify-center '>
         {/* add props later products={[]} */}
-         <ViewCard />
+        {filteredProducts.slice(0,3).map(product => (
+           <ViewCard products={product} key={product.id}/>
+        ))}
+        </div>
          </div>
          <div className='flex justify-center items-center'>
-         <Button variant={'outline'} className='bg-white text-black rounded-xl text-xl border-[#2C742F]' size={'sm'}> 
-            View more
+         <Button variant={'outline'} className='bg-white text-black rounded-lg  border-[#2C742F]' size={'sm'} asChild> 
+         <Link to='/product' >View more</Link>   
          </Button>
          </div>
-
+         </section>
     </section>
     </div>
     </>

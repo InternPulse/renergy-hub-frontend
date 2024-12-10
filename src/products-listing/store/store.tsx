@@ -85,6 +85,10 @@ type ProductStore = {
   setCount: (value: number) => void; 
   sort:string
   isClicked: boolean
+  isDclicked: boolean
+  isRClick: boolean
+  setIsDclicked: (isDclicked: boolean) => void;
+  setIsRClick: (isRClick: boolean) => void;
   setIsClicked: (isClicked: boolean) => void
   setSort: (sort: string) => void;
   categories: Category[];
@@ -122,11 +126,13 @@ export const useProductStore = create<ProductStore>()(
         price: '',
         stock: 0,
         image: '',
+      
         createdAt: '',
         updatedAt: '',
         category: { id: 0, categoryName: '', description: '' },
        },
-      
+       isDclicked: true,
+       isRClick:true,
       testVendors: [],
       testCategories:[],
       testIdProducts:[],
@@ -139,7 +145,8 @@ export const useProductStore = create<ProductStore>()(
       vendors: [
      
       ],
-
+      setIsDclicked: (isDclicked: boolean) => set({ isDclicked }),
+      setIsRClick: (isRClick: boolean) => set({ isRClick }),
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
       addToCart: (product: apiProduct) => set((state) => ({ products: [...state.products, product] })),
