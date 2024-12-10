@@ -74,7 +74,6 @@ const BuyerSignup: React.FC = () => {
     }
 
     try {
-      console.log("Form Data being sent:", formData);
       const response = await registerUser({
         ...formData,
         userType: "CUSTOMER",
@@ -82,7 +81,6 @@ const BuyerSignup: React.FC = () => {
       const id = response.data.id;
       navigate("/authentication/otp", { state: { id, email: formData.email } });
     } catch (err: any) {
-      console.error("API Error:", err);
       setApiError(err?.message || "An error occurred during registration.");
     } finally {
       setLoading(false);
