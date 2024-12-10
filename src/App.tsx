@@ -11,6 +11,10 @@ import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
 import SecurityCompliance from "./pages/SecurityCompliance"; // From HEAD
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+import RenergyBlog from "./pages/RenergyBlog";
+import BlogDetail from "./pages/BlogDetail";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
@@ -18,7 +22,11 @@ function App() {
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact_us" element={<ContactUs />} />
+        <Route path="/blog" element={<RenergyBlog />} />
+        <Route path="/blog-detail" element={<BlogDetail />} />
+        <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
         {/* From
         oo-branch */}
