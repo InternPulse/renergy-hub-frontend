@@ -23,17 +23,11 @@ const Login = () => {
         "https://renergy-hub-express-backend.onrender.com/api/v1/auth/login",
         { email, password }
       );
-      console.log("Response:", response);
-      // Handle success response
       const user = response.data?.data;
       if (!user) {
         throw new Error("User data is missing from the response.");
       }
-  
-      console.log("Login successful:", user);
 
-     
-      
 
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
@@ -43,7 +37,6 @@ const Login = () => {
         throw new Error("Invalid role");
       }
     } catch (err: any) {
-      console.error("Login failed:", err.response?.data || err.message);
       setError(
         err.response?.data?.message || "An error occurred. Please try again."
       );

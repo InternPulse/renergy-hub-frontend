@@ -8,16 +8,14 @@ const Otp: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Safely retrieve the `id` from location.state
   const id = location.state?.id || null;
 
-  // Initialize OTP state for 4 inputs
+  
   const [otp, setOtp] = useState<string[]>(Array(4).fill(""));
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (value: string, index: number) => {
     if (/^\d?$/.test(value)) {
-      // Ensure only digits are entered
       const updatedOtp = [...otp];
       updatedOtp[index] = value;
       setOtp(updatedOtp);
