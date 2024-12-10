@@ -54,6 +54,7 @@ const getSelectedVendorsText = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
+      <div className='pl-1'> 
         <Button
           variant="outline"
           role="combobox"
@@ -63,6 +64,7 @@ const getSelectedVendorsText = () => {
           <span className="truncate">{getSelectedVendorsText()}</span>
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        

@@ -95,10 +95,10 @@ type ProductStore = {
   getVendor: ()=> Promise<void>;
   getProductId: (id:number)=> Promise<void>;
   getCategories: ()=> Promise<void>;
-
+  detailProducts: apiProduct;
   // selectedProducts: Product[];
   selectedProducts: apiProduct[];
-  
+  setDetailProducts: (product: apiProduct) => Promise<void>;
   // selectedCategories: Category[];
   selectedCategories: Category[];
   // addToCart: (product: Product) => void;
@@ -112,7 +112,21 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
-
+       detailProducts: {
+        id: 0,
+        categoryId: 0,
+        userId: 0,
+        name: '',
+        user: {},
+        description: '',
+        price: '',
+        stock: 0,
+        image: '',
+        createdAt: '',
+        updatedAt: '',
+        category: { id: 0, categoryName: '', description: '' },
+       },
+      
       testVendors: [],
       testCategories:[],
       testIdProducts:[],
@@ -126,6 +140,7 @@ export const useProductStore = create<ProductStore>()(
      
       ],
 
+      setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
       addToCart: (product: apiProduct) => set((state) => ({ products: [...state.products, product] })),
       removeCart: (categoryId: number) => set((state) => ({ products: state.products.filter((p) => p.categoryId!== categoryId) })),

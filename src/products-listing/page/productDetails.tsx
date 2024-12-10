@@ -7,21 +7,42 @@ import { Link, Outlet } from 'react-router-dom'
 import ImageGallery from '../components/ui-sections/image-gallery'
 import { useParams } from 'react-router-dom'
 import { useProductStore } from '../store/store'
-import { useEffect,useState } from 'react'
-import { apiProduct } from '../store/store'
-//props
+import { useEffect, } from 'react'
+ 
+
+
+
 const ProductDetail = () => {
   const {id} = useParams()
-  const {testProducts} = useProductStore()
-  const [product,setProduct] = useState<apiProduct|undefined>(undefined)
-  useEffect (()=>{
-    const index = parseInt(id as string)
-    const product = testProducts.find(p=>p.id === index)
-    console.log(product)
-    setProduct(product)
+  const index = parseInt(id as string)
+  const {testProducts,setDetailProducts,detailProducts,getProduct} = useProductStore()
+  // const [product,setProduct] = useState<apiProduct|undefined>(undefined)
+ useEffect(() => {
+  const fetchProduct = async () => {
+    try {
+      // Fetch products if the array is empty
+      if (testProducts.length === 0) {
+        await getProduct(); // Presumably fetches products
+      }
+      
+      // Proceed if products are available and index is valid
+      if (testProducts.length > 0 && index) {
+        const product = testProducts.find(p => p.id === index);
+        
+        if (product) {
+          setDetailProducts(product);
+          console.log("Product found:", product);
+        } else {
+          console.warn("No product found with the provided index.");
+        }
+      }
+    } catch (err) {
+      console.error("Error fetching product:", err);
+    }
+  };
 
-  },[id,testProducts])
-
+  fetchProduct();
+}, [index, testProducts, getProduct,setDetailProducts]); // Removed setDetailProducts if it's a setter
   return (
     <>
      <div className='flex flex-col p-4 lg:p-8 mx-auto'>
@@ -30,15 +51,15 @@ const ProductDetail = () => {
       </nav>
       <main className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start '>
         <ImageGallery/>
-        <PriceSection/>
+        <PriceSection products={detailProducts}/>
         <Vendor/>
       </main>
     <section className='flex flex-col gap-8'>
       
        <main className='flex flex-col gap-8'>
         <div className='flex gap-2'>
-          <Link to={'/product/detail/'} className='text-black hover:text-[#002603]'> DETAILS </Link>
-          <Link to='/product/detail/review' className='text-black hover:text-[#002603]'> REVIEWS </Link>
+          <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603]'> DETAILS </Link>
+          <Link to={`/product/detail/${index}/review`}className='text-black hover:text-[#002603]'> REVIEWS </Link>
           
           </div>
           <section>
