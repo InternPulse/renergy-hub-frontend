@@ -17,7 +17,7 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
-   
+   getVendor,
     getCategories,
     getProduct,
   
@@ -66,7 +66,7 @@ const Filter = () => {
 
     // Handle vendor filter
     if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.name);
+      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
       params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
@@ -96,8 +96,7 @@ const Filter = () => {
   useEffect(() => {
     const fetchData = async ()=>{
       try{
-        await getProduct()
-        await getCategories()
+        await Promise.all([getProduct(), getCategories(),getVendor()]);
         handleClick();
       }catch(err){console.log(err)}
     }
@@ -112,7 +111,8 @@ const Filter = () => {
     selectedVendors,
     handleClick,
     getProduct,
-    getCategories
+    getCategories,
+    getVendor
   
   ]);
 

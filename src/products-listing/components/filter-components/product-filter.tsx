@@ -62,12 +62,12 @@ const getSelectedVendorsText = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
-        <ScrollArea className="h-[300px]  ">
+        <ScrollArea className=" ">
           {testProducts.map((product) => (
-            <div  className='flex items-center'>
+            <div  className='flex items-center' key={product.id}>
             <Checkbox
-             key={product.id}
-            checked={selectedProducts.includes(product)}
+              key={product.id}
+            checked={selectedProducts.some((p) => p.id === product.id)}
               onCheckedChange={() => handleVendorChange(product.id)}
             />
              <DropdownMenuLabel>
