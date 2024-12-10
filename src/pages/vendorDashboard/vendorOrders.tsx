@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react"
+import axios from 'axios';
+
 import Header from "../vendorcomponents/Header"
 import { ChevronDown, MoveUp, Minus, Ellipsis } from "lucide-react"
 
@@ -17,9 +20,79 @@ import {
 
 import PopOver from "../vendorcomponents/popOver"
 
+interface Product {
+  id: number;
+  categoryId: number;
+  userId: number;
+  name: string;
+  description: string;
+  price: string;
+  stock: number;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  category: {
+    id: number;
+    categoryName: string;
+    description: string;
+  };
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    username: string;
+    email: string;
+    password: string;
+    userType: string;
+    registerType: string;
+    socialId: null | string;
+    registrationDate: string;
+    phoneNumber: string;
+    confirmPassword: null | string;
+    isVerified: string;
+    verificationToken: string;
+    verificationTokenExpiresAt: string;
+    resetToken: null | string;
+    resetTokenExpiresAt: null | string;
+  };
+}
 
+interface ApiResponse {
+  status: string;
+  code: number;
+  data: Product[];
+}
 
 export const VendorOrders = () => {
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<ApiResponse>('https://renergy-hub-express-backend.onrender.com/api/v1/products'); // Replace with your actual API endpoint
+        setProducts(response.data.data); 
+      } catch (err) {
+        setError('Failed to fetch products.');
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+   if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Orders' />
@@ -75,6 +148,12 @@ export const VendorOrders = () => {
       </div>
 
     <div>
+      {products.map((product) => (
+          <li key={product.id}>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+          </li>
+        ))}
       <Table className="bg-white rounded-lg">
           <TableHeader>
             <TableRow className="text-lg">
