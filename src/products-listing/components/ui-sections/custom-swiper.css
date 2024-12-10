@@ -1,23 +1,26 @@
-/* Hide Swiper navigation buttons by default (on mobile and desktop) */
-.swiper-button-prev, .swiper-button-next {
-    display: none;
-
+/* Hide Swiper navigation buttons on mobile and tablet (below 1024px) */
+.swiper-button-prev,
+.swiper-button-next {
+    display: none; /* Hide by default */
 }
 
-/* Show Swiper navigation buttons on large screens (lg: 1024px and above) */
+/* Show Swiper navigation buttons on laptop (1024px and above) */
 @media (min-width: 1024px) { /* Tailwind's 'lg' breakpoint */
-    .swiper-button-prev, .swiper-button-next {
+    .swiper-button-prev,
+    .swiper-button-next {
         display: block; /* Show the navigation buttons */
         background-color: transparent; /* No background */
-        color: #000; /* Change arrow color to black */
+        color: #000; /* Set arrow color to black */
         font-size: 20px; /* Adjust arrow size */
+        z-index: 10; /* Ensure the buttons appear above other elements */
     }
+    
     /* Optional: Add custom hover effects */
-    .swiper-button-prev:hover, .swiper-button-next:hover {
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
         color: #555; /* Darken arrow color on hover */
     }
 }
-
 /* Base styles for Swiper images */
 .swiper-zoomable-image {
     transition: transform 0.4s ease; /* Smooth transition for zoom */

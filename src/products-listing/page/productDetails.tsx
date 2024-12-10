@@ -22,7 +22,7 @@ const ProductDetail = () => {
     try {
       // Fetch products if the array is empty
       if (testProducts.length === 0) {
-        await getProduct(); // Presumably fetches products
+        await getProduct()// Presumably fetches products
       }
       
       // Proceed if products are available and index is valid
@@ -42,7 +42,7 @@ const ProductDetail = () => {
   };
 
   fetchProduct();
-}, [index, testProducts, getProduct,setDetailProducts]); // Removed setDetailProducts if it's a setter
+}, [index, testProducts, getProduct,setDetailProducts,]); // Removed setDetailProducts if it's a setter
   return (
     <>
      <div className='flex flex-col p-4 lg:p-8 mx-auto'>
@@ -52,7 +52,7 @@ const ProductDetail = () => {
       <main className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start '>
         <ImageGallery/>
         <PriceSection products={detailProducts}/>
-        <Vendor/>
+        <Vendor products={detailProducts}/>
       </main>
     <section className='flex flex-col gap-8'>
       
