@@ -32,8 +32,6 @@ const Login = () => {
   
       console.log("Login successful:", user);
 
-     
-      
 
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
