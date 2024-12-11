@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import './custom-swiper.css'
 import { images } from './images'; // Ensure this is typed properly in your images file
+
 //@ts-expect-error
 import 'swiper/css';
 //@ts-expect-error

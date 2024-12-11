@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import login from "../assets/login-img.png";
 import google from "../assets/google.png";
-
+import { useProductStore } from "@/products-listing/store/store";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const {setUserId} = useProductStore();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
+    // console.log({ email, password });
     setLoading(true);
     setError("");
 
@@ -27,11 +27,12 @@ const Login = () => {
       if (!user) {
         throw new Error("User data is missing from the response.");
       }
-
+        setUserId(user.id);
 
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
+
         navigate("/vendorprofile", { state: { userId: user.id } });
       } else {
         throw new Error("Invalid role");
