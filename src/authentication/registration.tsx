@@ -45,12 +45,10 @@ const Registration: React.FC = () => {
 
     if (validateForm()) {
       try {
-        console.log(formData);
         const response = await registerVendor({ ...formData, userType: "VENDOR" });
         const id = response.data.id; // Ensure this exists in the backend response
       navigate("/authentication/otp", { state: { id, email: formData.email } });
       } catch (err: any) {
-        console.error("API Error:", err);
         setApiError(err?.message || "An error occurred during registration.");
       } finally {
         setLoading(false);
