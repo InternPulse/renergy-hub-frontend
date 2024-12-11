@@ -83,6 +83,9 @@ type ProductStore = {
   testVendors: VendorResponse[];
   count: number;
   setCount: (value: number) => void; 
+  userId:number
+  setUserId: (value: number) => void;
+
   sort:string
   isClicked: boolean
   isDclicked: boolean
@@ -116,17 +119,18 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
+      userId: 0,
        detailProducts: {
         id: 0,
         categoryId: 0,
-        userId: 0,
+       
         name: '',
         user: {},
         description: '',
         price: '',
         stock: 0,
         image: '',
-      
+        userId: 0,
         createdAt: '',
         updatedAt: '',
         category: { id: 0, categoryName: '', description: '' },
@@ -174,7 +178,8 @@ export const useProductStore = create<ProductStore>()(
       selectedCategories: [],
       addedProduct: [],
 
-
+      setUserId: (value: number) => set({ userId: value }),
+      
      getProduct: async () => {
 
                  try{
@@ -212,7 +217,8 @@ export const useProductStore = create<ProductStore>()(
         console.log(data)
       }catch(err){console.log(err)}
      },
-     getVendor: async () => {
+
+    getVendor: async () => {
       try{
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/users') 
         const vendors = await res.json()
