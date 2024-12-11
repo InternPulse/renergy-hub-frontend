@@ -22,9 +22,9 @@ import { Checkbox } from '../../../components/ui/checkbox'
 
 export function CategoryFilter() {
   
-    const {categories, selectedCategories , setFilteredCategory} = useProductStore(); // Assuming ProductStore contains vendors data
+    const {testCategories, selectedCategories , setFilteredCategory} = useProductStore(); // Assuming ProductStore contains vendors data
    
-  const handleVendorChange = (categoryId: string) => {
+  const handleVendorChange = (categoryId: number) => {
    
   
      setFilteredCategory(categoryId); 
@@ -36,22 +36,25 @@ export function CategoryFilter() {
 // Utility function to get selected vendor names
 const getSelectedVendorsText = () => {
     if (selectedCategories.length === 0) {
+      console.log(selectedCategories)
       return "Shop by Category";
+   
     }
   
-    // 5. Handle "all" case when it's selected
-    if (selectedCategories.some(v => v.id === "all")) {
-      return "All Categories";
-    }
+    // // 5. Handle "all" case when it's selected
+    // if (selectedCategories.some(v => v.id === "all")) {
+    //   return "All Categories";
+    // }
   
     // 6. Get the names of selected vendors
-    const selectedNames = selectedCategories.map(vendor => vendor.name);
+    const selectedNames = selectedCategories.map(vendor => vendor.categoryName);
     return selectedNames.join(", ");
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
+      <div className='pl-1'> 
         <Button
           variant="outline"
           role="combobox"
@@ -61,19 +64,20 @@ const getSelectedVendorsText = () => {
           <span className="truncate">{getSelectedVendorsText()}</span>
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
         <ScrollArea className="">
-          {categories.map((category) => (
-            <div className='flex items-center'>
+          {testCategories.map((item) => (
+            <div className='flex items-center'   key={item.id}>
             <Checkbox
-              key={category.id}
-              checked={selectedCategories.includes(category)}
-              onCheckedChange={() => handleVendorChange(category.id)}
+               key={item.id}
+              checked={selectedCategories.some((c) => c.id === item.id)}
+              onCheckedChange={() => handleVendorChange(item.id)}
             />
             <DropdownMenuLabel>
-              {category.name}
+              {item.categoryName}
               </DropdownMenuLabel>
             </div>
           ))}

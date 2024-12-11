@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import img1 from '../../../../public/assets/solor.svg'
 import { useProductStore } from '../../store/store';
+import { apiProduct } from '../../store/store';
 export type ProductProps = {
-    products: []
+    products?: apiProduct
 }
 
-// {products}: ProductProps
 
-const ProductCard = () => {
+
+const ProductCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
     const {addToCart} = useProductStore()
 
@@ -20,12 +21,17 @@ const handleClick = (products: any)=> {
 const removeClick = ()=> {
     setIsClicked(false)
 }
+function getFirstThreeWords(name:string) {
+  return name.split(' ').slice(0, 2).join(' ');
+}
+
+  const truncatedName = getFirstThreeWords(products?.name ?? '');
 
 
   return (
     <>
     <div className="">
-      <ul className="flex flex-col gap-4 pt-4 pb-[11px] px-[11px] bg-white text-black rounded-xl max-w-[210px] border border-slate-300 ">
+      <ul className="flex flex-grow flex-col  gap-4 pt-4 lg:pt-8 pb-[11px] lg:pb-[18px] px-[11px] bg-white text-black rounded-xl   border border-slate-300 ">
 
         <li className="flex justify-end">
            {!isClicked?    
@@ -45,14 +51,14 @@ const removeClick = ()=> {
             
           
         </li>
-        <Link to={''}>
-        <li className="flex justify-center">
+        <Link to={`/product/detail/${products?.id}`}>
+        <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             
         </li>
      <li className="flex flex-col text-center gap-2">
-        <p className='text-black'>Fireman 380W Solar Panel</p>
-        <p className="text-[#4C4C4C]">₦350,000.00</p>
+        <p className='text-black'>{truncatedName || 'Fireman '}</p>
+        <p className="text-[#4C4C4C]">{products?.price || 'N200'}</p>
 
      </li>
 
@@ -68,11 +74,3 @@ const removeClick = ()=> {
 
 export default ProductCard
 
-// const filteredProducts = products.filter((product) => {
-//   const matchesVendor = filteredVendors.length === 0 || filteredVendors.includes(product.vendor);
-//   const matchesCategory = filteredCategories.length === 0 || filteredCategories.includes(product.category);
-//   const matchesShop = filteredShops.length === 0 || filteredShops.includes(product.shop);
-
-//   // Include the product if it matches any one of the filters
-//   return matchesVendor || matchesCategory || matchesShop;
-// });

@@ -12,7 +12,7 @@ const Products = () => {
      {/* Detail route as a parent */}
      
      {/* /:id  product dynamic pathname */}
-  <Route path="detail" element={<ProductDetail />}>
+  <Route path="detail/:id" element={<ProductDetail />}>
     {/* Nested Routes */}
     <Route index element={<Detail />} />  {/* Default route when visiting /detail */}
     <Route path="review" element={<Review />} />  {/* Nested route for /detail/review */}

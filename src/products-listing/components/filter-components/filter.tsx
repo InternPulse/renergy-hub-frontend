@@ -17,6 +17,10 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
+   getVendor,
+    getCategories,
+    getProduct,
+  
   } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
   const [searchQuery, setSearchQuery] = useState(
@@ -46,7 +50,7 @@ const Filter = () => {
 
     // Handle category filter
     if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.name);
+      const categoryNames = selectedCategories.map((cat) => cat.categoryName);
       params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
@@ -62,7 +66,7 @@ const Filter = () => {
 
     // Handle vendor filter
     if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.name);
+      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
       params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
@@ -90,13 +94,26 @@ const Filter = () => {
 
   // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
-    handleClick(); // Update filters immediately after selection or debounced search
+    const fetchData = async ()=>{
+      try{
+        await Promise.all([getProduct(), getCategories(),getVendor()]);
+        handleClick();
+      }catch(err){console.log(err)}
+    }
+   
+    fetchData();  
+  
+
   }, [
     debouncedSearchQuery,
     selectedCategories,
     selectedProducts,
     selectedVendors,
     handleClick,
+    getProduct,
+    getCategories,
+    getVendor
+  
   ]);
 
   return (

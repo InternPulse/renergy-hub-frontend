@@ -20,9 +20,9 @@ import { Checkbox } from '../../../components/ui/checkbox'
 
 export function ProductFilter() {
   
-    const {products, selectedProducts , setFilteredProduct} = useProductStore(); // Assuming ProductStore contains vendors data
+    const {testProducts, selectedProducts , setFilteredProduct} = useProductStore(); // Assuming ProductStore contains vendors data
    
-  const handleVendorChange = (ProductId: string) => {
+  const handleVendorChange = (ProductId: number) => {
    
   
      setFilteredProduct(ProductId); 
@@ -37,10 +37,10 @@ const getSelectedVendorsText = () => {
       return "Shop by Product";
     }
   
-    // 5. Handle "all" case when it's selected
-    if (selectedProducts.some(v => v.id === "all")) {
-      return "All Products";
-    }
+    // // 5. Handle "all" case when it's selected
+    // if (selectedProducts.some(v => v.id === "all")) {
+    //   return "All Products";
+    // }
   
     // 6. Get the names of selected vendors
     const selectedNames = selectedProducts.map(vendor => vendor.name);
@@ -62,12 +62,12 @@ const getSelectedVendorsText = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[250px] bg-[#F2F2F2]">
        
-        <ScrollArea className="h-[300px]  ">
-          {products.map((product) => (
-            <div  className='flex items-center'>
+        <ScrollArea className=" ">
+          {testProducts.map((product) => (
+            <div  className='flex items-center' key={product.id}>
             <Checkbox
-             key={product.id}
-            checked={selectedProducts.includes(product)}
+              key={product.id}
+            checked={selectedProducts.some((p) => p.id === product.id)}
               onCheckedChange={() => handleVendorChange(product.id)}
             />
              <DropdownMenuLabel>

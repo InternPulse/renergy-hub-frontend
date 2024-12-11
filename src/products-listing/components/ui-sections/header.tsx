@@ -37,7 +37,7 @@ const Header = () => {
 
     // Handle category Header
     if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.name);
+      const categoryNames = selectedCategories.map((cat) => cat.categoryName);
       params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
@@ -53,7 +53,7 @@ const Header = () => {
 
     // Handle vendor Header
     if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.name);
+      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
       params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
