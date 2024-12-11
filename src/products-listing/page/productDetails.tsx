@@ -1,6 +1,6 @@
 
 import { Button } from '../../components/ui/button'
-import Header from '../components/ui-sections/header'
+// import Header from '../components/ui-sections/header'
 import PriceSection from '../components/ui-sections/Price'
 import Vendor from '../components/ui-sections/Vendor'
 import { Link, Outlet } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { useProductStore } from '../store/store'
 import { useEffect} from 'react'
  import ViewCard from '../components/ui-sections/featureProducts'
  import { Separator } from '../../components/ui/separator';
+import BreadcrumbNav from '../components/ui-sections/headBreadCrumbs'
 
 
 
@@ -60,7 +61,8 @@ const handleReviewClick = ()=>{
     <>
      <div className='flex flex-col p-4 lg:p-8 gap-8 mx-auto'>
       <nav>
-        <Header />
+        {/* <Header /> */}
+        <BreadcrumbNav products={detailProducts}/>
       </nav>
       <main className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start '>
         <ImageGallery/>

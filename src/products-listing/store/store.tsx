@@ -193,8 +193,8 @@ export const useProductStore = create<ProductStore>()(
          const res = await fetch(`https://renergy-hub-express-backend.onrender.com/api/v1/products/${id}`) 
          const products = await res.json()
          const { data} = products
-         
-         set({testProducts: data})
+         const cleanData = structuredClone(data); // or manually clean circular references
+         set({testProducts: cleanData})
       }catch(err){console.log(err)}
 
 
@@ -206,8 +206,8 @@ export const useProductStore = create<ProductStore>()(
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products/category') 
         const categories = await res.json()
         const { data} = categories
-       
-        set({testCategories: data})
+        const cleanData = structuredClone(data); // or manually clean circular references
+       set({testCategories: cleanData})
         
         console.log(data)
       }catch(err){console.log(err)}
@@ -215,10 +215,10 @@ export const useProductStore = create<ProductStore>()(
      getVendor: async () => {
       try{
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/users') 
-        const categories = await res.json()
-        const { data} = categories
-       
-        set({testVendors: data})
+        const vendors = await res.json()
+        const { data} = vendors
+        const cleanData = structuredClone(data); // or manually clean circular references
+        set({testVendors: cleanData})
         
         console.log(data)
       }catch(err){console.log(err)}
