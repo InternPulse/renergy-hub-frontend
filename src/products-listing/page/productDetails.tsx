@@ -1,4 +1,4 @@
-import ProductCard from '../components/ui-sections/ProductCard'
+
 import { Button } from '../../components/ui/button'
 import Header from '../components/ui-sections/header'
 import PriceSection from '../components/ui-sections/Price'
