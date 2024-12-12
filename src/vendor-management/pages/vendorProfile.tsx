@@ -106,11 +106,11 @@ const VendorProfile = () => {
         toast.success("Profile updated successfully!");
       } else {
         console.log("Failed to update");
-        alert("Failed to update profile.");
+        toast.error("Failed to update profile.");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      alert("Error updating profile.");
+      toast.error("Error updating profile.");
     }
   };
 
