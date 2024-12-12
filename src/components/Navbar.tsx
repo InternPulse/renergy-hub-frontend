@@ -24,17 +24,24 @@ const Navbar: React.FC = () => {
           isMenuOpen ? 'translate-y-0' : '-translate-y-[200%]'
         } md:translate-y-0`}
       >
-    <Link to='/'><li className="cursor-pointer hover:text-softGreen">Who We Are</li></Link> 
-    <Link to='/product'><li className="cursor-pointer hover:text-softGreen">Products</li></Link>
-        <li className="cursor-pointer hover:text-softGreen">Features</li>
-        <li className="cursor-pointer hover:text-softGreen">Contact Us</li>
+    <Link to='/about'><li className="cursor-pointer hover:bg-softGreen hover:rounded-lg px-2 py-2">Who We Are</li></Link> 
+    <Link to='/product'><li className="cursor-pointer  hover:bg-softGreen  hover:rounded-lg px-2 py-2">Products</li></Link>
+    <Link to='/blog'> <li className="cursor-pointer hover:rounded-lg  hover:bg-softGreen px-2 py-2">blog</li></Link>
+       <Link to='/contact_us'> <li className="cursor-pointer hover:rounded-lg hover:bg-softGreen px-2 py-2">Contact Us</li></Link>
       </ul>
 
       {/* Profile, Search, Cart Icons */}
       <div className="flex items-center gap-6">
-        <img className="cursor-pointer" src={profile_icon} alt="profile" />
-        <img className="cursor-pointer" src={search_icon} alt="search" />
-        <img className="cursor-pointer" src={cart_icon} alt="cart" />
+      
+  <Link to="/authentication/signup">
+    <img
+      className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2"
+      src={profile_icon}
+      alt="profile"
+    />
+  </Link>
+       <Link to='/cart'> <img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={search_icon} alt="search" /></Link>
+       <Link to='/cart'><img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={cart_icon} alt="cart" /></Link>
 
         {/* Hamburger Icon for Small Screens */}
         <div className="md:hidden cursor-pointer" onClick={toggleMenu}>

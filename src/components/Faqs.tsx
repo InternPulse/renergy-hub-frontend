@@ -2,7 +2,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const Faqs = () => {
   return (
-    <div className="flex flex-col px-4 py-8 md:px-8 lg:px-16">
+    <div className="flex flex-col px-4 py-8 md:px-8 lg:px-32">
       <h2 className="text-2xl font-bold mb-6">FAQs</h2>
       <div className="w-full space-y-4">
         {[

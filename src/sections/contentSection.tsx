@@ -1,20 +1,30 @@
 import ProductGuide from "./productGuide.js"
-import Header from "../layouts/Header.js"
-import Footer from "../layouts/Footer.js"
+import Navbar from "../components/Navbar";
+// import Header from "../layouts/Header.js"
+// import Footer from "../layouts/Footer.js"
+import Faqs from "../components/Faqs";
 import ProductPropertiesTable from './productPropertiesTable.js'
+import Footer from "../components/Footer";
+import React, { useEffect } from "react";
 
 const ContentSection: React.FC = () => {
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
     return (
-      <div>
-        <Header/>
+      <section>
+        {/* <Header/> */}
+        <Navbar/>
         <main>
           <ProductGuide/>
           <ProductPropertiesTable/>
         </main>
-        <Footer/>
- 
-      </div>
+        <Faqs />
+        <Footer />
+        {/* <Footer/> */}
+      </section>
   
     );
   }
