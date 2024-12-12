@@ -171,8 +171,8 @@ const VendorReport = () => {
                     </TableBody>
                 </Table>
             </section>
-            <section className="bg-white sm:w-[49%] h-[300px] rounded-md p-2 flex">
-                <section className="w-1/3 mt-auto mb-auto">
+            <section className="bg-white sm:w-[49%] h-auto rounded-md p-2 flex flex-wrap">
+                <section className="sm:w-1/3 my-auto mx-auto">
                     <h3 className="text-green-300 text-xl">
                         In Stock
                     </h3>
@@ -191,7 +191,7 @@ const VendorReport = () => {
                     </TableBody>
                 </Table>
                 </section>
-                <section className="w-1/3 mt-auto mb-auto">
+                <section className="sm:w-1/3 my-auto mx-auto">
                     <h3 className="text-[#DF7400] text-xl">
                         Low Stock
                     </h3>
@@ -210,7 +210,7 @@ const VendorReport = () => {
                     </TableBody>
                 </Table>
                 </section>
-                <section className="w-1/3 mt-auto mb-auto">
+                <section className="sm:w-1/3 my-auto mx-auto">
                     <h3 className="text-red-600 text-xl">
                         Out Of Stock
                     </h3>
