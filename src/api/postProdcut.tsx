@@ -10,7 +10,7 @@ export async function SubmitForm(formData: any, userId: number, categoryId: numb
       name: formData.productName,
       description: formData.description,
       price: formData.price,
-      stock: 10, 
+      stock: 2, 
       image: formData.image,
     };
     console.log(requestBody)
