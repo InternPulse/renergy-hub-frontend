@@ -3,7 +3,7 @@ import Filter from "../components/filter-components/filter";
 import { useEffect, useState,useCallback } from "react";
 import { useProductStore } from "../store/store";
 import { apiProduct } from "../store/store";
-
+import SkeletonProduct from "../components/skeleton-loader.tsx/ske-products";
 import ProductCard from "../components/ui-sections/ProductCard";
 
 const ProductListing = () => {
@@ -11,7 +11,7 @@ const ProductListing = () => {
   const [filteredProducts, setFilteredProducts] = useState<apiProduct[]>([]);
   const {sort,testCategories,testProducts,testVendors}=useProductStore()
   // const { products, vendors, categories } = storeData;
-
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const itemsPerPage = 10; // Number of items per page
   const currentPage = parseInt(searchParams.get("page") || "1", 10); // Get current page from URL, default to 1
 
@@ -47,7 +47,7 @@ const ProductListing = () => {
     const vendorQuery = searchParams.get("vendor");
     const categoryQuery = searchParams.get("category");
     const searchQuery = searchParams.get("search");
-
+   
     // Filter products based on the query parameters
     const filtered = testProducts.filter((product) => {
       // Get vendor and category names based on their respective IDs
@@ -76,6 +76,11 @@ const ProductListing = () => {
     const sortedProducts = sortProducts(filtered);
     console.log(sortedProducts)
     setFilteredProducts(sortedProducts); // Update state with the filtered products
+    const timeout = setTimeout(() => {
+      setIsLoading(false); // Stop showing skeleton after a delay
+    }, 1000); // Set delay to 1 second (you can adjust the time)
+
+    return () => clearTimeout(timeout); // Cleanup on unmount
   }, [searchParams, testProducts, testVendors, testCategories,sortProducts]);
 
 
@@ -96,6 +101,8 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     setSearchParams(params); // Update URL with the new page number
   };
 
+  if (isLoading) return <div className="p-4 md:p-8 lg:p-10"><SkeletonProduct/></div>;
+
   return (
     <>
     <div className="flex flex-col gap-4 p-4 lg:p-8">
@@ -109,6 +116,7 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
           ))
         ) : (
           <p>No products match your criteria.</p>
+         
         )}
       </div>
         {/* Pagination Controls */}
