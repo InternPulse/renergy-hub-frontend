@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import Navbar from "../header/navigation";
-
+import { SubmitForm } from "../../api/postProdcut";
+import { useProductStore } from "@/products-listing/store/store";
+// import { useLocation } from "react-router-dom";
 interface ProductManagementType {
   productName: string;
   description: string;
@@ -11,6 +13,7 @@ interface ProductManagementType {
 }
 
 const ProductManagement: React.FC = () => {
+  
   const [productData, setProductData] = useState<ProductManagementType>({
     productName: "",
     description: "",
@@ -20,6 +23,9 @@ const ProductManagement: React.FC = () => {
     rating: 0,
   });
 
+  const {userId}= useProductStore()
+  // const location = useLocation();
+  // const { userId } = location.state || {};
   // textarea
   const [wordCount, setWordCount] = useState(0);
 
@@ -75,6 +81,8 @@ const ProductManagement: React.FC = () => {
     e.preventDefault();
     console.log("Product Data:", productData);
     // Submit the data to your backend or API
+    
+    SubmitForm(productData,userId,1)
   };
 
   // textarea

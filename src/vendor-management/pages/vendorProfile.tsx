@@ -39,7 +39,6 @@ const VendorProfile = () => {
             streetAddress: data.data.streetAddress || "Default Street",
             zipCode: data.data.zipCode || "DefaulT zipCode",
           });
-
           setProfileData(data.data);
         } else {
           console.error("Failed to fetch profile data.");
@@ -71,14 +70,14 @@ const VendorProfile = () => {
     return `${brandNameInitials}${brandTypeInitials}`;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     if (!userId) {
       alert("User ID is missing");
