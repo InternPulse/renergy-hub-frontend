@@ -129,8 +129,8 @@ const VendorReport = () => {
       <Header title='Report' />
 
       <div className="bg-gray-200 h-auto mx-auto my-auto pb-2">
-        <div className="pt-8 w-[95%] flex justify-between flex-wrap mx-auto my-auto">
-            <section className="bg-white w-[49%] h-[300px] rounded-md p-2">
+        <div className="pt-8 w-[95%] flex flex-col sm:flex-row justify-between mx-auto my-auto">
+            <section className="bg-white sm:w-[49%] h-[300px] rounded-md p-2">
                 <h2 className="text-xl ml-2 mt-2">
                     Overview
                 </h2>
@@ -171,7 +171,7 @@ const VendorReport = () => {
                     </TableBody>
                 </Table>
             </section>
-            <section className="bg-white w-[49%] h-[300px] rounded-md p-2 flex">
+            <section className="bg-white sm:w-[49%] h-[300px] rounded-md p-2 flex">
                 <section className="w-1/3 mt-auto mb-auto">
                     <h3 className="text-green-300 text-xl">
                         In Stock

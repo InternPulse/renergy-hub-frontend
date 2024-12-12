@@ -15,11 +15,11 @@ const VendorOffer = () => {
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Offers' />
 
-      <div className="bg-gray-200 h-full flex justify-center align-middle mx-auto my-auto">
-        <div className="mt-8">
+      <div className="bg-gray-200 w-full h-full flex mx-auto my-auto">
+        <div className="mt-8 w-full">
 
-        <div className="flex mb-4 w-[95%] ml-auto mr-auto justify-between">
-          <div className="flex justify-between w-[270px]">
+        <div className="flex flex-col sm:flex-row w-[98%] mx-auto mb-4 justify-between">
+          <div className="flex justify-between h-12 w-[270px] m-1">
             <form action="" 
             className="p-2 border-solid border-green-800 border-2 rounded-md"
             >
@@ -29,7 +29,7 @@ const VendorOffer = () => {
               />
             </form>
 
-            <select className="h-13 p-2 border-solid border-green-800 border-2 rounded-md bg-gray-200">
+            <select className="h-12 p-2 border-solid border-green-800 border-2 rounded-md bg-gray-200">
               <option value="volvo">Volvo</option>
               <option value="saab">Saab</option>
               <option value="mercedes">Mercedes</option>
@@ -37,12 +37,12 @@ const VendorOffer = () => {
             </select>
             
           </div>
-          <button className="bg-green-700 text-white flex p-3 rounded-md"> 
+          <button className="bg-green-700 text-white flex p-3 rounded-md h-12 w-40 m-1"> 
             <Plus />Create Offer
           </button>
         </div>
 
-        <div className="max-w-[95%] h-full flex justify-center align-middle mx-auto my-auto overflow-y-scroll overflow-x-scroll">
+        <div className="w-[98%] h-full flex justify-center mx-auto my-auto">
           <Table className="bg-white rounded-lg">
           <TableHeader>
             <TableRow className="text-lg">
