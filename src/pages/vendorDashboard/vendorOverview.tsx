@@ -9,6 +9,7 @@ import Sales from "../vendorcomponents/salesStatus/Sales"
 import Orders from "../vendorcomponents/salesStatus/Orders"
 import TopSelling from "../vendorcomponents/TopSelling"
 import CurrentOffer from "../vendorcomponents/CurrentOffer"
+
 export const VendorOverview = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
