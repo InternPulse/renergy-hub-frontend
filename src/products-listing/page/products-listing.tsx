@@ -53,7 +53,7 @@ const ProductListing = () => {
       // Get vendor and category names based on their respective IDs
       const vendorName = testVendors.find((vendor) => vendor.id === product.userId)?.firstName;
       const categoryName = testCategories.find((category) => category.id === product.category.id)?.categoryName;
-
+       
       // Check if the product matches the selected vendor
       const matchesVendor = vendorQuery
         ? vendorQuery.split(",").includes(vendorName || "") // Split by comma for multiple selections

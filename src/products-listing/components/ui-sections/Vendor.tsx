@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 import {Button} from '../../../components/ui/button'
 import { apiProduct } from '@/products-listing/store/store'
+import VendorCard from './vendorCard'
+import { useProductStore } from '../../store/store'
 interface props{
   products: apiProduct
 }
 const Vendor = ({products}:props) => {
+  const {testProducts,} = useProductStore()
+  const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   return (
     <>
      <section className="p-4 flex flex-col gap-4 text-black">
@@ -41,8 +45,11 @@ const Vendor = ({products}:props) => {
       <Button className='text-black border bg-white rounded-xl'> Chat Now</Button>
       <Button className='text-black border bg-white rounded-xl'> Contact Vendor</Button>
     </div>
-    <div>
-        vendor product card
+    <div className='flex  items-center justify-start gap-4 '>
+    {filteredProducts.slice(0,2).map(product => (
+           <VendorCard products={product} key={product.id}/>
+        ))}
+       
     </div>
     <hr/>
     <ul className="flex gap-4 text-wrap">
