@@ -97,8 +97,8 @@ const VendorInventory = () => {
                     Overview
                 </h2>
                 <section className="flex flex-wrap justify-between p-2 bg-white rounded-md w-[95%] h-auto">
-                    <div>
-                        <h3 className="text-xl ml-2 mt-2 text-green-800">
+                    <div className="mx-auto">
+                        <h3 className="text-xl text-green-800">
                             Categories
                         </h3>
                         
@@ -115,7 +115,7 @@ const VendorInventory = () => {
                             </TableBody>
                         </Table>
                     </div>
-                    <div>
+                    <div className="mx-auto">
                         <h3 className="text-xl ml-2 mt-2 text-[#DF7400]">
                             Total Products
                         </h3>
@@ -134,7 +134,7 @@ const VendorInventory = () => {
                             </TableBody>
                         </Table>
                     </div>
-                    <div>
+                    <div className="mx-auto">
                         <h3 className="text-xl ml-2 mt-2 text-green-500">
                             Top Selling
                         </h3>
@@ -153,7 +153,7 @@ const VendorInventory = () => {
                             </TableBody>
                         </Table>
                     </div>
-                    <div>
+                    <div className="mx-auto">
                         <h3 className="text-xl ml-2 mt-2 text-red-600">
                             Low Stock
                         </h3>
@@ -179,11 +179,11 @@ const VendorInventory = () => {
             </div>
 
             <div  className="ml-auto mr-auto w-[98%] bg-white rounded-md overflow-y-scroll overflow-x-scroll">
-                <div className="flex justify-between p-2">
+                <div className="flex flex-col sm:flex-row justify-between p-2">
                     <h2 className="text-2xl mb-4 ml-2 mt-2">
                         Products
                     </h2>
-                    <div className="flex h-10">
+                    <div className="flex  h-10">
                         <button className="bg-green-600 text-white hover:bg-green-300 rounded-md p-2 mr-2">
                             Add Product
                         </button>
@@ -192,7 +192,7 @@ const VendorInventory = () => {
                             Filters
                         </button>
                         <button className="border-gray-300 border-2 bg-white hover:bg-green-300 text-black rounded-md p-2">
-                            Download All
+                            Download
                         </button>
                     </div>
                 </div>
