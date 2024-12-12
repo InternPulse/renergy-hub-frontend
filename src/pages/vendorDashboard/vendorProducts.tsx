@@ -7,7 +7,6 @@ import { PencilLine, Trash2, Plus, Filter } from "lucide-react"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -111,7 +110,6 @@ const vendorProducts = () => {
         <div  className="ml-auto mr-auto w-[95%] bg-white mt-8 rounded-md overflow-y-scroll overflow-x-scroll">
           {products.map((product) => (
           <Table key={product.id}>
-                <TableCaption>A list of your products.</TableCaption>
                 <TableHeader>
                     <TableRow className="text-lg">
                     <TableHead className="text-black">Product</TableHead>
@@ -138,7 +136,6 @@ const vendorProducts = () => {
                 </TableBody>
             </Table>
         ))}
-            
         </div>
 
       </div>
