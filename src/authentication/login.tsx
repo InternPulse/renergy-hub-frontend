@@ -19,11 +19,29 @@ const Login = () => {
     setError("");
 
     try {
+      const payload = { email, password };
+      
       const response = await axios.post(
         "https://renergy-hub-express-backend.onrender.com/api/v1/auth/login",
-        { email, password }
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, 
+        }
       );
+      console.log("API Response:", response.headers);
+      const token = response.headers["access-token"] || response.headers["Authorization"];
+      console.log("Token received from API:", token);
       const user = response.data?.data;
+
+      if (token) {
+        localStorage.setItem("authToken", token);
+        console.log("Token saved to Local Storage:", token);
+      } else {
+        console.error("Token is missing in the response headers.");
+      }
       if (!user) {
         throw new Error("User data is missing from the response.");
       }
