@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Navbar from "../header/navigation";
+import { toast } from "react-toastify";
 // import { useLocation } from "react-router-dom";
 import { useProductStore } from "@/products-listing/store/store";
 const VendorProfile = () => {
   // const location = useLocation();
   // const { userId } = location.state || {};
-    const {userId}= useProductStore()
+  const { userId } = useProductStore();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -40,7 +41,7 @@ const VendorProfile = () => {
             streetAddress: data.data.streetAddress || "Default Street",
             zipCode: data.data.zipCode || "DefaulT zipCode",
           });
-          
+
           setProfileData(data.data);
         } else {
           console.error("Failed to fetch profile data.");
@@ -72,14 +73,14 @@ const VendorProfile = () => {
     return `${brandNameInitials}${brandTypeInitials}`;
   };
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleFormSubmit = async (e:any) => {
+  const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     if (!userId) {
       alert("User ID is missing");
@@ -102,7 +103,7 @@ const VendorProfile = () => {
         const updateData = await response.json();
         setProfileData(updateData);
         setIsEditable(false);
-        alert("Profile updated successfully!");
+        toast.success("Profile updated successfully!");
       } else {
         console.log("Failed to update");
         alert("Failed to update profile.");
