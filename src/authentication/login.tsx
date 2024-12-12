@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import login from "../assets/login-img.png";
 import google from "../assets/google.png";
-import { useProductStore } from "@/products-listing/store/store";
+import { useProductStore } from "../products-listing/store/store";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

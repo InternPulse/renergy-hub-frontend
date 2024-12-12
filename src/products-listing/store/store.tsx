@@ -30,7 +30,7 @@ type VendorResponse = {
   username: string | null;
   email: string;
   password: string | null;
-  userType: 'CUSTOMER' | 'VENDOR';  // Adjust based on potential user types
+  userType: 'CUSTOMER' | 'VENDOR' | 'ADMIN';  // Adjust based on potential user types
   registerType: string | null;
   socialId: string | null;
   registrationDate: string;
@@ -85,7 +85,8 @@ type ProductStore = {
   setCount: (value: number) => void; 
   userId:number
   setUserId: (value: number) => void;
-
+  rating: number |null
+  setCurrentRating: (value: number|null) => void;
   sort:string
   isClicked: boolean
   isDclicked: boolean
@@ -120,6 +121,11 @@ export const useProductStore = create<ProductStore>()(
     (set, get) => ({
       sort:'',
       userId: 0,
+      rating: 0,
+
+
+
+      //detailsProducts object
        detailProducts: {
         id: 0,
         categoryId: 0,
@@ -161,8 +167,9 @@ export const useProductStore = create<ProductStore>()(
       products: [
       
       ],
-
-      categories: [
+     setCurrentRating: (value: number|null) => set({ rating: value }),
+     
+     categories: [
         // { id: "all", name: "All Categories" },
         // { id: "solar-panels", name: "Solar Panels" },
         // { id: "inverters", name: "Inverters" },

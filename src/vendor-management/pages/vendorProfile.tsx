@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../header/navigation";
 // import { useLocation } from "react-router-dom";
-import { useProductStore } from "@/products-listing/store/store";
+import { useProductStore } from "../../products-listing/store/store";
 const VendorProfile = () => {
   // const location = useLocation();
   // const { userId } = location.state || {};

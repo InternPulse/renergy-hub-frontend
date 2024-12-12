@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import Navbar from "../header/navigation";
 import { SubmitForm } from "../../api/postProdcut";
-import { useProductStore } from "@/products-listing/store/store";
+import { useProductStore } from "../../products-listing/store/store";
 // import { useLocation } from "react-router-dom";
 interface ProductManagementType {
   productName: string;
