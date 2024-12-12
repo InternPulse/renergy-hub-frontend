@@ -91,7 +91,7 @@ const vendorProducts = () => {
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Products' />
 
-      <div className="bg-gray-200 h-full pt-8">
+      <div className="bg-gray-200 h-auto pb-8 pt-8">
 
         <div className="ml-auto mr-auto flex justify-between w-[95%] bg-white p-4 rounded-md h-20">
 
@@ -122,13 +122,12 @@ const vendorProducts = () => {
                 </TableHeader>
                 <TableBody>
                     <TableRow>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">{product.name}</TableCell>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">Price: {product.price}<br />
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.name}</TableCell>
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">Price: {product.price}<br />
                     Stock: {product.stock}<br />
-                    Status: <br />
                     </TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1">
-                        <img src={product.image} alt="Product Image" 
+                        <img src={product.image} alt="Product Image"
                         className="h-[70px] w-auto"
                         />
                     </TableCell>
