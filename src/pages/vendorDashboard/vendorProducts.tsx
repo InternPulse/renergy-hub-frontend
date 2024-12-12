@@ -127,11 +127,11 @@ const vendorProducts = () => {
                     Stock: {product.stock}<br />
                     </TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1">
-                        <img src={product.image} alt="Product Image"
-                        className="h-[70px] w-auto"
+                        <img  src={product.image} alt="Product Image"
+                        className="h-[70px] w-auto mx-auto"
                         />
                     </TableCell>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">{product.category.categoryName}</TableCell>
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.category.categoryName}</TableCell>
                     <TableCell className="text-green-800 font-medium border-b-2 pb-1 w-8"><PencilLine /></TableCell>
                     <TableCell className="text-red-800 font-medium border-b-2 pb-1 w-8"><Trash2 /></TableCell>
                     </TableRow>
