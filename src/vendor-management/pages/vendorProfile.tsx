@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Navbar from "../header/navigation";
-<<<<<<< HEAD
 import { toast } from "react-toastify";
 // import { useLocation } from "react-router-dom";
 import { useProductStore } from "../../products-listing/store/store";
@@ -8,13 +7,6 @@ const VendorProfile = () => {
   // const location = useLocation();
   // const { userId } = location.state || {};
   const { userId } = useProductStore();
-=======
-import { useLocation } from "react-router-dom";
-
-const VendorProfile = () => {
-  const location = useLocation();
-  const { userId } = location.state || {};
->>>>>>> 72c1a62bd635dcbc6f1eb13a305d9d46c28351c5
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,10 +41,6 @@ const VendorProfile = () => {
             streetAddress: data.data.streetAddress || "Default Street",
             zipCode: data.data.zipCode || "DefaulT zipCode",
           });
-<<<<<<< HEAD
-
-=======
->>>>>>> 72c1a62bd635dcbc6f1eb13a305d9d46c28351c5
           setProfileData(data.data);
         } else {
           console.error("Failed to fetch profile data.");
