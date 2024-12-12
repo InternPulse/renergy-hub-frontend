@@ -9,11 +9,12 @@ import Sales from "../vendorcomponents/salesStatus/Sales"
 import Orders from "../vendorcomponents/salesStatus/Orders"
 import TopSelling from "../vendorcomponents/TopSelling"
 import CurrentOffer from "../vendorcomponents/CurrentOffer"
+
 export const VendorOverview = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Overview' />
-      <div className="bg-gray-200 p-4 flex h-auto justify-between">
+      <div className="bg-gray-200 p-4 flex flex-wrap h-auto justify-between">
 
         <div className="w-1/5 h-auto bg-white">
           <div className="w-full p-2">

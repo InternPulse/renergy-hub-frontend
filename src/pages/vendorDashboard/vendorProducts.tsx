@@ -7,7 +7,6 @@ import { PencilLine, Trash2, Plus, Filter } from "lucide-react"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -91,7 +90,7 @@ const vendorProducts = () => {
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Products' />
 
-      <div className="bg-gray-200 h-full pt-8">
+      <div className="bg-gray-200 h-auto pb-8 pt-8">
 
         <div className="ml-auto mr-auto flex justify-between w-[95%] bg-white p-4 rounded-md h-20">
 
@@ -109,9 +108,8 @@ const vendorProducts = () => {
         </div>
 
         <div  className="ml-auto mr-auto w-[95%] bg-white mt-8 rounded-md overflow-y-scroll overflow-x-scroll">
-          {products.map((product) => (
-          <Table key={product.id}>
-                <TableCaption>A list of your products.</TableCaption>
+          
+          <Table >
                 <TableHeader>
                     <TableRow className="text-lg">
                     <TableHead className="text-black">Product</TableHead>
@@ -120,26 +118,26 @@ const vendorProducts = () => {
                     <TableHead className="text-black">Category</TableHead>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                {products.map((product) => (
+                <TableBody key={product.id}>
                     <TableRow>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">{product.name}</TableCell>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">Price: {product.price}<br />
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.name}</TableCell>
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">Price: {product.price}<br />
                     Stock: {product.stock}<br />
-                    Status: <br />
                     </TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1">
-                        <img src={product.image} alt="Product Image" 
-                        className="h-[70px] w-auto"
+                        <img  src={product.image} alt="Product Image"
+                        className="h-[70px] w-auto mx-auto"
                         />
                     </TableCell>
-                    <TableCell className="text-black font-medium border-b-2 pb-1">{product.category.categoryName}</TableCell>
+                    <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.category.categoryName}</TableCell>
                     <TableCell className="text-green-800 font-medium border-b-2 pb-1 w-8"><PencilLine /></TableCell>
                     <TableCell className="text-red-800 font-medium border-b-2 pb-1 w-8"><Trash2 /></TableCell>
                     </TableRow>
                 </TableBody>
+                ))}
             </Table>
-        ))}
-            
+        
         </div>
 
       </div>
