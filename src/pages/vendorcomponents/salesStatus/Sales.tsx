@@ -47,7 +47,7 @@ const data = [
 
 const Sales = () => {
   return (
-    <div className="w-[49%] h-[260px] bg-white rounded-lg p-2">
+    <div className="lg:w-[49%] h-[260px] bg-white rounded-lg p-2">
         <h1 className="text-xl">Monthly Sales</h1>
           <ResponsiveContainer width="100%" height="90%">
             <AreaChart

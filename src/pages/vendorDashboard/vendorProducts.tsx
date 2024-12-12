@@ -108,8 +108,8 @@ const vendorProducts = () => {
         </div>
 
         <div  className="ml-auto mr-auto w-[95%] bg-white mt-8 rounded-md overflow-y-scroll overflow-x-scroll">
-          {products.map((product) => (
-          <Table key={product.id}>
+          
+          <Table >
                 <TableHeader>
                     <TableRow className="text-lg">
                     <TableHead className="text-black">Product</TableHead>
@@ -118,7 +118,8 @@ const vendorProducts = () => {
                     <TableHead className="text-black">Category</TableHead>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                {products.map((product) => (
+                <TableBody key={product.id}>
                     <TableRow>
                     <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.name}</TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">Price: {product.price}<br />
@@ -134,8 +135,9 @@ const vendorProducts = () => {
                     <TableCell className="text-red-800 font-medium border-b-2 pb-1 w-8"><Trash2 /></TableCell>
                     </TableRow>
                 </TableBody>
+                ))}
             </Table>
-        ))}
+        
         </div>
 
       </div>
