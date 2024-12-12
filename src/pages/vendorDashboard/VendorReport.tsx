@@ -1,4 +1,54 @@
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
 import Header from "../vendorcomponents/Header"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const data = [
+  {
+    name: 'Jun',
+    Profit: 4000,
+    Revenue: 2400,
+    amt: 2400,
+  },
+  {
+    name: 'Jul',
+    Profit: 3000,
+    Revenue: 1398,
+    amt: 2210,
+  },
+  {
+    name: 'Aug',
+    Profit: 2000,
+    Revenue: 9800,
+    amt: 2290,
+  },
+  {
+    name: 'Sep',
+    Profit: 2780,
+    Revenue: 3908,
+    amt: 2000,
+  },
+  {
+    name: 'Oct',
+    Profit: 1890,
+    Revenue: 4800,
+    amt: 2181,
+  },
+  {
+    name: 'Nov',
+    Profit: 2390,
+    Revenue: 3800,
+    amt: 2500,
+  },
+  {
+    name: 'Dec',
+    Profit: 3490,
+    Revenue: 4300,
+    amt: 2100,
+  },
+];
+
 
 import {
   Table,
@@ -9,14 +59,78 @@ import {
   TableRow,
 } from "../../../src/components/ui/table"
 
+// interface ProductData {
+//   product_id: number;
+//   category_id: number;
+//   user_id: number;
+//   name: string;
+//   description: string;
+//   image: string;
+//   created_at: string;
+//   total_revenue: number;
+//   total_cost: number;
+//   total_quantity_sold: number;
+//   total_profit: number;
+//   average_stock: number;
+//   sales_data: {
+//     date: string;
+//     price: number;
+//     quantity_sold: number;
+//     revenue: number;
+//     cost: number;
+//     profit: number;
+//   }[];
+//   profit_margin: number;
+//   average_price: number;
+//   stock_turnover_rate: number;
+//   is_profitable: boolean;
+//   profit_per_unit: number;
+// }
+
+// interface ApiResponse {
+//   count: number;
+//   next: string | null;
+//   previous: string | null;
+//   results: ProductData[];
+// }
+
 const VendorReport = () => {
+
+  //   const [productData, setProductData] = useState<ProductData[]>([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/?date=2024-11-12'); // Replace with your actual API endpoint
+  //       console.log(response.data.results); 
+  //     } catch (err) {
+  //       setError('Failed to fetch product data.');
+  //       console.error(err);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // if (isLoading) {
+  //   return <div>Loading product data...</div>;
+  // }
+
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title='Report' />
 
       <div className="bg-gray-200 h-auto mx-auto my-auto pb-2">
         <div className="pt-8 w-[95%] flex justify-between flex-wrap mx-auto my-auto">
-            <section className="bg-white w-[49%] h-auto rounded-md p-2">
+            <section className="bg-white w-[49%] h-[300px] rounded-md p-2">
                 <h2 className="text-xl ml-2 mt-2">
                     Overview
                 </h2>
@@ -57,7 +171,7 @@ const VendorReport = () => {
                     </TableBody>
                 </Table>
             </section>
-            <section className="bg-white w-[49%] h-[400px] rounded-md p-2 flex">
+            <section className="bg-white w-[49%] h-[300px] rounded-md p-2 flex">
                 <section className="w-1/3 mt-auto mb-auto">
                     <h3 className="text-green-300 text-xl">
                         In Stock
@@ -118,8 +232,29 @@ const VendorReport = () => {
             </section>
         </div>
 
-        <section className="w-[95%] h-auto rounded-md bg-white ml-auto mr-auto mt-8">
-
+        <section className="w-[95%] h-[400px] rounded-md bg-white mx-auto my-8">
+            <h1 className="text-xl ml-2 my-2">Revenue & Profits</h1>
+            <ResponsiveContainer width="100%" height="90%">
+                <LineChart
+                width={500}
+                height={300}
+                data={data}
+                margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="Revenue" stroke="#008000" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="Profit" stroke="#FFA500" />
+                </LineChart>
+            </ResponsiveContainer>
         </section>
 
         <div className="max-w-[95%] h-auto mx-auto my-auto overflow-y-scroll overflow-x-scroll bg-white rounded-md">
