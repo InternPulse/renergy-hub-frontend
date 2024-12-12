@@ -1,84 +1,80 @@
-import React from "react";
-import { FaChartLine, FaFileAlt } from "react-icons/fa";
+import { FaFileExport } from "react-icons/fa";
 
-const Reports: React.FC = () => {
+const Reports = () => {
   return (
-    <div className="min-h-screen p-6">
-      <header className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-800">
-          Reports & Analytics
-        </h1>
-        <p className="text-gray-600">
-          Overview of your reports and analytics data.
-        </p>
+    <div className="max-w-screen-lg mx-auto p-7 ">
+      <header className="mb-4 flex justify-end">
+        <button className="flex items-center border border-gray-300 rounded px-4 py-2">
+          <FaFileExport className="mr-2" />
+          <span>Export</span>
+        </button>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {/* Summary Cards */}
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
-          <FaChartLine className="text-green-500 text-3xl mr-4" />
-          <div>
-            <h2 className="text-xl font-bold">Total Sales</h2>
-            <p className="text-gray-600">$12,345</p>
+      <div className="flex max-w-screen-lg">
+        <div className="bg-white rounded-lg shadow-md p-4 flex-1">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">
+            Buyers Key Performance Index
+          </h2>
+          <table className="min-w-full text-sm">
+            <thead>
+              <tr className="bg-gray-200 text-gray-600">
+                <th className="py-2 px-2 md:px-4 text-left">Name</th>
+                <th className="py-2 px-2 md:px-4 text-left">Performance</th>
+                <th className="py-2 px-2 md:px-4 text-left">Best Selling</th>
+                <th className="py-2 px-2 md:px-4 text-left">Quantity</th>
+                <th className="py-2 px-2 md:px-4 text-left">Turn Over (NGN)</th>
+                <th className="py-2 px-2 md:px-4 text-left">% Increase</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr className="border-b hover:bg-gray-100">
+                <td className="py-2 px-2 md:px-4">John Doe</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">Excellent</td>
+                <td className="py-2 px-2 md:px-4">Product A</td>
+                <td className="py-2 px-2 md:px-4">100</td>
+                <td className="py-2 px-2 md:px-4">₦1,000,000</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">20%</td>
+              </tr>
+              <tr className="border-b hover:bg-gray-100">
+                <td className="py-2 px-2 md:px-4">Jane Smith</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">Good</td>
+                <td className="py-2 px-2 md:px-4">Product B</td> 
+                <td className="py-2 px-2 md:px-4">80</td>
+                <td className="py-2 px-2 md:px-4">₦800,000</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">15%</td>
+              </tr>
+              <tr className="border-b hover:bg-gray-100">
+                <td className="py-2 px-2 md:px-4">Alice Johnson</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">Average</td>
+                <td className="py-2 px-2 md:px-4">Product C</td>
+                <td className="py-2 px-2 md:px-4">60</td>
+                <td className="py-2 px-2 md:px-4">₦600,000</td>
+                <td className="py-2 px-2 md:px-4 text-green-500">10%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="flex gap-6 mt-7">
+        <div className="bg-white rounded-lg shadow-md p-4 flex-1 flex flex-col">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold">Total Revenue</h2>
+            <button className="text-black-500 bg-gray-100 border border-gray-300 rounded px-4 py-2">Monthly</button>
+          </div>
+          <div className="flex-1 bg-gray-100 rounded h-64 flex items-center justify-center">
+            <span className="text-gray-500">Bar Chart Placeholder</span>
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
-          <FaFileAlt className="text-blue-500 text-3xl mr-4" />
-          <div>
-            <h2 className="text-xl font-bold">Total Reports</h2>
-            <p className="text-gray-600">15</p>
-          </div>
-        </div>
-
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
-          <FaChartLine className="text-red-500 text-3xl mr-4" />
-          <div>
-            <h2 className="text-xl font-bold">Pending Reports</h2>
-            <p className="text-gray-600">3</p>
+        <div className="bg-white rounded-lg shadow-md p-4 flex-1">
+=          <div className="bg-gray-100 rounded h-64 flex items-center justify-center">
+            <span className="text-gray-500">Line Graph Placeholder</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4">Recent Reports</h2>
-        <table className="min-w-full">
-          <thead>
-            <tr className="bg-gray-200 text-gray-600">
-              <th className="py-2 px-4 text-left">Report Name</th>
-              <th className="py-2 px-4 text-left">Date</th>
-              <th className="py-2 px-4 text-left">Status</th>
-              <th className="py-2 px-4 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b hover:bg-gray-100">
-              <td className="py-2 px-4">Sales Report Q1</td>
-              <td className="py-2 px-4">2023-01-15</td>
-              <td className="py-2 px-4 text-green-500">Completed</td>
-              <td className="py-2 px-4">
-                <button className="text-blue-500 hover:underline">View</button>
-              </td>
-            </tr>
-            <tr className="border-b hover:bg-gray-100">
-              <td className="py-2 px-4">Inventory Report</td>
-              <td className="py-2 px-4">2023-02-10</td>
-              <td className="py-2 px-4 text-yellow-500">Pending</td>
-              <td className="py-2 px-4">
-                <button className="text-blue-500 hover:underline">View</button>
-              </td>
-            </tr>
-            <tr className="border-b hover:bg-gray-100">
-              <td className="py-2 px-4">Customer Feedback</td>
-              <td className="py-2 px-4">2023-03-05</td>
-              <td className="py-2 px-4 text-red-500">Rejected</td>
-              <td className="py-2 px-4">
-                <button className="text-blue-500 hover:underline">View</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   );
 };

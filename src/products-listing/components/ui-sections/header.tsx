@@ -37,7 +37,7 @@ const Header = () => {
 
     // Handle category Header
     if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.name);
+      const categoryNames = selectedCategories.map((cat) => cat);
       params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
