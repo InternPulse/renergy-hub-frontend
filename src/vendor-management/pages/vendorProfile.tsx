@@ -43,10 +43,10 @@ const VendorProfile = () => {
           });
           setProfileData(data.data);
         } else {
-          console.error("Failed to fetch profile data.");
+          toast.error("Failed to fetch profile data.");
         }
       } catch (error) {
-        console.error("Error fetching profile:", error);
+        toast.error("Error fetching profile:");
       }
     };
 
@@ -82,7 +82,7 @@ const VendorProfile = () => {
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     if (!userId) {
-      alert("User ID is missing");
+      toast.error("User ID is missing");
       return;
     }
     try {
