@@ -2,6 +2,7 @@ import youtube_icon from '../assets/youtube_icon.png'
 import twitter_icon from '../assets/twitter_icon.png'
 import linkedin_icon from '../assets/linkedin_icon.png'
 import instagram_icon from '../assets/instagram_icon.png'
+import { Link } from 'react-router-dom'
 
 
 const Footer = () => {
@@ -12,9 +13,9 @@ const Footer = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center lg:text-left lg:w-[500px]">
             Leading renewable energy solution provider in the world
           </h2>
-          <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[260px] h-[40px]">
+          <Link to='contact_us'> <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[260px] h-[40px]">
             Contact Us
-          </button>
+          </button></Link>
         </div>
   
         {/* Divider */}

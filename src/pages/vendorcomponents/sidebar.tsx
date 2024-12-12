@@ -1,36 +1,39 @@
-import { Award, Menu, Dock, House, Mail, Package, PanelsTopLeft, PieChart, ShoppingBag, User, Settings, LogOut } from "lucide-react"
+import { Award, Menu, Dock, House, Mail, Package, PanelsTopLeft, PieChart, ShoppingBag, User, Wrench, Settings, LogOut } from "lucide-react"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png" 
+import logo from "../../assets/logo.png"
 
 const SIDEBAR_ITEMS = [
   {
-    name: 'Dashboard', icon: House, color:'black', href:'/'
+    name: 'Dashboard', icon: House, color:'black', href:'/vendor-dashboard'
   },
   {
-    name: 'Report', icon: PieChart, color:'black', href:'/report'
+    name: 'Report', icon: PieChart, color:'black', href:'/vendor-dashboard/report'
   },
   {
-    name: 'Products', icon: Package, color:'black', href:'/orders'
+    name: 'Products', icon: Package, color:'black', href:'/vendor-dashboard/products'
   },
   {
-    name: 'Offers', icon: Award, color:'black', href:'/offer'
+    name: 'Offers', icon: Award, color:'black', href:'/vendor-dashboard/offer'
   },
   {
-    name: 'Inventory', icon: Dock, color:'black', href:'/orders'
+    name: 'Inventory', icon: Dock, color:'black', href:'/vendor-dashboard/inventory'
   },
   {
-    name: 'Orders', icon: ShoppingBag, color:'black', href:'/orders'
+    name: 'Orders', icon: ShoppingBag, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Payments', icon: PanelsTopLeft, color:'black', href:'orders/'
+    name: 'Payments', icon: PanelsTopLeft, color:'black', href:'/vendor-dashboard/orders/'
   },
   {
-    name: 'Messages', icon: Mail, color:'black', href:'/orders'
+    name: 'Messages', icon: Mail, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Customers', icon: User, color:'black', href:'/orders'
+    name: 'Customers', icon: User, color:'black', href:'/vendor-dashboard/orders'
+  },
+  {
+    name: 'Management', icon: Wrench, color:'black', href:'/vendor-dashboard/vendor-management'
   }
 ]
 
@@ -53,12 +56,12 @@ export const Sidebar = () => {
 			}`}
 			animate={{ width: isSidebarOpen ? 170 : 80 }}
 		>
-      <img 
-        className={`h-12 w-12 mt-6 ml-6 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
-        src={logo}
-        alt="logo" />
 
-			<div className='h-full  bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
+			<div className='h-full bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
+				<img 
+				className={`h-12 w-12 mt-6 ml-6 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
+				src={logo}
+				alt="logo" />
 				<motion.button
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
@@ -68,8 +71,8 @@ export const Sidebar = () => {
 					<Menu size={24} />
 				</motion.button>
 
-        <div className="flex flex-col justify-between">
-          <nav className='flex-grow mb-4'>
+        <div className="h-full flex flex-col justify-between">
+          <nav>
 					{SIDEBAR_ITEMS.map((item, index) => (
 						<Link key={index} to={item.href}>
 							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors mb-2'>
@@ -92,7 +95,7 @@ export const Sidebar = () => {
 					))}
 				</nav>
 
-        <nav className="flex-grow mt-6">
+        <nav>
           {SIDEBAR_BOTTOM.map((item, index) => (
             <Link key={index} to={item.href}>
 							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors '>

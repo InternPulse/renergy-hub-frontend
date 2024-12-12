@@ -25,7 +25,7 @@ const Hero = () => {
             products.
           </p>
           <div className="flex justify-center lg:justify-start mt-[20px] md:mt-[30px]">
-       <Link to='/products'><button className="flex items-center gap-3 text-white font-semibold bg-hardGreen px-6 py-3 rounded hover:bg-hardYellow hover:text-white">
+       <Link to='/content-section'><button className="flex items-center gap-3 text-white font-semibold bg-hardGreen px-6 py-3 rounded hover:bg-hardYellow hover:text-white">
               Explore Products
             </button></Link>
           </div>

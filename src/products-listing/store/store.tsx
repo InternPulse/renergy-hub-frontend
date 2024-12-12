@@ -7,11 +7,12 @@ interface apiCategory {
   description: string;
 }
 
-interface apiProduct {
+export interface apiProduct {
   id: number 
   categoryId: number;
   userId: number;
   name: string;
+  user: any;
   description: string;
   price: string;
   stock: number;
@@ -21,7 +22,33 @@ interface apiProduct {
   category: Category;
 }
 
-
+type VendorResponse = {
+  id: number;
+  
+  firstName: string;
+  lastName: string;
+  username: string | null;
+  email: string;
+  password: string | null;
+  userType: 'CUSTOMER' | 'VENDOR' | 'ADMIN';  // Adjust based on potential user types
+  registerType: string | null;
+  socialId: string | null;
+  registrationDate: string;
+  phoneNumber: string | null;
+  brandName: string | null;
+  brandType: string | null;
+  streetAddress: string | null;
+  city: string | null;
+  zipCode: string | null;
+  taxID: string | null;
+  imageURL: string | null;
+  confirmPassword: string | null;
+  isVerified: 'true' | 'false';
+  verificationToken: string | null;
+  verificationTokenExpiresAt: string | null;
+  resetToken: string | null;
+  resetTokenExpiresAt: string | null;
+};
 
 
 
@@ -29,7 +56,7 @@ interface apiProduct {
 
 
 interface Vendor {
-  id: string;
+  id: string|number;
   name: string;
 }
 
@@ -49,34 +76,43 @@ interface Category {
 
 type ProductStore = {
   vendors: Vendor[];
-  products: Product[];
+  products: apiProduct[];
   testProducts: apiProduct[];
   testIdProducts: [];
   testCategories: apiCategory[];
-  testVendors: [];
+  testVendors: VendorResponse[];
   count: number;
   setCount: (value: number) => void; 
+  userId:number
+  setUserId: (value: number) => void;
+  rating: number |null
+  setCurrentRating: (value: number|null) => void;
   sort:string
   isClicked: boolean
+  isDclicked: boolean
+  isRClick: boolean
+  setIsDclicked: (isDclicked: boolean) => void;
+  setIsRClick: (isRClick: boolean) => void;
   setIsClicked: (isClicked: boolean) => void
   setSort: (sort: string) => void;
   categories: Category[];
   addedProduct: Product[];
   removeCart: (categoryId: number) => void; 
-  selectedVendors: Vendor[];
+  selectedVendors: VendorResponse[];
   getProduct: ()=> Promise<void>;
+  getVendor: ()=> Promise<void>;
   getProductId: (id:number)=> Promise<void>;
   getCategories: ()=> Promise<void>;
-
+  detailProducts: apiProduct;
   // selectedProducts: Product[];
   selectedProducts: apiProduct[];
-  
+  setDetailProducts: (product: apiProduct) => Promise<void>;
   // selectedCategories: Category[];
   selectedCategories: Category[];
   // addToCart: (product: Product) => void;
   addToCart: (product: apiProduct) => void;
   setFilteredProduct: (productId: number) => Promise<void>;
-  setFilteredVendor: (vendorId: string) => Promise<void>;
+  setFilteredVendor: (vendorId: number) => Promise<void>;
   setFilteredCategory: (categoryId: number) => Promise<void>;
 };
 
@@ -84,46 +120,56 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       sort:'',
+      userId: 0,
+      rating: 0,
+
+
+
+      //detailsProducts object
+       detailProducts: {
+        id: 0,
+        categoryId: 0,
+       
+        name: '',
+        user: {},
+        description: '',
+        price: '',
+        stock: 0,
+        image: '',
+        userId: 0,
+        createdAt: '',
+        updatedAt: '',
+        category: { id: 0, categoryName: '', description: '' },
+       },
+       isDclicked: true,
+       isRClick:true,
       testVendors: [],
       testCategories:[],
       testIdProducts:[],
       testProducts:[],
-      count:0,
+      count:1,
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
        setCount: (value: number) => set({ count: value }),
 
       vendors: [
-        { id: "all", name: "All Vendors" },
-        { id: "ecowatts", name: "EcoWatts" },
-        { id: "enpowers", name: "En Powers" },
-        { id: "panelsonic", name: "Panelsonic" },
-        { id: "solarcreed", name: "Solar Creed" },
-        { id: "solarwaves", name: "Solar Waves" },
-        { id: "sygnitesuper", name: "Sygnite Super" },
-        { id: "nazpowerhouse", name: "Naz Power House" },
-        { id: "gregcopower", name: "Gregco Power and Energy" },
+     
       ],
+      setIsDclicked: (isDclicked: boolean) => set({ isDclicked }),
+      setIsRClick: (isRClick: boolean) => set({ isRClick }),
+      setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
-
-      addToCart: (product: apiProduct) => set((state) => ({ selectedProducts: [...state.selectedProducts, product] })),
-      removeCart: (categoryId: number) => set((state) => ({ selectedProducts: state.selectedProducts.filter((p) => p.categoryId!== categoryId) })),
+      addToCart: (product: apiProduct) => set((state) => ({ products: [...state.products, product] })),
+      removeCart: (categoryId: number) => set((state) => ({ products: state.products.filter((p) => p.categoryId!== categoryId) })),
 
         setSort: (sort: string) => set({ sort: sort }),
         //dummy data for sorting, filtering and searching purposes
       products: [
-        { id: "all", name: "All Products", vendorId: "all", categoryId: "all", price: 0, stock: 0 },
-        { id: "prod-001", name: "EcoWatts Solar Panel 250W", vendorId: "ecowatts", categoryId: "solar-panels", price: 220.99, stock: 40 },
-        { id: "prod-002", name: "En Powers Hybrid Inverter 7kW", vendorId: "enpowers", categoryId: "inverters", price: 749.99, stock: 25 },
-        { id: "prod-003", name: "Panelsonic Battery 200Ah", vendorId: "panelsonic", categoryId: "batteries", price: 380.50, stock: 30 },
-        { id: "prod-004", name: "Solar Creed Charge Controller 60A", vendorId: "solarcreed", categoryId: "charge-controllers", price: 149.99, stock: 20 },
-        { id: "prod-005", name: "Solar Waves Roof Mounting Kit", vendorId: "solarwaves", categoryId: "mounting-systems", price: 69.99, stock: 80 },
-        { id: "prod-006", name: "Sygnite Super 350W Monocrystalline Panel", vendorId: "sygnitesuper", categoryId: "solar-panels", price: 299.99, stock: 50 },
-        { id: "prod-007", name: "Naz PowerHouse Lithium Battery 150Ah", vendorId: "nazpowerhouse", categoryId: "batteries", price: 420.00, stock: 15 },
-        { id: "prod-008", name: "Gregco Power Solar Monitoring Kit", vendorId: "gregcopower", categoryId: "monitoring-systems", price: 199.99, stock: 10 }
+      
       ],
-
-      categories: [
+     setCurrentRating: (value: number|null) => set({ rating: value }),
+     
+     categories: [
         // { id: "all", name: "All Categories" },
         // { id: "solar-panels", name: "Solar Panels" },
         // { id: "inverters", name: "Inverters" },
@@ -139,14 +185,15 @@ export const useProductStore = create<ProductStore>()(
       selectedCategories: [],
       addedProduct: [],
 
-
+      setUserId: (value: number) => set({ userId: value }),
+      
      getProduct: async () => {
 
                  try{
                     const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products') 
                     const products = await res.json()
                     const { data} = products
-                    // console.log(data)
+                    console.log(data)
                     set ({testProducts: data}) 
                  }catch(err){console.log(err)}
 
@@ -158,8 +205,8 @@ export const useProductStore = create<ProductStore>()(
          const res = await fetch(`https://renergy-hub-express-backend.onrender.com/api/v1/products/${id}`) 
          const products = await res.json()
          const { data} = products
-         
-         set({testProducts: data})
+         const cleanData = structuredClone(data); // or manually clean circular references
+         set({testProducts: cleanData})
       }catch(err){console.log(err)}
 
 
@@ -171,12 +218,25 @@ export const useProductStore = create<ProductStore>()(
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products/category') 
         const categories = await res.json()
         const { data} = categories
-       
-        set({testCategories: data})
+        const cleanData = structuredClone(data); // or manually clean circular references
+       set({testCategories: cleanData})
         
         console.log(data)
       }catch(err){console.log(err)}
      },
+
+    getVendor: async () => {
+      try{
+        const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/users') 
+        const vendors = await res.json()
+        const { data} = vendors
+        const cleanData = structuredClone(data); // or manually clean circular references
+        set({testVendors: cleanData})
+        
+        console.log(data)
+      }catch(err){console.log(err)}
+     },
+
 
 
       setFilteredProduct: async (productId: number) => {
@@ -205,31 +265,34 @@ export const useProductStore = create<ProductStore>()(
         });
       },
 
-      setFilteredVendor: async (vendorId: number |string) => {
-        const { vendors, selectedVendors } = get();
-        const vendor = vendors.find((v) => v.id === vendorId);
+      setFilteredVendor: async (vendorId: number) => {
+        const { testVendors, selectedVendors } = get();
+        const vendor = testVendors.find((v) => v.id === vendorId);
         if (!vendor) return;
 
         set(() => {
           let updatedVendors = [...selectedVendors];
 
-          if (vendorId === 'all') {
-            return { selectedVendors: updatedVendors.length === vendors.length ? [] : vendors };
-          }
+          // if (vendorId === 'all') {
+          //   return { selectedVendors: updatedVendors.length === testVendors.length ? [] : testVendors };
+          // }
 
           if (updatedVendors.some((v) => v.id === vendorId)) {
-            updatedVendors = updatedVendors.filter((v) => v.id !== vendorId && v.id !== 'all');
+            updatedVendors = updatedVendors.filter((v) => v.id !== vendorId );
           } else {
-            updatedVendors = [...updatedVendors.filter((v) => v.id !== 'all'), vendor];
+            updatedVendors = [...updatedVendors, vendor];
           }
 
-          if (updatedVendors.length === vendors.length) {
-            updatedVendors.push({ id: 'all', name: 'All Vendors' });
-          }
+          // if (updatedVendors.length === vendors.length) {
+          //   updatedVendors.push({ id: 'all', name: 'All Vendors' });
+          // }
 
           return { selectedVendors: updatedVendors };
         });
       },
+
+
+
 
       setFilteredCategory: async (categoryId: number|string) => {
         const { testCategories, selectedCategories } = get();

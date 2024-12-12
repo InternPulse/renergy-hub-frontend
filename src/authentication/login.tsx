@@ -1,11 +1,68 @@
+import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import login from "../assets/login-img.png";
-import fb from "../assets/fb.png";
 import google from "../assets/google.png";
-
+import { useProductStore } from "../products-listing/store/store";
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const {setUserId} = useProductStore();
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // console.log({ email, password });
+    setLoading(true);
+    setError("");
+
+    try {
+      const payload = { email, password };
+      
+      const response = await axios.post(
+        "https://renergy-hub-express-backend.onrender.com/api/v1/auth/login",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, 
+        }
+      );
+      console.log("API Response:", response.headers);
+      const token = response.headers["access-token"] || response.headers["Authorization"];
+      console.log("Token received from API:", token);
+      const user = response.data?.data;
+
+      if (token) {
+        localStorage.setItem("authToken", token);
+        console.log("Token saved to Local Storage:", token);
+      } else {
+        console.error("Token is missing in the response headers.");
+      }
+      if (!user) {
+        throw new Error("User data is missing from the response.");
+      }
+        setUserId(user.id);
+
+      if (user.userType === "CUSTOMER") {
+        navigate("/userprofile", { state: { userId: user.id } });
+      } else if (user.userType === "VENDOR") {
+
+        navigate("/vendorprofile", { state: { userId: user.id } });
+      } else {
+        throw new Error("Invalid role");
+      }
+    } catch (err: any) {
+      setError(
+        err.response?.data?.message || "An error occurred. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="h-screen flex flex-col lg:flex-row overflow-hidden">
@@ -18,7 +75,6 @@ const Login = () => {
         />
         <div className="flex-1 flex items-center justify-center">
           <div className="max-w-md w-full">
-            
             <div className="text-center">
               <h1 className="text-2xl font-bold text-gray-800 mb-2">
                 Welcome Back
@@ -29,27 +85,17 @@ const Login = () => {
             </div>
 
             {/* Social Login Buttons */}
-            <div className="flex flex-row justify-between w-full mb-6">
-              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
-                <img src={google} alt="Google" className="w-6 h-6 mr-2" />
-                Google
-              </button>
-              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
-                <img src={fb} alt="Facebook" className="w-6 h-6 mr-2" />
-                Facebook
-              </button>
-            </div>
+           
 
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px bg-gray-300"></div>
-              <span className="text-gray-500">OR</span>
-              <div className="flex-1 h-px bg-gray-300"></div>
-            </div>
-            <form>
+            
+            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            <form onSubmit={handleLogin}>
               <div className="mb-6">
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-3 border border-gray-300 rounded-md"
                   placeholder="Email"
                   required
@@ -60,6 +106,8 @@ const Login = () => {
                 <input
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full p-3 border border-gray-300 rounded-md"
                   placeholder="Password"
                   required
@@ -74,13 +122,29 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-green-800 text-white py-3 rounded-md hover:bg-green-900 mb-4"
+                disabled={loading}
+                className={`w-full py-3 rounded-md text-white mb-4 ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-800 hover:bg-green-900"
+                }`}
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
+              <div className="flex items-center gap-4 mb-6">
+              <div className="flex-1 h-px bg-gray-300"></div>
+              <span className="text-gray-500">OR</span>
+              <div className="flex-1 h-px bg-gray-300"></div>
+            </div>
+            <div className="flex justify-center w-full mb-6">
+              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
+                <img src={google} alt="Google" className="w-6 h-6 mr-2" />
+                Google
+              </button>
+              
+            </div>
             </form>
 
             {/* Footer */}
@@ -110,4 +174,3 @@ const Login = () => {
 };
 
 export default Login;
-

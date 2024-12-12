@@ -53,11 +53,9 @@ const Blog = () => {
             Researchers discover chemical secrets of new material that could
             make solar energy far more economical.
           </p>
-          <Link to='/content-section'>
-          <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-[50px] rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
+       <Link to='blog'> <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-[50px] rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
             Read More
-          </button>
-          </Link>
+          </button></Link>  
         </div>
 
         {/* Blog 2 */}
@@ -75,11 +73,9 @@ const Blog = () => {
             Workplaces can now more easily commit to sustainability through
             innovative products and energy solutions.
           </p>
-          <Link to='/content-section'>
-          <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-6 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
+          <Link to='blog'> <button className="text-gray-800 font-semibold px-6 py-2 bg-white border border-gray-800 mt-6 rounded hover:bg-hardYellow w-full sm:w-[240px] lg:w-[280px]">
             Read More
-          </button>
-          </Link>
+          </button></Link>
         </div>
       </div>
       <div className="mt-10 px-4 md:px-8 lg:px-2">
@@ -88,9 +84,9 @@ const Blog = () => {
     <h3 className="text-[30px] sm:text-[35px] font-semibold text-center sm:text-left w-full sm:w-auto">
       More Topics
     </h3>
-    <button className="text-white font-semibold px-6 py-2 bg-hardGreen rounded hover:bg-hardYellow w-full sm:w-[280px] lg:w-[280px]">
+    <Link to='blog'>  <button className="text-white font-semibold px-6 py-2 bg-hardGreen rounded hover:bg-hardYellow w-full sm:w-[280px] lg:w-[280px]">
       See All Posts
-    </button>
+    </button></Link>
   </div>
 
   {/* Topics Section */}

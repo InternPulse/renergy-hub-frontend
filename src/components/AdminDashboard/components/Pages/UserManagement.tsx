@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { FaFilter, FaCalendarAlt, FaPlus } from "react-icons/fa";
 
+interface User {
+  name: string;
+  access: string;
+  status: string;
+  lastActive: string;
+  dateAdded: string;
+  account: string;
+}
+
 const UserManagement: React.FC = () => {
-  const [showTable, setShowTable] = useState(false); // State to control table visibility
+  const [showTable, setShowTable] = useState(false);
   const [users, setUsers] = useState([
     {
       name: "",
@@ -12,10 +21,13 @@ const UserManagement: React.FC = () => {
       dateAdded: "",
       account: "",
     },
-  ]); // State for user data
+  ]); 
+
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const [filterStatus, setFilterStatus] = useState(""); 
 
   const handleAddUserClick = () => {
-    setShowTable(true); // Show the table when the button is clicked
+    setShowTable(true);
     setUsers([
       ...users,
       {
@@ -26,10 +38,10 @@ const UserManagement: React.FC = () => {
         dateAdded: "",
         account: "",
       },
-    ]); // Add a new empty user row
+    ]);
   };
 
-  const handleInputChange = (index: number, field: string, value: string) => {
+  const handleInputChange = (index: number, field: keyof User, value: string) => {
     const updatedUsers = [...users];
     updatedUsers[index][field] = value;
     setUsers(updatedUsers);
@@ -41,6 +53,14 @@ const UserManagement: React.FC = () => {
       updatedUsers[index].status === "Active" ? "Inactive" : "Active";
     setUsers(updatedUsers);
   };
+
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch = user.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesStatus = filterStatus ? user.status === filterStatus : true;
+    return matchesSearch && matchesStatus;
+  });
 
   return (
     <div className="max-w-screen-lg mx-auto p-4 mt-5">
@@ -87,12 +107,23 @@ const UserManagement: React.FC = () => {
           <input
             type="text"
             placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="border border-gray-300 rounded px-2 py-1"
           />
           <div className="flex items-center border border-gray-300 rounded px-2 py-1">
             <FaFilter className="text-gray-600" />
             <span className="ml-1">Filters</span>
           </div>
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="border border-gray-300 rounded px-2 py-1"
+          >
+            <option value="">All Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
           <button
             onClick={handleAddUserClick}
             className="flex items-center bg-green-500 text-white rounded px-4 py-2"
@@ -119,7 +150,7 @@ const UserManagement: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, index) => (
+              {filteredUsers.map((user, index) => (
                 <tr key={index}>
                   <td className=" px-4 py-2 font-light text-sm">
                     <input
@@ -145,7 +176,6 @@ const UserManagement: React.FC = () => {
                       title="Granted Access"
                     >
                       <span className="text-xs">✔️</span>
-                      {/* Green checkmark */}
                     </button>
                     <button
                       onClick={() =>
@@ -158,7 +188,7 @@ const UserManagement: React.FC = () => {
                       } ml-2`}
                       title="Denied Access"
                     >
-                      <span className="text-xs">❌</span> {/* Red X */}
+                      <span className="text-xs">❌</span> 
                     </button>
                   </td>
                   <td className=" px-4 py-2">
@@ -168,7 +198,7 @@ const UserManagement: React.FC = () => {
                           ? "bg-green-100 text-green-800"
                           : "bg-red-100 text-red-800"
                       }`}
-                      onClick={() => toggleStatus(index)} 
+                      onClick={() => toggleStatus(index)}
                     >
                       {user.status}
                     </span>
