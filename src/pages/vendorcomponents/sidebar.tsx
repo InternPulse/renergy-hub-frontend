@@ -33,7 +33,7 @@ const SIDEBAR_ITEMS = [
     name: 'Customers', icon: User, color:'black', href:'/vendor-dashboard/orders'
   },
   {
-    name: 'Management', icon: Wrench, color:'black', href:'/vendor-dashboard/vendor-management'
+    name: 'Management', icon: Wrench, color:'black', href:'/vendorprofile'
   }
 ]
 
