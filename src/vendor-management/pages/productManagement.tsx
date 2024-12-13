@@ -1,6 +1,8 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import Navbar from "../header/navigation";
-
+import { SubmitForm } from "../../api/postProdcut";
+import { useProductStore } from "../../products-listing/store/store";
+// import { useLocation } from "react-router-dom";
 interface ProductManagementType {
   productName: string;
   description: string;
@@ -11,6 +13,7 @@ interface ProductManagementType {
 }
 
 const ProductManagement: React.FC = () => {
+  
   const [productData, setProductData] = useState<ProductManagementType>({
     productName: "",
     description: "",
@@ -20,8 +23,41 @@ const ProductManagement: React.FC = () => {
     rating: 0,
   });
 
+  const {userId}= useProductStore()
+  // const location = useLocation();
+  // const { userId } = location.state || {};
   // textarea
   const [wordCount, setWordCount] = useState(0);
+
+  // Define the API endpoint
+  const apiUrl = "http://127.0.0.1:8000/api/v1/sales/";
+
+  // Fetch the API data
+  async function fetchData() {
+    try {
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("API Response:", data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {}, []);
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -45,6 +81,8 @@ const ProductManagement: React.FC = () => {
     e.preventDefault();
     console.log("Product Data:", productData);
     // Submit the data to your backend or API
+    
+    SubmitForm(productData,userId,1)
   };
 
   // textarea
@@ -69,8 +107,7 @@ const ProductManagement: React.FC = () => {
           <p className="text-[#565656] font-400 mb-2 ">
             In Product management section, you can manage products with their
             details. you can input product informations as Product image,
-            pricing,
-            <br /> description, Product status.
+            pricing, description, Product status.
           </p>
         </div>
         <form
@@ -165,12 +202,8 @@ const ProductManagement: React.FC = () => {
               <span className="text-[#565656]">
                 or drag and drop SVG,PNG,JPG or GIF [max 800 x 400px]
               </span>
-              <p>
-                {productData.image
-                  ? productData.image.name
-                  : "No image selected"}
-              </p>
             </div>
+
             <div className="w-[25%]">
               <label>Product Status:</label>
               <select
@@ -203,6 +236,9 @@ const ProductManagement: React.FC = () => {
               </div>
             </div>
           </div>
+          <p className="text-sm mt-[-15px] text-[#565656]">
+            {productData.image ? productData.image.name : "No image selected"}
+          </p>
           <div className="flex justify-end">
             <button
               className="border bg-[#2C7427] px-10 py-2 rounded-md text-white text-xl font-[400] mt-2"
