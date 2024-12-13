@@ -11,7 +11,7 @@ const Vendor = ({products}:props) => {
   const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   return (
     <>
-     <section className="p-4 flex flex-col gap-4 text-black">
+     <section className=" flex flex-col gap-4 text-black lg:p-4">
     <ul className="flex gap-2 ">
         <li className="">
           <Link to="#" className='items-center flex justify-center rounded-full p-2 border border-slate-200 w-[60px] h-[60px]'> 

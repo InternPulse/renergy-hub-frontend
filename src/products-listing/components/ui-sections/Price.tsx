@@ -42,10 +42,10 @@ const formattedPrice = Number(products.price).toLocaleString();
 
   return (
     <section>
-        <ul className='flex flex-col gap-4 lg:gap-8 p-6'>
+        <ul className='flex flex-col gap-4 lg:gap-8 lg:p-6'>
             <li className='flex flex-col gap-2'>
                 <h1 className='text-black text-3xl max-w-[300px]'>{products.name}</h1>
-                <div className='flex items-center gap-2 text-[#808080]'> <span><ControlledRating/></span>
+                <div className='flex flex-col lg:flex-row items-start lg:items-center gap-2 text-[#808080]'> <span><ControlledRating/></span>
                 <p> Be the first to review this product </p></div>
 
             </li>

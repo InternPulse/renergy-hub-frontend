@@ -85,24 +85,26 @@ if (isLoading) return <div className=""><SkeletonDetail/></div>;
             <button onClick={handleDetailClick}  className='bg-none p-0' >
           <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603] flex flex-col ' > 
          
-        <p>  DETAILS </p> 
+        <p className={isDclicked ? 'text-green-500' : ''}>  DETAILS </p> 
       
-          {isDclicked && <Separator className='max-w-[94px] h-1 bg-black'/>}
           
            </Link>
            </button>
            <button onClick={handleReviewClick}   className='bg-none p-0' >
           <Link to={`/product/detail/${index}/review`} className='text-black hover:text-[#002603] flex flex-col ' > 
          
-        <p>  REVIEWS </p> 
+        <p className={isRClick? 'text-green-500' : ''}>  REVIEWS </p> 
       
-          {isRClick && <Separator className='max-w-[94px] h-1 bg-black'/>}
+         
           
            </Link>
            </button>
          
           </li>
-          
+      {/* <li className='flex'>
+      {isDclicked && <Separator className='max-w-[96px] h-1 bg-black'/>  }
+      {isRClick && <Separator className='max-w-[96px] h-1 bg-black'/>  }     
+      </li> */}
           <Separator/>
           </ul>
 

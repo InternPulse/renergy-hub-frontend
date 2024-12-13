@@ -21,13 +21,13 @@ interface RatingData {
 const ReviewStat = () => {
      const totalStars = 5;
      const {review} = useProductStore();
- // Step 1: Create an array to store the counts of each rating (1 to 5)
+ // generating rating data from review response
  const ratings: RatingData[] = Array.from({ length: totalStars }, (_, i) => ({
   rating: i + 1,
   count: 0,
 }));
 
-// Step 2: Populate the ratings array with the counts from the API response
+// Populating the ratings array with the counts from the API response
 review.forEach((review) => {
   const reviewRating = review.rating;
   const ratingIndex = ratings.findIndex((r) => r.rating === reviewRating);
@@ -36,10 +36,10 @@ review.forEach((review) => {
   }
 });
 
-// Step 3: Calculate the total number of reviews
+// review total length
 const totalReviews = review.length;
 
-// Step 4: Calculate the average rating
+// avarage rating
 const rating =
   review.reduce((sum, review) => sum + review.rating, 0) / totalReviews || 0;
 
