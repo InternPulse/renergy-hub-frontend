@@ -1,5 +1,5 @@
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Header from "../vendorcomponents/Header"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -59,70 +59,70 @@ import {
   TableRow,
 } from "../../../src/components/ui/table"
 
-// interface ProductData {
-//   product_id: number;
-//   category_id: number;
-//   user_id: number;
-//   name: string;
-//   description: string;
-//   image: string;
-//   created_at: string;
-//   total_revenue: number;
-//   total_cost: number;
-//   total_quantity_sold: number;
-//   total_profit: number;
-//   average_stock: number;
-//   sales_data: {
-//     date: string;
-//     price: number;
-//     quantity_sold: number;
-//     revenue: number;
-//     cost: number;
-//     profit: number;
-//   }[];
-//   profit_margin: number;
-//   average_price: number;
-//   stock_turnover_rate: number;
-//   is_profitable: boolean;
-//   profit_per_unit: number;
-// }
+interface ProductData {
+  product_id: number;
+  category_id: number;
+  user_id: number;
+  name: string;
+  description: string;
+  image: string;
+  created_at: string;
+  total_revenue: number;
+  total_cost: number;
+  total_quantity_sold: number;
+  total_profit: number;
+  average_stock: number;
+  sales_data: {
+    date: string;
+    price: number;
+    quantity_sold: number;
+    revenue: number;
+    cost: number;
+    profit: number;
+  }[];
+  profit_margin: number;
+  average_price: number;
+  stock_turnover_rate: number;
+  is_profitable: boolean;
+  profit_per_unit: number;
+}
 
-// interface ApiResponse {
-//   count: number;
-//   next: string | null;
-//   previous: string | null;
-//   results: ProductData[];
-// }
+interface ApiResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: ProductData[];
+}
 
 const VendorReport = () => {
 
-  //   const [productData, setProductData] = useState<ProductData[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
+    const [productData, setProductData] = useState<ProductData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/?date=2024-11-12'); // Replace with your actual API endpoint
-  //       console.log(response.data.results); 
-  //     } catch (err) {
-  //       setError('Failed to fetch product data.');
-  //       console.error(err);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/top-profit');
+        console.log(response.data.results); 
+      } catch (err) {
+        setError('Failed to fetch product data.');
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
-  // if (isLoading) {
-  //   return <div>Loading product data...</div>;
-  // }
+  if (isLoading) {
+    return <div>Loading product data...</div>;
+  }
 
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex-1 overflow-auto relative z-10">

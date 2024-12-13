@@ -1,4 +1,5 @@
-
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Header from "../vendorcomponents/Header"
 import { ChevronDown, MoveUp, Minus, Ellipsis } from "lucide-react"
@@ -19,7 +20,54 @@ import {
 
 import PopOver from "../vendorcomponents/popOver"
 
+interface Order {
+  id: number;
+  userId: number;
+  productId: number;
+  quantity: number;
+  totalPrice: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ApiResponse {
+  status: string;
+  code: number;
+  data: Order[];
+}
+
 export const VendorOrders = () => {
+
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<ApiResponse>(
+          'https://renergy-hub-express-backend.onrender.com/api/v1/orders'
+        );
+        setOrders(response.data.data);
+      } catch (err) {
+        setError('Failed to fetch orders.');
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
