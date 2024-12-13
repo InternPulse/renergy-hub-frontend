@@ -1,7 +1,8 @@
-import { BarChartComponent } from "../Charts/BarChart";
+ import { BarChartComponent } from "../Charts/BarChart";
 import { PieChartComponent } from "../Charts/PieChart";
 import Navbar from "../header/navigation";
-
+import { useEffect } from "react";
+import axios from "axios";
 interface CardData {
   title: string;
   value: string | number;
@@ -38,6 +39,35 @@ const cards: CardData[] = [
 ];
 
 function SaleAnalytics() {
+  const apiUrl =
+    "https://renergy-hub-django-backend.onrender.com/api/v1/sales/";
+
+  async function fetchData() {
+    try {
+      const response = await axios.get(apiUrl, {
+        withCredentials:true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response) {
+        throw new Error(`HTTP error! Status: ${response}`);
+      }
+
+      
+      console.log("API Response:", response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+
+
+    
+    fetchData();
+  }, []);
   return (
     <>
       <Navbar />

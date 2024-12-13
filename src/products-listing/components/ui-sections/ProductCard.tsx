@@ -4,19 +4,24 @@ import img1 from '../../../../public/assets/solor.svg'
 import { useProductStore } from '../../store/store';
 import { apiProduct } from '../../store/store';
 export type ProductProps = {
-    products?: apiProduct
+    products: apiProduct
 }
 
 
 
 const ProductCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
-    const {addToCart} = useProductStore()
+    const {wishList,addedProducts} = useProductStore()
 
-const handleClick = (products: any)=> {
+const handleClick = ()=> {
      setIsClicked(true)
-      addToCart(products)
+     if(products){
+      wishList(products)
+      console.log('',addedProducts)
+     }
+      
 }
+
 
 const removeClick = ()=> {
     setIsClicked(false)
@@ -51,7 +56,7 @@ function getFirstThreeWords(name:string) {
             
           
         </li>
-        <Link to={`/product/detail/${products?.id}`}>
+        <Link to={`/product/detail/${products.id}`}>
         <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             

@@ -113,6 +113,7 @@ type ProductStore = {
   cartProducts: apiProduct[];
   testProducts: apiProduct[];
   testIdProducts: [];
+  addedProducts: apiProduct[];
   testCategories: apiCategory[];
   testVendors: VendorResponse[];
   count: number;
@@ -131,7 +132,7 @@ type ProductStore = {
   setIsClicked: (isClicked: boolean) => void
   setSort: (sort: string) => void;
   categories: Category[];
-  addedProduct: Product[];
+  
   removeCart: (categoryId: number) => void; 
   selectedVendors: VendorResponse[];
   getProduct: ()=> Promise<void>;
@@ -146,6 +147,7 @@ type ProductStore = {
   // selectedCategories: Category[];
   selectedCategories: Category[];
   // addToCart: (product: Product) => void;
+  wishList: (product: apiProduct) => void;
   addToCart: (product: apiProduct) => void;
   setFilteredProduct: (productId: number) => Promise<void>;
   setFilteredVendor: (vendorId: number) => Promise<void>;
@@ -159,7 +161,7 @@ export const useProductStore = create<ProductStore>()(
       userId: 0,
       rating: 0,
       review:[],
-
+      addedProducts: [],
 
       //detailsProducts object
        detailProducts: {
@@ -197,6 +199,18 @@ export const useProductStore = create<ProductStore>()(
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
       addToCart: (product: apiProduct) => {
+        const {addedProducts}=get();
+        set(()=>{
+          let updatedProducts = [...addedProducts]
+          if (addedProducts.some((p) => p.id === product.id)) {
+            updatedProducts = updatedProducts.filter((p) => p.id !== product.id);
+          } else {
+            updatedProducts = [...updatedProducts, product];
+          }
+          return { cartProducts: updatedProducts }
+        })
+      },
+      wishList: (product: apiProduct) => {
         const {cartProducts}=get();
         set(()=>{
           let updatedProducts = [...cartProducts]

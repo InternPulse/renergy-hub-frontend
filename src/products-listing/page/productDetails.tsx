@@ -7,18 +7,18 @@ import { Link, Outlet } from 'react-router-dom'
 import ImageGallery from '../components/ui-sections/image-gallery'
 import { useParams } from 'react-router-dom'
 import { useProductStore } from '../store/store'
-import { useEffect,useState} from 'react'
+import { useEffect} from 'react'
  import ViewCard from '../components/ui-sections/featureProducts'
  import { Separator } from '../../components/ui/separator';
 import BreadcrumbNav from '../components/ui-sections/headBreadCrumbs'
-import SkeletonDetail from '../components/skeleton-loader.tsx/ske-Detail'
+
 
 
 
 const ProductDetail = () => {
   const {id} = useParams()
   const index = parseInt(id as string)
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  
   const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick,getReviews,review} = useProductStore()
 
   const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
@@ -49,11 +49,8 @@ const ProductDetail = () => {
   };
 
   fetchProduct();
-  const timeout = setTimeout(() => {
-    setIsLoading(false); // Stop showing skeleton after a delay
-  }, 1000); // Set delay to 1 second (you can adjust the time)
-
-  return () => clearTimeout(timeout); // Cleanup on unmount
+  
+  
 }, [index, testProducts, getProduct,setDetailProducts,getReviews,review]); // Removed setDetailProducts if it's a setter
 
 const handleDetailClick = ()=>{
@@ -64,7 +61,7 @@ const handleReviewClick = ()=>{
   setIsDclicked(false)
   setIsRClick(true)
 }
-if (isLoading) return <div className=""><SkeletonDetail/></div>;
+
   return (
     <>
      <div className='flex flex-col p-4 lg:p-8 gap-8 mx-auto'>

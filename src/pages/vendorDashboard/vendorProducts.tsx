@@ -94,7 +94,7 @@ const vendorProducts = () => {
 
         <div className="ml-auto mr-auto flex justify-between w-[95%] bg-white p-4 rounded-md h-20">
 
-            <h1 className="text-3xl mt-auto mb-auto">Product Listing</h1>
+            <h1 className="lg:text-3xl sm:text-2xl mt-auto mb-auto">Product Listing</h1>
 
             <div className="flex justify-between p-1 w-[140px] mt-auto mb-auto">
                 <Filter

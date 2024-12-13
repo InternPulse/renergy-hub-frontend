@@ -1,26 +1,27 @@
 import { Routes, Route } from "react-router-dom";
-import { Suspense } from "react"; // Import Suspense
-import ProductListing from "./products-listing";
-import ProductDetail from "./productDetails";
+
+
 import Review from "./review";
 import Detail from "./details";
+import PageProduct from "./pageProduct";
+import PageDetail from "./pageDetail";
+
+
 
 
 const Products = () => {
   return (
-    <Suspense> {/* Wrap with Suspense and use a fallback */}
+  
       <Routes>
-        <Route path="/" element={<ProductListing />} />
+        <Route path="/" element={<PageProduct/>} /> {/* Lazy-loaded component */}
         {/* Detail route as a parent */}
-        
-        {/* /:id product dynamic pathname */}
-        <Route path="detail/:id" element={<ProductDetail />}>
+        <Route path="detail/:id" element={<PageDetail/>}>
           {/* Nested Routes */}
           <Route index element={<Detail />} /> {/* Default route when visiting /detail */}
           <Route path="review" element={<Review />} /> {/* Nested route for /detail/review */}
         </Route>
       </Routes>
-    </Suspense>
+ 
   );
 };
 
