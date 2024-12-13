@@ -48,10 +48,10 @@ const Login = () => {
         setUserId(user.id);
 
       if (user.userType === "CUSTOMER") {
-        navigate("/userprofile", { state: { userId: user.id } });
+        navigate("/user-dashboar", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
 
-        navigate("/vendorprofile", { state: { userId: user.id } });
+        navigate("/vendor-dashboard", { state: { userId: user.id } });
       } else {
         throw new Error("Invalid role");
       }
