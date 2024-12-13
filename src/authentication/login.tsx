@@ -51,12 +51,11 @@ const Login = () => {
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
-<<<<<<< HEAD
 
         navigate("/vendor-dashboard", { state: { userId: user.id } });
-=======
+
         navigate("/vendor-dashboard", { state: { userId: user.id } });
->>>>>>> 9de867563fdda0ff55cf5c8182d72a45e09fd289
+
       } else {
         throw new Error("Invalid role");
       }
