@@ -1,6 +1,40 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
+interface Review {
+  id: number;
+  userId: number;
+  productId: number;
+  rating: number;
+  comment: string;
+  datePosted: string;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    username: string | null;
+  };
+  product: {
+    id: number;
+    name: string;
+    image: string;
+  };
+}
+
+// interface ReviewsResponse {
+//   success: boolean;
+//   statusCode: number;
+//   message: string;
+//   payload: Review[];
+// }
+
+
+
+
+
+
+
+
 interface apiCategory {
   id: number;
   categoryName: string;
@@ -76,7 +110,7 @@ interface Category {
 
 type ProductStore = {
   vendors: Vendor[];
-  products: apiProduct[];
+  cartProducts: apiProduct[];
   testProducts: apiProduct[];
   testIdProducts: [];
   testCategories: apiCategory[];
@@ -88,6 +122,7 @@ type ProductStore = {
   rating: number |null
   setCurrentRating: (value: number|null) => void;
   sort:string
+  review: Review[]
   isClicked: boolean
   isDclicked: boolean
   isRClick: boolean
@@ -100,6 +135,7 @@ type ProductStore = {
   removeCart: (categoryId: number) => void; 
   selectedVendors: VendorResponse[];
   getProduct: ()=> Promise<void>;
+  getReviews: ()=> Promise<void>;
   getVendor: ()=> Promise<void>;
   getProductId: (id:number)=> Promise<void>;
   getCategories: ()=> Promise<void>;
@@ -122,7 +158,7 @@ export const useProductStore = create<ProductStore>()(
       sort:'',
       userId: 0,
       rating: 0,
-
+      review:[],
 
 
       //detailsProducts object
@@ -144,6 +180,7 @@ export const useProductStore = create<ProductStore>()(
        isDclicked: true,
        isRClick:true,
       testVendors: [],
+      
       testCategories:[],
       testIdProducts:[],
       testProducts:[],
@@ -159,12 +196,24 @@ export const useProductStore = create<ProductStore>()(
       setIsRClick: (isRClick: boolean) => set({ isRClick }),
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
-      addToCart: (product: apiProduct) => set((state) => ({ products: [...state.products, product] })),
-      removeCart: (categoryId: number) => set((state) => ({ products: state.products.filter((p) => p.categoryId!== categoryId) })),
+      addToCart: (product: apiProduct) => {
+        const {cartProducts}=get();
+        set(()=>{
+          let updatedProducts = [...cartProducts]
+          if (cartProducts.some((p) => p.id === product.id)) {
+            updatedProducts = updatedProducts.filter((p) => p.id !== product.id);
+          } else {
+            updatedProducts = [...updatedProducts, product];
+          }
+          return { cartProducts: updatedProducts }
+        })
+      },
+
+      removeCart: (categoryId: number) => set((state) => ({ cartProducts: state.cartProducts.filter((p) => p.categoryId!== categoryId) })),
 
         setSort: (sort: string) => set({ sort: sort }),
         //dummy data for sorting, filtering and searching purposes
-      products: [
+      cartProducts: [
       
       ],
      setCurrentRating: (value: number|null) => set({ rating: value }),
@@ -199,6 +248,18 @@ export const useProductStore = create<ProductStore>()(
 
 
      },
+
+
+     getReviews: async () => {
+      try{
+        const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/reviews') 
+        const reviews = await res.json()
+        const { payload} = reviews
+        console.log('reviews',payload)
+        set ({review: payload})
+       
+     }catch(err){console.log(err)}
+    },
      getProductId: async (id:number) => {
 
       try{
@@ -324,7 +385,7 @@ export const useProductStore = create<ProductStore>()(
       },
     }),
     {
-      name: 'pro-storage', // Name of the storage item
+      name: 'products-storage', // Name of the storage item
       storage: createJSONStorage(() => localStorage), // Use localStorage for persistence
     }
   )

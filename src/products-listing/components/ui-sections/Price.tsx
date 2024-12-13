@@ -24,7 +24,7 @@ const Socials: socialProps[] = [{icon:img2 },{icon:img3 },{icon:img4 },{icon:img
 
 
 const PriceSection = ({products}:props) => {
-    const {count,setCount} = useProductStore()
+    const {count,setCount,addToCart,cartProducts} = useProductStore()
 // Convert the string to a number and then format it
 const formattedPrice = Number(products.price).toLocaleString();
     const handleIncrement = () =>{
@@ -34,6 +34,10 @@ const formattedPrice = Number(products.price).toLocaleString();
         if(count > 0){
             setCount(count - 1)
         }
+    }
+    const handleAddCart = () => {
+        addToCart(products)
+        console.log('added products',cartProducts)
     }
 
   return (
@@ -58,7 +62,7 @@ const formattedPrice = Number(products.price).toLocaleString();
              <Button  className='bg-white border text-[#1F2223] rounded-xl border-[#cccccc] text-xl hover:bg-[#dcffdf]' size={'icon'} onClick={handleDecrement} disabled={count <= 1}> - </Button>
              <p>{count}</p>
              <Button  className='bg-white text-[#1F2223] rounded-xl text-xl border border-[#cccccc] hover:bg-[#dcffdf]' size={'icon'} onClick={handleIncrement} disabled={count >= products.stock}>+</Button>
-             <Button className='flex  text-white bg-[#002603] rounded-xl hover:bg-[#004d08]' >
+             <Button className='flex  text-white bg-[#002603] rounded-xl hover:bg-[#004d08]' onClick={handleAddCart}>
                   <span><img src={img} alt="" /></span>
                   <span className='uppercase'>add to cart</span>
              </Button>

@@ -1,29 +1,48 @@
 
 import { Separator } from '../../../components/ui/separator';
 import { Progress } from '../../../components/ui/progress';
-
+import { useProductStore } from '../../store/store';
 
 interface RatingData {
     rating: number
     count: number
   }
   
-  const ratings: RatingData[] = [
-    { rating: 5, count: 26 },
-    { rating: 4, count: 12 },
-    { rating: 3, count: 4 },
-    { rating: 2, count: 1 },
-    { rating: 1, count: 1 },
-  ]
+  // const ratings: RatingData[] = [
+  //   { rating: 5, count: 26 },
+  //   { rating: 4, count: 12 },
+  //   { rating: 3, count: 4 },
+  //   { rating: 2, count: 1 },
+  //   { rating: 1, count: 1 },
+  // ]
   
 
 
 const ReviewStat = () => {
      const totalStars = 5;
+     const {review} = useProductStore();
+ // Step 1: Create an array to store the counts of each rating (1 to 5)
+ const ratings: RatingData[] = Array.from({ length: totalStars }, (_, i) => ({
+  rating: i + 1,
+  count: 0,
+}));
 
-     //rating values come from the api
-  const rating = 4.5
-  const totalReviews = ratings.reduce((sum, rating) => sum + rating.count, 0)
+// Step 2: Populate the ratings array with the counts from the API response
+review.forEach((review) => {
+  const reviewRating = review.rating;
+  const ratingIndex = ratings.findIndex((r) => r.rating === reviewRating);
+  if (ratingIndex !== -1) {
+    ratings[ratingIndex].count += 1;
+  }
+});
+
+// Step 3: Calculate the total number of reviews
+const totalReviews = review.length;
+
+// Step 4: Calculate the average rating
+const rating =
+  review.reduce((sum, review) => sum + review.rating, 0) / totalReviews || 0;
+
 
 
   return (

@@ -19,7 +19,7 @@ const ProductDetail = () => {
   const {id} = useParams()
   const index = parseInt(id as string)
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick} = useProductStore()
+  const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick,getReviews,review} = useProductStore()
 
   const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   // const [product,setProduct] = useState<apiProduct|undefined>(undefined)
@@ -28,7 +28,7 @@ const ProductDetail = () => {
     try {
       // Fetch products if the array is empty
       if (testProducts.length === 0) {
-        await getProduct()// Presumably fetches products
+        await Promise.all([getProduct(), getReviews()]);// Presumably fetches products
       }
       
       // Proceed if products are available and index is valid
@@ -38,6 +38,7 @@ const ProductDetail = () => {
         if (product) {
           setDetailProducts(product);
           console.log("Product found:", product);
+          console.log("review found:", review);
         } else {
           console.warn("No product found with the provided index.");
         }
@@ -53,7 +54,7 @@ const ProductDetail = () => {
   }, 1000); // Set delay to 1 second (you can adjust the time)
 
   return () => clearTimeout(timeout); // Cleanup on unmount
-}, [index, testProducts, getProduct,setDetailProducts,]); // Removed setDetailProducts if it's a setter
+}, [index, testProducts, getProduct,setDetailProducts,getReviews,review]); // Removed setDetailProducts if it's a setter
 
 const handleDetailClick = ()=>{
       setIsDclicked(true)
