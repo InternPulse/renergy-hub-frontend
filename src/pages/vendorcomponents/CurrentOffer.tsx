@@ -2,7 +2,7 @@
 
 const CurrentOffer = () => {
   return (
-    <div className="w-[39%] h-auto bg-white rounded-lg p-2">
+    <div className="w-full md:w-[39%] h-[280px]  bg-white rounded-lg p-2">
       <h1 className="text-xl mb-8">
         Current Offers
       </h1>

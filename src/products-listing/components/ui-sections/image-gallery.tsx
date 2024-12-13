@@ -14,8 +14,6 @@ import 'swiper/css/navigation';
 //@ts-expect-error
 import 'swiper/css/thumbs';
 
-
-
 // Define types for Swiper instance and images
 import type { Swiper as SwiperType } from 'swiper'; // Import the type for Swiper instance
 

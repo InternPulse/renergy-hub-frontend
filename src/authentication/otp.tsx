@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import Email from "../assets/email.png";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Otp: React.FC = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Otp: React.FC = () => {
     const enteredOtp = otp.join("");
 
     if (!id) {
-      alert("Invalid session. Please try again.");
+      toast.error("Invalid session. Please try again.");
       return;
     }
 
@@ -45,26 +46,26 @@ const Otp: React.FC = () => {
         );
         navigate("/authentication/welcome");
       } catch (err: any) {
-        alert(err.response?.data?.message || "Failed to verify OTP");
+        toast.error(err.response?.data?.message || "Failed to verify OTP");
       } finally {
         setLoading(false);
       }
     } else {
-      alert("Please complete the OTP input.");
+      toast.error("Please complete the OTP input.");
     }
   };
 
   const handleResendCode = async () => {
     if (!id) {
-      alert("Invalid session. Unable to resend code.");
+      toast.error("Invalid session. Unable to resend code.");
       return;
     }
 
     try {
       await axios.post(`https://renergy-hub-express-backend.onrender.com/api/v1/auth/resend/${id}`);
-      alert("OTP code has been resent!");
+      toast.success("OTP code has been resent!");
     } catch (err: any) {
-      alert(err.response?.data?.message || "Failed to resend OTP");
+      toast.success(err.response?.data?.message || "Failed to resend OTP");
     }
   };
 
