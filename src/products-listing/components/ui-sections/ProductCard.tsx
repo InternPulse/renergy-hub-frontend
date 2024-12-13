@@ -26,7 +26,7 @@ function getFirstThreeWords(name:string) {
 }
 
   const truncatedName = getFirstThreeWords(products?.name ?? '');
-
+  const formattedPrice = Number(products?.price).toLocaleString();
 
   return (
     <>
@@ -58,7 +58,7 @@ function getFirstThreeWords(name:string) {
         </li>
      <li className="flex flex-col text-center gap-2">
         <p className='text-black'>{truncatedName || 'Fireman '}</p>
-        <p className="text-[#4C4C4C]">{products?.price || 'N200'}</p>
+        <p className="text-[#4C4C4C]">₦ { formattedPrice || '200'}</p>
 
      </li>
 
