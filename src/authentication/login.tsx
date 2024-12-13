@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const {setUserId} = useProductStore();
+  const { setUserId } = useProductStore();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // console.log({ email, password });
@@ -20,7 +20,7 @@ const Login = () => {
 
     try {
       const payload = { email, password };
-      
+
       const response = await axios.post(
         "https://renergy-hub-express-backend.onrender.com/api/v1/auth/login",
         payload,
@@ -28,11 +28,12 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true, 
+          withCredentials: true,
         }
       );
       console.log("API Response:", response.headers);
-      const token = response.headers["access-token"] || response.headers["Authorization"];
+      const token =
+        response.headers["access-token"] || response.headers["Authorization"];
       console.log("Token received from API:", token);
       const user = response.data?.data;
 
@@ -45,13 +46,17 @@ const Login = () => {
       if (!user) {
         throw new Error("User data is missing from the response.");
       }
-        setUserId(user.id);
+      setUserId(user.id);
 
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
+<<<<<<< HEAD
 
         navigate("/vendor-dashboard", { state: { userId: user.id } });
+=======
+        navigate("/vendor-dashboard", { state: { userId: user.id } });
+>>>>>>> 9de867563fdda0ff55cf5c8182d72a45e09fd289
       } else {
         throw new Error("Invalid role");
       }
@@ -85,9 +90,7 @@ const Login = () => {
             </div>
 
             {/* Social Login Buttons */}
-           
 
-            
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <form onSubmit={handleLogin}>
               <div className="mb-6">
@@ -134,17 +137,16 @@ const Login = () => {
                 {loading ? "Logging in..." : "Login"}
               </button>
               <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1 h-px bg-gray-300"></div>
-              <span className="text-gray-500">OR</span>
-              <div className="flex-1 h-px bg-gray-300"></div>
-            </div>
-            <div className="flex justify-center w-full mb-6">
-              <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
-                <img src={google} alt="Google" className="w-6 h-6 mr-2" />
-                Google
-              </button>
-              
-            </div>
+                <div className="flex-1 h-px bg-gray-300"></div>
+                <span className="text-gray-500">OR</span>
+                <div className="flex-1 h-px bg-gray-300"></div>
+              </div>
+              <div className="flex justify-center w-full mb-6">
+                <button className="flex px-8 md:px-14 py-2 border border-gray-300 rounded-md hover:bg-green-800 hover:text-white">
+                  <img src={google} alt="Google" className="w-6 h-6 mr-2" />
+                  Google
+                </button>
+              </div>
             </form>
 
             {/* Footer */}
