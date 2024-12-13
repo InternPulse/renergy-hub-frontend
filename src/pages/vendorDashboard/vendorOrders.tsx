@@ -46,10 +46,11 @@ export const VendorOrders = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ApiResponse>(
-          'https://renergy-hub-express-backend.onrender.com/api/v1/orders'
+        const response = await axios.get(
+          'https://renergy-hub-express-backend.onrender.com/api/v1/orders',{withCredentials:true}
         );
         setOrders(response.data.data);
+        console.log(response.data.payload);
       } catch (err) {
         setError('Failed to fetch orders.');
         console.error(err);

@@ -65,7 +65,7 @@ const VendorInventory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ApiResponse>('https://renergy-hub-express-backend.onrender.com/api/v1/products'); // Replace with your actual API endpoint
+        const response = await axios.get('https://renergy-hub-express-backend.onrender.com/api/v1/products') // Replace with your actual API endpoint
         setProducts(response.data.data); 
       } catch (err) {
         setError('Failed to fetch products.');
@@ -97,7 +97,7 @@ const VendorInventory = () => {
                     Overview
                 </h2>
                 <section className="flex flex-wrap justify-between p-2 bg-white rounded-md w-[95%] h-auto">
-                    <div className="mx-auto">
+                    <div className="ml-7 sm:ml-0 sm:mt-2">
                         <h3 className="text-xl text-green-800">
                             Categories
                         </h3>
@@ -196,8 +196,8 @@ const VendorInventory = () => {
                         </button>
                     </div>
                 </div>
-            {products.map((product) => (
-            <Table  key={product.id}>
+            
+            <Table>
                 <TableHeader>
                     <TableRow className="text-lg">
                     <TableHead className="text-black">Product</TableHead>
@@ -207,7 +207,8 @@ const VendorInventory = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
+                    {products.map((product) => (
+                    <TableRow key={product.id}>
                     <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.name}</TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">NGN{product.price}</TableCell>
                     <TableCell className="text-black font-medium border-b-2 pb-1 w-1/5">{product.stock} Packets</TableCell>
@@ -215,9 +216,10 @@ const VendorInventory = () => {
                     <TableCell className="text-green-800 font-medium border-b-2 pb-1 w-8"><PencilLine /></TableCell>
                     <TableCell className="text-red-800 font-medium border-b-2 pb-1 w-8"><Trash2 /></TableCell>
                     </TableRow>
+                    ))}
                 </TableBody>
             </Table>
-             ))}
+             
         </div>
 
         </div>

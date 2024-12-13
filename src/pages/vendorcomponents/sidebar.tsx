@@ -59,7 +59,7 @@ export const Sidebar = () => {
 
 			<div className='h-full bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
 				<img 
-				className={`h-12 w-12 mt-6 ml-1 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
+				className={`h-12 w-12 mt-4 ml-1 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
 				src={logo}
 				alt="logo" />
 				<motion.button
