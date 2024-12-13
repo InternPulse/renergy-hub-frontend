@@ -59,7 +59,7 @@ export const Sidebar = () => {
 
 			<div className='h-full bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r'>
 				<img 
-				className={`h-12 w-12 mt-6 ml-6 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
+				className={`h-12 w-12 mt-6 ml-1 ${isSidebarOpen ? "w-auto h-20" : "w-8 h-8"}`}
 				src={logo}
 				alt="logo" />
 				<motion.button
@@ -75,7 +75,7 @@ export const Sidebar = () => {
           <nav>
 					{SIDEBAR_ITEMS.map((item, index) => (
 						<Link key={index} to={item.href}>
-							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors mb-2'>
+							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors mb-1 w-[35px]'>
 								<item.icon size={20} style={{ color: item.color, minWidth: "20px" }} />
 								<AnimatePresence>
 									{isSidebarOpen && (
@@ -98,7 +98,7 @@ export const Sidebar = () => {
         <nav>
           {SIDEBAR_BOTTOM.map((item, index) => (
             <Link key={index} to={item.href}>
-							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors '>
+							<motion.div className='flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors w-[35px]'>
 								<item.icon size={20} style={{ color: item.color, minWidth: "20px" }} />
 								<AnimatePresence>
 									{isSidebarOpen && (

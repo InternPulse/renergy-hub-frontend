@@ -78,13 +78,7 @@ const vendorProducts = () => {
     fetchData();
   }, []);
 
-   if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+   
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
@@ -94,30 +88,31 @@ const vendorProducts = () => {
 
         <div className="ml-auto mr-auto flex justify-between w-[95%] bg-white p-4 rounded-md h-20">
 
-            <h1 className="lg:text-3xl sm:text-2xl mt-auto mb-auto">Product Listing</h1>
+            <h1 className="lg:text-3xl text-xl my-auto">Product Listing</h1>
 
             <div className="flex justify-between p-1 w-[140px] mt-auto mb-auto">
                 <Filter
                 className="h-12 text-green-800"
                 />
-                <button className=" h-12 bg-white text-black flex p-3 border-2 border-green-800 rounded-md"> 
+                <button className="w-18 h-12 bg-white text-black flex p-2 border-2 border-green-800 rounded-md"> 
                     <Plus />Add
                 </button>
             </div>
-            
+             
         </div>
 
-        <div  className="ml-auto mr-auto w-[95%] bg-white mt-8 rounded-md overflow-y-scroll overflow-x-scroll">
+        <div  className="mx-auto w-[95%] bg-white mt-8 rounded-md overflow-y-scroll overflow-x-scroll">
           
           <Table >
                 <TableHeader>
                     <TableRow className="text-lg">
-                    <TableHead className="text-black">Product</TableHead>
-                    <TableHead className="text-black">Details</TableHead>
-                    <TableHead className="text-black">Image</TableHead>
-                    <TableHead className="text-black">Category</TableHead>
+                    <TableHead className="text-black w-1/5">Product</TableHead>
+                    <TableHead className="text-black w-1/5">Details</TableHead>
+                    <TableHead className="text-black w-1/5">Image</TableHead>
+                    <TableHead className="text-black w-1/5">Category</TableHead>
                     </TableRow>
                 </TableHeader>
+                
                 {products.map((product) => (
                 <TableBody key={product.id}>
                     <TableRow>
