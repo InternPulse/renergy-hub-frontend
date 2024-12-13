@@ -103,7 +103,7 @@ const VendorReport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/top-profit');
+        const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/top-profit',{withCredentials:true});
         console.log(response.data.results); 
       } catch (err) {
         setError('Failed to fetch product data.');

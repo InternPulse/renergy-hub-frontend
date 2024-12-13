@@ -47,7 +47,7 @@ const data = [
 
 const Sales = () => {
   return (
-    <div className="lg:w-[49%] h-[260px] bg-white rounded-lg p-2">
+    <div className="lg:w-[49%] h-[260px] bg-white rounded-lg p-1">
         <h1 className="text-xl">Monthly Sales</h1>
           <ResponsiveContainer width="100%" height="90%">
             <AreaChart
@@ -62,7 +62,7 @@ const Sales = () => {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="name" className='text-xs sm:text-sm' />
               <YAxis />
               <Tooltip />
               <Area type="monotone" dataKey="NGN" stroke="#000000" fill="#808080" />

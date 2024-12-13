@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         className="w-[600px] h-10 bg-gray-200"
         />
       <Search 
-      className="mt-auto mb-auto"
+      className="my-auto size-10"
       />
       </form>
 

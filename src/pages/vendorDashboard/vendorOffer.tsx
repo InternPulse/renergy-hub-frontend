@@ -30,10 +30,10 @@ const VendorOffer = () => {
             </form>
 
             <select className="h-12 p-2 border-solid border-green-800 border-2 rounded-md bg-gray-200">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
+              <option value="volvo">Solar</option>
+              <option value="saab">Battery</option>
+              <option value="mercedes">Panels</option>
+              <option value="audi">Electronic</option>
             </select>
             
           </div>
