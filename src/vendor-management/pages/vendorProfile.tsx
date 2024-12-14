@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "../header/navigation";
+// import Navbar from "../header/navigation";
 import { toast } from "react-toastify";
 // import { useLocation } from "react-router-dom";
 import { useProductStore } from "../../products-listing/store/store";
@@ -115,7 +115,6 @@ const VendorProfile = () => {
 
   return (
     <>
-      <Navbar />
       <section className="p-6">
         <div className="bg-white px-4 py-2 mb-4">
           <div className="flex justify-between">
