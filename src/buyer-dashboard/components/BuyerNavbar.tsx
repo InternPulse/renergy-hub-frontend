@@ -5,7 +5,7 @@ import { useEffect, useMemo } from "react";
 
 const routeTitles: Record<string, string> = {
   "/buyer-dashboard": "Overview",
-  "/buyer-dashboard/saved-products": "Saved Products",
+  "/buyer-dashboard/saved-products": "Products",
   "/buyer-dashboard/reports": "Reports",
   "/buyer-dashboard/products": "Products",
   "/buyer-dashboard/offers": "Offers",
@@ -43,8 +43,8 @@ function BuyerNavbar() {
   const pageTitle = useMemo(() => getPageTitle(location.pathname), [location.pathname]);
   // 
   return (
-    <nav className="md:ml-[260px] flex h-24 justify-between items-center 
-        pl-[60px] pr-[10px] sm:pl-[80px] sm:pr-[40px] md:px-2 lg:px-10 xl:px-20 bg-white">
+    <nav className="md:ml-[250px] flex h-24 justify-between items-center 
+        pl-[60px] pr-[10px] sm:pl-[80px] sm:pr-[40px] md:px-2 lg:px-10 xl:px-20 py-5 bg-white ">
             <div>
                 <h1 className="font-bold text-black text-[16px] sm:text-[18px] lg:text-[28px]">{pageTitle}</h1>
             </div>

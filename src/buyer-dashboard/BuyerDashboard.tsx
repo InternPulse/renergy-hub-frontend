@@ -10,7 +10,7 @@ function BuyerDashboard() {
   return (
       <div className="flex h-screen">
         <BuyerSideBar/>
-        <div className='flex flex-col w-full'>
+        <div className='flex flex-col h-screen'>
           <BuyerNavbar/>
         <Routes>
           <Route path="/" element={<BuyerOverview />} />
