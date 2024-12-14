@@ -1,4 +1,5 @@
 import Orders from "../components/Orders"
+import panel from "../assets/panel.png"
 
 
 
@@ -17,7 +18,7 @@ const BuyerOverview = () => {
                 <h2 className="font-bold mx-auto">
                   Saved Products
                 </h2>
-                <img src="" alt="" className="mx-auto rounded-lg" />
+                <img src={panel} alt="" className="w-[150px] mx-auto" />
                 <p className="font-bold mx-auto">NGN100000</p>
                 <p className="border-b-[1px] border-gray-900 w-40 mx-auto text-center">Order: 1 Piece</p>
               </div>
@@ -26,7 +27,7 @@ const BuyerOverview = () => {
                 <h2 className="font-bold mx-auto">
                   Browse History
                 </h2>
-                <img src="" alt="" />
+                <img src={panel} alt="" className="w-[150px] mx-auto" />
                 <p className="font-bold mx-auto">NGN100000</p>
                 <p className="border-b-[1px] border-gray-900 w-40 mx-auto text-center">Order: 1 Piece</p>
               </div>
@@ -45,7 +46,7 @@ const BuyerOverview = () => {
               </h2>
               <p>View more</p>
             </div>
-            <div className="w-full">
+            <div className="max-w-full flex flex-wrap">
               <button className="border-2 border-black rounded-full p-2 mx-1">All</button>
               {/* <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Confirming</button>
               <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Unpaid</button>        
@@ -55,15 +56,15 @@ const BuyerOverview = () => {
               <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Completed & in view</button> */}
             </div>
             <div className="flex justify-between p-2 w-full">
-                <div>
-                  <img src="" alt="" />
-                  <div>
-                    <h2></h2>
-                    <p></p>
-                    <p></p>
+                <div className="flex">
+                  <img src={panel} alt="" className="w-[150px]" />
+                  <div className="my-auto mx-2">
+                    <h2 className="my-1 font-bold text-xl">Request to be confirmed</h2>
+                    <p className="my-1">Total: NGN100000</p>
+                    <p className="my-1">3 Variation(s), 4 Item(s)</p>
                   </div>
                 </div>
-                <button className="text-sm border-[1] border-gray-900 rounded-md">
+                <button className="h-8 text-sm outline-gray-600 outline outline-1 py-1 px-4 rounded-md">
                   View more details
                 </button>
             </div>
