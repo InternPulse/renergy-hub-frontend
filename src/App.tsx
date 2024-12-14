@@ -16,7 +16,8 @@ import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
-import Page from "./buyer-dashboard/Page"
+import Page from "./buyer-dashboard/BuyerDashboard"
+import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
         <Route path="/blog-detail" element={<BlogDetail />} />
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
+
+        {/* FROM BUYER DASHBOARD */}
+        <Route path="/buyer-dashboard" element={<BuyerDashboard/>} />
         {/* From
         oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
