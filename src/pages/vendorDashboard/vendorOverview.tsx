@@ -10,7 +10,11 @@ import Orders from "../vendorcomponents/salesStatus/Orders";
 import TopSelling from "../vendorcomponents/TopSelling";
 import CurrentOffer from "../vendorcomponents/CurrentOffer";
 
+import { useProductStore } from "../../products-listing/store/store";
+
 export const VendorOverview = () => {
+
+  const { userId } = useProductStore()
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
