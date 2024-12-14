@@ -84,7 +84,8 @@ const Login = () => {
                 Welcome Back
               </h1>
               <p className="text-gray-600 mb-6">
-                Welcome back, please enter your details.
+                Welcome back, please enter your details. 
+
               </p>
             </div>
 
