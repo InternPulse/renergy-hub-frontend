@@ -1,6 +1,8 @@
 // src/components/Navbar.tsx
 import React from "react";
-import { NavLink } from "react-router-dom"; // Assuming React Router is used
+import { NavLink } from "react-router-dom";
+import { Bell } from "lucide-react";
+import { useUser } from "./userContext";
 
 // Define the NavLink type
 interface NavLinkType {
@@ -24,9 +26,20 @@ const navLinks: NavLinkType[] = [
 ];
 
 const Navbar: React.FC = () => {
+  const { formData } = useUser();
+
+  // getting the initial
+  const getInitials = () => {
+    const { firstName, lastName } = formData;
+    const firstNameInitial = firstName.slice(0, 1).toUpperCase();
+    const lastNameInitial = lastName.slice(0, 1).toUpperCase();
+    return `${firstNameInitial}${lastNameInitial}`;
+  };
+
   return (
-    <nav className="bg-white text-[#0E1F0D] p-6">
-      <ul className="flex space-x-10">
+    <nav className="bg-white text-[#0E1F0D] px-6 py-4 flex justify-between items-center">
+      {/* right side */}
+      <ul className="flex space-x-8">
         {navLinks.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -40,6 +53,16 @@ const Navbar: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      {/* left side */}
+      <div className="flex items-center gap-2">
+        <Bell />
+        <div className="bg-[#DEDEDE] p-2 rounded-full  text-2xl">
+          {getInitials()}
+        </div>
+
+        <p>{`${formData.firstName} ${formData.lastName}`}</p>
+      </div>
     </nav>
   );
 };

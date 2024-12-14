@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Header from "../vendorcomponents/Header"
@@ -20,62 +20,39 @@ import {
 
 import PopOver from "../vendorcomponents/popOver"
 
-interface Product {
+interface Order {
   id: number;
-  categoryId: number;
   userId: number;
-  name: string;
-  description: string;
-  price: string;
-  stock: number;
-  image: string;
+  productId: number;
+  quantity: number;
+  totalPrice: string;
+  status: string;
   createdAt: string;
   updatedAt: string;
-  category: {
-    id: number;
-    categoryName: string;
-    description: string;
-  };
-  user: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    username: string;
-    email: string;
-    password: string;
-    userType: string;
-    registerType: string;
-    socialId: null | string;
-    registrationDate: string;
-    phoneNumber: string;
-    confirmPassword: null | string;
-    isVerified: string;
-    verificationToken: string;
-    verificationTokenExpiresAt: string;
-    resetToken: null | string;
-    resetTokenExpiresAt: null | string;
-  };
 }
 
 interface ApiResponse {
   status: string;
   code: number;
-  data: Product[];
+  data: Order[];
 }
 
 export const VendorOrders = () => {
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ApiResponse>('https://renergy-hub-express-backend.onrender.com/api/v1/products'); // Replace with your actual API endpoint
-        setProducts(response.data.data); 
+        const response = await axios.get(
+          'https://renergy-hub-express-backend.onrender.com/api/v1/orders',{withCredentials:true}
+        );
+        setOrders(response.data.data);
+        console.log(response.data.payload);
       } catch (err) {
-        setError('Failed to fetch products.');
+        setError('Failed to fetch orders.');
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -85,8 +62,8 @@ export const VendorOrders = () => {
     fetchData();
   }, []);
 
-   if (isLoading) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <div className="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin mx-auto my-auto"></div>;
   }
 
   if (error) {
@@ -98,62 +75,56 @@ export const VendorOrders = () => {
       <Header title='Orders' />
 
     <div className="bg-gray-200 h-full p-4">
-      <div className="flex flex-wrap w-[98%] mx-auto bg-white rounded-md h-auto p-2">
+      <div className="flex flex-col sm:flex-row w-[98%] mx-auto bg-white rounded-md h-auto p-2">
         <section className="mx-auto my-auto">
           <h2>Today</h2>
         </section>
         <section className="mx-auto my-auto">
           <h2 className="text-gray-500 text-sm">Total Orders</h2>
-          <p className="font-bold">2654</p>
+          <p className="font-bold text-center">2654</p>
         </section>
         <section className="mx-auto my-auto">
           <h2 className="text-gray-500 text-sm">Delivered Orders</h2>
-          <p className="font-bold">2600</p>
+          <p className="font-bold text-center">2600</p>
         </section>
         <section className="mx-auto my-auto">
           <h2 className="text-gray-500 text-sm">Pending Orders</h2>
-          <p className="font-bold">50</p>
+          <p className="font-bold text-center">50</p>
         </section>
         <section className="mx-auto my-auto">
           <h2 className="text-gray-500 text-sm">Returns</h2>
-          <p className="font-bold">0</p>
+          <p className="font-bold text-center">0</p>
         </section>
         <section className="mx-auto my-auto">
-          <h2 className="text-gray-500 text-sm">Cancelled</h2>
-          <p  className="font-bold">4</p>
+          <h2 className="text-gray-500 text-sm ">Cancelled</h2>
+          <p  className="font-bold text-center">4</p>
         </section>
       </div>
 
-      <div className="flex justify-between w-[98%] mx-auto my-4">
+      <div className="flex flex-col sm:flex-row justify-between w-[98%] mx-auto my-4">
         <div className="flex flex-wrap w-auto">
-          <button className="bg-white hover:bg-green-500 text-black flex p-2 rounded-3xl border-2 border-green-500 mx-1"> 
+          <button className="bg-white hover:bg-green-500 text-black flex m-2 p-2 rounded-3xl border-2 border-green-500 mx-1"> 
             Type<ChevronDown className="h-4 my-auto" />
           </button>
-          <button className="bg-white hover:bg-green-500 text-black flex p-2 rounded-3xl border-2 border-green-500 mx-1"> 
+          <button className="bg-white hover:bg-green-500 text-black flex p-2 m-2 rounded-3xl border-2 border-green-500 mx-1"> 
             Status<ChevronDown className="h-4 my-auto" />
           </button>
-          <button className="bg-white hover:bg-green-500 text-black flex p-2 rounded-3xl border-2 border-green-500 mx-1"> 
+          <button className="bg-white hover:bg-green-500 text-black flex p-2 m-2 rounded-3xl border-2 border-green-500 mx-1"> 
             Order Date<ChevronDown className="h-4 my-auto" />
           </button>
-          <button className="bg-white hover:bg-green-500 text-black flex p-2 rounded-3xl border-2 border-green-500 mx-1"> 
+          <button className="bg-white hover:bg-green-500 text-black flex p-2 m-2 rounded-3xl border-2 border-green-500 mx-1"> 
             Delivery Status<ChevronDown className="h-4 my-auto" />
           </button>
-          <button className="bg-white hover:bg-green-500 text-black flex p-2 rounded-3xl border-2 border-green-500 mx-1"> 
+          <button className="bg-white hover:bg-green-500 text-black flex p-2 m-2 rounded-3xl border-2 border-green-500 mx-1"> 
             All Filters<ChevronDown className="h-4 my-auto" />
           </button>
         </div>
-        <button className="bg-green-700 hover:bg-green-500 text-white flex p-2 rounded-md"> 
+        <button className="bg-green-700 hover:bg-green-500 text-white flex p-2 m-2 rounded-md w-20 h-10"> 
           <MoveUp className="h-4 my-auto" />Export
         </button>
       </div>
 
     <div>
-      {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-          </li>
-        ))}
       <Table className="bg-white rounded-lg">
           <TableHeader>
             <TableRow className="text-lg">
@@ -232,10 +203,6 @@ export const VendorOrders = () => {
           </TableBody>
         </Table>
     </div>
-
-    
-
-
     </div>
     </div>
   )

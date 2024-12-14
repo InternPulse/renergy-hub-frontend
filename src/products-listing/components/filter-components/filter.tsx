@@ -147,7 +147,7 @@ const Filter = () => {
             {!isClicked ? (
               <div>
                 <Button
-                  className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200"
+                  className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200 hover:text-black hover:bg-green-500"
                   onClick={handleButton}
                 >
                   <svg

@@ -2,7 +2,7 @@
 // this is a container for all the filter buttons
 
 import { CategoryFilter } from './category-filter' 
-import { ProductFilter } from './product-filter'
+// import { ProductFilter } from './product-filter'
 import { VendorFilter } from './vendor-filter'
 
 
@@ -12,9 +12,9 @@ function FilterContainer() {
     <div className='flex gap-4 overflow-x-scroll py-4'>
      
      <CategoryFilter/>
-     
+{/*      
       <ProductFilter/>
-     
+      */}
       <VendorFilter/>
      
       

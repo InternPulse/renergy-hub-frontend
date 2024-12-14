@@ -10,6 +10,7 @@ import img3 from '../../../../public/instagram.svg'
 import img4 from '../../../../public/linkedin.svg'
 import img5 from '../../../../public/x.svg'
 import { Link } from 'react-router-dom'
+import ControlledRating from './contRating'
 interface props {
     products: apiProduct
 }
@@ -40,7 +41,7 @@ const formattedPrice = Number(products.price).toLocaleString();
         <ul className='flex flex-col gap-4 lg:gap-8 p-6'>
             <li className='flex flex-col gap-2'>
                 <h1 className='text-black text-3xl max-w-[300px]'>{products.name}</h1>
-                <div className='flex gap-2 text-[#808080]'> <span>rating</span>
+                <div className='flex items-center gap-2 text-[#808080]'> <span><ControlledRating/></span>
                 <p> Be the first to review this product </p></div>
 
             </li>

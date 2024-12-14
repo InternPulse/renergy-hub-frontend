@@ -53,7 +53,7 @@ const Header = () => {
 
     // Handle vendor Header
     if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
+      const vendorNames = selectedVendors.map((vendor) => vendor.brandName);
       params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
