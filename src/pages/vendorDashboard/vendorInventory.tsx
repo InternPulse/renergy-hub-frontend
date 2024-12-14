@@ -79,7 +79,7 @@ const VendorInventory = () => {
   }, []);
 
    if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin mx-auto my-auto"></div>;
   }
 
   if (error) {
