@@ -1,12 +1,74 @@
+import Orders from "../components/Orders"
 
 
 
 
 const BuyerOverview = () => {
   return (
-    <section className="md:ml-[260px] w-full  h-screen overflow-auto bg-red-500">
+    <section className="md:ml-[250px] w-[95%] h-screen overflow-auto bg-gray-200 p-2">
         
-        <div style={{ height: "200vh" }}>Test Content</div>
+        <div className="h-full">
+          <section className="w-full h-[250px] flex justify-between">
+            <div className="w-[60%] h-auto sm:h-full rounded-sm bg-white">
+
+            </div>
+            <div className="w-[39%] h-auto sm:h-full flex rounded-sm bg-white">
+              <div className="flex flex-col mx-auto p-2">
+                <h2 className="font-bold mx-auto">
+                  Saved Products
+                </h2>
+                <img src="" alt="" className="mx-auto rounded-lg" />
+                <p className="font-bold mx-auto">NGN100000</p>
+                <p className="border-b-[1px] border-gray-900 w-40 mx-auto text-center">Order: 1 Piece</p>
+              </div>
+              <div className="w-1 h-[90%] bg-gray-200 my-auto" />
+              <div className="flex flex-col mx-auto p-2">
+                <h2 className="font-bold mx-auto">
+                  Browse History
+                </h2>
+                <img src="" alt="" />
+                <p className="font-bold mx-auto">NGN100000</p>
+                <p className="border-b-[1px] border-gray-900 w-40 mx-auto text-center">Order: 1 Piece</p>
+              </div>
+            </div>
+          </section>
+          <section className="bg-gray-200 w-auto h-auto flex justify-between my-3">
+            <div className="w-[49%] h-auto bg-white rounded-sm p-2">
+              <h2 className="font-bold">Purchase History</h2>
+            </div>
+            <Orders />
+          </section>
+          <section className="bg-white w-full h-[350px] my-3">
+            <div className="flex justify-between p-2 w-full">
+              <h2 className="font-bold text-xl">
+                Orders
+              </h2>
+              <p>View more</p>
+            </div>
+            <div className="w-full">
+              <button className="border-2 border-black rounded-full p-2 mx-1">All</button>
+              {/* <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Confirming</button>
+              <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Unpaid</button>        
+              <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Preparing to ship</button>
+              <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Delivering</button>
+              <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Refunds & other sales</button>
+              <button className="border-2 border-gray-400 text-gray-600 rounded-full p-2 mx-1">Completed & in view</button> */}
+            </div>
+            <div className="flex justify-between p-2 w-full">
+                <div>
+                  <img src="" alt="" />
+                  <div>
+                    <h2></h2>
+                    <p></p>
+                    <p></p>
+                  </div>
+                </div>
+                <button className="text-sm border-[1] border-gray-900 rounded-md">
+                  View more details
+                </button>
+            </div>
+          </section>
+        </div>
     </section>
   )
 }
