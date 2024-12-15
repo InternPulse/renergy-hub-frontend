@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiShare } from "react-icons/fi";
-import Navbar from "./Navbar"
+import Navbar from "./Navbar";
 import Wishlist from "./Shopping"; // Assuming Wishlist is a related component
 import { useProductStore } from "../products-listing/store/store";
-import img1 from '../../public/assets/solor.svg'
+import img1 from "../../public/assets/solor.svg";
 import { apiProduct } from "../products-listing/store/store";
-
-
 
 const ProductList: React.FC = () => {
   const [cart, setCart] = useState<apiProduct[]>([]); // Type the cart state with Item type
-  const { cartProducts}= useProductStore()
-  const [items, setItems] = useState<apiProduct[]>([ // Type the items state with Item type
-   
+  const { cartProducts } = useProductStore();
+  const [items, setItems] = useState<apiProduct[]>([
+    // Type the items state with Item type
   ]);
-
 
   useEffect(() => {
     setItems(cartProducts);
@@ -57,7 +54,7 @@ const ProductList: React.FC = () => {
             </div>
             <div className="flex-[3] w-[321px] h-[297px] shadow-inner rounded-lg bg-gray-200 overflow-hidden">
               <img
-                src= {img1}
+                src={img1}
                 alt={item.name}
                 className="w-full h-full object-cover"
               />
@@ -67,11 +64,11 @@ const ProductList: React.FC = () => {
                 {item.name}
               </h3>
               <p className="text-gray-600 font-semibold">{item.price}</p>
-            {
-               item.stock > 0 ? (<p className="text-green-500"> IN STOCK</p>) : 
-                  <p className="text-green-500"> OUT OF STOCK</p>
-            }
-              
+              {item.stock > 0 ? (
+                <p className="text-green-500"> IN STOCK</p>
+              ) : (
+                <p className="text-green-500"> OUT OF STOCK</p>
+              )}
             </div>
             <div className="flex-[2]">
               <div className="flex justify-between items-center space-x-4">
