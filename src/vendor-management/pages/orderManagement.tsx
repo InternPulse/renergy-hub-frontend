@@ -55,7 +55,6 @@ const OrderManagement: React.FC = () => {
   };
   return (
     <>
-      <Navbar />
       <section className="p-6">
         <div className="bg-white px-4 py-2 mb-4 rounded-md">
           <div className="flex items-center justify-between">
