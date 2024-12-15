@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
 import Header from "../vendorcomponents/Header"
 import { ChevronDown, MoveUp, Minus, Ellipsis } from "lucide-react"
 
