@@ -159,6 +159,7 @@ const VendorSignup: React.FC = () => {
           <button
             className="flex items-center justify-center w-full px-6 py-2 border-2 border-gray-100 rounded-md hover:bg-green-800 transition"
             
+            
           >
             <img src={google} alt="google" className="mr-2" />
             Google
