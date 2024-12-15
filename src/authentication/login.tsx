@@ -52,7 +52,11 @@ const Login = () => {
       if (user.userType === "CUSTOMER") {
         navigate("/userprofile", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
-        navigate("/vendorprofile", { state: { userId: user.id } });
+
+        navigate("/vendor-dashboard", { state: { userId: user.id } });
+
+        navigate("/vendor-dashboard", { state: { userId: user.id } });
+
       } else {
         throw new Error("Invalid role");
       }
@@ -81,7 +85,8 @@ const Login = () => {
                 Welcome Back
               </h1>
               <p className="text-gray-600 mb-6">
-                Welcome back, please enter your details.
+                Welcome back, please enter your details. 
+
               </p>
             </div>
 

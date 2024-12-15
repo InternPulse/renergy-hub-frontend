@@ -12,11 +12,11 @@ import ContentSection from "./sections/contentSection";
 import SecurityCompliance from "./pages/SecurityCompliance"; // From HEAD
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
 import AboutUs from "./pages/AboutUs";
+// import Page from "./buyer-dashboard/BuyerDashboard"
 import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
-import { Toaster } from "./components/ui/sonner";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 
 function App() {
@@ -31,6 +31,9 @@ function App() {
         <Route path="/blog-detail" element={<BlogDetail />} />
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
+
+        {/* FROM BUYER DASHBOARD */}
+        <Route path="/buyer-dashboard/*" element={<BuyerDashboard/>} />
         {/* From
         oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
@@ -47,6 +50,7 @@ function App() {
           path="/shipping-and-tracking"
           element={<ShippingAndTracking />}
         />
+        {/* <Route path="/buyer-section" element={<Page />} /> */}
         <Route path="/content-section" element={<ContentSection />} />
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
