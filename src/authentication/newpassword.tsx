@@ -7,7 +7,7 @@ const NewPassword: React.FC = () => {
 
   const location = useLocation();
 
-  // Safely retrieve the `id` from location.state
+  
   const email = location.state?.email || null;
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -76,19 +76,17 @@ const NewPassword: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-between">
-      {/* Top Section */}
       <div className="flex justify-end px-4 py-1">
         <div className="bg-green-800 w-[5rem] h-[6rem] border"></div>
       </div>
 
-      {/* Middle Section */}
       <div className="flex flex-col items-center flex-grow justify-center px-4">
         <p className="font-bold text-center text-3xl my-4">
           Enter your new password
         </p>
 
         <div className="w-full max-w-md">
-          {/* New Password Input */}
+          
           <div className="relative mb-8">
             <input
               type={showPassword ? "text" : "password"}

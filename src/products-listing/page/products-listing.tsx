@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams,useNavigate } from "react-router-dom";
 import Filter from "../components/filter-components/filter";
 import { useEffect, useState,useCallback } from "react";
 import { useProductStore } from "../store/store";
@@ -12,6 +12,7 @@ const ProductListing = () => {
   const {sort,testCategories,testProducts,testVendors}=useProductStore()
   // const { products, vendors, categories } = storeData;
 
+  const navigate = useNavigate(); // Hook to update the URL
   const itemsPerPage = 10; // Number of items per page
   const currentPage = parseInt(searchParams.get("page") || "1", 10); // Get current page from URL, default to 1
 
@@ -47,7 +48,7 @@ const ProductListing = () => {
     const vendorQuery = searchParams.get("vendor");
     const categoryQuery = searchParams.get("category");
     const searchQuery = searchParams.get("search");
-
+   
     // Filter products based on the query parameters
     const filtered = testProducts.filter((product) => {
       // Get vendor and category names based on their respective IDs
@@ -76,6 +77,7 @@ const ProductListing = () => {
     const sortedProducts = sortProducts(filtered);
     console.log(sortedProducts)
     setFilteredProducts(sortedProducts); // Update state with the filtered products
+
   }, [searchParams, testProducts, testVendors, testCategories,sortProducts]);
 
 
@@ -94,7 +96,10 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     setSearchParams(params); // Update URL with the new page number
+    navigate({ search: params.toString() }, { replace: true });
   };
+
+
 
   return (
     <>
@@ -102,13 +107,14 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
       <Filter />
       <div className="grid grid-cols-2 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-5">
         {paginatedProducts.length > 0 ? (
-          paginatedProducts.map((product) => (
-            <div key={product.id} className="">
-              <ProductCard products={product} key={product.id} />
-            </div>
+          paginatedProducts.map((product,index) => (
+          
+              <ProductCard products={product} key={index} />
+           
           ))
         ) : (
           <p>No products match your criteria.</p>
+         
         )}
       </div>
         {/* Pagination Controls */}

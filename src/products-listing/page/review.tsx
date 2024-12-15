@@ -1,5 +1,6 @@
 import ReviewCard from "../components/ui-sections/reviewCard"
 import ReviewStat from "../components/ui-sections/reviewStat"
+
 const Review = () => {
   return (
     <>

@@ -3,30 +3,59 @@ import { useState } from 'react';
 import img1 from '../../../../public/assets/solor.svg'
 import { useProductStore } from '../../store/store';
 import { apiProduct } from '../../store/store';
+import { toast } from "sonner"
+import { BadgeCheck } from 'lucide-react';
+import { OctagonX } from 'lucide-react';
 export type ProductProps = {
-    products?: apiProduct
+    products: apiProduct
 }
 
 
 
 const ProductCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
-    const {addToCart} = useProductStore()
+    const {wishList,addedProducts} = useProductStore()
 
-const handleClick = (products: any)=> {
+const handleClick = ()=> {
      setIsClicked(true)
-      addToCart(products)
+     if(products){
+      wishList(products)
+      toast(
+            
+        "Added product: Successfully",{
+            description: "The product has been added to your Wishlist",
+            icon: <BadgeCheck className='text-green-500'/>,
+            action: {
+                onClick:() => {
+                    removeClick() 
+                  } ,
+                  label: "remove",
+            } 
+        }
+        )
+      console.log('added products',addedProducts)
+     }
+      
 }
+
 
 const removeClick = ()=> {
     setIsClicked(false)
+    toast(
+            
+      "Removed product: Successfully",{
+          description: "The product has been removed to your Wishlist",
+          icon: < OctagonX className='text-red-500'/>,
+          
+      }
+      )
 }
 function getFirstThreeWords(name:string) {
   return name.split(' ').slice(0, 2).join(' ');
 }
 
   const truncatedName = getFirstThreeWords(products?.name ?? '');
-
+  const formattedPrice = Number(products?.price).toLocaleString();
 
   return (
     <>
@@ -51,14 +80,14 @@ function getFirstThreeWords(name:string) {
             
           
         </li>
-        <Link to={`/product/detail/${products?.id}`}>
+        <Link to={`/product/detail/${products.id}`}>
         <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             
         </li>
      <li className="flex flex-col text-center gap-2">
         <p className='text-black'>{truncatedName || 'Fireman '}</p>
-        <p className="text-[#4C4C4C]">{products?.price || 'N200'}</p>
+        <p className="text-[#4C4C4C]">₦ { formattedPrice || '200'}</p>
 
      </li>
 

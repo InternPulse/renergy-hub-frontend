@@ -14,11 +14,12 @@ import BreadcrumbNav from '../components/ui-sections/headBreadCrumbs'
 
 
 
+
 const ProductDetail = () => {
   const {id} = useParams()
   const index = parseInt(id as string)
-
-  const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick} = useProductStore()
+  
+  const {testProducts,setDetailProducts,detailProducts,getProduct,setIsDclicked,setIsRClick,isDclicked, isRClick,getReviews,review} = useProductStore()
 
   const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   // const [product,setProduct] = useState<apiProduct|undefined>(undefined)
@@ -27,7 +28,7 @@ const ProductDetail = () => {
     try {
       // Fetch products if the array is empty
       if (testProducts.length === 0) {
-        await getProduct()// Presumably fetches products
+        await Promise.all([getProduct(), getReviews()]);// Presumably fetches products
       }
       
       // Proceed if products are available and index is valid
@@ -37,6 +38,7 @@ const ProductDetail = () => {
         if (product) {
           setDetailProducts(product);
           console.log("Product found:", product);
+          console.log("review found:", review);
         } else {
           console.warn("No product found with the provided index.");
         }
@@ -47,7 +49,9 @@ const ProductDetail = () => {
   };
 
   fetchProduct();
-}, [index, testProducts, getProduct,setDetailProducts,]); // Removed setDetailProducts if it's a setter
+  
+  
+}, [index, testProducts, getProduct,setDetailProducts,getReviews,review]); // Removed setDetailProducts if it's a setter
 
 const handleDetailClick = ()=>{
       setIsDclicked(true)
@@ -57,6 +61,7 @@ const handleReviewClick = ()=>{
   setIsDclicked(false)
   setIsRClick(true)
 }
+
   return (
     <>
      <div className='flex flex-col p-4 lg:p-8 gap-8 mx-auto'>
@@ -77,24 +82,26 @@ const handleReviewClick = ()=>{
             <button onClick={handleDetailClick}  className='bg-none p-0' >
           <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603] flex flex-col ' > 
          
-        <p>  DETAILS </p> 
+        <p className={isDclicked ? 'text-green-500' : ''}>  DETAILS </p> 
       
-          {isDclicked && <Separator className='max-w-[94px] h-1 bg-black'/>}
           
            </Link>
            </button>
            <button onClick={handleReviewClick}   className='bg-none p-0' >
           <Link to={`/product/detail/${index}/review`} className='text-black hover:text-[#002603] flex flex-col ' > 
          
-        <p>  REVIEWS </p> 
+        <p className={isRClick? 'text-green-500' : ''}>  REVIEWS </p> 
       
-          {isRClick && <Separator className='max-w-[94px] h-1 bg-black'/>}
+         
           
            </Link>
            </button>
          
           </li>
-          
+      {/* <li className='flex'>
+      {isDclicked && <Separator className='max-w-[96px] h-1 bg-black'/>  }
+      {isRClick && <Separator className='max-w-[96px] h-1 bg-black'/>  }     
+      </li> */}
           <Separator/>
           </ul>
 
