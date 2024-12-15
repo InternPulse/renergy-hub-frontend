@@ -33,7 +33,7 @@ export default function BreadcrumbNav({products}: ProductProps) {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
             
-     <Link to="/product">Product</Link>
+     <Link to="/product">Products</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
