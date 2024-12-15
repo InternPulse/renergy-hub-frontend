@@ -47,7 +47,7 @@ interface ApiResponse {
 
 const TopProducts = () => {
 
-    const [productData, setProductData] = useState<ProductData[]>([]);
+    // const [productData, setProductData] = useState<ProductData[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
