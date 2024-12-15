@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 interface ProductProps {
   children: React.ReactNode;
-  role: string;
+  role?: string;
 }
 
 function PrivateRoute({ children }: ProductProps) {

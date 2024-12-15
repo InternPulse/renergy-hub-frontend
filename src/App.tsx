@@ -20,6 +20,7 @@ import ProductList from "./shoppingcart/ProductList";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 import { Toaster } from "sonner";
 import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
+import PrivateRoute from "./protectedroutes/privateRoute";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
@@ -34,11 +35,17 @@ function App() {
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
         {/* FROM BUYER DASHBOARD */}
-        <Route path="/buyer-dashboard/*" element={<BuyerDashboard/>} />
+        <Route path="/buyer-dashboard/*" element={
+          <PrivateRoute>
+            <BuyerDashboard/>
+          </PrivateRoute>} />
         {/* From
         oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
-        <Route path="/authentication/*" element={<Auth />} />
+        <Route path="/authentication/*" element={
+          <PrivateRoute>
+            <Auth />
+          </PrivateRoute>} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
