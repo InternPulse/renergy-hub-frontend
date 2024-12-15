@@ -47,7 +47,7 @@ const ProductListing = () => {
   useEffect(() => {
     const vendorQuery = searchParams.get("vendor");
     const categoryQuery = searchParams.get("category");
-    const searchQuery = searchParams.get("search");
+    const searchQuery = searchParams.get("query");
    
     // Filter products based on the query parameters
     const filtered = testProducts.filter((product) => {

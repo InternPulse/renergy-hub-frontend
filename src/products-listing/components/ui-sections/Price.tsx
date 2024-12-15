@@ -91,6 +91,7 @@ const formattedPrice = Number(products.price).toLocaleString();
 
             </li>
             {cartProducts? <p className='text-sm text-[#808080]'>You have <span className='text-[#002603]'>{cartProducts.length}</span>  items in your cart</p> :""}
+
             <Separator />
             <li className='flex gap-2'>
                 {Socials.map((item,index) => (

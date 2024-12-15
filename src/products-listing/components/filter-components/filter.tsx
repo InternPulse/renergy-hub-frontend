@@ -1,20 +1,18 @@
 import { Button } from "../../../components/ui/button";
-import { useState, useCallback, useEffect } from "react";
+import {  useEffect } from "react";
 import FilterContainer from "./categoryButtonProps";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../../store/store";
-import { useDebounce } from "use-debounce"; // Import useDebounce
+import { useDebouncedCallback } from "use-debounce"; // Import useDebounce
 import { Input } from "../../../components/ui/input";
 import { Search } from "lucide-react";
 import SortOrder from "./SortOrder";
 
 //this is the Filter component, the parent component of all filtering, sorting and searching components
 const Filter = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const {
-    selectedCategories,
-    selectedProducts,
-    selectedVendors,
+    
     setIsClicked,
     isClicked,
    getVendor,
@@ -23,19 +21,7 @@ const Filter = () => {
   
   } = useProductStore();
   const navigate = useNavigate(); // Hook to update the URL
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search") || ""
-  ); // To handle the search input
-
-  // Debounced version of the search query
-  const [debouncedSearchQuery] = useDebounce(searchQuery, 300); // 500ms debounce delay
-
-  // Handle search input change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
-
-  // Remove filter panel
+  
   const handleRemoveButton = () => {
     setIsClicked(false);
   };
@@ -44,72 +30,35 @@ const Filter = () => {
   const handleButton = () => {
     setIsClicked(true);
   };
+  
 
-  const handleClick = useCallback(() => {
-    const params = new URLSearchParams(searchParams.toString());
+  const handleSearch =useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams as any); // Convert searchParams to URLSearchParams for manipulation
+    console.log(value)
 
-    // Handle category filter
-    if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.categoryName);
-      params.set("category", categoryNames.join(","));
+    
+    if (value) {
+      params.set('query', value); // Set 'query' param if a search term exists
     } else {
-      params.delete("category");
+      params.delete('query'); // Remove 'query' param if search term is cleared
     }
 
-    // Handle product filter
-    if (selectedProducts.length > 0) {
-      const productNames = selectedProducts.map((prod) => prod.name);
-      params.set("product", productNames.join(","));
-    } else {
-      params.delete("product");
-    }
-
-    // Handle vendor filter
-    if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
-      params.set("vendor", vendorNames.join(","));
-    } else {
-      params.delete("vendor");
-    }
-
-    // Handle search query (using the debounced version)
-    if (debouncedSearchQuery) {
-      params.set("search", debouncedSearchQuery);
-    } else {
-      params.delete("search");
-    }
-
-    // Set the updated search params to the URL
-    setSearchParams(params);
     navigate({ search: params.toString() }, { replace: true });
-  }, [
-    selectedCategories,
-    selectedProducts,
-    selectedVendors,
-    debouncedSearchQuery,
-    setSearchParams,
-    navigate,
-    searchParams,
-  ]);
+    (setIsClicked(true)) 
+  }, 300);
 
   // Use useEffect to trigger the filter update when the debounced search query or filter selections change
   useEffect(() => {
     const fetchData = async ()=>{
       try{
         await Promise.all([getProduct(), getCategories(),getVendor()]);
-        handleClick();
-      }catch(err){console.log(err)}
+        }catch(err){console.log(err)}
     }
    
     fetchData();  
   
 
   }, [
-    debouncedSearchQuery,
-    selectedCategories,
-    selectedProducts,
-    selectedVendors,
-    handleClick,
     getProduct,
     getCategories,
     getVendor
@@ -117,7 +66,7 @@ const Filter = () => {
   ]);
 
   return (
-    <section className="flex flex-col gap-8">
+    <section className="flex flex-col gap-8 ">
       <header className=" flex flex-col gap-4">
         <ul className="flex flex-col md:flex-row gap-8 justify-between lg:items-center">
           <li className="pr-8">
@@ -127,8 +76,9 @@ const Filter = () => {
              
             <Input
               type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
+            
+              onChange={(e) => handleSearch(e.target.value)}
+              defaultValue={searchParams.get('query')?.toString()} // Retrieve current 'query' param
               placeholder="Search products"
               className="border p-2 rounded   text-right pl-2 pr-10 "
             />
