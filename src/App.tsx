@@ -43,9 +43,7 @@ function App() {
         oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={
-          <PrivateRoute>
-            <Auth />
-          </PrivateRoute>} />
+          <Auth />} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
         <Route path="/settings/*" element={<SettingsRoutes />} />
@@ -61,7 +59,11 @@ function App() {
         {/* <Route path="/buyer-section" element={<Page />} /> */}
         <Route path="/content-section" element={<ContentSection />} />
         <Route path="/shopping-cart" element={<ProductList />} />
-        <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
+        <Route path="/admin/*" element={
+          <PrivateRoute>
+          <AdminDashboardRoutes />
+          </PrivateRoute>
+          } />{" "}
         {/* From oo-branch */}
        
       </Routes>
