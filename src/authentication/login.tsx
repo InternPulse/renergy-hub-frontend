@@ -36,7 +36,8 @@ const Login = () => {
         response.headers["access-token"] || response.headers["Authorization"];
       console.log("Token received from API:", token);
       const user = response.data?.data;
-
+      const cookies = response.headers['set-cookie'];
+      console.log('Cookies from response header:', cookies);
       if (token) {
         localStorage.setItem("authToken", token);
         console.log("Token saved to Local Storage:", token);

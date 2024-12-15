@@ -17,13 +17,14 @@ import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
-import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
-
+import { Toaster } from "sonner";
+import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
+
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
@@ -55,7 +56,9 @@ function App() {
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
         {/* From oo-branch */}
+       
       </Routes>
+      <Toaster/>
     </div>
   );
 }

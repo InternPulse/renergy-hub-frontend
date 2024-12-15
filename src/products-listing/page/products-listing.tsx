@@ -1,9 +1,9 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams,useNavigate } from "react-router-dom";
 import Filter from "../components/filter-components/filter";
 import { useEffect, useState,useCallback } from "react";
 import { useProductStore } from "../store/store";
 import { apiProduct } from "../store/store";
-import SkeletonProduct from "../components/skeleton-loader.tsx/ske-products";
+
 import ProductCard from "../components/ui-sections/ProductCard";
 
 const ProductListing = () => {
@@ -11,7 +11,8 @@ const ProductListing = () => {
   const [filteredProducts, setFilteredProducts] = useState<apiProduct[]>([]);
   const {sort,testCategories,testProducts,testVendors}=useProductStore()
   // const { products, vendors, categories } = storeData;
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const navigate = useNavigate(); // Hook to update the URL
   const itemsPerPage = 10; // Number of items per page
   const currentPage = parseInt(searchParams.get("page") || "1", 10); // Get current page from URL, default to 1
 
@@ -76,11 +77,7 @@ const ProductListing = () => {
     const sortedProducts = sortProducts(filtered);
     console.log(sortedProducts)
     setFilteredProducts(sortedProducts); // Update state with the filtered products
-    const timeout = setTimeout(() => {
-      setIsLoading(false); // Stop showing skeleton after a delay
-    }, 1000); // Set delay to 1 second (you can adjust the time)
 
-    return () => clearTimeout(timeout); // Cleanup on unmount
   }, [searchParams, testProducts, testVendors, testCategories,sortProducts]);
 
 
@@ -99,9 +96,10 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     setSearchParams(params); // Update URL with the new page number
+    navigate({ search: params.toString() }, { replace: true });
   };
 
-  if (isLoading) return <div className="p-4 md:p-8 lg:p-10"><SkeletonProduct/></div>;
+
 
   return (
     <>
@@ -109,10 +107,10 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
       <Filter />
       <div className="grid grid-cols-2 gap-4 lg:gap-8 md:grid-cols-3 lg:grid-cols-5">
         {paginatedProducts.length > 0 ? (
-          paginatedProducts.map((product) => (
-            <div key={product.id} className="">
-              <ProductCard products={product} key={product.id} />
-            </div>
+          paginatedProducts.map((product,index) => (
+          
+              <ProductCard products={product} key={index} />
+           
           ))
         ) : (
           <p>No products match your criteria.</p>

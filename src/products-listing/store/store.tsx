@@ -1,6 +1,40 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
+interface Review {
+  id: number;
+  userId: number;
+  productId: number;
+  rating: number;
+  comment: string;
+  datePosted: string;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    username: string | null;
+  };
+  product: {
+    id: number;
+    name: string;
+    image: string;
+  };
+}
+
+// interface ReviewsResponse {
+//   success: boolean;
+//   statusCode: number;
+//   message: string;
+//   payload: Review[];
+// }
+
+
+
+
+
+
+
+
 interface apiCategory {
   id: number;
   categoryName: string;
@@ -60,14 +94,7 @@ interface Vendor {
   name: string;
 }
 
-interface Product {
-  id: string;
-  name: string;
-  vendorId: string;
-  categoryId: string;
-  price: number;
-  stock: number;
-}
+
 
 interface Category {
   id: number;
@@ -76,9 +103,10 @@ interface Category {
 
 type ProductStore = {
   vendors: Vendor[];
-  products: apiProduct[];
+  cartProducts: apiProduct[];
   testProducts: apiProduct[];
   testIdProducts: [];
+  addedProducts: apiProduct[];
   testCategories: apiCategory[];
   testVendors: VendorResponse[];
   count: number;
@@ -88,6 +116,7 @@ type ProductStore = {
   rating: number |null
   setCurrentRating: (value: number|null) => void;
   sort:string
+  review: Review[]
   isClicked: boolean
   isDclicked: boolean
   isRClick: boolean
@@ -96,10 +125,11 @@ type ProductStore = {
   setIsClicked: (isClicked: boolean) => void
   setSort: (sort: string) => void;
   categories: Category[];
-  addedProduct: Product[];
+  
   removeCart: (categoryId: number) => void; 
   selectedVendors: VendorResponse[];
   getProduct: ()=> Promise<void>;
+  getReviews: ()=> Promise<void>;
   getVendor: ()=> Promise<void>;
   getProductId: (id:number)=> Promise<void>;
   getCategories: ()=> Promise<void>;
@@ -110,6 +140,7 @@ type ProductStore = {
   // selectedCategories: Category[];
   selectedCategories: Category[];
   // addToCart: (product: Product) => void;
+  wishList: (product: apiProduct) => void;
   addToCart: (product: apiProduct) => void;
   setFilteredProduct: (productId: number) => Promise<void>;
   setFilteredVendor: (vendorId: number) => Promise<void>;
@@ -122,8 +153,8 @@ export const useProductStore = create<ProductStore>()(
       sort:'',
       userId: 0,
       rating: 0,
-
-
+      review:[],
+      addedProducts: [],
 
       //detailsProducts object
        detailProducts: {
@@ -144,6 +175,7 @@ export const useProductStore = create<ProductStore>()(
        isDclicked: true,
        isRClick:true,
       testVendors: [],
+      
       testCategories:[],
       testIdProducts:[],
       testProducts:[],
@@ -159,12 +191,53 @@ export const useProductStore = create<ProductStore>()(
       setIsRClick: (isRClick: boolean) => set({ isRClick }),
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
-      addToCart: (product: apiProduct) => set((state) => ({ products: [...state.products, product] })),
-      removeCart: (categoryId: number) => set((state) => ({ products: state.products.filter((p) => p.categoryId!== categoryId) })),
+      addToCart: (product: apiProduct) => {
+        const { cartProducts } = get();
+      
+        // Check if the product is already in the cart
+        const isProductInCart = cartProducts.some((p) => p.id === product.id);
+      
+        // Update the cart products by either adding or removing the product
+        set((state) => {
+          let updatedProducts;
+      
+          if (isProductInCart) {
+            // If the product exists in the cart, remove it
+            updatedProducts = state.cartProducts.filter((p) => p.id !== product.id);
+          } else {
+            // Otherwise, add the product to the cart
+            updatedProducts = [...state.cartProducts, product];
+          }
+      
+          return { cartProducts: updatedProducts };
+        });
+      },
+      
+      wishList: (product: apiProduct) => {
+        const {addedProducts}=get();
+         // Check if product contains circular references
+  try {
+    JSON.stringify(product);
+  } catch (err) {
+    console.error('Circular reference in product:', err);
+    return; // Exit the function to avoid adding problematic data
+  }
+        set(()=>{
+          let updatedProducts = [...addedProducts]
+          if (addedProducts.some((p) => p.id === product.id)) {
+            updatedProducts = updatedProducts.filter((p) => p.id !== product.id);
+          } else {
+            updatedProducts = [...updatedProducts, product];
+          }
+          return { addedProducts: updatedProducts }
+        })
+      },
+
+      removeCart: (categoryId: number) => set((state) => ({ cartProducts: state.cartProducts.filter((p) => p.categoryId!== categoryId) })),
 
         setSort: (sort: string) => set({ sort: sort }),
         //dummy data for sorting, filtering and searching purposes
-      products: [
+      cartProducts: [
       
       ],
      setCurrentRating: (value: number|null) => set({ rating: value }),
@@ -199,6 +272,18 @@ export const useProductStore = create<ProductStore>()(
 
 
      },
+
+
+     getReviews: async () => {
+      try{
+        const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/reviews') 
+        const reviews = await res.json()
+        const { payload} = reviews
+        console.log('reviews',payload)
+        set ({review: payload})
+       
+     }catch(err){console.log(err)}
+    },
      getProductId: async (id:number) => {
 
       try{
@@ -324,7 +409,7 @@ export const useProductStore = create<ProductStore>()(
       },
     }),
     {
-      name: 'pro-storage', // Name of the storage item
+      name: 'products-storage', // Name of the storage item
       storage: createJSONStorage(() => localStorage), // Use localStorage for persistence
     }
   )
