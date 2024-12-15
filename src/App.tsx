@@ -18,7 +18,8 @@ import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
-
+import { Toaster } from "sonner";
+import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
