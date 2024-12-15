@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 // Custom hook to detect screen size
-const useMediaQuery = (query) => {
+const useMediaQuery = (query: any) => {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
