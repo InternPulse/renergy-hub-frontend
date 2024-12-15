@@ -62,7 +62,7 @@ const Sidebar: React.FC = () => {
                 </button>
             </div>
             {/* sidemenu */}
-            <div className={`fixed top-0 left-0 h-screen w-[300px] bg-white z-40 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
+            <div className={`fixed top-0 left-0 h-screen w-[250px] bg-white z-40 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
                 {/* Logo */}
                 <div className="flex w-44 h-44 flex-col items-center mt-10">
                     <img className="object-cover" src="/logo.png" alt="logo" />

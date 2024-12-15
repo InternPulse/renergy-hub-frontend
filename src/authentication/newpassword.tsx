@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import {  useLocation } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import axios from "axios";
 
 const NewPassword: React.FC = () => {
+
+  const location = useLocation();
+
+  
+  const email = location.state?.email || null;
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const validatePassword = (password: string) => {
     const hasUppercase = /[A-Z]/.test(password);
@@ -24,7 +33,7 @@ const NewPassword: React.FC = () => {
     return "";
   };
 
-  const handlePasswordReset = () => {
+  const handlePasswordReset = async () => {
     const passwordError = validatePassword(newPassword);
     if (passwordError) {
       setError(passwordError);
@@ -36,27 +45,48 @@ const NewPassword: React.FC = () => {
       return;
     }
 
+    if (!email) {
+      setError("Email is missing.");
+      return;
+    }
+
     setError("");
-    alert("Password reset successfully!");
-    setNewPassword("");
-    setConfirmPassword("");
+    setLoading(true);
+
+
+    try {
+      await axios.post(
+        "https://renergy-hub-express-backend.onrender.com/api/v1/auth/reset-password",
+        {
+          email,
+          newPassword,
+          confirmNewPassword: confirmPassword,
+        }
+      );
+      setSuccessMessage("Password reset successfully!");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to reset password.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="flex flex-col justify-between">
-      {/* Top Section */}
       <div className="flex justify-end px-4 py-1">
         <div className="bg-green-800 w-[5rem] h-[6rem] border"></div>
       </div>
 
-      {/* Middle Section */}
       <div className="flex flex-col items-center flex-grow justify-center px-4">
         <p className="font-bold text-center text-3xl my-4">
           Enter your new password
         </p>
 
         <div className="w-full max-w-md">
-          {/* New Password Input */}
+          
           <div className="relative mb-8">
             <input
               type={showPassword ? "text" : "password"}
@@ -94,6 +124,15 @@ const NewPassword: React.FC = () => {
             </div>
           </div>
 
+          {loading && (
+            <p className="text-blue-500 text-sm mb-4">Resetting password...</p>
+          )}
+
+          {/* Success Message */}
+          {successMessage && (
+            <p className="text-green-500 text-sm mb-4">{successMessage}</p>
+          )}
+
           {/* Error Message */}
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
@@ -101,8 +140,9 @@ const NewPassword: React.FC = () => {
           <button
             onClick={handlePasswordReset}
             className="w-full px-4 bg-green-800 hover:bg-green-900 text-white py-2 rounded"
+            disabled={loading}
           >
-            Reset Password
+            {loading ? "Please Wait..." : "Reset Password"}
           </button>
         </div>
 

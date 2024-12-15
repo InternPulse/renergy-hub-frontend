@@ -10,9 +10,14 @@ import ForgotPassword from "./forgot-password";
 import Confirmation from "./confirmation";
 import Otp from "./otp";
 import Newpassword from "./newpassword";
+import Callback from "./callback";
+import VerifyPassword from "./verifypassword";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Auth() {
     return (
+      <>
         <Routes>
         <Route path="signup" element={<Signup/>} />
         <Route path="signup/buyer" element={<BuyerSignup />} />
@@ -21,10 +26,25 @@ function Auth() {
         <Route path="registration" element={<Registration />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="verify-password" element={<VerifyPassword />} />
+        <Route path="callback" element={<Callback />} />
         <Route path="confirmation" element={<Confirmation />} />
         <Route path="otp" element={<Otp />} />
         <Route path="newpassword" element={<Newpassword />} />
       </Routes>
+      <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      </>
     )
 }
 

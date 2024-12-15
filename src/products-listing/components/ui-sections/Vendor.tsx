@@ -1,20 +1,44 @@
+import { Link } from 'react-router-dom'
 import {Button} from '../../../components/ui/button'
-
-const Vendor = () => {
+import { apiProduct } from '@/products-listing/store/store'
+import VendorCard from './vendorCard'
+import { useProductStore } from '../../store/store'
+import Rating from './rating'
+interface props{
+  products: apiProduct
+}
+const Vendor = ({products}:props) => {
+  const {testProducts,} = useProductStore()
+  const filteredProducts = testProducts.filter((product) => product.userId === product.userId);
   return (
     <>
-     <section className="p-4 flex flex-col gap-4 text-black">
-    <ul className="flex ">
-        <li className="items flex justify-center rounded-full p-2">vendor.img</li>
+     <section className=" flex flex-col gap-4 text-black lg:p-4">
+    <ul className="flex gap-2 ">
+        <li className="">
+          <Link to="#" className='items-center flex justify-center rounded-full p-2 border border-slate-200 w-[60px] h-[60px]'> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="24" viewBox="0 0 54 24" fill="none">
+  <g clip-path="url(#clip0_1126_10443)">
+    <path d="M38.0795 0.4375H52.8533L40.0941 23.015H25.3203L38.0795 0.4375Z" fill="#FF7A00"/>
+    <path d="M24.6479 0.4375H35.3924L22.6333 23.015H11.8887L24.6479 0.4375Z" fill="#FF9736"/>
+    <path d="M13.9037 0.4375H21.9622L9.20297 23.015H1.14453L13.9037 0.4375Z" fill="#FFBC7D"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1126_10443">
+      <rect width="52.3798" height="22.5775" fill="white" transform="translate(0.808594 0.4375)"/>
+    </clipPath>
+  </defs>
+</svg>
+          </Link>
+          </li>
         <li className="flex flex-col"> 
-          <div className="flex gap-2">
-              <p>vendor.name</p>
+          <div className="flex gap-2 items-center">
+              <p className='lg:text-3xl'>{products.user.brandName}</p>
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="23" viewBox="0 0 19 23" fill="none">
   <path d="M9.13141 0.406875L2.13141 3.51687C1.41141 3.83687 0.941406 4.55688 0.941406 5.34688V10.0469C0.941406 15.5969 4.78141 20.7869 9.94141 22.0469C15.1014 20.7869 18.9414 15.5969 18.9414 10.0469V5.34688C18.9414 4.55688 18.4714 3.83687 17.7514 3.51687L10.7514 0.406875C10.2414 0.176875 9.64141 0.176875 9.13141 0.406875ZM7.23141 15.3369L4.64141 12.7469C4.54882 12.6543 4.47538 12.5444 4.42528 12.4234C4.37517 12.3025 4.34939 12.1728 4.34939 12.0419C4.34939 11.9109 4.37517 11.7813 4.42528 11.6603C4.47538 11.5394 4.54882 11.4295 4.64141 11.3369C4.73399 11.2443 4.8439 11.1709 4.96486 11.1207C5.08583 11.0706 5.21548 11.0449 5.34641 11.0449C5.47734 11.0449 5.60699 11.0706 5.72795 11.1207C5.84891 11.1709 5.95882 11.2443 6.05141 11.3369L7.94141 13.2169L13.8214 7.33687C13.914 7.24429 14.0239 7.17085 14.1449 7.12075C14.2658 7.07064 14.3955 7.04485 14.5264 7.04485C14.6573 7.04485 14.787 7.07064 14.9079 7.12075C15.0289 7.17085 15.1388 7.24429 15.2314 7.33687C15.324 7.42946 15.3974 7.53937 15.4475 7.66033C15.4976 7.7813 15.5234 7.91094 15.5234 8.04187C15.5234 8.17281 15.4976 8.30245 15.4475 8.42342C15.3974 8.54438 15.324 8.65429 15.2314 8.74687L8.64141 15.3369C8.54889 15.4296 8.439 15.5031 8.31803 15.5533C8.19706 15.6035 8.06737 15.6293 7.93641 15.6293C7.80544 15.6293 7.67576 15.6035 7.55478 15.5533C7.43381 15.5031 7.32392 15.4296 7.23141 15.3369Z" fill="black"/>
 </svg>
           </div>
           <p></p>
-          <span> rating </span>
+          <span> {<Rating rating={4}/>} </span>
         </li>
 
     </ul>
@@ -22,8 +46,11 @@ const Vendor = () => {
       <Button className='text-black border bg-white rounded-xl'> Chat Now</Button>
       <Button className='text-black border bg-white rounded-xl'> Contact Vendor</Button>
     </div>
-    <div>
-        vendor product card
+    <div className='flex  items-center justify-start gap-4 '>
+    {filteredProducts.slice(0,2).map(product => (
+           <VendorCard products={product} key={product.id}/>
+        ))}
+       
     </div>
     <hr/>
     <ul className="flex gap-4 text-wrap">

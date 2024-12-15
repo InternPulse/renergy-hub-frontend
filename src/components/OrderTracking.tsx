@@ -2,7 +2,7 @@ import { Card } from "./ui/card";
 import deliveryBus from "../assets/delivery.png";
 import box from "../assets/package.png";
 import delivered from "../assets/delivered.png";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs" 
 
 export function OrderTracking() {
   return (
@@ -24,7 +24,7 @@ export function OrderTracking() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="transit">
-          <Card className="p-5">
+          <Card className="p-5 my-5">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2 md:gap-5">
                 <img src={box} alt="package" /> <p>#3692283</p>

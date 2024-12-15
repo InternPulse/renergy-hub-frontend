@@ -17,7 +17,7 @@ const Filter = () => {
     selectedVendors,
     setIsClicked,
     isClicked,
-   
+   getVendor,
     getCategories,
     getProduct,
   
@@ -28,7 +28,7 @@ const Filter = () => {
   ); // To handle the search input
 
   // Debounced version of the search query
-  const [debouncedSearchQuery] = useDebounce(searchQuery, 500); // 500ms debounce delay
+  const [debouncedSearchQuery] = useDebounce(searchQuery, 300); // 500ms debounce delay
 
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +50,7 @@ const Filter = () => {
 
     // Handle category filter
     if (selectedCategories.length > 0) {
-      const categoryNames = selectedCategories.map((cat) => cat.name);
+      const categoryNames = selectedCategories.map((cat) => cat.categoryName);
       params.set("category", categoryNames.join(","));
     } else {
       params.delete("category");
@@ -66,7 +66,7 @@ const Filter = () => {
 
     // Handle vendor filter
     if (selectedVendors.length > 0) {
-      const vendorNames = selectedVendors.map((vendor) => vendor.name);
+      const vendorNames = selectedVendors.map((vendor) => vendor.firstName);
       params.set("vendor", vendorNames.join(","));
     } else {
       params.delete("vendor");
@@ -96,8 +96,7 @@ const Filter = () => {
   useEffect(() => {
     const fetchData = async ()=>{
       try{
-        await getProduct()
-        // await getCategories()
+        await Promise.all([getProduct(), getCategories(),getVendor()]);
         handleClick();
       }catch(err){console.log(err)}
     }
@@ -112,7 +111,8 @@ const Filter = () => {
     selectedVendors,
     handleClick,
     getProduct,
-    getCategories
+    getCategories,
+    getVendor
   
   ]);
 
@@ -147,7 +147,7 @@ const Filter = () => {
             {!isClicked ? (
               <div>
                 <Button
-                  className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200"
+                  className="gap-2 flex p-3 rounded-xl bg-white text-black border border-slate-200 hover:text-black hover:bg-green-500"
                   onClick={handleButton}
                 >
                   <svg
