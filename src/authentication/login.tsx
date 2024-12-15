@@ -50,7 +50,7 @@ const Login = () => {
       setUserId(user.id);
 
       if (user.userType === "CUSTOMER") {
-        navigate("/userprofile", { state: { userId: user.id } });
+        navigate("/buyer-dashboard", { state: { userId: user.id } });
       } else if (user.userType === "VENDOR") {
 
         navigate("/vendor-dashboard", { state: { userId: user.id } });
