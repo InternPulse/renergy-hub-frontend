@@ -113,7 +113,7 @@ const SIDEBAR_BOTTOM = [
   },
 ];
 
-export const Sidebar = () => {
+ const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width: 768px)"); // Detect small screens
 
@@ -210,3 +210,4 @@ export const Sidebar = () => {
     </motion.div>
   );
 };
+export default Sidebar
