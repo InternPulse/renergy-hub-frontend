@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { VendorOverview } from './vendorOverview';
 import { VendorOrders } from './vendorOrders';
-import { Sidebar } from '../vendorcomponents/sidebar';
+import Sidebar from '../vendorcomponents/sidebar';
 import VendorOffer from './vendorOffer';
 import VendorProducts from './vendorProducts';
 import VendorReport from './VendorReport';

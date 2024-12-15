@@ -6,7 +6,7 @@ import SaleAnalytics from "./pages/saleAnalytics";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Sidebar } from "../pages/vendorcomponents/sidebar";
+import Sidebar from "../pages/vendorcomponents/sidebar";
 import Navbar from "./header/navigation";
 
 function Vendor() {
