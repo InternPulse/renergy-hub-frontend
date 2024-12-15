@@ -94,14 +94,7 @@ interface Vendor {
   name: string;
 }
 
-interface Product {
-  id: string;
-  name: string;
-  vendorId: string;
-  categoryId: string;
-  price: number;
-  stock: number;
-}
+
 
 interface Category {
   id: number;
@@ -199,7 +192,36 @@ export const useProductStore = create<ProductStore>()(
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
 
       addToCart: (product: apiProduct) => {
+        const { cartProducts } = get();
+      
+        // Check if the product is already in the cart
+        const isProductInCart = cartProducts.some((p) => p.id === product.id);
+      
+        // Update the cart products by either adding or removing the product
+        set((state) => {
+          let updatedProducts;
+      
+          if (isProductInCart) {
+            // If the product exists in the cart, remove it
+            updatedProducts = state.cartProducts.filter((p) => p.id !== product.id);
+          } else {
+            // Otherwise, add the product to the cart
+            updatedProducts = [...state.cartProducts, product];
+          }
+      
+          return { cartProducts: updatedProducts };
+        });
+      },
+      
+      wishList: (product: apiProduct) => {
         const {addedProducts}=get();
+         // Check if product contains circular references
+  try {
+    JSON.stringify(product);
+  } catch (err) {
+    console.error('Circular reference in product:', err);
+    return; // Exit the function to avoid adding problematic data
+  }
         set(()=>{
           let updatedProducts = [...addedProducts]
           if (addedProducts.some((p) => p.id === product.id)) {
@@ -207,19 +229,7 @@ export const useProductStore = create<ProductStore>()(
           } else {
             updatedProducts = [...updatedProducts, product];
           }
-          return { cartProducts: updatedProducts }
-        })
-      },
-      wishList: (product: apiProduct) => {
-        const {cartProducts}=get();
-        set(()=>{
-          let updatedProducts = [...cartProducts]
-          if (cartProducts.some((p) => p.id === product.id)) {
-            updatedProducts = updatedProducts.filter((p) => p.id !== product.id);
-          } else {
-            updatedProducts = [...updatedProducts, product];
-          }
-          return { cartProducts: updatedProducts }
+          return { addedProducts: updatedProducts }
         })
       },
 

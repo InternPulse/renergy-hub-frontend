@@ -9,8 +9,11 @@ import img2 from '../../../../public/youtube.svg'
 import img3 from '../../../../public/instagram.svg'
 import img4 from '../../../../public/linkedin.svg'
 import img5 from '../../../../public/x.svg'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import ControlledRating from './contRating'
+import { toast } from "sonner"
+
+import { BadgeCheck } from 'lucide-react';
 interface props {
     products: apiProduct
 }
@@ -25,6 +28,8 @@ const Socials: socialProps[] = [{icon:img2 },{icon:img3 },{icon:img4 },{icon:img
 
 const PriceSection = ({products}:props) => {
     const {count,setCount,addToCart,cartProducts} = useProductStore()
+  
+    const navigate = useNavigate()
 // Convert the string to a number and then format it
 const formattedPrice = Number(products.price).toLocaleString();
     const handleIncrement = () =>{
@@ -37,19 +42,32 @@ const formattedPrice = Number(products.price).toLocaleString();
     }
     const handleAddCart = () => {
         addToCart(products)
+        toast(
+            
+            "Added product: Successfully",{
+                description: "The product has been added to your cart",
+                icon: <BadgeCheck className='text-[#002603]'/>,
+                action: {
+                    onClick:() => {
+                        navigate(`/shopping-cart`)  
+                      } ,
+                      label: "Checkout",
+                } 
+            }
+            )
         console.log('added products',cartProducts)
     }
 
   return (
     <section>
-        <ul className='flex flex-col gap-4 lg:gap-8 lg:p-6'>
+        <ul className='flex flex-col gap-4 lg:gap-6 lg:p-4'>
             <li className='flex flex-col gap-2'>
-                <h1 className='text-black text-3xl max-w-[300px]'>{products.name}</h1>
+                <h1 className='text-black text-xl lg:text-3xl max-w-[300px]'>{products.name}</h1>
                 <div className='flex flex-col lg:flex-row items-start lg:items-center gap-2 text-[#808080]'> <span><ControlledRating/></span>
-                <p> Be the first to review this product </p></div>
+                <p className='text-sm'> Be the first to review this product </p></div>
 
             </li>
-            <li className='font-normal text-xl text-black'>{`NGN ${formattedPrice}`} </li>
+            <li className='font-normal lg:text-xl text-black'>{`NGN ${formattedPrice}`} </li>
             <li>
             <p className='text-[#666666] uppercase'>Availability: <span className='text-[#002603]'>{products.stock > 0 ? 'in stock' : 'out of stock'}</span></p>
             <p className='text-[#666666] uppercase'>sku: <span className='text-[#002603]'>{`XYZ-PTZ${products.id}`}</span></p>
@@ -72,6 +90,7 @@ const formattedPrice = Number(products.price).toLocaleString();
              </Button>
 
             </li>
+            {cartProducts? <p className='text-sm text-[#808080]'>You have <span className='text-[#002603]'>{cartProducts.length}</span>  items in your cart</p> :""}
             <Separator />
             <li className='flex gap-2'>
                 {Socials.map((item,index) => (
