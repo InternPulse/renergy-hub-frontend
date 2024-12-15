@@ -10,7 +10,7 @@ import {
 
 import React, { useState } from "react";
 import { formatCurrency } from "../data";
-import Navbar from "../header/navigation";
+
 import {
   Table,
   TableBody,
