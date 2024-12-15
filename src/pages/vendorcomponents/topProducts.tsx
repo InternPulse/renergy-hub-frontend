@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 
 import {
   Table,
@@ -10,70 +10,70 @@ import {
   TableRow,
 } from "../../../src/components/ui/table"
 
-interface ProductData {
-  product_id: number;
-  category_id: number;
-  user_id: number;
-  name: string;
-  description: string;
-  image: string;
-  created_at: string;
-  total_revenue: number;
-  total_cost: number;
-  total_quantity_sold: number;
-  total_profit: number;
-  average_stock: number;
-  sales_data: {
-    date: string;
-    price: number;
-    quantity_sold: number;
-    revenue: number;
-    cost: number;
-    profit: number;
-  }[];
-  profit_margin: number;
-  average_price: number;
-  stock_turnover_rate: number;
-  is_profitable: boolean;
-  profit_per_unit: number;
-}
+// interface ProductData {
+//   product_id: number;
+//   category_id: number;
+//   user_id: number;
+//   name: string;
+//   description: string;
+//   image: string;
+//   created_at: string;
+//   total_revenue: number;
+//   total_cost: number;
+//   total_quantity_sold: number;
+//   total_profit: number;
+//   average_stock: number;
+//   sales_data: {
+//     date: string;
+//     price: number;
+//     quantity_sold: number;
+//     revenue: number;
+//     cost: number;
+//     profit: number;
+//   }[];
+//   profit_margin: number;
+//   average_price: number;
+//   stock_turnover_rate: number;
+//   is_profitable: boolean;
+//   profit_per_unit: number;
+// }
 
-interface ApiResponse {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: ProductData[];
-}
+// interface ApiResponse {
+//   count: number;
+//   next: string | null;
+//   previous: string | null;
+//   results: ProductData[];
+// }
 
 const TopProducts = () => {
 
     // const [productData, setProductData] = useState<ProductData[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/top-profit',{withCredentials:true});
-        console.log(response.data.results); 
-      } catch (err) {
-        setError('Failed to fetch product data.');
-        console.error(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    // useEffect(() => {
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get<ApiResponse>('https://renergy-hub-django-backend.onrender.com/api/v1/financial/analytics/top-profit',{withCredentials:true});
+    //     console.log(response.data.results); 
+    //   } catch (err) {
+    //     setError('Failed to fetch product data.');
+    //     console.error(err);
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // };
 
-    fetchData();
-    }, []);
+    // fetchData();
+    // }, []);
 
-    if (isLoading) {
-        return <div className="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin mx-auto my-auto"></div>;
-    }
+    // if (isLoading) {
+    //     return <div className="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin mx-auto my-auto"></div>;
+    // }
 
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    // if (error) {
+    //     return <div>Error: {error}</div>;
+    // }
 
   return (
     <div className="max-w-[95%] h-auto mx-auto my-auto overflow-y-scroll overflow-x-scroll bg-white rounded-md">
