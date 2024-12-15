@@ -49,11 +49,11 @@ interface Product {
   };
 }
 
-interface ApiResponse {
-  status: string;
-  code: number;
-  data: Product[];
-}
+// interface ApiResponse {
+//   status: string;
+//   code: number;
+//   data: Product[];
+// }
 
 const InventoryProducts = () => {
 
