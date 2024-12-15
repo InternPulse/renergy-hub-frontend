@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import Navbar from "../header/navigation";
+
 import { toast } from "react-toastify";
-// import { useLocation } from "react-router-dom";
+
 import { useProductStore } from "../../products-listing/store/store";
 const VendorProfile = () => {
-  // const location = useLocation();
-  // const { userId } = location.state || {};
   const { userId } = useProductStore();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -115,18 +113,17 @@ const VendorProfile = () => {
 
   return (
     <>
-      <Navbar />
-      <section className="p-6">
+      <section className="lg:p-6 p-2">
         <div className="bg-white px-4 py-2 mb-4">
-          <div className="flex justify-between">
-            <h1 className="text-3xl ">Vendor Profile</h1>
+          <div className="flex justify-between ">
+            <h1 className="lg:text-3xl text-xl ">Vendor Profile</h1>
             <p className="hidden">
               {profileData
                 ? JSON.stringify(profileData, null, 2)
                 : "Loading..."}
             </p>
             <button
-              className={`border-[1.5px] border-[#1C6328] text-[#0E1F0D] py-2 px-4 rounded-[6px] font-[400] ${
+              className={`border-[1.5px] border-[#1C6328] text-[#0E1F0D] lg:py-2 lg:px-4 p-2 rounded-[6px] lg:font-[400] ${
                 isEditable ? "bg-[#2C7427] border-none text-white" : ""
               }`}
               onClick={handleEdit}
@@ -145,12 +142,12 @@ const VendorProfile = () => {
         <section>
           <div className="bg-white rounded-md p-4 mb-4">
             <h2 className="font-[500] text-[22px]">Vendor Information</h2>
-            <div className="flex gap-6 p-4">
-              <div className="bg-[#DEDEDE] py-4 px-6 rounded-full text-2xl h-[84px] flex items-center">
+            <div className="flex gap-6 lg:p-4 lg:flex-row flex-col">
+              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center ">
                 {getInitials()}
               </div>
               <div className="w-full">
-                <p className="flex gap-8">
+                <p className="flex lg:gap-8 gap-3 lg:flex-row flex-col">
                   <div className="w-full">
                     <label
                       htmlFor="firstName"
@@ -188,7 +185,7 @@ const VendorProfile = () => {
                     />
                   </div>
                 </p>
-                <p className="flex gap-8 mt-6">
+                <p className="flex lg:gap-8 gap-3 lg:mt-6 mt-3 lg:flex-row flex-col">
                   <div className="w-full">
                     <label
                       htmlFor="streetAddress"
@@ -222,7 +219,7 @@ const VendorProfile = () => {
                     />
                   </div>
                 </p>
-                <div className="flex justify-end">
+                <div className="flex lg:justify-end">
                   <button
                     className={`border border-[#1C6328] px-10 py-2 rounded-md text-[#0E1F0D] text-xl font-[400] mt-2 ${
                       isEditable ? "bg-[#2C7427] border-none text-white" : ""
@@ -238,13 +235,13 @@ const VendorProfile = () => {
           {/* Business Information */}
           <div className="bg-white rounded-lg p-4">
             <h2 className="font-[500] text-[22px]">Business Profile</h2>
-            <div className="flex gap-6 p-4">
+            <div className="flex gap-6 p-4 lg:flex-row flex-col">
               <div className="bg-[#DEDEDE] py-4 px-6 rounded-full text-3xl h-[84px] flex items-center">
                 {getBrand()}
               </div>
 
               <div className="w-full">
-                <p className="flex gap-8">
+                <p className="flex lg:gap-8 gap-3 lg:flex-row flex-col">
                   <div className="w-full">
                     <label
                       htmlFor="brandName"
@@ -280,7 +277,7 @@ const VendorProfile = () => {
                     />
                   </div>
                 </p>
-                <p className="flex gap-8 mt-6">
+                <p className="flex lg:gap-8 gap-3 lg:mt-6 mt-3 lg:flex-row flex-col">
                   <div className="w-full">
                     <label
                       htmlFor="zipCode"
@@ -316,7 +313,7 @@ const VendorProfile = () => {
                     />
                   </div>
                 </p>
-                <div className="flex justify-end " onClick={handleFormSubmit}>
+                <div className="flex lg:justify-end" onClick={handleFormSubmit}>
                   <button className="border bg-[#2C7427] px-10 py-2 rounded-md text-white text-xl font-[400] mt-2">
                     {isEditable ? "Update Account" : "Save Account"}
                   </button>

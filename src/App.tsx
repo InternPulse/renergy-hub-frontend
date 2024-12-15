@@ -1,21 +1,21 @@
 //import "./App.css";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./Pages/landingPage";
 import { Routes, Route } from "react-router-dom";
-import CheckoutHomePage from "./pages/checkoutHome";
-import { VendorDashboard } from "./pages/vendorDashboard/vendorDashboard";
+import CheckoutHomePage from "./Pages/checkoutHome";
+import { VendorDashboard } from "./Pages/vendorDashboard/vendorDashboard";
 import Auth from "./authentication/auth";
 import Vendor from "./vendor-management/vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
-import ShippingAndTracking from "./pages/ShippingAndTracking";
+import ShippingAndTracking from "./Pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
-import SecurityCompliance from "./pages/SecurityCompliance"; // From HEAD
+import SecurityCompliance from "./Pages/SecurityCompliance"; // From HEAD
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
-import AboutUs from "./pages/AboutUs";
+import AboutUs from "./Pages/AboutUs";
 // import Page from "./buyer-dashboard/BuyerDashboard"
-import ContactUs from "./pages/ContactUs";
-import RenergyBlog from "./pages/RenergyBlog";
-import BlogDetail from "./pages/BlogDetail";
+import ContactUs from "./Pages/ContactUs";
+import RenergyBlog from "./Pages/RenergyBlog";
+import BlogDetail from "./Pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 import { Toaster } from "sonner";

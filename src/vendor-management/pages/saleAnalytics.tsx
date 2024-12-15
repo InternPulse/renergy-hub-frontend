@@ -1,6 +1,6 @@
  import { BarChartComponent } from "../Charts/BarChart";
 import { PieChartComponent } from "../Charts/PieChart";
-import Navbar from "../header/navigation";
+// import Navbar from "../header/navigation";
 import { useEffect } from "react";
 import axios from "axios";
 interface CardData {
@@ -70,7 +70,6 @@ function SaleAnalytics() {
   }, []);
   return (
     <>
-      <Navbar />
       <section className="p-6">
         <div className="bg-white px-4 py-2 mb-4">
           <h1 className="text-3xl mb-1">Sales Analytics</h1>
