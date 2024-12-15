@@ -16,7 +16,7 @@ function Vendor() {
         <Sidebar />
       </div>
 
-      <section>
+      <section className="w-full">
         <Navbar />
         <Routes>
           <Route path="order-management" element={<OrderManagement />} />
