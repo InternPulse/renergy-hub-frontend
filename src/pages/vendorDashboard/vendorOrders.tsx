@@ -20,55 +20,55 @@ import {
 
 import PopOver from "../vendorcomponents/popOver"
 
-interface Order {
-  id: number;
-  userId: number;
-  productId: number;
-  quantity: number;
-  totalPrice: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-}
+// interface Order {
+//   id: number;
+//   userId: number;
+//   productId: number;
+//   quantity: number;
+//   totalPrice: string;
+//   status: string;
+//   createdAt: string;
+//   updatedAt: string;
+// }
 
-interface ApiResponse {
-  status: string;
-  code: number;
-  data: Order[];
-}
+// interface ApiResponse {
+//   status: string;
+//   code: number;
+//   data: Order[];
+// }
 
 export const VendorOrders = () => {
 
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [orders, setOrders] = useState<Order[]>([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://renergy-hub-express-backend.onrender.com/api/v1/orders',{withCredentials:true}
-        );
-        setOrders(response.data.data);
-        console.log(response.data.payload);
-      } catch (err) {
-        setError('Failed to fetch orders.');
-        console.error(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         'https://renergy-hub-express-backend.onrender.com/api/v1/orders',{withCredentials:true}
+  //       );
+  //       setOrders(response.data.data);
+  //       console.log(response.data.payload);
+  //     } catch (err) {
+  //       setError('Failed to fetch orders.');
+  //       console.error(err);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div className="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin mx-auto my-auto"></div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   return (
     <div className="flex-1 overflow-auto relative z-10">

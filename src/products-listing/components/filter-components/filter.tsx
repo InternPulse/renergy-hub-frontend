@@ -28,7 +28,7 @@ const Filter = () => {
   ); // To handle the search input
 
   // Debounced version of the search query
-  const [debouncedSearchQuery] = useDebounce(searchQuery, 500); // 500ms debounce delay
+  const [debouncedSearchQuery] = useDebounce(searchQuery, 300); // 500ms debounce delay
 
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
