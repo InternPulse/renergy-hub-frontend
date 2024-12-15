@@ -36,7 +36,8 @@ const Login = () => {
         response.headers["access-token"] || response.headers["Authorization"];
       console.log("Token received from API:", token);
       const user = response.data?.data;
-
+      const cookies = response.headers['set-cookie'];
+      console.log('Cookies from response header:', cookies);
       if (token) {
         localStorage.setItem("authToken", token);
         console.log("Token saved to Local Storage:", token);
@@ -84,7 +85,8 @@ const Login = () => {
                 Welcome Back
               </h1>
               <p className="text-gray-600 mb-6">
-                Welcome back, please enter your details.
+                Welcome back, please enter your details. 
+
               </p>
             </div>
 
