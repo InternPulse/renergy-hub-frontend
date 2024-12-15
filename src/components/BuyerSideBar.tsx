@@ -4,20 +4,18 @@ import { MenuIcon, X } from "lucide-react"
 import { useState, useRef, useEffect } from "react";
 
 const sidebarMenu = [
-    { menu: "Dashboard", icon: "/home.png" },
-    { menu: "Reports", icon: "/pie-chart.png" },
+    { menu: "Overview", icon: "/home.png" },
     { menu: "Products", icon: "/box.png" },
     { menu: "Offers", icon: "/award.png" },
-    { menu: "Inventory", icon: "/archive.png" },
+    { menu: "Saved Products", icon: "/archive.png" },
     { menu: "Order", icon: "/shopping-bag.png" },
     { menu: "Payment", icon: "/layout.png" },
     { menu: "Messages", icon: "/mail.png" },
-    { menu: "Customers", icon: "/users.png" },
-    { menu: "Security", icon: "/key.png" },
-    { menu: "Management", icon: "/settings.png" },
+    { menu: "Purchase History", icon: "/key.png" },
+    { menu: "Security", icon: "/key.png" }
 ];
 
-const Sidebar: React.FC = () => {
+const BuyerSideBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false); // State for sidebar toggle
     const [activeIndex, setActiveIndex] = useState<number>(9);
     const menuRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -72,7 +70,7 @@ const Sidebar: React.FC = () => {
                 <Scrollbars autoHide 
                 
                 style={{ height: "calc(100vh - 350px)"}}>
-                    <div className="flex flex-col gap-4 px-5 mt-10">
+                    <div className="flex flex-col gap-4 px-5 mt-2">
                         {sidebarMenu.map((menu, index) => (
                             <div
                                 ref={(el) => (menuRefs.current[index] = el)} // Assign ref
@@ -113,4 +111,4 @@ const Sidebar: React.FC = () => {
     );
 };
 
-export default Sidebar;
+export default BuyerSideBar;
