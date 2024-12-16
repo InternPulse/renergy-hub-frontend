@@ -7,7 +7,7 @@ import dp from "../assets/dp.png"
 
 const BuyerOverview = () => {
   return (
-    <section className="md:ml-[250px] w-[90%] h-screen overflow-auto bg-gray-200 p-2">
+    <section className="md:ml-[250px] w-[90%] h-screen bg-gray-200 p-2">
         
         <div className="h-full">
           <section className="w-full h-[250px] flex justify-between">
