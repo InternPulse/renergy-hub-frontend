@@ -1,8 +1,6 @@
 import { useState, ChangeEvent, useEffect } from "react";
-import Navbar from "../header/navigation";
-import { SubmitForm } from "../../api/postProdcut";
-import { useProductStore } from "../../products-listing/store/store";
-// import { useLocation } from "react-router-dom";
+// import Navbar from "../header/navigation";
+
 interface ProductManagementType {
   productName: string;
   description: string;
@@ -13,7 +11,6 @@ interface ProductManagementType {
 }
 
 const ProductManagement: React.FC = () => {
-  
   const [productData, setProductData] = useState<ProductManagementType>({
     productName: "",
     description: "",
@@ -23,39 +20,8 @@ const ProductManagement: React.FC = () => {
     rating: 0,
   });
 
-  const {userId}= useProductStore()
-  // const location = useLocation();
-  // const { userId } = location.state || {};
   // textarea
   const [wordCount, setWordCount] = useState(0);
-
-  // Define the API endpoint
-  const apiUrl = "http://127.0.0.1:8000/api/v1/sales/";
-
-  // Fetch the API data
-  async function fetchData() {
-    try {
-      const response = await fetch(apiUrl, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("API Response:", data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   useEffect(() => {}, []);
 
@@ -80,9 +46,6 @@ const ProductManagement: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Product Data:", productData);
-    // Submit the data to your backend or API
-    
-    SubmitForm(productData,userId,1)
   };
 
   // textarea
@@ -97,7 +60,6 @@ const ProductManagement: React.FC = () => {
   };
   return (
     <>
-      <Navbar />
       <section className="p-6">
         <div className="bg-white px-4 py-2 mb-4 rounded-[6px]">
           <div>

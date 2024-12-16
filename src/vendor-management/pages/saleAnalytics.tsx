@@ -1,8 +1,8 @@
-import { BarChartComponent } from "../Charts/BarChart";
+ import { BarChartComponent } from "../Charts/BarChart";
 import { PieChartComponent } from "../Charts/PieChart";
-import Navbar from "../header/navigation";
+// import Navbar from "../header/navigation";
 import { useEffect } from "react";
-
+import axios from "axios";
 interface CardData {
   title: string;
   value: string | number;
@@ -44,30 +44,32 @@ function SaleAnalytics() {
 
   async function fetchData() {
     try {
-      const response = await fetch(apiUrl, {
-        method: "GET",
+      const response = await axios.get(apiUrl, {
+        withCredentials:true,
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (!response) {
+        throw new Error(`HTTP error! Status: ${response}`);
       }
 
-      const data = await response.json();
-      console.log("API Response:", data);
+      
+      console.log("API Response:", response);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
 
   useEffect(() => {
+
+
+    
     fetchData();
   }, []);
   return (
     <>
-      <Navbar />
       <section className="p-6">
         <div className="bg-white px-4 py-2 mb-4">
           <h1 className="text-3xl mb-1">Sales Analytics</h1>

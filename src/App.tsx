@@ -17,18 +17,20 @@ import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
-import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
-
+import { Toaster } from "sonner";
+import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
+        
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
+        
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
@@ -40,6 +42,7 @@ function App() {
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
+        
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route
           path="/security-compliance"
@@ -55,7 +58,9 @@ function App() {
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
         {/* From oo-branch */}
+       
       </Routes>
+      <Toaster/>
     </div>
   );
 }
