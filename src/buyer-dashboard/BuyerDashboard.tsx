@@ -5,6 +5,7 @@ import SavedProducts from './pages/SavedProducts';
 import BuyerNavbar from './components/BuyerNavbar';
 import BuyerOrders from './pages/BuyerOrders';
 import CancelledOrders from './pages/CancelledOrders';
+import PurchaseHistory from './pages/PurchaseHistory';
 
 function BuyerLayout() {
   return (
@@ -38,6 +39,7 @@ function BuyerDashboard() {
         <Route path="/saved-products" element={<SavedProducts />} />
         <Route path="/ordered-products" element={<BuyerOrders/>} />
         <Route path="/orders-cancelled" element={<CancelledOrders/>} />
+        <Route path="/purchase-history" element={<PurchaseHistory/>} />
       </Route>
     </Routes>
   );

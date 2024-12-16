@@ -65,4 +65,4 @@ function BuyerNavbar() {
   )
 }
 
-export default BuyerNavbar
+export default BuyerNavbar;
