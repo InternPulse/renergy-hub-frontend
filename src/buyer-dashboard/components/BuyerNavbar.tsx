@@ -58,9 +58,9 @@ function BuyerNavbar() {
   // };
 
   // THIS RENDERS PAGE TITLE BASED ON THE ROUTES
-  useEffect(() => {
-    console.log(pageTitle);
-  }, []);
+  // useEffect(() => {
+  //   console.log(pageTitle);
+  // }, []);
 
   const location = useLocation();
 

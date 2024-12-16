@@ -21,7 +21,6 @@ import ProductList from "./shoppingcart/ProductList";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
-      
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
