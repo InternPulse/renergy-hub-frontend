@@ -8,12 +8,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../src/components/ui/table"
+} from "../../components/ui/table"
 
 import {
   Popover,
   PopoverTrigger,
-} from "../../../src/components/ui/popover"
+} from "../../components/ui/popover"
 
 import PopOver from "../vendorcomponents/popOver"
 
