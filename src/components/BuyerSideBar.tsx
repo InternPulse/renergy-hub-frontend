@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const sidebarMenu = [
   { menu: "Overview", icon: "/home.png", path: "/buyer-dashboard" },
-  { menu: "Products", icon: "/box.png", path: "/buyer-dashboard" },
+  { menu: "Products", icon: "/box.png", path: "/product" },
   { menu: "Offers", icon: "/award.png", path: "/buyer-dashboard" },
-  { menu: "Saved Products", icon: "/archive.png", path: "/buyer-dashboard/saved-products" },
+  { menu: "Saved Products", icon: "/archive.png", path: "/buyer-dashboard" },
   { menu: "Order", icon: "/shopping-bag.png", path: "/buyer-dashboard" },
   { menu: "Payment", icon: "/layout.png", path: "/buyer-dashboard" },
   { menu: "Messages", icon: "/mail.png", path: "/buyer-dashboard" },
