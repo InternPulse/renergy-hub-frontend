@@ -36,6 +36,7 @@ const BuyerOverview = () => {
                 </div>
               </div>
             </div>
+            
             <div className="w-[39%] h-auto sm:h-full flex rounded-sm bg-white">
               <div className="flex flex-col mx-auto p-2">
                 <h2 className="font-bold mx-auto">
@@ -55,6 +56,7 @@ const BuyerOverview = () => {
                 <p className="border-b-[1px] border-gray-900 w-40 mx-auto text-center">Order: 1 Piece</p>
               </div>
             </div>
+
           </section>
           <section className="bg-gray-200 w-auto h-auto flex justify-between my-3">
             <div className="w-[49%] h-auto bg-white rounded-sm p-2">
