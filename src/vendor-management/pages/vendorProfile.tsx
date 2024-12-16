@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
 import { toast } from "react-toastify";
-
 import { useProductStore } from "../../products-listing/store/store";
 const VendorProfile = () => {
   const { userId } = useProductStore();

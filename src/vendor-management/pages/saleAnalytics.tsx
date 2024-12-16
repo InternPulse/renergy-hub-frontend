@@ -1,6 +1,6 @@
- import { BarChartComponent } from "../Charts/BarChart";
+import { BarChartComponent } from "../Charts/BarChart";
 import { PieChartComponent } from "../Charts/PieChart";
-// import Navbar from "../header/navigation";
+
 import { useEffect } from "react";
 import axios from "axios";
 interface CardData {

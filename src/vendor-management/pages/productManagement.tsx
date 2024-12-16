@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from "react";
-// import Navbar from "../header/navigation";
+
 
 interface ProductManagementType {
   productName: string;
@@ -47,8 +47,6 @@ const ProductManagement: React.FC = () => {
     e.preventDefault();
     console.log("Product Data:", productData);
   };
-
-  // textarea
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
