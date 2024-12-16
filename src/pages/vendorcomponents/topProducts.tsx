@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../src/components/ui/table"
+} from "../../components/ui/table"
 
 // interface ProductData {
 //   product_id: number;
