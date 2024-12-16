@@ -1,62 +1,62 @@
+import { Button } from "../../../components/ui/button";
+import { useProductStore } from "../../store/store";
+import img from "../../../../public/shopping-bag.svg";
+import img1 from "../../../../public/Vector.svg";
+import { apiProduct } from "../../store/store";
+import { Separator } from "../../../components/ui/separator";
+import img2 from "../../../../public/youtube.svg";
+import img3 from "../../../../public/instagram.svg";
+import img4 from "../../../../public/linkedin.svg";
+import img5 from "../../../../public/x.svg";
+import { Link, useNavigate } from "react-router-dom";
+import ControlledRating from "./contRating";
+import { toast } from "sonner";
 
-import { Button } from '../../../components/ui/button'
-import { useProductStore } from '../../store/store'
-import img from '../../../../public/shopping-bag.svg'
-import img1 from '../../../../public/Vector.svg'
-import { apiProduct } from '../../store/store'
-import { Separator } from '../../../components/ui/separator'
-import img2 from '../../../../public/youtube.svg'
-import img3 from '../../../../public/instagram.svg'
-import img4 from '../../../../public/linkedin.svg'
-import img5 from '../../../../public/x.svg'
-import { Link,useNavigate } from 'react-router-dom'
-import ControlledRating from './contRating'
-import { toast } from "sonner"
-
-import { BadgeCheck } from 'lucide-react';
+import { BadgeCheck } from "lucide-react";
 interface props {
-    products: apiProduct
+  products: apiProduct;
 }
 
-interface socialProps{
-    icon: string 
-    link?: string
+interface socialProps {
+  icon: string;
+  link?: string;
 }
 
-const Socials: socialProps[] = [{icon:img2 },{icon:img3 },{icon:img4 },{icon:img5 }]
+const Socials: socialProps[] = [
+  { icon: img2 },
+  { icon: img3 },
+  { icon: img4 },
+  { icon: img5 },
+];
 
+const PriceSection = ({ products }: props) => {
+  const { count, setCount, addToCart, cartProducts } = useProductStore();
 
-const PriceSection = ({products}:props) => {
-    const {count,setCount,addToCart,cartProducts} = useProductStore()
-  
-    const navigate = useNavigate()
-// Convert the string to a number and then format it
-const formattedPrice = Number(products.price).toLocaleString();
-    const handleIncrement = () =>{
-        setCount(count + 1)
+  const navigate = useNavigate();
+  // Convert the string to a number and then format it
+  const formattedPrice = Number(products.price).toLocaleString();
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  const handleDecrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
     }
-    const handleDecrement = () =>{
-        if(count > 0){
-            setCount(count - 1)
-        }
-    }
-    const handleAddCart = () => {
-        addToCart(products)
-        toast(
-            
-            "Added product: Successfully",{
-                description: "The product has been added to your cart",
-                icon: <BadgeCheck className='text-[#002603]'/>,
-                action: {
-                    onClick:() => {
-                        navigate(`/shopping-cart`)  
-                      } ,
-                      label: "Checkout",
-                } 
-            }
-            )
-        console.log('added products',cartProducts)
-    }
+  };
+  const handleAddCart = () => {
+    addToCart(products);
+    toast("Added product: Successfully", {
+      description: "The product has been added to your cart",
+      icon: <BadgeCheck className="text-[#002603]" />,
+      action: {
+        onClick: () => {
+          navigate(`/checkout`);
+        },
+        label: "Checkout",
+      },
+    });
+    console.log("added products", cartProducts);
+  };
 
   return (
     <section>
@@ -104,7 +104,7 @@ const formattedPrice = Number(products.price).toLocaleString();
 
         </ul>
     </section>
-  )
-}
+  );
+};
 
-export default PriceSection
+export default PriceSection;

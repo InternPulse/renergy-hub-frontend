@@ -3,9 +3,6 @@ import { useState } from 'react';
 import img1 from '../../../../public/assets/solor.svg'
 import { useProductStore } from '../../store/store';
 import { apiProduct } from '../../store/store';
-import { toast } from "sonner"
-import { BadgeCheck } from 'lucide-react';
-import { OctagonX } from 'lucide-react';
 export type ProductProps = {
     products: apiProduct
 }
@@ -20,20 +17,7 @@ const handleClick = ()=> {
      setIsClicked(true)
      if(products){
       wishList(products)
-      toast(
-            
-        "Added product: Successfully",{
-            description: "The product has been added to your Wishlist",
-            icon: <BadgeCheck className='text-green-500'/>,
-            action: {
-                onClick:() => {
-                    removeClick() 
-                  } ,
-                  label: "remove",
-            } 
-        }
-        )
-      console.log('added products',addedProducts)
+      console.log('',addedProducts)
      }
       
 }
@@ -41,14 +25,6 @@ const handleClick = ()=> {
 
 const removeClick = ()=> {
     setIsClicked(false)
-    toast(
-            
-      "Removed product: Successfully",{
-          description: "The product has been removed to your Wishlist",
-          icon: < OctagonX className='text-red-500'/>,
-          
-      }
-      )
 }
 function getFirstThreeWords(name:string) {
   return name.split(' ').slice(0, 2).join(' ');
@@ -80,7 +56,7 @@ function getFirstThreeWords(name:string) {
             
           
         </li>
-        <Link to={`/product/detail/${products.id}`}>
+        <Link to={`/product/detail/${products.id}`} replace>
         <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             

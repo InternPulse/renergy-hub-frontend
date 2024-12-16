@@ -8,8 +8,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Sidebar } from "../pages/vendorcomponents/sidebar";
 import Navbar from "./header/navigation";
-// import { UserProvider } from "./header/userContext";
-// import Navbar from "./header/navigation";
 
 function Vendor() {
   return (
@@ -18,7 +16,7 @@ function Vendor() {
         <Sidebar />
       </div>
 
-      <section>
+      <section className="w-full">
         <Navbar />
         <Routes>
           <Route path="order-management" element={<OrderManagement />} />

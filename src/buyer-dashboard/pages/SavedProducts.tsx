@@ -5,11 +5,13 @@ import {
     CardFooter,
     CardHeader,
   } from "../../components/ui/card"
+
+  import { Button } from '../../components/ui/button';
   
 
 const SavedProducts = () => {
   return (
-    <section className="bg-yellow-300 md:ml-[250px] w-full h-full mb-10 px-3 py-3">
+    <section className=" md:ml-[250px] w-full h-full mb-10 px-3 py-3">
         <h1 className="">Saved Products(5)</h1>
         {/* product container */}
         <div className='grid w-fit gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
@@ -19,15 +21,17 @@ const SavedProducts = () => {
                   <img src={product.img} alt="img" />
                 </CardHeader>
                 <CardContent>
-                  <h2>
+                  <p  className='text-[13px]'>
                     {product.item}
-                  </h2>
+                  </p>
                   <h2>
                     {product.price}
                   </h2>
                 </CardContent>
                 <CardFooter>
-                  <p>Card Footer</p>
+                  <Button className='bg-[#007300] w-full'>
+                    <h1 className='text-white text-semibold'>Buy Now</h1>
+                  </Button>
                 </CardFooter>
               </Card>
               

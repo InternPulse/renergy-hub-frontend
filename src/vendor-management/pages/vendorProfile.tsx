@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-// import Navbar from "../header/navigation";
+
 import { toast } from "react-toastify";
-// import { useLocation } from "react-router-dom";
+
 import { useProductStore } from "../../products-listing/store/store";
 const VendorProfile = () => {
-  // const location = useLocation();
-  // const { userId } = location.state || {};
   const { userId } = useProductStore();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -235,7 +233,7 @@ const VendorProfile = () => {
             </div>
           </div>
           {/* Business Information */}
-          <div className="bg-white rounded-lg p-4 sm:w-[10%]">
+          <div className="bg-white rounded-lg p-4">
             <h2 className="font-[500] text-[22px]">Business Profile</h2>
             <div className="flex gap-6 p-4 lg:flex-row flex-col">
               <div className="bg-[#DEDEDE] py-4 px-6 rounded-full text-3xl h-[84px] flex items-center">
