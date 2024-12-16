@@ -24,12 +24,13 @@ function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
-
+        
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
+        
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/authentication/*" element={<Auth />} />
         <Route path="/*" element={<Vendor />} />
         <Route path="/product/*" element={<Product />} />
+        
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route
           path="/security-compliance"
