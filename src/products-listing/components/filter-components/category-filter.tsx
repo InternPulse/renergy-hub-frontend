@@ -1,8 +1,8 @@
-"use client"
 
+import { useState,useEffect } from 'react';
 
 import { ChevronDown } from 'lucide-react'
-
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "../../../components/ui/button"
 import {
   DropdownMenu,
@@ -23,13 +23,39 @@ import { Checkbox } from '../../../components/ui/checkbox'
 export function CategoryFilter() {
   
     const {testCategories, selectedCategories , setFilteredCategory} = useProductStore(); // Assuming ProductStore contains vendors data
-   
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const [isCheckboxClicked, setIsCheckboxClicked] = useState(false);
   const handleVendorChange = (categoryId: number) => {
    
   
      setFilteredCategory(categoryId); 
+
+    
      console.log(selectedCategories)
   };
+// Effect to update search params when a checkbox is clicked
+useEffect(() => {
+  if (!isCheckboxClicked) return; // Only run when checkbox is clicked
+
+  const params = new URLSearchParams(searchParams.toString());
+
+  if (selectedCategories.length > 0) {
+    const categoryNames = selectedCategories.map((cat) => cat.categoryName);
+    params.set("category", categoryNames.join(","));
+  } else {
+    params.delete("category");
+  }
+
+  // Update the URL with new search params
+  setSearchParams(params);
+  navigate({ search: params.toString() }, { replace: true });
+
+  // Reset the flag after the URL update
+  setIsCheckboxClicked(false);
+}, [selectedCategories, isCheckboxClicked, searchParams, setSearchParams, navigate]);
+
+ 
   
   
 

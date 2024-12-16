@@ -9,7 +9,7 @@ import { VendorFilter } from './vendor-filter'
 function FilterContainer() {
 
   return (
-    <div className='flex gap-4  py-4'>
+    <div className='flex gap-4 overflow-x-scroll py-4'>
      
      <CategoryFilter/>
 {/*      
