@@ -1,45 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiShare } from "react-icons/fi";
-import Navbar from "./Navbar"
+import Navbar from "./Navbar";
 import Wishlist from "./Shopping"; // Assuming Wishlist is a related component
-
-interface Item {
-  id: number;
-  name: string;
-  price: string;
-  status: "In Stock" | "Stock Out";
-  imgSrc: string;
-}
+import { useProductStore } from "../products-listing/store/store";
+import img1 from "../../public/assets/solor.svg";
+import { apiProduct } from "../products-listing/store/store";
 
 const ProductList: React.FC = () => {
-  const [cart, setCart] = useState<Item[]>([]); // Type the cart state with Item type
-  const [items, setItems] = useState<Item[]>([ // Type the items state with Item type
-    {
-      id: 1,
-      name: "Fireman 380W Solar Panel",
-      price: "₦350,000",
-      status: "In Stock",
-      imgSrc: "src/assets/frame1.png",
-    },
-    {
-      id: 2,
-      name: "Fireman 380W Solar Panel",
-      price: "₦350,000",
-      status: "Stock Out",
-      imgSrc: "src/assets/frame1.png",
-    },
-    {
-      id: 3,
-      name: "Fireman 380W Solar Panel",
-      price: "₦350,000",
-      status: "In Stock",
-      imgSrc: "src/assets/frame1.png",
-    },
+  const [cart, setCart] = useState<apiProduct[]>([]); // Type the cart state with Item type
+  const { cartProducts } = useProductStore();
+  const [items, setItems] = useState<apiProduct[]>([
+    // Type the items state with Item type
   ]);
 
-  const handleAddToCart = (item: Item): void => {
+  useEffect(() => {
+    setItems(cartProducts);
+  }, [cartProducts]); // Update items when products change
+
+  const handleAddToCart = (item: apiProduct): void => {
     if (!cart.some((cartItem) => cartItem.id === item.id)) {
       setCart([...cart, item]);
       alert(`${item.name} added to cart!`);
@@ -74,7 +54,7 @@ const ProductList: React.FC = () => {
             </div>
             <div className="flex-[3] w-[321px] h-[297px] shadow-inner rounded-lg bg-gray-200 overflow-hidden">
               <img
-                src={item.imgSrc}
+                src={img1}
                 alt={item.name}
                 className="w-full h-full object-cover"
               />
@@ -84,13 +64,11 @@ const ProductList: React.FC = () => {
                 {item.name}
               </h3>
               <p className="text-gray-600 font-semibold">{item.price}</p>
-              <p
-                className={`text-sm font-bold ${
-                  item.status === "In Stock" ? "text-green-600" : "text-red-500"
-                }`}
-              >
-                {item.status}
-              </p>
+              {item.stock > 0 ? (
+                <p className="text-green-500"> IN STOCK</p>
+              ) : (
+                <p className="text-green-500"> OUT OF STOCK</p>
+              )}
             </div>
             <div className="flex-[2]">
               <div className="flex justify-between items-center space-x-4">

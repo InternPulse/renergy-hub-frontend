@@ -1,90 +1,126 @@
-import ProductCard from '../components/ui-sections/ProductCard'
-import { Button } from '../../components/ui/button'
-import Header from '../components/ui-sections/header'
-import PriceSection from '../components/ui-sections/Price'
-import Vendor from '../components/ui-sections/Vendor'
-import { Link, Outlet } from 'react-router-dom'
-import ImageGallery from '../components/ui-sections/image-gallery'
-import { useParams } from 'react-router-dom'
-import { useProductStore } from '../store/store'
-import { useEffect, } from 'react'
- import ViewCard from '../components/ui-sections/featureProducts'
-
-
+import { Button } from '../../components/ui/button';
+import PriceSection from '../components/ui-sections/Price';
+import Vendor from '../components/ui-sections/Vendor';
+import { useParams, useNavigate } from 'react-router-dom';
+import ImageGallery from '../components/ui-sections/image-gallery';
+import { useProductStore } from '../store/store';
+import { useEffect } from 'react';
+import ViewCard from '../components/ui-sections/featureProducts';
+import { Separator } from '../../components/ui/separator';
+import BreadcrumbNav from '../components/ui-sections/headBreadCrumbs';
+import { Outlet ,Link} from 'react-router-dom';
 
 const ProductDetail = () => {
-  const {id} = useParams()
-  const index = parseInt(id as string)
-  const {testProducts,setDetailProducts,detailProducts,getProduct} = useProductStore()
-  // const [product,setProduct] = useState<apiProduct|undefined>(undefined)
- useEffect(() => {
-  const fetchProduct = async () => {
-    try {
-      // Fetch products if the array is empty
-      if (testProducts.length === 0) {
-        await getProduct()// Presumably fetches products
-      }
-      
-      // Proceed if products are available and index is valid
-      if (testProducts.length > 0 && index) {
-        const product = testProducts.find(p => p.id === index);
-        
-        if (product) {
-          setDetailProducts(product);
-          console.log("Product found:", product);
-        } else {
-          console.warn("No product found with the provided index.");
+  const { id } = useParams();
+  const index = parseInt(id as string);
+  const navigate = useNavigate();
+
+  const { 
+    testProducts, 
+    setDetailProducts, 
+    detailProducts, 
+    getProduct, 
+    setIsDclicked, 
+    setIsRClick, 
+    isDclicked, 
+    isRClick, 
+    getReviews, 
+    review 
+  } = useProductStore();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        if (testProducts.length === 0) {
+          await Promise.all([getProduct(), getReviews()]);
         }
+
+        if (testProducts.length > 0 && index) {
+          const product = testProducts.find((p) => p.id === index);
+
+          if (product) {
+            setDetailProducts(product);
+            console.log("Product found:", product);
+            console.log("Review found:", review);
+          } else {
+            console.warn("No product found with the provided index.");
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching product:", err);
       }
-    } catch (err) {
-      console.error("Error fetching product:", err);
-    }
+    };
+
+    fetchProduct();
+  }, [index, testProducts, getProduct, setDetailProducts, getReviews, review]);
+
+  const handleDetailClick = () => {
+    setIsDclicked(true);
+    setIsRClick(false);
+    navigate(`/product/detail/${index}`);
   };
 
-  fetchProduct();
-}, [index, testProducts, getProduct,setDetailProducts,]); // Removed setDetailProducts if it's a setter
+  const handleReviewClick = () => {
+    setIsDclicked(false);
+    setIsRClick(true);
+    navigate(`/product/detail/${index}/review`);
+  };
+
   return (
-    <>
-     <div className='flex flex-col p-4 lg:p-8 mx-auto'>
+    <div className="flex flex-col p-4 lg:p-8 gap-8 mx-auto">
       <nav>
-        <Header />
+        <BreadcrumbNav products={detailProducts} />
       </nav>
-      <main className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start '>
-        <ImageGallery/>
-        <PriceSection products={detailProducts}/>
-        <Vendor products={detailProducts}/>
+      <main className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 items-center lg:items-start">
+        <ImageGallery />
+        <PriceSection products={detailProducts} />
+        <Vendor products={detailProducts} />
       </main>
-    <section className='flex flex-col gap-8'>
-      
-       <main className='flex flex-col gap-8'>
-        <div className='flex gap-2'>
-          <Link to={`/product/detail/${index}`} className='text-black hover:text-[#002603]'> DETAILS </Link>
-          <Link to={`/product/detail/${index}/review`}className='text-black hover:text-[#002603]'> REVIEWS </Link>
-          
-          </div>
+
+      <section className="flex flex-col gap-8">
+        <main className="flex flex-col gap-8">
+          <ul className="flex gap-2">
+            <li>
+              <button onClick={handleDetailClick} className="bg-none p-0">
+                <p className={isDclicked ? 'text-green-500' : ''}>DETAILS</p>
+              </button>
+            </li>
+            <li>
+              <button onClick={handleReviewClick} className="bg-none p-0">
+                <p className={isRClick ? 'text-green-500' : ''}>REVIEWS</p>
+              </button>
+            </li>
+          </ul>
+
+          <Separator />
           <section>
-          <Outlet/>
+            <Outlet />
           </section>
-       </main>
-     
-        
-        <div className=' text-center text-black'>
-            <p> YOU MAY ALSO LIKE </p>
-        </div>
-        <div>
-        {/* add props later products={[]} */}
-         <ViewCard />
-         </div>
-         <div className='flex justify-center items-center'>
-         <Button variant={'outline'} className='bg-white text-black rounded-xl text-xl border-[#2C742F]' size={'sm'}> 
-            View more
-         </Button>
-         </div>
+        </main>
 
-    </section>
+        <section className="flex flex-col gap-8 md:p-8">
+          <div className="text-center text-black">
+            <p>YOU MAY ALSO LIKE</p>
+          </div>
+          <div className="lg:flex-row flex flex-col gap-4 lg:gap-12 items-center justify-center">
+            {testProducts.slice(0, 3).map((product) => (
+              <ViewCard products={product} key={product.id} />
+            ))}
+          </div>
+          <div className="flex justify-center items-center">
+            <Button
+              variant={'outline'}
+              className="bg-white text-black rounded-lg border-[#2C742F]"
+              size={'sm'}
+              asChild
+            >
+              <Link to="/product">View more</Link>
+            </Button>
+          </div>
+        </section>
+      </section>
     </div>
-    </>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { ChevronsRight, ArrowLeft } from 'lucide-react'
 import { Button } from "../../../components/ui/button"
+import { Separator } from '../../../components/ui/separator'
+import { apiProduct } from "../../store/store"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,12 +12,18 @@ import {
   BreadcrumbSeparator,
 } from "../../../components/ui/breadcrumb"
 
+export type ProductProps = {
+  products?: apiProduct
+}
 
-export default function BreadcrumbNav() {
+export default function BreadcrumbNav({products}: ProductProps) {
   return (
+    <>
+    <header className="hidden lg:flex flex-col gap-1">
+      <Separator/>
     <div className="flex items-center gap-4 p-4 text-sm">
       <Button variant="ghost" size="sm" className="gap-2" asChild>
-        <Link to="/products">
+        <Link to="/product">
           <ArrowLeft className="h-4 w-4" />
           Back
         </Link>
@@ -25,7 +33,7 @@ export default function BreadcrumbNav() {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
             
-     <Link to="/products">Productss</Link>
+     <Link to="/product">Products</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
@@ -34,7 +42,7 @@ export default function BreadcrumbNav() {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
             
-            <Link to="/products/categories">Categories</Link></BreadcrumbLink>
+            <Link to="#">Categories</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <ChevronsRight className="h-4 w-4" />
@@ -42,17 +50,20 @@ export default function BreadcrumbNav() {
           <BreadcrumbItem>
             <BreadcrumbLink  asChild>
             
-            <Link to="/products/categories/solar-panels">Solar Panels</Link></BreadcrumbLink>
+            <Link to="#">{products?.category.categoryName}</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <ChevronsRight className="h-4 w-4" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
-            <BreadcrumbPage>Fireman 380W Solar Panel</BreadcrumbPage>
+            <BreadcrumbPage>{products?.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-    </div>
+    </div>  
+    <Separator/>
+    </header>  </>
+    
   )
 }
 

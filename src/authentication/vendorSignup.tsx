@@ -158,10 +158,8 @@ const VendorSignup: React.FC = () => {
         <div className="flex flex-col items-center space-y-4 lg:space-y-0 lg:space-x-4">
           <button
             className="flex items-center justify-center w-full px-6 py-2 border-2 border-gray-100 rounded-md hover:bg-green-800 transition"
-            onClick={() =>
-              (window.location.href =
-                "https://renergy-hub-express-backend.onrender.com/api/v1/auth/google")
-            }
+            
+            
           >
             <img src={google} alt="google" className="mr-2" />
             Google
