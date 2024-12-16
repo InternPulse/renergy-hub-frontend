@@ -48,7 +48,7 @@ useEffect(() => {
   }
 
   // Update the URL with new search params
-  setSearchParams(params);
+  setSearchParams(params,{replace: true});
   navigate({ search: params.toString() }, { replace: true });
 
   // Reset the flag after the URL update
