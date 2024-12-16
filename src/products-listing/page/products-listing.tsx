@@ -9,7 +9,7 @@ import ProductCard from "../components/ui-sections/ProductCard";
 const ProductListing = () => {
   const [searchParams,setSearchParams] = useSearchParams(); // Access searchParams from the URL
   const [filteredProducts, setFilteredProducts] = useState<apiProduct[]>([]);
-  const {sort,testCategories,testProducts,testVendors}=useProductStore()
+  const {sort,testCategories,testProducts,testVendors,selectedVendors,selectedCategories}=useProductStore()
   // const { products, vendors, categories } = storeData;
 
   const navigate = useNavigate(); // Hook to update the URL
@@ -43,51 +43,53 @@ const ProductListing = () => {
     }
   },[sort])
 
-  // Update filtered products whenever searchParams change
-  useEffect(() => {
-    const vendorQuery = searchParams.get("vendor");
-    const categoryQuery = searchParams.get("category");
-    const searchQuery = searchParams.get("search");
+
+   const searchQuery = searchParams.get("search");
    
     // Filter products based on the query parameters
-    const filtered = testProducts.filter((product) => {
-      // Get vendor and category names based on their respective IDs
-      const vendorName = testVendors.find((vendor) => vendor.id === product.userId)?.firstName;
-      const categoryName = testCategories.find((category) => category.id === product.category.id)?.categoryName;
-       
-      // Check if the product matches the selected vendor
-      const matchesVendor = vendorQuery
-        ? vendorQuery.split(",").includes(vendorName || "") // Split by comma for multiple selections
-        : true;
+const filtered = testProducts.filter((product) => {
+  // Get vendor and category names based on their respective IDs
+  const vendorName = testVendors.find((vendor) => vendor.id === product.userId)?.firstName;
+  const categoryName = testCategories.find((category) => category.id === product.category.id)?.categoryName;
 
-      // Check if the product matches the selected category
-      const matchesCategory = categoryQuery
-        ? categoryQuery.split(",").includes(categoryName || "") // Split by comma for multiple selections
-        : true;
+  // Check if any filters (vendors, categories, or search query) are applied
+  const isFilteringApplied = selectedVendors?.length > 0 || selectedCategories?.length > 0 || searchQuery;
 
-      // Check if the product name matches the search query
-      const matchesSearch = searchQuery
-        ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
-        : true;
+  // If no filters are applied, return all products
+  if (!isFilteringApplied) {
+    return true; // Return the full list without any filtering
+  }
 
-      // Return true only if the product matches all filters
-      return matchesVendor && matchesCategory && matchesSearch;
-      
-    });
+  // Check if the product matches the selected vendor
+  const matchesVendor = selectedVendors?.length > 0
+    ? selectedVendors.some((vendor) => vendor.brandName === vendorName)
+    : true;
+
+  // Check if the product matches the selected category
+  const matchesCategory = selectedCategories?.length > 0
+    ? selectedCategories.some((category) => category.categoryName === categoryName)
+    : true;
+
+  // Check if the product name matches the search query
+  const matchesSearch = searchQuery
+    ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    : true;
+
+  // Return true only if the product matches all filters
+  return matchesVendor && matchesCategory && matchesSearch;
+});
+    console.log('filtered product',filtered)
     const sortedProducts = sortProducts(filtered);
     console.log(sortedProducts)
-    setFilteredProducts(sortedProducts); // Update state with the filtered products
-
-  }, [searchParams, testProducts, testVendors, testCategories,sortProducts]);
-
+  
 
  // Calculate the products to display for the current page
- const paginatedProducts = filteredProducts.slice(
+ const paginatedProducts = sortedProducts.slice(
   (currentPage - 1) * itemsPerPage,
   currentPage * itemsPerPage
 );
 
-const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
 
 
@@ -96,7 +98,7 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     setSearchParams(params); // Update URL with the new page number
-    navigate({ search: params.toString() }, { replace: true });
+   
   };
 
 
