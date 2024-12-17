@@ -20,34 +20,34 @@ import ProductList from "./shoppingcart/ProductList";
 //import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
 import { Toaster } from "sonner";
 import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
+import ProtectedRoute from "./protectedRoute";
+
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
-        
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
+
         
-        <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
         {/* FROM BUYER DASHBOARD */}
-        <Route path="/buyer-dashboard/*" element={<BuyerDashboard/>} />
-        {/* From
-        oo-branch */}
+        <Route path="/buyer-dashboard/*" element={<BuyerDashboard />} />
+        {/* From oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
-        <Route path="/*" element={<Vendor />} />
-        <Route path="/product/*" element={<Product />} />
         
+        <Route path="/product/*" element={<Product />} />
+
         <Route path="/settings/*" element={<SettingsRoutes />} />
         <Route
           path="/security-compliance"
           element={<SecurityCompliance />}
-        />{" "}
+        />
         {/* From HEAD */}
         <Route
           path="/shipping-and-tracking"
@@ -56,13 +56,30 @@ function App() {
         {/* <Route path="/buyer-section" element={<Page />} /> */}
         <Route path="/content-section" element={<ContentSection />} />
         <Route path="/shopping-cart" element={<ProductList />} />
-        <Route path="/admin/*" element={<AdminDashboardRoutes />} />{" "}
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute element={<AdminDashboardRoutes />} />
+          }
+        />
+         <Route
+          path="/vendor-dashboard/*"
+          element={
+            <ProtectedRoute element={<VendorDashboard />} />
+          }
+        />
+          <Route
+          path="/*"
+          element={
+            <ProtectedRoute element={<Vendor />} />
+          }
+        />
         {/* From oo-branch */}
-       
       </Routes>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }
 
 export default App;
+
