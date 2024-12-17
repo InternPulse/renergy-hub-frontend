@@ -1,8 +1,8 @@
 import {
   PopoverContent
-} from "../../../src/components/ui/popover"
+} from "../../components/ui/popover"
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../src/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
 
 import { EllipsisVertical, SquareArrowOutUpRight, X, User, Mail, Phone } from "lucide-react"
 

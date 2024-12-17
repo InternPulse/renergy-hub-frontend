@@ -7,6 +7,7 @@ interface Product {
   description: string;
   image: string;
   buttonLabel: string;
+  extraInfo: string
 }
 
 // Define the props for the ProductCard component
@@ -17,7 +18,7 @@ interface ProductCardProps {
 // Create the ProductCard component with TypeScript
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   // Destructure the product object
-  const { title, description, image, buttonLabel } = product;
+  const { title, description, image, buttonLabel, extraInfo } = product;
 
   return (
     <Card
@@ -25,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       description={description}
       image={image}
       buttonLabel={buttonLabel}
-      onButtonClick={() => alert(`${title} clicked!`)}
+      extraInfo={extraInfo}
     />
   );
 };

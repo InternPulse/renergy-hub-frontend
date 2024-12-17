@@ -1,7 +1,7 @@
 import { Input } from "../../components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
 import { useLocation } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const routeTitles: Record<string, string> = {
   "/buyer-dashboard": "Overview",
@@ -11,10 +11,37 @@ const routeTitles: Record<string, string> = {
   "/buyer-dashboard/offers": "Offers",
 };
 
-
-
+import { useProductStore } from "../../products-listing/store/store";
 
 function BuyerNavbar() {
+
+  const { userId } = useProductStore();
+  const [userName, setUserName] = useState({
+    firstName: "",
+    lastName: "",
+  });
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(
+          `https://renergy-hub-express-backend.onrender.com/api/v1/users/${userId}`,
+          { method: "GET" }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setUserName({
+            firstName: data.data.firstName || "Default",
+            lastName: data.data.lastName || "Default",
+          });
+        } else {
+          console.error("Failed to fetch profile data.");
+        }
+      } catch (error) {
+        console.error("Error fetching profile:");
+      }
+    };
+    if (userId) fetchProfile();
+  }, [userId]);
 
   // THIS RENDERS PAGE TITLE BASED ON THE ROUTES
 
@@ -58,11 +85,11 @@ function BuyerNavbar() {
                     <AvatarImage src="/avatar3.jpg" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <h2 className="hidden md:block">Frank</h2>
+                <h2 className="hidden md:block">{`${userName.firstName}`}</h2>
                 <img className="hidden lg:block" src="/downicon.png" alt="downicon" />
             </div>
         </nav>
   )
 }
 
-export default BuyerNavbar
+export default BuyerNavbar;
