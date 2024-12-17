@@ -8,10 +8,10 @@ const sidebarMenu = [
   { menu: "Products", icon: "/box.png", path: "/product" },
   { menu: "Offers", icon: "/award.png", path: "/buyer-dashboard" },
   { menu: "Saved Products", icon: "/archive.png", path: "/buyer-dashboard" },
-  { menu: "Order", icon: "/shopping-bag.png", path: "/buyer-dashboard" },
+  { menu: "Order", icon: "/shopping-bag.png", path: "/buyer-dashboard/ordered-products" },
   { menu: "Payment", icon: "/layout.png", path: "/buyer-dashboard" },
   { menu: "Messages", icon: "/mail.png", path: "/buyer-dashboard" },
-  { menu: "Purchase History", icon: "/key.png", path: "/buyer-dashboard" },
+  { menu: "Purchase History", icon: "/key.png", path: "/buyer-dashboard/purchase-history" },
   { menu: "Security", icon: "/key.png", path: "/buyer-dashboard" },
 ];
 
