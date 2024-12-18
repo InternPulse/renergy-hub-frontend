@@ -59,7 +59,8 @@ function App() {
           path="/vendor-dashboard/*"
           element={<ProtectedRoute element={<VendorDashboard />} />}
         />
-        <Route path="/*" element={<ProtectedRoute element={<Vendor />} />} />
+        <Route path="/*" element={<Vendor />} />
+
         {/* From oo-branch */}
       </Routes>
       <Toaster />

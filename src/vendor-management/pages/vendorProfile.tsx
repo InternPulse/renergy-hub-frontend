@@ -141,7 +141,7 @@ const VendorProfile = () => {
           <div className="bg-white rounded-md p-4 mb-4">
             <h2 className="font-[500] text-[22px]">Vendor Information</h2>
             <div className="flex gap-6 lg:p-4 lg:flex-row flex-col">
-              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[2%]">
+              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[8%]">
                 {getInitials()}
               </div>
               <div className="w-full">
@@ -234,7 +234,7 @@ const VendorProfile = () => {
           <div className="bg-white rounded-md p-4 mb-4">
             <h2 className="font-[500] text-[22px]">Business Profile</h2>
             <div className="flex gap-6 lg:p-4 lg:flex-row flex-col">
-              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[2%]">
+              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[8%]">
                 {getBrand()}
               </div>
 
