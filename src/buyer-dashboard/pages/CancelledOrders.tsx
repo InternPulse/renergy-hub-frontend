@@ -7,14 +7,35 @@ import {
   } from "../../components/ui/card"
 
   import { Button } from '../../components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const CancelledOrders = () => {
+  const location = useLocation();
+
+  // Check if the pathname includes "cancelled" or "ordered"
+  const isCancelled = location.pathname.includes("cancelled");
+  const isOngoing = location.pathname.includes("ordered");
+
   return (
      <section className=" md:ml-[250px] w-full h-full mb-10 px-3 py-3">
-        <div className='flex items-center gap-2 py-4'>
-            <h1 className="">Ongoing/Delivered (5)</h1>
-            <h1 className="text-[#007300]">Cancelled/Returned (5)</h1>
-        </div>
+        <div className="flex space-x-4 m-5">
+        <Link
+          to="/buyer-dashboard/ordered-products"
+          className={`text-lg font-semibold ${
+            isOngoing ? "text-[#007300]" : "text-gray-500"
+          }`}
+        >
+          Ongoing/Delivered
+        </Link>
+        <Link
+          to="/buyer-dashboard/orders-cancelled"
+          className={`text-lg font-semibold ${
+            isCancelled ? "text-[#007300]" : "text-gray-500"
+          }`}
+        >
+          Cancelled/Returned
+        </Link>
+      </div>
             
             {/* product container */}
             <div className='grid w-fit gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>

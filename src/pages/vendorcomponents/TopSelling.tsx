@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../../src/components/ui/carousel"
+} from "../../components/ui/carousel"
 
 import img1 from "./../vendorDashboard/assets/img1.png"
 import img2 from "./../vendorDashboard/assets/img2.png"

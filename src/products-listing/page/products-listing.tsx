@@ -95,7 +95,7 @@ const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
-    setSearchParams(params); // Update URL with the new page number
+    setSearchParams(params, { replace: true }); // Update URL with the new page number
     navigate({ search: params.toString() }, { replace: true });
   };
 
