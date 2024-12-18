@@ -1,4 +1,5 @@
 import { Button } from '../../components/ui/button';
+import { useState } from 'react';
 import PriceSection from '../components/ui-sections/Price';
 import Vendor from '../components/ui-sections/Vendor';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -14,16 +15,17 @@ const ProductDetail = () => {
   const { id } = useParams();
   const index = parseInt(id as string);
   const navigate = useNavigate();
-
+  const [isDclicked, setIsDclicked] = useState(true);
+  const [isRClick, setIsRClick] = useState(false);
   const { 
     testProducts, 
     setDetailProducts, 
     detailProducts, 
     getProduct, 
-    setIsDclicked, 
-    setIsRClick, 
-    isDclicked, 
-    isRClick, 
+
+   
+    
+   
     getReviews, 
     review 
   } = useProductStore();
@@ -114,7 +116,7 @@ const ProductDetail = () => {
               size={'sm'}
               asChild
             >
-              <Link to="/product">View more</Link>
+              <Link to="/product" replace>View more</Link>
             </Button>
           </div>
         </section>

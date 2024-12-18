@@ -1,6 +1,10 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import TopBar from "./Header";
+<<<<<<< HEAD
 import Sidebar from './SideBar';
+=======
+import {Sidebar} from "../../pages/vendorcomponents/sidebar";
+>>>>>>> upstream/feature-base
 import Settings from "../../pages/settings";
 import ProfileInformation from "../../pages/settings/profileInformation";
 import AccountManagement from "../../pages/settings/accountManagement";

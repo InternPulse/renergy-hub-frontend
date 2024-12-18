@@ -2,7 +2,7 @@
 
 const Orders = () => {
   return (
-    <div className="w-[49%] h-auto bg-white rounded-sm p-2">
+    <div className="md:w-[49%] h-auto bg-white rounded-sm p-2">
       <h1 className="text-xl">Order Status</h1>
       <div className="flex justify-between mt-8 mb-8">
         <div className="h-4 w-[69%] bg-green-600 rounded-md" />

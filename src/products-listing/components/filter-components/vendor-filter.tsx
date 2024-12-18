@@ -41,7 +41,7 @@ export function VendorFilter() {
     }
 
     // Set the updated search params in the URL and navigate
-    setSearchParams(params);
+    setSearchParams(params,{replace: true});
     navigate({ search: params.toString() }, { replace: true });
   }, [selectedVendors, searchParams, setSearchParams, navigate,isCheckboxClicked]);
 

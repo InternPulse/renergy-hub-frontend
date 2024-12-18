@@ -56,7 +56,7 @@ function getFirstThreeWords(name:string) {
             
           
         </li>
-        <Link to={`/product/detail/${products.id}`}>
+        <Link to={`/product/detail/${products.id}`} replace>
         <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             
