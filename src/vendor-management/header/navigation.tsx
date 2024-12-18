@@ -92,7 +92,8 @@ const Navbar: React.FC = () => {
           {getInitials()}
         </div>
 
-        <p>{`${formData.firstName} ${formData.lastName}`}</p>
+        <p className="lg:block hidden">{`${formData.firstName} ${formData.lastName}`}</p>
+        <p className="lg:hidden block">{`${formData.firstName}`}</p>
       </div>
     </nav>
   );
