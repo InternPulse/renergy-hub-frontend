@@ -1,8 +1,11 @@
-import { Input } from "../../components/ui/input"
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
+import { Input } from "../../components/ui/input";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../components/ui/avatar";
 import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-
 const routeTitles: Record<string, string> = {
   "/buyer-dashboard": "Overview",
   "/buyer-dashboard/saved-products": "Products",
@@ -15,6 +18,14 @@ const routeTitles: Record<string, string> = {
 import { useProductStore } from "../../products-listing/store/store";
 
 function BuyerNavbar() {
+  // Display user name
+  // getting the initial
+  // const getInitials = () => {
+  //   const { firstName, lastName } = userName;
+  //   const firstNameInitial = firstName.slice(0, 1).toUpperCase();
+  //   const lastNameInitial = lastName.slice(0, 1).toUpperCase();
+  //   return `${firstNameInitial}${lastNameInitial}`;
+  // };
 
   const { userId } = useProductStore();
   const [userName, setUserName] = useState({
@@ -45,11 +56,9 @@ function BuyerNavbar() {
   }, [userId]);
 
   // THIS RENDERS PAGE TITLE BASED ON THE ROUTES
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log(pageTitle);
-    
-  },[])
+  }, []);
 
   const location = useLocation();
 
@@ -68,29 +77,36 @@ function BuyerNavbar() {
   };
 
   // Dynamically compute the page title based on the current route
-  const pageTitle = useMemo(() => getPageTitle(location.pathname), [location.pathname]);
-  // 
+  const pageTitle = useMemo(
+    () => getPageTitle(location.pathname),
+    [location.pathname]
+  );
+  //
   return (
-    <nav className="md:ml-[250px] flex h-24 justify-between items-center 
-        pl-[60px] pr-[10px] sm:pl-[80px] sm:pr-[40px] md:px-2 lg:px-10 xl:px-20 py-5 bg-white ">
-            <div>
-                <h1 className="font-bold text-black text-[16px] sm:text-[18px] lg:text-[28px]">{pageTitle}</h1>
-            </div>
-            <div className="flex gap-1 mx-3 md:mx-0 items-center shadow-sm rounded-lg bg-[#E6E6E6]">
-                <Input className="border-none outline-none md:px-[0px] lg:px-[50px] xl:px-20 bg-transparent"/>
-                <img src="/searchnav.png" alt="search" />
-            </div>
-            <div className="flex gap-2 md:gap-2 items-center">
-                <img className="hidden md:block" src="/bell.png" alt="bell" />
-                <Avatar>
-                    <AvatarImage src="/avatar3.jpg" />
-                    <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <h2 className="hidden md:block">{`${userName.firstName}`}</h2>
-                <img className="hidden lg:block" src="/downicon.png" alt="downicon" />
-            </div>
-        </nav>
-  )
+    <nav
+      className="md:ml-[250px] flex h-24 justify-between items-center 
+        pl-[60px] pr-[10px] sm:pl-[80px] sm:pr-[40px] md:px-2 lg:px-10 xl:px-20 py-5 bg-white "
+    >
+      <div>
+        <h1 className="font-bold text-black text-[16px] sm:text-[18px] lg:text-[28px]">
+          {pageTitle}
+        </h1>
+      </div>
+      <div className="flex gap-1 mx-3 md:mx-0 items-center shadow-sm rounded-lg bg-[#E6E6E6]">
+        <Input className="border-none outline-none md:px-[0px] lg:px-[50px] xl:px-20 bg-transparent" />
+        <img src="/searchnav.png" alt="search" />
+      </div>
+      <div className="flex gap-2 md:gap-2 items-center">
+        <img className="hidden md:block" src="/bell.png" alt="bell" />
+        <Avatar>
+          <AvatarImage src="/avatar3.jpg" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <h2 className="hidden md:block">{`${userName.firstName}`}</h2>
+        <img className="hidden lg:block" src="/downicon.png" alt="downicon" />
+      </div>
+    </nav>
+  );
 }
 
 export default BuyerNavbar;

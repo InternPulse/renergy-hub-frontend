@@ -100,7 +100,7 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      className={`hidden z-10 transition-all duration-300 ease-in-out flex-shrink-0 bg-white ${
+      className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 bg-white ${
         isSidebarOpen ? "w-40" : "w-20"
       }`}
       animate={{ width: isSidebarOpen ? 170 : 80 }}
@@ -113,7 +113,7 @@ const Sidebar = () => {
         alt="logo"
       />
 
-      <div className="h-full bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r">
+      <div className="h-full  bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

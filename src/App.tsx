@@ -31,7 +31,6 @@ function App() {
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
-
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
@@ -50,7 +49,6 @@ function App() {
           path="/shipping-and-tracking"
           element={<ShippingAndTracking />}
         />
-        {/* <Route path="/buyer-section" element={<Page />} /> */}
         <Route path="/content-section" element={<ContentSection />} />
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route
@@ -62,6 +60,7 @@ function App() {
           element={<ProtectedRoute element={<VendorDashboard />} />}
         />
         <Route path="/*" element={<Vendor />} />
+
         {/* From oo-branch */}
       </Routes>
       <Toaster />

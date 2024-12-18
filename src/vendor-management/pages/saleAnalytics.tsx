@@ -1,6 +1,6 @@
- import { BarChartComponent } from "../Charts/BarChart";
+import { BarChartComponent } from "../Charts/BarChart";
 import { PieChartComponent } from "../Charts/PieChart";
-// import Navbar from "../header/navigation";
+
 import { useEffect } from "react";
 import axios from "axios";
 interface CardData {
@@ -45,7 +45,7 @@ function SaleAnalytics() {
   async function fetchData() {
     try {
       const response = await axios.get(apiUrl, {
-        withCredentials:true,
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
@@ -55,7 +55,6 @@ function SaleAnalytics() {
         throw new Error(`HTTP error! Status: ${response}`);
       }
 
-      
       console.log("API Response:", response);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -63,19 +62,16 @@ function SaleAnalytics() {
   }
 
   useEffect(() => {
-
-
-    
     fetchData();
   }, []);
   return (
     <>
-      <section className="p-6">
+      <section className="lg:p-6 p-2">
         <div className="bg-white px-4 py-2 mb-4">
-          <h1 className="text-3xl mb-1">Sales Analytics</h1>
+          <h1 className="lg:text-3xl text-xl mb-1">Sales Analytics</h1>
           <p className="text-[#666666] font-400 mb-2">
             In Sales Analytics , your are provided with your sales information
-            tracked .
+            tracked.
           </p>
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 w-full gap-2">
@@ -109,7 +105,7 @@ function SaleAnalytics() {
             </div>
           ))}
         </div>
-        <div className="bg-white flex justify-between py-2 pl-6 pr-20 mt-4 text-[#052200] font-[500] text-[28px]">
+        <div className="bg-white flex justify-between py-2 lg:pl-6 lg:pr-20 px-2 mt-4 text-[#052200] font-[500] lg:text-[28px]">
           <p>Sales Trend</p>
           <p>Customer Demographics</p>
         </div>
@@ -123,10 +119,10 @@ function SaleAnalytics() {
             <PieChartComponent />
           </div>
         </div>
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:mt-8 mt-4">
           <div className="bg-white p-4 rounded-md">
             <div className="flex justify-between items-center">
-              <p className="text-[#052200] font-[500] text-2xl">
+              <p className="text-[#052200] font-[500] lg:text-2xl text-xl">
                 Top Selling Product
               </p>
               <div className="flex gap-1 flex-col">
@@ -135,7 +131,7 @@ function SaleAnalytics() {
                 <div className="w-1 h-1 bg-[#1F2223] rounded-full"></div>
               </div>
             </div>
-            <div className="overflow-x-auto">
+            <div>
               <table className="w-full text-left mt-6">
                 <thead className="text-gray-700">
                   <tr>
@@ -161,7 +157,7 @@ function SaleAnalytics() {
           </div>
           <div className="bg-white p-4 rounded-md">
             <div className="flex justify-between items-center">
-              <p className="text-[#052200] font-[500] text-2xl">
+              <p className="text-[#052200] font-[500] lg:text-2xl text-xl">
                 Low Selling Product
               </p>
               <div className="flex gap-1 flex-col">
@@ -170,7 +166,7 @@ function SaleAnalytics() {
                 <div className="w-1 h-1 bg-[#1F2223] rounded-full"></div>
               </div>
             </div>
-            <div className="overflow-x-auto">
+            <div>
               <table className="w-full text-left border-collapse mt-6">
                 <thead className="text-gray-700">
                   <tr>
