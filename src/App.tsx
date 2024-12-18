@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import CheckoutHomePage from "./pages/checkoutHome";
 import { VendorDashboard } from "./pages/vendorDashboard/vendorDashboard";
 import Auth from "./authentication/auth";
-import { useProductStore } from "./products-listing/store/store";
+
 import Vendor from "./vendor-management/vendor";
 import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
@@ -24,7 +24,7 @@ import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 import ProtectedRoute from "./protectedRoute";
 
 function App() {
-  const {userType} = useProductStore();
+ 
   return (
     <div className="overflow-x-hidden w-full max-w-full">
   
@@ -52,9 +52,9 @@ function App() {
             <Route path="/content-section" element={<ContentSection />} />
 
             {/* Protected Routes */}
-          <Route path="/vendor-dashboard/*" element={<ProtectedRoute role={userType} element={<VendorDashboard />} />} />
-            <Route path="/buyer-dashboard/*" element={<ProtectedRoute role={userType} element={<BuyerDashboard />} />} />
-            <Route path="/admin/*" element={<ProtectedRoute role={userType} element={<AdminDashboardRoutes />} />} />
+          <Route path="/vendor-dashboard/*" element={<ProtectedRoute role='VENDOR' element={<VendorDashboard />} />} />
+            <Route path="/buyer-dashboard/*" element={<ProtectedRoute role='CUSTOMER' element={<BuyerDashboard />} />} />
+            <Route path="/admin/*" element={<ProtectedRoute role='ADMIN' element={<AdminDashboardRoutes />} />} />
             <Route path="/*" element={<ProtectedRoute element={<Vendor />} />} />
 </Routes>
       <Toaster />

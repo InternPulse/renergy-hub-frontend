@@ -6,20 +6,13 @@ interface ProtectedRouteProps {
   role?: string
 }
 const ProtectedRoute = ({ element, role }: ProtectedRouteProps) => {
-  const { userId } = useProductStore(); // Fetch the user ID from the store
+
+  const { userId ,userType} = useProductStore(); 
   
   // Check if user is authenticated and role matches
-  if (userId && role === 'VENDOR') {
-    return <>{element}</>;
+  if (userId && userType === role) {
+    return <>{element} </>;
   }
-  if (userId && role === 'CUSTOMER') {
-    return <>{element}</>;
-  }
-  if (userId && role === 'ADMIN') {
-    return <>{element}</>;
-  }
-
-  
   return <Navigate to="/authentication/login" />;
 };
 
