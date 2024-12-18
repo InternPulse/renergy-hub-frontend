@@ -141,7 +141,7 @@ const VendorProfile = () => {
           <div className="bg-white rounded-md p-4 mb-4">
             <h2 className="font-[500] text-[22px]">Vendor Information</h2>
             <div className="flex gap-6 lg:p-4 lg:flex-row flex-col">
-              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center ">
+              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[2%]">
                 {getInitials()}
               </div>
               <div className="w-full">
@@ -231,10 +231,10 @@ const VendorProfile = () => {
             </div>
           </div>
           {/* Business Information */}
-          <div className="bg-white rounded-lg p-4">
+          <div className="bg-white rounded-md p-4 mb-4">
             <h2 className="font-[500] text-[22px]">Business Profile</h2>
-            <div className="flex gap-6 p-4 lg:flex-row flex-col">
-              <div className="bg-[#DEDEDE] py-4 px-6 rounded-full text-3xl h-[84px] flex items-center">
+            <div className="flex gap-6 lg:p-4 lg:flex-row flex-col">
+              <div className="bg-[#DEDEDE] py-4 px-6 lg:rounded-full text-2xl h-[84px] flex items-center w-[84px] lg:w-[2%]">
                 {getBrand()}
               </div>
 
@@ -311,7 +311,10 @@ const VendorProfile = () => {
                     />
                   </div>
                 </p>
-                <div className="flex lg:justify-end" onClick={handleFormSubmit}>
+                <div
+                  className="flex lg:justify-end "
+                  onClick={handleFormSubmit}
+                >
                   <button className="border bg-[#2C7427] px-10 py-2 rounded-md text-white text-xl font-[400] mt-2">
                     {isEditable ? "Update Account" : "Save Account"}
                   </button>

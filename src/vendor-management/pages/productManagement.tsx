@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, useEffect } from "react";
 
-
 interface ProductManagementType {
   productName: string;
   description: string;
@@ -58,13 +57,13 @@ const ProductManagement: React.FC = () => {
   };
   return (
     <>
-      <section className="p-6">
+      <section className="lg:p-6 p-2">
         <div className="bg-white px-4 py-2 mb-4 rounded-[6px]">
           <div>
-            <h1 className="text-3xl mb-2">Product Management</h1>
+            <h1 className="lg:text-3xl text-xl mb-2">Product Management</h1>
           </div>
 
-          <p className="text-[#565656] font-400 mb-2 ">
+          <p className="text-[#565656] font-400 mb-2">
             In Product management section, you can manage products with their
             details. you can input product informations as Product image,
             pricing, description, Product status.
@@ -75,8 +74,10 @@ const ProductManagement: React.FC = () => {
           onSubmit={handleSubmit}
           className="bg-white rounded-md p-4 flex flex-col gap-[1rem]"
         >
-          <h2 className="font-[500] text-[22px]">Product Information</h2>
-          <p className="flex gap-8 ">
+          <h2 className="font-[500] lg:text-[22px] text-xl">
+            Product Information
+          </h2>
+          <p className="flex lg:gap-8 gap-3 lg:flex-row flex-col">
             <div className="w-full">
               <label htmlFor="name" className="text-[#565656] font-[500] ">
                 Product name
@@ -133,23 +134,8 @@ const ProductManagement: React.FC = () => {
               First picture is the title picture
             </p>
           </div>
-          {/* <div className="">
-              <input
-                type="file"
-                id="edit-image"
-                className="hidden"
-                onChange={handleImageUpload}
-              />
-              <label
-                htmlFor="logo-upload"
-                className="text-[#007300] underline mt-2 hover:text-[#00A100] cursor-pointer"
-              >
-                Edit Image
-              </label>
-            </div> */}
-
-          <div className="flex gap-10">
-            <div className="w-[50%] border p-6 rounded-lg">
+          <div className="flex gap-10 lg:flex-row flex-col">
+            <div className="lg:w-[50%] border p-6 rounded-lg w-full">
               <input
                 type="file"
                 onChange={handleImageUpload}
@@ -164,7 +150,7 @@ const ProductManagement: React.FC = () => {
               </span>
             </div>
 
-            <div className="w-[25%]">
+            <div className="lg:w-[25%] w-full">
               <label>Product Status:</label>
               <select
                 name="status"
@@ -177,7 +163,7 @@ const ProductManagement: React.FC = () => {
                 <option value="out_of_stock">Out of Stock</option>
               </select>
             </div>
-            <div className="w-[25%]">
+            <div className="lg:w-[25%] w-full">
               <label>Product Rating:</label>
               <div style={{ display: "flex", gap: "5px" }}>
                 {[1, 2, 3, 4, 5].map((value) => (
@@ -199,7 +185,7 @@ const ProductManagement: React.FC = () => {
           <p className="text-sm mt-[-15px] text-[#565656]">
             {productData.image ? productData.image.name : "No image selected"}
           </p>
-          <div className="flex justify-end">
+          <div className="flex lg:justify-end">
             <button
               className="border bg-[#2C7427] px-10 py-2 rounded-md text-white text-xl font-[400] mt-2"
               type="submit"

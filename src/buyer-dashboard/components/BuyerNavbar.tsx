@@ -11,7 +11,7 @@ import { useProductStore } from "../../products-listing/store/store";
 const routeTitles: Record<string, string> = {
   "/buyer-dashboard": "Overview",
   "/buyer-dashboard/saved-products": "Products",
-  "/buyer-dashboard/reports": "Reports",
+  "/buyer-dashboard/ordered-products": "Orders",
   "/buyer-dashboard/products": "Products",
   "/buyer-dashboard/offers": "Offers",
 };
@@ -58,9 +58,9 @@ function BuyerNavbar() {
   // };
 
   // THIS RENDERS PAGE TITLE BASED ON THE ROUTES
-  // useEffect(() => {
-  //   console.log(pageTitle);
-  // }, []);
+  useEffect(() => {
+    console.log(pageTitle);
+  }, []);
 
   const location = useLocation();
 
