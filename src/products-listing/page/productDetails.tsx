@@ -116,7 +116,7 @@ const ProductDetail = () => {
               size={'sm'}
               asChild
             >
-              <Link to="/product">View more</Link>
+              <Link to="/product" replace>View more</Link>
             </Button>
           </div>
         </section>
