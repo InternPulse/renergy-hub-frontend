@@ -87,7 +87,7 @@ const Filter = () => {
 
           </li>
         
-          <li className="text-3xl hidden lg:flex">Settings</li>
+          <li className="lg:pr-8"></li>
         </ul>
       </header>
 
