@@ -55,7 +55,7 @@ const PriceSection = ({ products }: props) => {
         label: "Checkout",
       },
     });
-    console.log("added products", cartProducts);
+    // console.log("added products", cartProducts);
   };
 
   return (

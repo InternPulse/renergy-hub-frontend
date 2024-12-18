@@ -39,7 +39,7 @@ const VerifyPassword: React.FC = () => {
     if (enteredOtp.length === otp.length) {
       try {
         setLoading(true);
-        console.log({ email, verifyToken: enteredOtp });
+        // console.log({ email, verifyToken: enteredOtp });
         await axios.post(
           `https://renergy-hub-express-backend.onrender.com/api/v1/auth/verify-forgot-password`,
           { email, resetToken: enteredOtp }

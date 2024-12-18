@@ -75,7 +75,7 @@ const ProductListing = () => {
       
     });
     const sortedProducts = sortProducts(filtered);
-    console.log(sortedProducts)
+    // console.log(sortedProducts)
     setFilteredProducts(sortedProducts); // Update state with the filtered products
 
   }, [searchParams, testProducts, testVendors, testCategories,sortProducts]);

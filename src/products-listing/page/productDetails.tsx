@@ -42,8 +42,8 @@ const ProductDetail = () => {
 
           if (product) {
             setDetailProducts(product);
-            console.log("Product found:", product);
-            console.log("Review found:", review);
+            // console.log("Product found:", product);
+            // console.log("Review found:", review);
           } else {
             console.warn("No product found with the provided index.");
           }

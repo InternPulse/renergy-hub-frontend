@@ -11,13 +11,13 @@ export type ProductProps = {
 
 const ProductCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
-    const {wishList,addedProducts} = useProductStore()
+    const {wishList} = useProductStore()
 
 const handleClick = ()=> {
      setIsClicked(true)
      if(products){
       wishList(products)
-      console.log('',addedProducts)
+      // console.log('',addedProducts)
      }
       
 }

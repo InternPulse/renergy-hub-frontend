@@ -56,7 +56,7 @@ function SaleAnalytics() {
       }
 
       
-      console.log("API Response:", response);
+      
     } catch (error) {
       console.error("Error fetching data:", error);
     }

@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { setUserId } = useProductStore();
+  const { setUserId,setUserType } = useProductStore();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // console.log({ email, password });
@@ -31,16 +31,16 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log("API Response:", response.headers);
+      // console.log("API Response:", response.headers);
       const token =
         response.headers["access-token"] || response.headers["Authorization"];
       console.log("Token received from API:", token);
       const user = response.data?.data;
-      const cookies = response.headers['set-cookie'];
-      console.log('Cookies from response header:', cookies);
+      // const cookies = response.headers['set-cookie'];
+      // console.log('Cookies from response header:', cookies);
       if (token) {
         localStorage.setItem("authToken", token);
-        console.log("Token saved to Local Storage:", token);
+        // console.log("Token saved to Local Storage:", token);
       } else {
         console.error("Token is missing in the response headers.");
       }
@@ -48,6 +48,7 @@ const Login = () => {
         throw new Error("User data is missing from the response.");
       }
       setUserId(user.id);
+      setUserType(user.userType);
 
       if (user.userType === "CUSTOMER") {
         navigate("/buyer-dashboard", { state: { userId: user.id } });

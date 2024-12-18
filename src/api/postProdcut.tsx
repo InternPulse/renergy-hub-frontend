@@ -13,7 +13,7 @@ export async function SubmitForm(formData: any, userId: number, categoryId: numb
       stock: 2, 
       image: formData.image,
     };
-    console.log(requestBody)
+    // console.log(requestBody)
 
     // Send POST request with credentials (cookies) included
     const response = await axios.post('https://renergy-hub-express-backend.onrender.com/api/v1/products', requestBody, {

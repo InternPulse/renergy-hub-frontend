@@ -134,6 +134,8 @@ type ProductStore = {
   getProductId: (id:number)=> Promise<void>;
   getCategories: ()=> Promise<void>;
   detailProducts: apiProduct;
+  userType: string;
+  setUserType: (useType: string)=> void;
   // selectedProducts: Product[];
   selectedProducts: apiProduct[];
   setDetailProducts: (product: apiProduct) => Promise<void>;
@@ -153,6 +155,7 @@ export const useProductStore = create<ProductStore>()(
       sort:'',
       userId: 0,
       rating: 0,
+      userType:'',
       review:[],
       addedProducts: [],
 
@@ -183,13 +186,14 @@ export const useProductStore = create<ProductStore>()(
       isClicked: false,
       setIsClicked: (isClicked: boolean) => set({ isClicked }),
        setCount: (value: number) => set({ count: value }),
-
+       
       vendors: [
      
       ],
       setIsDclicked: (isDclicked: boolean) => set({ isDclicked }),
       setIsRClick: (isRClick: boolean) => set({ isRClick }),
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
+      setUserType: (userType: string) => set({ userType: userType }),
 
       addToCart: (product: apiProduct) => {
         const { cartProducts } = get();
@@ -207,6 +211,7 @@ export const useProductStore = create<ProductStore>()(
           } else {
            
             updatedProducts = [...state.cartProducts, product];
+            
           }
       
           return { cartProducts: updatedProducts };
@@ -266,7 +271,7 @@ export const useProductStore = create<ProductStore>()(
                     const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/products') 
                     const products = await res.json()
                     const { data} = products
-                    console.log(data)
+                    // console.log(data)
                     set ({testProducts: data}) 
                  }catch(err){console.log(err)}
 
@@ -279,8 +284,10 @@ export const useProductStore = create<ProductStore>()(
         const res = await fetch('https://renergy-hub-express-backend.onrender.com/api/v1/reviews') 
         const reviews = await res.json()
         const { payload} = reviews
-        console.log('reviews',payload)
-        set ({review: payload})
+        // console.log('reviews by',payload)
+        set({ review: [] }); // Clear old data
+        set({ review: payload }); // Set new data
+       
        
      }catch(err){console.log(err)}
     },
@@ -306,7 +313,7 @@ export const useProductStore = create<ProductStore>()(
         const cleanData = structuredClone(data); // or manually clean circular references
        set({testCategories: cleanData})
         
-        console.log(data)
+        // console.log(data)
       }catch(err){console.log(err)}
      },
 
@@ -318,7 +325,7 @@ export const useProductStore = create<ProductStore>()(
         const cleanData = structuredClone(data); // or manually clean circular references
         set({testVendors: cleanData})
         
-        console.log(data)
+        // console.log(data)
       }catch(err){console.log(err)}
      },
 

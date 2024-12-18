@@ -102,7 +102,7 @@ const VendorProfile = () => {
         setIsEditable(false);
         toast.success("Profile updated successfully!");
       } else {
-        console.log("Failed to update");
+        // console.log("Failed to update");
         toast.error("Failed to update profile.");
       }
     } catch (error) {

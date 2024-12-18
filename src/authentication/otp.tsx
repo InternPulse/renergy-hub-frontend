@@ -39,7 +39,7 @@ const Otp: React.FC = () => {
     if (enteredOtp.length === otp.length) {
       try {
         setLoading(true);
-        console.log({ id, verifyToken: enteredOtp });
+        // console.log({ id, verifyToken: enteredOtp });
         await axios.post(
           `https://renergy-hub-express-backend.onrender.com/api/v1/auth/verify`,
           { id: id.toString(), verifyToken: enteredOtp }
