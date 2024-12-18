@@ -25,58 +25,36 @@ import ProtectedRoute from "./protectedRoute";
 function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
-      <Routes>
-        
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact_us" element={<ContactUs />} />
-        <Route path="/blog" element={<RenergyBlog />} />
-        <Route path="/blog-detail" element={<BlogDetail />} />
-        
-        <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
-        {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
+  
+     <Routes>
+                
+            {/* Public routes */}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact_us" element={<ContactUs />} />
+            <Route path="/blog" element={<RenergyBlog />} />
+            <Route path="/blog-detail" element={<BlogDetail />} />
+            
+            {/* Checkout, Product, and Authentication */}
+            <Route path="/checkout" element={<CheckoutHomePage />} />
+            <Route path="/authentication/*" element={<Auth />} />
+            <Route path="/product/*" element={<Product />} />
+            
+            {/* Settings, Compliance, and Tracking */}
+            <Route path="/settings/*" element={<SettingsRoutes />} />
+            <Route path="/security-compliance" element={<SecurityCompliance />} />
+            <Route path="/shipping-and-tracking" element={<ShippingAndTracking />} />
+            
+            {/* Shopping Cart and Content Section */}
+            <Route path="/shopping-cart" element={<ProductList />} />
+            <Route path="/content-section" element={<ContentSection />} />
 
-        {/* FROM BUYER DASHBOARD */}
-        <Route path="/buyer-dashboard/*" element={<BuyerDashboard />} />
-        {/* From oo-branch */}
-        <Route path="/checkout" element={<CheckoutHomePage />} />
-        <Route path="/authentication/*" element={<Auth />} />
-        
-        <Route path="/product/*" element={<Product />} />
-
-        <Route path="/settings/*" element={<SettingsRoutes />} />
-        <Route
-          path="/security-compliance"
-          element={<SecurityCompliance />}
-        />
-        {/* From HEAD */}
-        <Route
-          path="/shipping-and-tracking"
-          element={<ShippingAndTracking />}
-        />
-        {/* <Route path="/buyer-section" element={<Page />} /> */}
-        <Route path="/content-section" element={<ContentSection />} />
-        <Route path="/shopping-cart" element={<ProductList />} />
-        <Route
-          path="/admin/*"
-          element={
-            <ProtectedRoute element={<AdminDashboardRoutes />} />
-          }
-        />
-         <Route
-          path="/vendor-dashboard/*"
-          element={
-            <ProtectedRoute element={<VendorDashboard />} />
-          }
-        />
-          <Route
-          path="/*"
-          element={
-            <ProtectedRoute element={<Vendor />} />
-          }
-        />
-        {/* From oo-branch */}
-      </Routes>
+            {/* Protected Routes */}
+            <Route path="/vendor-dashboard/*" element={<ProtectedRoute element={<VendorDashboard />} />} />
+            <Route path="/buyer-dashboard/*" element={<ProtectedRoute element={<BuyerDashboard />} />} />
+            <Route path="/admin/*" element={<ProtectedRoute element={<AdminDashboardRoutes />} />} />
+            <Route path="/*" element={<ProtectedRoute element={<Vendor />} />} />
+</Routes>
       <Toaster />
     </div>
   );

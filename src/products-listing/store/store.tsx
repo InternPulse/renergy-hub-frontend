@@ -202,10 +202,10 @@ export const useProductStore = create<ProductStore>()(
           let updatedProducts;
       
           if (isProductInCart) {
-            // If the product exists in the cart, remove it
-            updatedProducts = state.cartProducts.filter((p) => p.id !== product.id);
+            
+            updatedProducts = state.cartProducts;
           } else {
-            // Otherwise, add the product to the cart
+           
             updatedProducts = [...state.cartProducts, product];
           }
       

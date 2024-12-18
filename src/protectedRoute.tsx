@@ -1,18 +1,15 @@
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useProductStore } from './products-listing/store/store';
+
 interface ProtectedRouteProps {
-    element: React.ReactNode;
-    
-  }
-  
-const ProtectedRoute = ({ element, ...rest }: ProtectedRouteProps) => {
-  const isAuthenticated = localStorage.getItem('authToken'); // Or use a context or state
-  
-  return (
-    <Route
-      {...rest}  // Spread all props like path, exact, etc.
-      element={isAuthenticated ? element : <Navigate to="/login" />}
-    />
-  );
+  element: React.ReactNode;
+}
+
+const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
+  const { userId } = useProductStore(); // Fetch the user ID from the store
+
+  // If user is authenticated, render the element, otherwise navigate to login
+  return userId ? <>{element}</> : <Navigate to="/authentication/login" />;
 };
 
 export default ProtectedRoute;
