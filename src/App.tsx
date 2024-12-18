@@ -26,13 +26,12 @@ function App() {
   return (
     <div className="overflow-x-hidden w-full max-w-full">
       <Routes>
-        
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact_us" element={<ContactUs />} />
         <Route path="/blog" element={<RenergyBlog />} />
         <Route path="/blog-detail" element={<BlogDetail />} />
-        
+
         <Route path="/vendor-dashboard/*" element={<VendorDashboard />} />
         {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
@@ -41,14 +40,11 @@ function App() {
         {/* From oo-branch */}
         <Route path="/checkout" element={<CheckoutHomePage />} />
         <Route path="/authentication/*" element={<Auth />} />
-        
+
         <Route path="/product/*" element={<Product />} />
 
         <Route path="/settings/*" element={<SettingsRoutes />} />
-        <Route
-          path="/security-compliance"
-          element={<SecurityCompliance />}
-        />
+        <Route path="/security-compliance" element={<SecurityCompliance />} />
         {/* From HEAD */}
         <Route
           path="/shipping-and-tracking"
@@ -59,22 +55,13 @@ function App() {
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route
           path="/admin/*"
-          element={
-            <ProtectedRoute element={<AdminDashboardRoutes />} />
-          }
+          element={<ProtectedRoute element={<AdminDashboardRoutes />} />}
         />
-         <Route
+        <Route
           path="/vendor-dashboard/*"
-          element={
-            <ProtectedRoute element={<VendorDashboard />} />
-          }
+          element={<ProtectedRoute element={<VendorDashboard />} />}
         />
-          <Route
-          path="/*"
-          element={
-            <ProtectedRoute element={<Vendor />} />
-          }
-        />
+        <Route path="/*" element={<Vendor />} />
         {/* From oo-branch */}
       </Routes>
       <Toaster />
@@ -83,4 +70,3 @@ function App() {
 }
 
 export default App;
-
