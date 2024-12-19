@@ -76,7 +76,7 @@ const OrderManagement: React.FC = () => {
             ordered product, order date , pricing and order status.
           </p>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 w-full gap-3">
+        <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 w-full gap-3">
           {OrderManagementData.map((data, index) => (
             <div
               key={index}
