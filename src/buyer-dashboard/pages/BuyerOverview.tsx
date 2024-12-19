@@ -11,7 +11,6 @@ const BuyerOverview = () => {
     lastName: "",
   });
 
-
   useEffect(() => {
     const fetchProfile = async () => {
       try {

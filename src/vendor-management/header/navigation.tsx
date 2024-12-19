@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Bell } from "lucide-react";
 import { useProductStore } from "../../products-listing/store/store";
 import { useEffect, useState } from "react";
+import MobileSidebar from "./mobileSidebar";
 
 // Define the NavLink type
 interface NavLinkType {
@@ -67,9 +68,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white text-[#0E1F0D] px-6 py-4 flex justify-between items-center flex-wrap">
+    <nav className="bg-white text-[#0E1F0D] px-6 py-4 flex justify-between items-center">
       {/* right side */}
-      <ul className="flex lg:space-x-8">
+      <ul className="lg:flex hidden lg:space-x-8">
         {navLinks.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -83,7 +84,7 @@ const Navbar: React.FC = () => {
           </li>
         ))}
       </ul>
-
+      <MobileSidebar />
       {/* left side */}
       <div className="flex items-center gap-2">
         <Bell />
@@ -91,7 +92,8 @@ const Navbar: React.FC = () => {
           {getInitials()}
         </div>
 
-        <p>{`${formData.firstName} ${formData.lastName}`}</p>
+        <p className="lg:block hidden">{`${formData.firstName} ${formData.lastName}`}</p>
+        <p className="lg:hidden block">{`${formData.firstName}`}</p>
       </div>
     </nav>
   );

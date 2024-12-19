@@ -23,7 +23,7 @@ export default function BreadcrumbNav({products}: ProductProps) {
       <Separator/>
     <div className="flex items-center gap-4 p-4 text-sm">
       <Button variant="ghost" size="sm" className="gap-2" asChild>
-        <Link to="/product">
+        <Link to="/product" replace>
           <ArrowLeft className="h-4 w-4" />
           Back
         </Link>
@@ -33,7 +33,7 @@ export default function BreadcrumbNav({products}: ProductProps) {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
             
-     <Link to="/product">Products</Link>
+     <Link to="/product" replace>Products</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
@@ -42,7 +42,7 @@ export default function BreadcrumbNav({products}: ProductProps) {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
             
-            <Link to="#">Categories</Link></BreadcrumbLink>
+            <Link to="#" replace>Categories</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <ChevronsRight className="h-4 w-4" />
@@ -50,7 +50,7 @@ export default function BreadcrumbNav({products}: ProductProps) {
           <BreadcrumbItem>
             <BreadcrumbLink  asChild>
             
-            <Link to="#">{products?.category.categoryName}</Link></BreadcrumbLink>
+            <Link to="#" replace>{products?.category.categoryName}</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <ChevronsRight className="h-4 w-4" />
