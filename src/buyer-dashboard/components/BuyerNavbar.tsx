@@ -8,7 +8,7 @@ const routeTitles: Record<string, string> = {
   "/buyer-dashboard/saved-products": "Products",
   "/buyer-dashboard/ordered-products": "Orders",
   "/buyer-dashboard/orders-cancelled": "Orders",
-  "/buyer-dashboard/products": "Products",
+  "/buyer-dashboard/purchase-history": "Purchases",
   "/buyer-dashboard/offers": "Offers",
 };
 
