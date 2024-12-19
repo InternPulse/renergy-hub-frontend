@@ -129,6 +129,12 @@
 	background-color: white;
 	box-sizing: border-box;
 }
+.payment-method-unavailable > .radio-container > .radio-label-lg::before {
+	border-color: gray;
+}
+.payment-method-unavailable > .radio-container > .radio-label-lg {
+	cursor: not-allowed;
+}
 .radio-label-lg::before {
 	width: 25px;
 	height: 25px;
@@ -158,4 +164,7 @@
 	.artificial-overflow {
 		width: calc(98dvw - 4rem);
 	}
+}
+.payment-method-unavailable {
+	filter: grayscale(100%);
 }
