@@ -42,7 +42,7 @@ const Mission = () => {
           <p className="font-semibold">
             Ready to join the sustainable energy movement and empower your home, business, or community today!
           </p>
-       <Link to='/content-section'>  <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-4 rounded hover:bg-hardYellow w-[200px]">
+       <Link to='/explore'>  <button className="text-white font-semibold px-6 py-2 bg-hardGreen mt-4 rounded hover:bg-hardYellow w-[200px]">
             Explore
           </button></Link> 
         </div>

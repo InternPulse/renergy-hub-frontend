@@ -11,11 +11,11 @@ export type ProductProps = {
 
 const ViewCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
-    const {addToCart} = useProductStore()
+    const {wishList} = useProductStore()
 
 const handleClick = (products: any)=> {
      setIsClicked(true)
-      addToCart(products)
+      wishList(products)
 }
 
 const removeClick = ()=> {
@@ -51,7 +51,7 @@ function getFirstThreeWords(name:string) {
             
           
         </li>
-        <Link to={`/product/detail/${products?.id}`}>
+        <Link to={`/product/detail/${products?.id}`} replace>
         <li className="flex justify-center mb-4">
              <img src={img1} alt="Product Image" className='bg-cover bg-no-repeat' />
             

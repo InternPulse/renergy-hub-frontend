@@ -15,7 +15,6 @@ function Vendor() {
       <div className="bg-white">
         <Sidebar />
       </div>
-
       <section className="w-full">
         <Navbar />
         <Routes>

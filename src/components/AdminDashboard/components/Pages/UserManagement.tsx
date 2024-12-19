@@ -67,7 +67,7 @@ const UserManagement: React.FC = () => {
       <div className="w-full p-2 pl-5 bg-white shadow-md rounded-sm flex items-center">
         {/* Left Section */}
         <div className="flex items-center space-x-2">
-          <FaCalendarAlt className="text-gray-600 text-green-500" size={23} />
+          <FaCalendarAlt className="text-gray-600" size={23} />
           <span className="text-gray-800 font-medium">Today</span>
         </div>
 
