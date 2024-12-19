@@ -1,4 +1,5 @@
 import { Search, Bell } from "lucide-react";
+import MobileSidebar from "@/vendor-management/header/mobileSidebar";
 
 interface HeaderProps {
   title: string;
@@ -7,6 +8,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <header className="flex flex-col sm:flex-row mt-4 mb-2 justify-between p-2">
+      <MobileSidebar />
       <h1 
       className="text-3xl m-1"
       >{title}</h1>
