@@ -80,21 +80,22 @@ const SIDEBAR_ITEMS = [
     icon: Wrench,
     color: "black",
   },
+
   {
-    name: "Product",
+    name: "Product Mangement",
     href: "/product-management",
     icon: ShoppingBasket,
     color: "black",
   },
   {
-    name: "Order",
-    herf: "/order-management",
+    name: "Order Management",
+    href: "/order-management",
     icon: BringToFront,
     color: "black",
   },
   {
-    name: "Sales",
-    herf: "/sale-analytics",
+    name: "Sales Analytics",
+    href: "/sale-analytics",
     icon: BadgeDollarSign,
     color: "black",
   },
@@ -142,9 +143,12 @@ function MobileSidebar() {
         </button>
 
         {/* Sidebar Content */}
-        <ul className="mt-16 space-y-4 px-4 py-6 overflow-y-auto h-[calc(100%-4rem)]">
+        <ul className="mt-16 space-y-4 px-4 py-6 overflow-y-auto h-[calc(100%-4rem)] hover">
           {SIDEBAR_ITEMS.map((item) => (
-            <li key={item.name} className="flex items-center space-x-4">
+            <li
+              key={item.name}
+              className="flex items-center space-x-8 p-2 hover:bg-green-400"
+            >
               <item.icon className="w-5 h-5 text-black" />
               <a href={item.href} className="text-black font-medium">
                 {item.name}
