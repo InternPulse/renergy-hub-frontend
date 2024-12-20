@@ -47,7 +47,7 @@ function App() {
           path="/shipping-and-tracking"
           element={<ShippingAndTracking />}
         />
-        <Route path="/content-section" element={<ContentSection />} />
+        <Route path="/explore" element={<ContentSection />} />
         <Route path="/shopping-cart" element={<ProductList />} />
         <Route
           path="/admin/*"

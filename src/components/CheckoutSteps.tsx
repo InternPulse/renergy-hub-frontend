@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import Delivery from "./Delivery";
 import Payment from "./Payment";
 import Review from "./CheckoutReview";
-import { Check, Printer } from "lucide-react";
+import { Check } from "lucide-react"; //Printer
+import { formData } from "../checkoutStore/store";
+
 import {
 	AlertDialog,
 	AlertDialogContent,
@@ -22,11 +24,21 @@ function CheckoutSteps({ onStepChange }: CheckoutProps) {
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 	const checkoutComplete = () => setIsDialogOpen(true);
 	const [step, setStep] = useState<number>(1);
+	const getFormattedDate = () => {
+		const today = new Date();
+		const day = String(today.getDate()).padStart(2, "0"); // Add leading zero
+		const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+		const year = today.getFullYear();
+		return `${day}/${month}/${year}`;
+	};
 	function nextStep() {
 		setStep(step + 1);
 	}
 	function previousStep() {
 		setStep(step - 1);
+	}
+	function toStepOne() {
+		setStep(1);
 	}
 	useEffect(() => {
 		onStepChange(step);
@@ -73,9 +85,15 @@ function CheckoutSteps({ onStepChange }: CheckoutProps) {
 			</div>
 			{step == 1 && <Delivery next={nextStep} />}
 			{step == 2 && <Payment back={previousStep} next={nextStep} />}
-			{step == 3 && <Review back={previousStep} next={checkoutComplete} />}
+			{step == 3 && (
+				<Review
+					back={previousStep}
+					toHome={toStepOne}
+					next={checkoutComplete}
+				/>
+			)}
 			<AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-				<AlertDialogContent className="w-[90%] px-[3rem]">
+				<AlertDialogContent className="w-[90%] rounded-sm p-3">
 					<AlertDialogHeader>
 						<AlertDialogTitle className="flex items-center justify-start">
 							{/* <AlertDialogCancel>
@@ -96,18 +114,18 @@ function CheckoutSteps({ onStepChange }: CheckoutProps) {
 							<div className="w-full flex flex-col gap-3">
 								<p className="font-semibold text-lg">Order Confirmation</p>
 
-								<div className="w-full md:w-[80%] flex flex-col gap-2 items-start ">
+								<div className="w-full flex flex-col gap-2 items-start ">
 									<p className="w-full flex items-center justify-between text-xs gap-1 font-bold">
 										<span>Tracking ID</span>
-										<span>1234567</span>
+										<span>{Math.floor(1000000 + Math.random() * 9000000)}</span>
 									</p>
 									<p className="w-full flex items-center justify-between text-xs gap-1">
 										<span>Date</span>
-										<span>9/11/2001</span>
+										<span>{getFormattedDate()}</span>
 									</p>
 									<p className="w-full flex items-center justify-between text-xs gap-1">
 										<span>Total amount</span>
-										<span>₦350,000.00</span>
+										<span>₦{formData.checkoutTotalPrice.toLocaleString()}</span>
 									</p>
 								</div>
 
@@ -128,11 +146,11 @@ function CheckoutSteps({ onStepChange }: CheckoutProps) {
 							</div>
 						</AlertDialogDescription>
 					</AlertDialogHeader>
-					<AlertDialogFooter className="py-5 flex flex-row items-center justify-center sm:justify-center relative">
-						<div className="absolute left-0 flex items-center justify-center gap-1 cursor-pointer font-semibold text-[#1c6328]">
+					<AlertDialogFooter className="py-5 flex flex-row items-center sm:justify-evenly justify-evenly w-full ">
+						{/* <div className=" flex items-center justify-center gap-1 cursor-pointer font-semibold text-[#1c6328]">
 							<Printer />
 							<p>Print</p>
-						</div>
+						</div> */}
 						<Link to="/">
 							<Button className="bg-[#00B207] rounded-sm text-xs hover:bg-[#00B207]">
 								Continue shopping
