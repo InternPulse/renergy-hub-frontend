@@ -94,7 +94,7 @@ const SIDEBAR_ITEMS = [
     name: "Management",
     icon: Wrench,
     color: "black",
-    href: "/vendorprofile",
+    href: "/vendor-dashboard/vendorprofile",
   },
 ];
 
