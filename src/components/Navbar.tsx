@@ -40,8 +40,8 @@ const Navbar: React.FC = () => {
       alt="profile"
     />
   </Link>
-       <Link to='/cart'> <img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={search_icon} alt="search" /></Link>
-       <Link to='/cart'><img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={cart_icon} alt="cart" /></Link>
+       <Link to='/shopping-cart'> <img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={search_icon} alt="search" /></Link>
+       <Link to='/shopping-cart'><img className="cursor-pointer hover:bg-softGreen hover:rounded-full hover:p-2" src={cart_icon} alt="cart" /></Link>
 
         {/* Hamburger Icon for Small Screens */}
         <div className="md:hidden cursor-pointer" onClick={toggleMenu}>
