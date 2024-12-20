@@ -75,8 +75,10 @@ const Navbar: React.FC = () => {
           <li key={index}>
             <NavLink
               to={link.path}
+              end={link.path === "/vendor-management"}  
               className={({ isActive }) =>
                 isActive ? "bg-[#C9EDBD] px-6 py-2 rounded-lg" : ""
+              
               }
             >
               {link.name}
