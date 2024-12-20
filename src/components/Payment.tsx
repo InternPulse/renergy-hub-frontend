@@ -6,16 +6,20 @@ import PayPal from "../assets/checkout-icons/PayPal.svg";
 import GooglePay from "../assets/checkout-icons/GooglePay.svg";
 import BankTransfer from "../assets/checkout-icons/BankTransfer.svg";
 import { ChevronLeft } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { formData, updateFormData } from "../checkoutStore/store";
 
 function Payment(props: any) {
+	const [localFormData, setLocalFormData] = useState(formData);
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
-		console.log(data);
+		localFormData.payment = String(data.payment_method);
+		updateFormData(localFormData);
 		props.next();
 	}
 	return (
@@ -51,7 +55,7 @@ function Payment(props: any) {
 						<img src={Visa} alt="Payment Method" />
 					</div>
 				</div>
-				<div className="border-b-[1px] border-[#E2E2E2] w-full flex items-center justify-between gap-1 p-4">
+				<div className="border-b-[1px] border-[#E2E2E2] w-full flex items-center justify-between gap-1 p-4 payment-method-unavailable">
 					<div className="radio-container">
 						<input
 							type="radio"
@@ -59,10 +63,11 @@ function Payment(props: any) {
 							name="payment_method"
 							value="paypal"
 							className="radio-input"
+							disabled
 						/>
 						<label
 							htmlFor="paypal"
-							className="radio-label-lg text-md text-start font-semibold"
+							className="radio-label-lg text-md text-[gray] text-start font-semibold"
 						>
 							Pay with PayPal
 						</label>
@@ -71,7 +76,7 @@ function Payment(props: any) {
 						<img src={PayPal} alt="Payment Method" />
 					</div>
 				</div>
-				<div className="border-b-[1px] border-[#E2E2E2] w-full flex items-center justify-between gap-1 p-4">
+				<div className="border-b-[1px] border-[#E2E2E2] w-full flex items-center justify-between gap-1 p-4 payment-method-unavailable">
 					<div className="radio-container">
 						<input
 							type="radio"
@@ -79,10 +84,11 @@ function Payment(props: any) {
 							name="payment_method"
 							value="google_pay"
 							className="radio-input"
+							disabled
 						/>
 						<label
 							htmlFor="google_pay"
-							className="radio-label-lg text-md text-start font-semibold"
+							className="radio-label-lg text-md text-[gray] text-start font-semibold"
 						>
 							Pay with Google Pay
 						</label>

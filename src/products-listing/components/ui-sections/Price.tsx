@@ -44,7 +44,7 @@ const PriceSection = ({ products }: props) => {
     }
   };
   const handleAddCart = () => {
-    addToCart(products);
+    addToCart(products, count);
     toast("Added product: Successfully", {
       description: "The product has been added to your cart",
       icon: <BadgeCheck className="text-[#002603]" />,

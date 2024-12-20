@@ -94,7 +94,7 @@ const SIDEBAR_ITEMS = [
     name: "Management",
     icon: Wrench,
     color: "black",
-    href: "/vendor-dashboard/vendorprofile",
+    href: "/vendor-management",
   },
 ];
 
@@ -124,90 +124,92 @@ const SIDEBAR_BOTTOM = [
   };
 
   return (
-    <motion.div
-      className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 ${
-        isSmallScreen ? "w-20" : isSidebarOpen ? "w-40" : "w-20"
-      }`}
-      animate={{
-        width: isSmallScreen ? 80 : isSidebarOpen ? 170 : 80, // Fixed width on small screens
-      }}
-    >
-      <div className="h-full bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r">
-        {/* Logo Section */}
-        <div className="flex items-center space-x-2">
-          <img className={`h-12 w-12 mt-4 ml-1`} src={logo} alt="logo" />
+    <div>
+      <motion.div
+        className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 hidden lg:block ${
+          isSidebarOpen ? "w-40" : "w-20"
+        }`}
+        animate={{
+          width: isSidebarOpen ? 170 : 80,
+        }}
+      >
+        <div className="bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r">
+          {/* Logo Section */}
+          <div className="flex items-center space-x-2">
+            <img className={`h-12 w-12 mt-4 ml-1`} src={logo} alt="logo" />
+          </div>
+
+          {/* Toggle Button */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleSidebar}
+            className={`p-2 rounded-full hover:bg-green-400 transition-colors max-w-fit 
+               block
+            `}
+          >
+            <Menu size={24} />
+          </motion.button>
+
+          {/* Navigation Items */}
+          <div className="flex flex-col justify-between">
+            <nav>
+              {SIDEBAR_ITEMS.map((item, index) => (
+                <Link key={index} to={item.href}>
+                  <motion.div className="flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors mb-1">
+                    <item.icon
+                      size={20}
+                      style={{ color: item.color, minWidth: "20px" }}
+                    />
+                    {/* Text: Hide on smaller screens */}
+                    <AnimatePresence>
+                      {isSidebarOpen && !isSmallScreen && (
+                        <motion.span
+                          className={`ml-4 whitespace-nowrap hidden sm:block`}
+                          initial={{ opacity: 0, width: 0 }}
+                          animate={{ opacity: 1, width: "auto" }}
+                          exit={{ opacity: 0, width: 0 }}
+                          transition={{ duration: 0.2, delay: 0.3 }}
+                        >
+                          {item.name}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </Link>
+              ))}
+            </nav>
+
+            <nav>
+              {SIDEBAR_BOTTOM.map((item, index) => (
+                <Link key={index} to={item.href}>
+                  <motion.div className="flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors">
+                    <item.icon
+                      size={20}
+                      style={{ color: item.color, minWidth: "20px" }}
+                    />
+                    {/* Text: Hide on smaller screens */}
+                    <AnimatePresence>
+                      {isSidebarOpen && !isSmallScreen && (
+                        <motion.span
+                          className={`ml-4 whitespace-nowrap hidden sm:block`}
+                          initial={{ opacity: 0, width: 0 }}
+                          animate={{ opacity: 1, width: "auto" }}
+                          exit={{ opacity: 0, width: 0 }}
+                          transition={{ duration: 0.2, delay: 0.3 }}
+                        >
+                          {item.name}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
-
-        {/* Toggle Button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={toggleSidebar}
-          className={`p-2 rounded-full hover:bg-green-400 transition-colors max-w-fit ${
-            isSmallScreen ? "hidden" : "block"
-          }`}
-        >
-          <Menu size={24} />
-        </motion.button>
-
-        {/* Navigation Items */}
-        <div className="h-full flex flex-col justify-between">
-          <nav>
-            {SIDEBAR_ITEMS.map((item, index) => (
-              <Link key={index} to={item.href}>
-                <motion.div className="flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors mb-1">
-                  <item.icon
-                    size={20}
-                    style={{ color: item.color, minWidth: "20px" }}
-                  />
-                  {/* Text: Hide on smaller screens */}
-                  <AnimatePresence>
-                    {isSidebarOpen && !isSmallScreen && (
-                      <motion.span
-                        className={`ml-4 whitespace-nowrap hidden sm:block`}
-                        initial={{ opacity: 0, width: 0 }}
-                        animate={{ opacity: 1, width: "auto" }}
-                        exit={{ opacity: 0, width: 0 }}
-                        transition={{ duration: 0.2, delay: 0.3 }}
-                      >
-                        {item.name}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </Link>
-            ))}
-          </nav>
-
-          <nav>
-            {SIDEBAR_BOTTOM.map((item, index) => (
-              <Link key={index} to={item.href}>
-                <motion.div className="flex items-center p-2 text-sm font-medium rounded-lg hover:bg-green-400 transition-colors">
-                  <item.icon
-                    size={20}
-                    style={{ color: item.color, minWidth: "20px" }}
-                  />
-                  {/* Text: Hide on smaller screens */}
-                  <AnimatePresence>
-                    {isSidebarOpen && !isSmallScreen && (
-                      <motion.span
-                        className={`ml-4 whitespace-nowrap hidden sm:block`}
-                        initial={{ opacity: 0, width: 0 }}
-                        animate={{ opacity: 1, width: "auto" }}
-                        exit={{ opacity: 0, width: 0 }}
-                        transition={{ duration: 0.2, delay: 0.3 }}
-                      >
-                        {item.name}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 export default Sidebar

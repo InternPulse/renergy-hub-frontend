@@ -15,13 +15,13 @@ function Vendor() {
       <div className="bg-white">
         <Sidebar />
       </div>
-
       <section className="w-full">
         <Navbar />
         <Routes>
+        <Route path="/" element={<VendorProfile />} />
           <Route path="order-management" element={<OrderManagement />} />
           <Route path="product-management" element={<ProductManagement />} />
-          <Route path="vendorprofile" element={<VendorProfile />} />
+        
           <Route path="sale-analytics" element={<SaleAnalytics />} />
         </Routes>
       </section>

@@ -1,4 +1,4 @@
-//import "./App.css";
+
 import LandingPage from "./pages/landingPage";
 import { Routes, Route } from "react-router-dom";
 import CheckoutHomePage from "./pages/checkoutHome";
@@ -10,15 +10,15 @@ import Product from "./products-listing/page/products";
 import SettingsRoutes from "./components/SettingsDashboard/SettingsLayout";
 import ShippingAndTracking from "./pages/ShippingAndTracking";
 import ContentSection from "./sections/contentSection";
-import SecurityCompliance from "./pages/SecurityCompliance"; // From HEAD
-import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; // From oo-branch
+import SecurityCompliance from "./pages/SecurityCompliance"; 
+import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; 
 import AboutUs from "./pages/AboutUs";
-// import Page from "./buyer-dashboard/BuyerDashboard"
+
 import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
 import ProductList from "./shoppingcart/ProductList";
-//import AdminDashboard from "./components/AdminDashboard/AdminDashboard"; // From oo-branch
+
 import { Toaster } from "sonner";
 import BuyerDashboard from "./buyer-dashboard/BuyerDashboard";
 import ProtectedRoute from "./protectedRoute";
@@ -49,13 +49,13 @@ function App() {
             
             {/* Shopping Cart and Content Section */}
             <Route path="/shopping-cart" element={<ProductList />} />
-            <Route path="/content-section" element={<ContentSection />} />
+            <Route path="/explore" element={<ContentSection />} />
 
             {/* Protected Routes */}
           <Route path="/vendor-dashboard/*" element={<ProtectedRoute role='VENDOR' element={<VendorDashboard />} />} />
             <Route path="/buyer-dashboard/*" element={<ProtectedRoute role='CUSTOMER' element={<BuyerDashboard />} />} />
             <Route path="/admin/*" element={<ProtectedRoute role='ADMIN' element={<AdminDashboardRoutes />} />} />
-            <Route path="/*" element={<ProtectedRoute element={<Vendor />} />} />
+            <Route path="/vendor-management/*" element={<ProtectedRoute role='VENDOR' element={<Vendor />} />} />
 </Routes>
       <Toaster />
     </div>
@@ -63,4 +63,3 @@ function App() {
 }
 
 export default App;
-

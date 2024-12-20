@@ -11,11 +11,11 @@ export type ProductProps = {
 
 const ViewCard = ({products}: ProductProps) => {
     const [isClicked, setIsClicked] = useState(false)
-    const {addToCart} = useProductStore()
+    const {wishList} = useProductStore()
 
 const handleClick = (products: any)=> {
      setIsClicked(true)
-      addToCart(products)
+      wishList(products)
 }
 
 const removeClick = ()=> {

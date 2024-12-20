@@ -54,6 +54,7 @@ export interface apiProduct {
   createdAt: string;
   updatedAt: string;
   category: Category;
+  quantity?: number
 }
 
 type VendorResponse = {
@@ -143,7 +144,7 @@ type ProductStore = {
   selectedCategories: Category[];
   // addToCart: (product: Product) => void;
   wishList: (product: apiProduct) => void;
-  addToCart: (product: apiProduct) => void;
+  addToCart: (product: apiProduct,count:number) => void;
   setFilteredProduct: (productId: number) => Promise<void>;
   setFilteredVendor: (vendorId: number) => Promise<void>;
   setFilteredCategory: (categoryId: number) => Promise<void>;
@@ -195,23 +196,24 @@ export const useProductStore = create<ProductStore>()(
       setDetailProducts: async (product: apiProduct) => set({ detailProducts: product }),
       setUserType: (userType: string) => set({ userType: userType }),
 
-      addToCart: (product: apiProduct) => {
+      
+      addToCart: (product: apiProduct, quantity: number) => { 
         const { cartProducts } = get();
       
         // Check if the product is already in the cart
         const isProductInCart = cartProducts.some((p) => p.id === product.id);
       
-        // Update the cart products by either adding or removing the product
         set((state) => {
           let updatedProducts;
       
           if (isProductInCart) {
-            
-            updatedProducts = state.cartProducts;
-          } else {
            
-            updatedProducts = [...state.cartProducts, product];
-            
+            updatedProducts = state.cartProducts.map((p) =>
+              p.id === product.id ? { ...p, quantity: (p.quantity || 0) + quantity } : p
+            );
+          } else {
+          
+            updatedProducts = [...state.cartProducts, { ...product, quantity }];
           }
       
           return { cartProducts: updatedProducts };
