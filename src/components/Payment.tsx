@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { formData, updateFormData } from "../checkoutStore/store";
 
 function Payment(props: any) {
-	const [localFormData, setLocalFormData] = useState(formData);
+	const [localFormData] = useState(formData);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -19,6 +19,7 @@ function Payment(props: any) {
 		e.preventDefault();
 		const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
 		localFormData.payment = String(data.payment_method);
+		
 		updateFormData(localFormData);
 		props.next();
 	}

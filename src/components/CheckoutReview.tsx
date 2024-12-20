@@ -176,9 +176,10 @@ function Review(props: any) {
 							className="w-full bg-[#00B207] hover:bg-[#00B207] text-white text-xs rounded-sm"
 							onClick={() => {
 								updateFormData({ checkoutTotalPrice: total });
+								startPayment();
 								props.next();
 							}}
-							// onClick={startPayment}
+							// onClick={}
 						>
 							Submit order
 						</Button>

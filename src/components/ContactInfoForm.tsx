@@ -66,7 +66,7 @@
 
 // export default ContactForm;
 
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 
 interface FormData {
 	fullName: string;
@@ -91,6 +91,7 @@ const ContactForm = () => {
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
+		setErrors((prev) => ({...prev, [name]: "" })); 
 		setFormData((prev) => ({
 			...prev,
 			[name]: value,
