@@ -13,7 +13,7 @@ import ContentSection from "./sections/contentSection";
 import SecurityCompliance from "./pages/SecurityCompliance"; 
 import AdminDashboardRoutes from "./components/AdminDashboard/AdminDashboardRoutes"; 
 import AboutUs from "./pages/AboutUs";
-
+import Login from "./authentication/login";
 import ContactUs from "./pages/ContactUs";
 import RenergyBlog from "./pages/RenergyBlog";
 import BlogDetail from "./pages/BlogDetail";
@@ -36,7 +36,7 @@ function App() {
             <Route path="/contact_us" element={<ContactUs />} />
             <Route path="/blog" element={<RenergyBlog />} />
             <Route path="/blog-detail" element={<BlogDetail />} />
-            
+            <Route path="/*" element={<Login />} />
             {/* Checkout, Product, and Authentication */}
             <Route path="/checkout" element={<CheckoutHomePage />} />
             <Route path="/authentication/*" element={<Auth />} />
