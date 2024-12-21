@@ -76,26 +76,26 @@ const SIDEBAR_ITEMS = [
 
   {
     name: "Profile",
-    href: "/vendorprofile",
+    href: "/vendor-management",
     icon: Wrench,
     color: "black",
   },
 
   {
     name: "Product Mangement",
-    href: "/product-management",
+    href: "/vendor-management/product-management",
     icon: ShoppingBasket,
     color: "black",
   },
   {
     name: "Order Management",
-    href: "/order-management",
+    href: "/vendor-management/order-management",
     icon: BringToFront,
     color: "black",
   },
   {
     name: "Sales Analytics",
-    href: "/sale-analytics",
+    href: "/vendor-management/sale-analytics",
     icon: BadgeDollarSign,
     color: "black",
   },
