@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { CiSearch } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
-
+import { useProductStore } from "../products-listing/store/store";
 
 const Navbar: React.FC = () => {
   const [showSearch, setShowSearch] = useState<boolean>(false); // Toggle search bar
-  const [cartCount] = useState<number>(3); // Example cart count
-  const location = useLocation(); // Get the current route
 
+  const location = useLocation(); // Get the current route
+  const {cartProducts}= useProductStore(); 
   // Function to toggle the search bar
   const toggleSearch = () => {
     setShowSearch(!showSearch);
@@ -71,9 +71,9 @@ const Navbar: React.FC = () => {
         {/* Shopping Bag Icon with Count */}
         <div className="relative">
           <FiShoppingBag className="text-2xl cursor-pointer hover:text-blue-500" />
-          {cartCount > 0 && (
+          {cartProducts.length > 0 && (
             <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">
-              {cartCount}
+              {cartProducts.length}
             </span>
           )}
         </div>
